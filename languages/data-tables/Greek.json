@@ -1,0 +1,25 @@
+
+
+{
+	"sEmptyTable":   	"Δε βρέθηκαν εγγραφές",
+	"sInfo":         	"_START_ bis _END_ von _TOTAL_ Einträgen",
+	"sInfoEmpty":    	"0 έως 0 από 0 εγγραφές",
+	"sInfoFiltered": 	"(gefiltert von _MAX_ Einträgen)",
+	"sInfoPostFix":  	"",
+	"sInfoThousands":  	".",
+	"sLengthMenu":   	"_MENU_ Einträge anzeigen",
+	"sLoadingRecords": 	"Φόρτωση...",
+	"sProcessing":   	"Παρακαλώ περιμένετε...",
+	"sSearch":       	"Αναζήτηση",
+	"sZeroRecords":  	"Δε βρέθηκαν εγγραφές.",
+	"oPaginate": {
+		"sFirst":    	"Πρώτη",
+		"sPrevious": 	"Προηγούμενη",
+		"sNext":     	"Επόμενη",
+		"sLast":     	"Τελευταία"
+	},
+	"oAria": {
+		"sSortAscending":  ": ενεργοποίηση, αύξουσα ταξινόμηση",
+		"sSortDescending": ": ενεργοποίηση, φθήνουσα ταξινόμηση"
+	}
+}
