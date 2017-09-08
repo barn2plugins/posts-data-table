@@ -40,7 +40,7 @@ id, title, content, category, tags, author, and date. Defaults to 'title,content
 *   `rows_per_page` - the number of posts to show on each page of results in the table. Set to 'false' to disable pagination. Defaults to 20 rows.
 *   `category` - restrict the table to this category only. Use the category ID or 'slug' here, NOT the name of the category. You can find the slug from the
 Posts -> Categories menu in the WordPress admin.
-    `tag` - restrict the table to this tag only. Use the tag 'slug' or ID here. You can find the slug from the Posts -> Tags menu.
+*   `tag` - restrict the table to this tag only. Use the tag 'slug' or ID here. You can find the slug from the Posts -> Tags menu.
 *   `sort_by` - the column to sort by. Defaults to 'date'. If the column you want to sort by isn't shown in the table, it will be added as a hidden column.
 This means, for example, that you can sort by date without actually showing the date column.
 *   `sort_order` - whether to sort ascending ('asc') or descending ('desc'). If you order by date, it will default to 'desc' (newest posts first).
