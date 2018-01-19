@@ -5,8 +5,8 @@
  *
  * @package   Posts_Data_Table
  * @author    Barn2 Media <info@barn2.co.uk>
- * @license   GPLv3
- * @link      http://barn2.co.uk
+ * @license   GPL-3.0
+ * @link      https://barn2.co.uk
  * @copyright 2016-2017 Barn2 Media Ltd
  */
 // Prevent direct file access

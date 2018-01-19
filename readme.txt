@@ -1,12 +1,10 @@
 === Posts Table with Search & Sort ===
 Contributors: andykeith, barn2media
-Donate link: http://barn2.co.uk
+Donate link: https://barn2.co.uk
 Tags: posts, table, tables, shortcode, search, sort, wpml
 Requires at least: 3.0.1
-Tested up to: 4.8.1
-Stable tag: 1.1
-Text Domain: posts-data-table
-Domain Path: /languages
+Tested up to: 4.9.2
+Stable tag: 1.1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -136,6 +134,12 @@ details and we'll be happy to provide a quote.
 3. Filtered by post author and sorted alphabetically by title (ascending).
 
 == Changelog ==
+
+= 1.1.1 =
+19 January 2018
+
+ * Tested with WordPress up to 4.9.2
+ * Minor styling tweaks.
 
 = 1.1 =
 7 September 2017

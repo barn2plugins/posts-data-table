@@ -5,8 +5,8 @@
  *
  * @package   Posts_Data_Table
  * @author    Barn2 Media <info@barn2.co.uk>
- * @license   GPLv3
- * @link      http://barn2.co.uk
+ * @license   GPL-3.0
+ * @link      https://barn2.co.uk
  * @copyright 2016-2017 Barn2 Media Ltd
  */
 // Prevent direct file access
@@ -183,7 +183,7 @@ class Posts_Data_Table_Simple {
 		$column_defaults = apply_filters( 'posts_data_table_column_defaults_' . self::$table_count, apply_filters( 'posts_data_table_column_defaults', self::$column_defaults ) );
 
 		// Get the columns to be used in this table
-		$columns		 = array_map( 'trim', explode( ',', strtolower( $args['columns'] ) ) );
+		$columns		 = array_filter( array_map( 'trim', explode( ',', strtolower( $args['columns'] ) ) ) );
 		$hidden_columns	 = array();
 
 		// If none of the user-specfied columns are valid, use the default columns instead
@@ -259,7 +259,7 @@ class Posts_Data_Table_Simple {
 
 			// Format author
 			$author = sprintf(
-				'<a href="%1$s" title="%2$s" rel="author">%3$s</a>', esc_url( get_author_posts_url( $_post->post_author ) ), esc_attr( sprintf( __( 'Posts by %s' ), get_the_author() ) ), get_the_author()
+				'<a href="%1$s" title="%2$s" rel="author">%3$s</a>', esc_url( get_author_posts_url( $_post->post_author ) ), esc_attr( sprintf( __( 'Posts by %s', 'posts-data-table' ), get_the_author() ) ), get_the_author()
 			);
 
 			$post_data_trans = array(
@@ -285,7 +285,8 @@ class Posts_Data_Table_Simple {
 			$paging_attr = 'true';
 		}
 
-		$order_attr	 = ( $table_sort_index === false ) ? '' : sprintf( '[[%u, "%s"]]', $table_sort_index, $args['sort_order'] );
+		// Order attribute should be escaped here rather than in sprintf below as we don't want to escape the double-quotes around "asc" or "desc"
+		$order_attr	 = ( $table_sort_index === false ) ? '' : sprintf( '[[%u, "%s"]]', esc_attr( $table_sort_index ), esc_attr( $args['sort_order'] ) );
 		$offset_attr = ( $args['scroll_offset'] === false ) ? 'false' : $args['scroll_offset'];
 
 		$table_class = 'posts-data-table';
@@ -304,7 +305,7 @@ class Posts_Data_Table_Simple {
 			. 'data-scroll-offset="%7$s" '
 			. 'cellspacing="0" width="100%%">'
 			. '%8$s%9$s' .
-			'</table>', self::$table_count, esc_attr( $table_class ), esc_attr( $args['rows_per_page'] ), esc_attr( $paging_attr ), esc_attr( $order_attr ), ( $args['search_on_click'] ? 'true' : 'false' ), esc_attr( $offset_attr ), $table_head, $table_body
+			'</table>', self::$table_count, esc_attr( $table_class ), esc_attr( $args['rows_per_page'] ), esc_attr( $paging_attr ), $order_attr, ( $args['search_on_click'] ? 'true' : 'false' ), esc_attr( $offset_attr ), $table_head, $table_body
 		);
 
 		// Increment the table count

@@ -1,0 +1,4 @@
+/*!
+ * Posts Table with Search & Sort <%= version %>
+ * Copyright 2016-2017 Barn2 Media Ltd
+ */

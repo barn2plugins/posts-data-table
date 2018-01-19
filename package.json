@@ -1,0 +1,35 @@
+{
+  "name": "posts-data-table",
+  "version": "1.1.1",
+  "description": "Post Table with Search and Sort plugin for WordPress",
+  "main": "gulpfile.js",
+  "scripts": {
+    "gulp": "gulp",
+    "test": "build"
+  },
+  "keywords": [
+    "posts",
+    "table",
+    "sort",
+    "filter"
+  ],
+  "author": "Barn2 Media",
+  "license": "GPL-3.0",
+  "dependencies": {},
+  "devDependencies": {
+    "del": "^3.0.0",
+    "fs": "0.0.1-security",
+    "gulp": "^3.9.1",
+    "gulp-checktextdomain": "^2.1.1",
+    "gulp-clean-css": "^3.9.0",
+    "gulp-debug": "^3.1.0",
+    "gulp-header": "^1.8.9",
+    "gulp-jshint": "^2.0.4",
+    "gulp-rename": "^1.2.2",
+    "gulp-run": "^1.7.1",
+    "gulp-uglify": "^3.0.0",
+    "gulp-zip": "^4.0.0",
+    "jshint": "^2.9.5",
+    "pump": "^2.0.0"
+  }
+}
