@@ -1,25 +1,24 @@
 <?php
+// Prevent direct file access
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 /**
  * This class is responsible for generating a HTML table from a list of supplied attributes.
  *
- * @package   Posts_Data_Table
+ * @package   Barn2\Posts_Table_Search_And_Sort
  * @author    Barn2 Media <info@barn2.co.uk>
  * @license   GPL-3.0
  * @link      https://barn2.co.uk
- * @copyright 2016-2017 Barn2 Media Ltd
+ * @copyright 2016-2018 Barn2 Media Ltd
  */
-// Prevent direct file access
-if ( !defined( 'ABSPATH' ) ) {
-	exit;
-}
-
 class Posts_Data_Table_Simple {
 
 	/**
 	 * The complete list of table attributes, and their defaults.
 	 */
-	public static $default_args = array(
+	public static $default_args		 = array(
 		'columns'			 => 'title,content,date,author,category',
 		'rows_per_page'		 => 20,
 		'sort_by'			 => 'date',
@@ -32,18 +31,16 @@ class Posts_Data_Table_Simple {
 		'content_length'	 => 15,
 		'scroll_offset'		 => 15
 	);
-
 	/**
 	 * An array of all possible columns and their default heading, priority, and column width.
 	 * Initialised once on construction.
 	 */
 	private static $column_defaults	 = array();
 	private static $allowed_columns	 = array();
-
 	/**
 	 * Stores the number of tables on this page. Used to generate the table ID.
 	 */
-	private static $table_count = 1;
+	private static $table_count		 = 1;
 
 	public function __construct() {
 		if ( empty( self::$column_defaults ) ) {
@@ -111,20 +108,20 @@ class Posts_Data_Table_Simple {
 
 		$args['rows_per_page'] = filter_var( $args['rows_per_page'], FILTER_VALIDATE_INT );
 
-		if ( ($args['rows_per_page'] < 1) || !$args['rows_per_page'] ) {
+		if ( ($args['rows_per_page'] < 1) || ! $args['rows_per_page'] ) {
 			$args['rows_per_page'] = false;
 		}
 
-		if ( !in_array( $args['sort_by'], self::$allowed_columns ) ) {
+		if ( ! in_array( $args['sort_by'], self::$allowed_columns ) ) {
 			$args['sort_by'] = self::$default_args['sort_by'];
 		}
 
-		if ( !in_array( $args['sort_order'], array( 'asc', 'desc' ) ) ) {
+		if ( ! in_array( $args['sort_order'], array( 'asc', 'desc' ) ) ) {
 			$args['sort_order'] = self::$default_args['sort_order'];
 		}
 
 		// Set default sort direction
-		if ( !$args['sort_order'] ) {
+		if ( ! $args['sort_order'] ) {
 			if ( $args['sort_by'] === 'date' ) {
 				$args['sort_order'] = 'desc';
 			} else {
@@ -151,7 +148,7 @@ class Posts_Data_Table_Simple {
 			'suppress_filters'	 => false // Ensure WPML filters run on this query
 		);
 
-		if ( !empty( $args['category'] ) ) {
+		if ( ! empty( $args['category'] ) ) {
 			if ( is_numeric( $args['category'] ) ) {
 				$post_args['cat'] = $args['category'];
 			} else {
@@ -163,7 +160,7 @@ class Posts_Data_Table_Simple {
 			}
 		}
 
-		if ( !empty( $args['tag'] ) ) {
+		if ( ! empty( $args['tag'] ) ) {
 			if ( is_numeric( $args['tag'] ) ) {
 				$post_args['tag_id'] = $args['tag'];
 			} else {
@@ -175,7 +172,7 @@ class Posts_Data_Table_Simple {
 		$all_posts = get_posts( $post_args );
 
 		// Bail early if no posts found
-		if ( !$all_posts || !is_array( $all_posts ) ) {
+		if ( ! $all_posts || ! is_array( $all_posts ) ) {
 			return $output;
 		}
 
@@ -187,7 +184,7 @@ class Posts_Data_Table_Simple {
 		$hidden_columns	 = array();
 
 		// If none of the user-specfied columns are valid, use the default columns instead
-		if ( !array_intersect( self::$allowed_columns, $columns ) ) {
+		if ( ! array_intersect( self::$allowed_columns, $columns ) ) {
 			$columns = explode( ',', self::$default_args['columns'] );
 		}
 
@@ -220,7 +217,7 @@ class Posts_Data_Table_Simple {
 
 		foreach ( $columns as $column ) {
 			// Double-check column name is valid
-			if ( !in_array( $column, self::$allowed_columns ) ) {
+			if ( ! in_array( $column, self::$allowed_columns ) ) {
 				continue;
 			}
 
@@ -290,7 +287,7 @@ class Posts_Data_Table_Simple {
 		$offset_attr = ( $args['scroll_offset'] === false ) ? 'false' : $args['scroll_offset'];
 
 		$table_class = 'posts-data-table';
-		if ( !$args['wrap'] ) {
+		if ( ! $args['wrap'] ) {
 			$table_class .= ' nowrap';
 		}
 
@@ -309,7 +306,7 @@ class Posts_Data_Table_Simple {
 		);
 
 		// Increment the table count
-		self::$table_count++;
+		self::$table_count ++;
 
 		return $output;
 	}

@@ -1,19 +1,18 @@
 <?php
+// Prevent direct file access
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 /**
  * This class handles the posts table shortcode registration.
  *
- * @package   Posts_Data_Table
+ * @package   Barn2\Posts_Table_Search_And_Sort
  * @author    Barn2 Media <info@barn2.co.uk>
  * @license   GPL-3.0
  * @link      https://barn2.co.uk
- * @copyright 2016-2017 Barn2 Media Ltd
+ * @copyright 2016-2018 Barn2 Media Ltd
  */
-// Prevent direct file access
-if ( !defined( 'ABSPATH' ) ) {
-	exit;
-}
-
 class Posts_Data_Table_Shortcode {
 
 	private $shortcode = 'posts_data_table';

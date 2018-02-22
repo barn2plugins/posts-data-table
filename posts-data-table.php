@@ -1,13 +1,6 @@
 <?php
-
 /**
  * The main plugin file for Posts Table with Search & Sort.
- *
- * @package   Posts_Data_Table
- * @author    Barn2 Media <info@barn2.co.uk>
- * @license   GPL-3.0
- * @link      https://barn2.co.uk
- * @copyright 2016-2017 Barn2 Media Ltd
  *
  * @wordpress-plugin
  * Plugin Name:       Posts Table with Search & Sort
@@ -19,24 +12,40 @@
  * Text Domain:       posts-data-table
  * Domain Path:       /languages
  *
- * Copyright:		  2016-2017 Barn2 Media Ltd
+ * Copyright:		  2016-2018 Barn2 Media Ltd
  * License:           GNU General Public License v3.0
  * License URI:       http://www.gnu.org/licenses/gpl-3.0.html
  */
 // Prevent direct file access
-if ( !defined( 'ABSPATH' ) ) {
+if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
 // Current version of this plugin
 define( 'POSTS_DATA_TABLE_VERSION', '1.1.1' );
 
+/**
+ * The main plugin class.
+ *
+ * @package   Barn2\Posts_Table_Search_And_Sort
+ * @author    Barn2 Media <info@barn2.co.uk>
+ * @license   GPL-3.0
+ * @link      https://barn2.co.uk
+ * @copyright 2016-2018 Barn2 Media Ltd
+ */
 class Posts_Data_Table_Plugin {
 
-	public function __construct() {
+	private $shortcode;
+
+	public static function bootstrap() {
+		$self = new self();
+		$self->load();
+	}
+
+	public function load() {
 		$this->includes();
 
-		add_action( 'plugins_loaded', array( $this, 'maybe_load_plugin' ) );
+		add_action( 'init', array( $this, 'init' ) );
 		add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), array( $this, 'add_plugin_settings_link' ) );
 	}
 
@@ -47,7 +56,7 @@ class Posts_Data_Table_Plugin {
 		require_once $includes . 'class-posts-data-table-shortcode.php';
 	}
 
-	public function maybe_load_plugin() {
+	public function init() {
 		// Don't init plugin if Pro version exists
 		if ( class_exists( 'Posts_Table_Pro_Plugin' ) ) {
 			return;
@@ -56,19 +65,15 @@ class Posts_Data_Table_Plugin {
 		// Load the text domain - should go on 'plugins_loaded' hook
 		$this->load_textdomain();
 
-		add_action( 'init', array( $this, 'init' ) );
-	}
-
-	public function load_textdomain() {
-		load_plugin_textdomain( 'posts-data-table', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
-	}
-
-	public function init() {
-		new Posts_Data_Table_Shortcode();
+		$this->shortcode = new Posts_Data_Table_Shortcode();
 
 		// Register styles and scripts
 		add_action( 'wp_enqueue_scripts', array( $this, 'register_styles' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'register_scripts' ) );
+	}
+
+	public function load_textdomain() {
+		load_plugin_textdomain( 'posts-data-table', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
 	}
 
 	public function register_styles() {
@@ -109,7 +114,7 @@ class Posts_Data_Table_Plugin {
 	private function get_supported_locales() {
 		$lang_file_base_url = plugins_url( 'languages/data-tables/', __FILE__ );
 
-		return array(
+		return apply_filters( 'posts_data_table_supported_languages', array(
 			'es_ES'	 => $lang_file_base_url . 'Spanish.json',
 			'fr_FR'	 => $lang_file_base_url . 'French.json',
 			'fr_BE'	 => $lang_file_base_url . 'French.json',
@@ -118,10 +123,10 @@ class Posts_Data_Table_Plugin {
 			'de_CH'	 => $lang_file_base_url . 'German.json',
 			'el'	 => $lang_file_base_url . 'Greek.json',
 			'el_EL'	 => $lang_file_base_url . 'Greek.json',
-		);
+			) );
 	}
 
 }
 // end class
 
-$posts_data_table = new Posts_Data_Table_Plugin();
+Posts_Data_Table_Plugin::bootstrap();

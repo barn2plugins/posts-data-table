@@ -8,6 +8,7 @@ var gulp = require( 'gulp' ),
 	rename = require( 'gulp-rename' ),
 	run = require( 'gulp-run' ),
 	debug = require( 'gulp-debug' ),
+	prompt = require( 'gulp-prompt' ),
 	checktextdomain = require( 'gulp-checktextdomain' );
 
 const pluginSlug = 'posts-data-table';
@@ -32,6 +33,7 @@ var getPluginSlug = function() {
 gulp.task( 'scripts', function( cb ) {
 	pump( [
 		gulp.src( ['assets/js/*.js', '!**/*.min.js'], { base: './' } ),
+		debug(),
 		header( getCopyright(), { 'version': getVersion() } ),
 		minify( { compress: { negate_iife: false }, output: { comments: '/^\/*!/' } } ),
 		rename( { suffix: '.min' } ),
@@ -42,6 +44,7 @@ gulp.task( 'scripts', function( cb ) {
 gulp.task( 'styles', function( cb ) {
 	pump( [
 		gulp.src( ['assets/css/*.css', '!**/*.min.css'], { base: './' } ),
+		debug(),
 		header( getCopyright( ), { 'version': getVersion( ) } ),
 		cleancss( { compatibility: 'ie9' } ),
 		rename( { suffix: '.min' } ),
@@ -61,20 +64,22 @@ gulp.task( 'zip', ['scripts', 'styles'], function() {
 	return run( zipCommand ).exec();
 } );
 
-gulp.task( 'copy', ['zip'], function() {
-	var deployDir = pluginArchive + pluginSlug + '/' + getVersion();
+gulp.task( 'archive', ['zip'], function() {
+	var pluginDir = pluginArchive + pluginSlug;
+
+	if ( !fs.existsSync( pluginDir ) ) {
+		fs.mkdirSync( pluginDir );
+	}
+	var deployDir = pluginDir + '/' + getVersion();
 
 	if ( !fs.existsSync( deployDir ) ) {
 		fs.mkdirSync( deployDir );
 	}
 
-	// Only deploy if zip doesn't already exist as we don't want to override release by mistake
-	if ( !fs.existsSync( deployDir + '/' + zipFile ) ) {
-		return gulp.src( zipFile, { cwd: '../' } )
-			.pipe( debug() )
-			.pipe( gulp.dest( deployDir ) );
-	}
-	return false;
+	return gulp.src( zipFile, { cwd: '../' } )
+		//.pipe( prompt.confirm( 'Are you sure you want to archive the plugin?' ) )
+		.pipe( debug() )
+		.pipe( gulp.dest( deployDir ) );
 } );
 
 gulp.task( 'textdomain', function() {
@@ -105,5 +110,5 @@ gulp.task( 'textdomain', function() {
 } );
 
 gulp.task( 'build', ['scripts', 'styles', 'lint', 'textdomain', 'zip'] );
-gulp.task( 'release', ['build', 'copy'] );
-gulp.task( 'default', ['release'] );
+gulp.task( 'release', ['build', 'archive'] );
+gulp.task( 'default', ['build'] );

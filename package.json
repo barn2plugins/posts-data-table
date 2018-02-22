@@ -7,6 +7,10 @@
     "gulp": "gulp",
     "test": "build"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://barn2media@bitbucket.org/barn2media/posts-table-with-search-sort.git"
+  },
   "keywords": [
     "posts",
     "table",
@@ -15,9 +19,8 @@
   ],
   "author": "Barn2 Media",
   "license": "GPL-3.0",
-  "dependencies": {},
   "devDependencies": {
-    "del": "^3.0.0",
+     "gulp-prompt": "^1.0.1",
     "fs": "0.0.1-security",
     "gulp": "^3.9.1",
     "gulp-checktextdomain": "^2.1.1",
