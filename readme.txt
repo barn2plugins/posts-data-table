@@ -3,8 +3,8 @@ Contributors: andykeith, barn2media
 Donate link: https://barn2.co.uk
 Tags: posts, table, tables, shortcode, search, sort, wpml
 Requires at least: 3.0.1
-Tested up to: 4.9.2
-Stable tag: 1.1.1
+Tested up to: 4.9.4
+Stable tag: 1.1.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -41,6 +41,8 @@ id, title, content, category, tags, author, and date. Defaults to 'title,content
 *   `category` - restrict the table to this category only. Use the category ID or 'slug' here, NOT the name of the category. You can find the slug from the
 Posts -> Categories menu in the WordPress admin.
 *   `tag` - restrict the table to this tag only. Use the tag 'slug' or ID here. You can find the slug from the Posts -> Tags menu.
+*   `author` - restrict the posts in the table to the specified author. Use can use author name (user_nicename), author ID or a comma-separated list of IDs.
+*   `post_status` - display posts with this post status (draft, pending, publish, future, private or any). Defaults to 'publish'.
 *   `sort_by` - the column to sort by. Defaults to 'date'. If the column you want to sort by isn't shown in the table, it will be added as a hidden column.
 This means, for example, that you can sort by date without actually showing the date column.
 *   `sort_order` - whether to sort ascending ('asc') or descending ('desc'). If you order by date, it will default to 'desc' (newest posts first).
@@ -135,10 +137,17 @@ details and we'll be happy to provide a quote.
 
 == Changelog ==
 
+= 1.1.2 =
+17 March 2018
+
+ * Added 'author' and 'post_status' shortcode options.
+ * Added 'posts_data_table_query_args' and 'posts_data_table_row_data_format' filters.
+ * Tested with WordPress 4.9.4
+
 = 1.1.1 =
 19 January 2018
 
- * Tested with WordPress up to 4.9.2
+ * Tested with WordPress 4.9.2
  * Minor styling tweaks.
 
 = 1.1 =

@@ -20,7 +20,6 @@
   "author": "Barn2 Media",
   "license": "GPL-3.0",
   "devDependencies": {
-     "gulp-prompt": "^1.0.1",
     "fs": "0.0.1-security",
     "gulp": "^3.9.1",
     "gulp-checktextdomain": "^2.1.1",
@@ -28,6 +27,7 @@
     "gulp-debug": "^3.1.0",
     "gulp-header": "^1.8.9",
     "gulp-jshint": "^2.0.4",
+    "gulp-prompt": "^1.0.1",
     "gulp-rename": "^1.2.2",
     "gulp-run": "^1.7.1",
     "gulp-uglify": "^3.0.0",

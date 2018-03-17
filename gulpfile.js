@@ -65,19 +65,17 @@ gulp.task( 'zip', ['scripts', 'styles'], function() {
 } );
 
 gulp.task( 'archive', ['zip'], function() {
-	var pluginDir = pluginArchive + pluginSlug;
+	var pluginDir = pluginArchive + pluginSlug,
+		deployDir = pluginDir + '/' + getVersion();
 
 	if ( !fs.existsSync( pluginDir ) ) {
 		fs.mkdirSync( pluginDir );
 	}
-	var deployDir = pluginDir + '/' + getVersion();
-
 	if ( !fs.existsSync( deployDir ) ) {
 		fs.mkdirSync( deployDir );
 	}
 
 	return gulp.src( zipFile, { cwd: '../' } )
-		//.pipe( prompt.confirm( 'Are you sure you want to archive the plugin?' ) )
 		.pipe( debug() )
 		.pipe( gulp.dest( deployDir ) );
 } );

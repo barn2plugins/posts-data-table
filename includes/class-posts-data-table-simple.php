@@ -7,7 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * This class is responsible for generating a HTML table from a list of supplied attributes.
  *
- * @package   Barn2\Posts_Table_Search_And_Sort
+ * @package   Posts_Table_Search_And_Sort
  * @author    Barn2 Media <info@barn2.co.uk>
  * @license   GPL-3.0
  * @link      https://barn2.co.uk
@@ -25,6 +25,8 @@ class Posts_Data_Table_Simple {
 		'sort_order'		 => '',
 		'category'			 => '',
 		'tag'				 => '',
+		'author'			 => '',
+		'post_status'		 => '',
 		'date_format'		 => 'Y/m/d',
 		'search_on_click'	 => true,
 		'wrap'				 => true,
@@ -168,8 +170,22 @@ class Posts_Data_Table_Simple {
 			}
 		}
 
+		if ( ! empty( $args['author'] ) ) {
+			$author = $args['author'];
+
+			if ( is_numeric( $author ) || false !== strpos( $author, ',' ) ) {
+				$post_args['author'] = $author;
+			} else {
+				$post_args['author_name'] = $author;
+			}
+		}
+
+		if ( ! empty( $args['post_status'] ) ) {
+			$post_args['post_status'] = $args['post_status'];
+		}
+
 		// Get all published posts in the current language
-		$all_posts = get_posts( $post_args );
+		$all_posts = get_posts( apply_filters( 'posts_data_table_query_args', $post_args, $args ) );
 
 		// Bail early if no posts found
 		if ( ! $all_posts || ! is_array( $all_posts ) ) {
@@ -259,7 +275,7 @@ class Posts_Data_Table_Simple {
 				'<a href="%1$s" title="%2$s" rel="author">%3$s</a>', esc_url( get_author_posts_url( $_post->post_author ) ), esc_attr( sprintf( __( 'Posts by %s', 'posts-data-table' ), get_the_author() ) ), get_the_author()
 			);
 
-			$post_data_trans = array(
+			$post_data_trans = apply_filters( 'posts_data_table_row_data_format', array(
 				'{id}'			 => $_post->ID,
 				'{title}'		 => $title,
 				'{category}'	 => get_the_category_list( ', ', '', $_post->ID ),
@@ -268,7 +284,7 @@ class Posts_Data_Table_Simple {
 				'{author}'		 => $author,
 				'{content}'		 => $this->get_post_content( $args['content_length'] ),
 				'{timestamp}'	 => $_post->post_date
-			);
+				) );
 
 			$table_body .= strtr( $body_row_fmt, $post_data_trans );
 		} // foreach post

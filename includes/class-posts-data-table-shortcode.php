@@ -7,7 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * This class handles the posts table shortcode registration.
  *
- * @package   Barn2\Posts_Table_Search_And_Sort
+ * @package   Posts_Table_Search_And_Sort
  * @author    Barn2 Media <info@barn2.co.uk>
  * @license   GPL-3.0
  * @link      https://barn2.co.uk
@@ -15,11 +15,10 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 class Posts_Data_Table_Shortcode {
 
-	private $shortcode = 'posts_data_table';
+	const SHORTCODE = 'posts_data_table';
 
-	public function __construct() {
-		// Register shortcode
-		add_shortcode( $this->shortcode, array( $this, 'shortcode' ) );
+	public static function register_shortcode() {
+		add_shortcode( self::SHORTCODE, array( __CLASS__, 'do_shortcode' ) );
 	}
 
 	/**
@@ -29,9 +28,9 @@ class Posts_Data_Table_Shortcode {
 	 * @param string $content The content between the open and close shortcode tags (not used)
 	 * @return string The shortcode output
 	 */
-	public function shortcode( $atts, $content = '' ) {
+	public static function do_shortcode( $atts, $content = '' ) {
 		// Parse attributes
-		$atts = shortcode_atts( Posts_Data_Table_Simple::$default_args, $atts, $this->shortcode );
+		$atts = shortcode_atts( Posts_Data_Table_Simple::$default_args, $atts, self::SHORTCODE );
 
 		// Create table and return output
 		$table = new Posts_Data_Table_Simple();
