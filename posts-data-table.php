@@ -6,7 +6,7 @@
  * Plugin Name:       Posts Table with Search & Sort
  * Plugin URI:		  https://wordpress.org/plugins/posts-data-table/
  * Description:       Provides a shortcode to show a list of your posts in an instantly searchable & sortable table.
- * Version:           1.1.2
+ * Version:           1.1.3
  * Author:            Barn2 Media
  * Author URI:        https://barn2.co.uk
  * Text Domain:       posts-data-table
@@ -32,7 +32,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 class Posts_Data_Table_Plugin {
 
-	const VERSION = '1.1.2';
+	const VERSION = '1.1.3';
 
 	public static function bootstrap() {
 		$self = new self();
@@ -60,10 +60,6 @@ class Posts_Data_Table_Plugin {
 		}
 
 		add_action( 'init', array( $this, 'init' ) );
-
-		// Register styles and scripts
-		add_action( 'wp_enqueue_scripts', array( $this, 'register_styles' ) );
-		add_action( 'wp_enqueue_scripts', array( $this, 'register_scripts' ) );
 	}
 
 	public function init() {
@@ -72,6 +68,10 @@ class Posts_Data_Table_Plugin {
 
 		// Register the posts table shortcode
 		Posts_Data_Table_Shortcode::register_shortcode();
+
+		// Register styles and scripts
+		add_action( 'wp_enqueue_scripts', array( $this, 'register_styles' ) );
+		add_action( 'wp_enqueue_scripts', array( $this, 'register_scripts' ) );
 	}
 
 	public function register_styles() {

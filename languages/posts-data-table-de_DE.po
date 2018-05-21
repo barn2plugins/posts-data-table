@@ -1,15 +1,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Posts Data Table\n"
-"POT-Creation-Date: 2018-03-17 11:59+0000\n"
-"PO-Revision-Date: 2018-03-17 11:59+0000\n"
+"POT-Creation-Date: 2018-05-21 16:58+0100\n"
+"PO-Revision-Date: 2018-05-21 16:58+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Poedit 2.0.7\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-WPHeader: posts-data-table.php\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
@@ -48,12 +48,12 @@ msgstr "Autor"
 msgid "Content"
 msgstr "Inhalt"
 
-#: includes/class-posts-data-table-simple.php:277
+#: includes/class-posts-data-table-simple.php:275
 #, php-format
 msgid "Posts by %s"
 msgstr "Beiträge von %s"
 
-#: posts-data-table.php:100
+#: posts-data-table.php:102
 msgid "Pro Version"
 msgstr ""
 

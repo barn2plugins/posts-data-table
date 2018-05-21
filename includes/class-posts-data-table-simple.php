@@ -324,7 +324,7 @@ class Posts_Data_Table_Simple {
 		// Increment the table count
 		self::$table_count ++;
 
-		return $output;
+		return apply_filters( 'posts_data_table_html_output', $output, $args );
 	}
 
 	/**
