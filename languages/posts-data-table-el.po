@@ -2,9 +2,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Posts Data Table\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-21 16:58+0100\n"
-"PO-Revision-Date: 2018-05-21 16:58+0100\n"
-"Last-Translator: yflorentin <yflorentin@gmail.com>\n"
+"POT-Creation-Date: 2018-08-06 14:26+0100\n"
+"PO-Revision-Date: 2018-08-06 14:27+0100\n"
+"Last-Translator: Andrew Keith <andy@barn2.co.uk>\n"
 "Language-Team: \n"
 "Language: el\n"
 "MIME-Version: 1.0\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Generator: Poedit 2.0.7\n"
+"X-Generator: Poedit 2.1.1\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-WPHeader: posts-data-table.php\n"
 "X-Poedit-KeywordsList: _:1;gettext:1;dgettext:2;ngettext:1,2;dngettext:2,3;"
@@ -24,41 +24,41 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.js\n"
 
-#: includes/class-posts-data-table-simple.php:55
+#: includes/class-posts-data-table-simple.php:54
 msgid "ID"
 msgstr "Κωδικός"
 
-#: includes/class-posts-data-table-simple.php:60
+#: includes/class-posts-data-table-simple.php:59
 msgid "Title"
 msgstr "Τίτλος"
 
-#: includes/class-posts-data-table-simple.php:65
+#: includes/class-posts-data-table-simple.php:64
 msgid "Categories"
 msgstr "Κατηγορίες"
 
-#: includes/class-posts-data-table-simple.php:70
+#: includes/class-posts-data-table-simple.php:69
 msgid "Tags"
 msgstr ""
 
-#: includes/class-posts-data-table-simple.php:75
+#: includes/class-posts-data-table-simple.php:74
 msgid "Date"
 msgstr "Ημερομηνία"
 
-#: includes/class-posts-data-table-simple.php:80
+#: includes/class-posts-data-table-simple.php:79
 msgid "Author"
 msgstr "Αρθρογράφος"
 
-#: includes/class-posts-data-table-simple.php:85
+#: includes/class-posts-data-table-simple.php:84
 msgid "Content"
 msgstr "Περιεχόμενο"
 
-#: includes/class-posts-data-table-simple.php:275
+#: includes/class-posts-data-table-simple.php:274
 #, php-format
 msgid "Posts by %s"
 msgstr ""
 
-#: posts-data-table.php:102
-msgid "Pro Version"
+#: posts-data-table.php:109
+msgid "Posts Table Pro"
 msgstr ""
 
 #. Plugin Name of the plugin/theme

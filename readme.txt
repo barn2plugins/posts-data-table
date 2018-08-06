@@ -3,8 +3,8 @@ Contributors: andykeith, barn2media
 Donate link: https://barn2.co.uk
 Tags: posts, table, tables, shortcode, search, sort, wpml
 Requires at least: 3.0.1
-Tested up to: 4.9.6
-Stable tag: 1.1.3
+Tested up to: 4.9.8
+Stable tag: 1.1.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -136,6 +136,13 @@ details and we'll be happy to provide a quote.
 3. Filtered by post author and sorted alphabetically by title (ascending).
 
 == Changelog ==
+
+= 1.1.4 =
+6 Aug 2018
+
+ * Minor code improvements.
+ * Added GPL license to main plugin folder.
+ * Tested with WordPress 4.9.8.
 
 = 1.1.3 =
 21 May 2018

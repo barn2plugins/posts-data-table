@@ -10,8 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @package   Posts_Table_Search_And_Sort
  * @author    Barn2 Media <info@barn2.co.uk>
  * @license   GPL-3.0
- * @link      https://barn2.co.uk
- * @copyright 2016-2018 Barn2 Media Ltd
+ * @copyright Barn2 Media Ltd
  */
 class Posts_Data_Table_Simple {
 

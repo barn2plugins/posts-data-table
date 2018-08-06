@@ -6,13 +6,13 @@
  * Plugin Name:       Posts Table with Search & Sort
  * Plugin URI:		  https://wordpress.org/plugins/posts-data-table/
  * Description:       Provides a shortcode to show a list of your posts in an instantly searchable & sortable table.
- * Version:           1.1.3
+ * Version:           1.1.4
  * Author:            Barn2 Media
  * Author URI:        https://barn2.co.uk
  * Text Domain:       posts-data-table
  * Domain Path:       /languages
  *
- * Copyright:		  2016-2018 Barn2 Media Ltd
+ * Copyright:		  Barn2 Media Ltd
  * License:           GNU General Public License v3.0
  * License URI:       http://www.gnu.org/licenses/gpl-3.0.html
  */
@@ -27,39 +27,46 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @package   Posts_Table_Search_And_Sort
  * @author    Barn2 Media <info@barn2.co.uk>
  * @license   GPL-3.0
- * @link      https://barn2.co.uk
- * @copyright 2016-2018 Barn2 Media Ltd
+ * @copyright Barn2 Media Ltd
  */
 class Posts_Data_Table_Plugin {
 
-	const VERSION = '1.1.3';
+	const VERSION	 = '1.1.4';
+	const FILE	 = __FILE__;
 
-	public static function bootstrap() {
-		$self = new self();
-		$self->load();
-	}
+	/**
+	 * The singleton instance
+	 */
+	private static $_instance = null;
 
-	public function load() {
+	public function __construct() {
 		$this->includes();
 
 		add_action( 'plugins_loaded', array( $this, 'maybe_load_plugin' ) );
-		add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), array( $this, 'add_pro_version_link' ) );
+	}
+
+	public static function instance() {
+		if ( is_null( self::$_instance ) ) {
+			self::$_instance = new self();
+		}
+		return self::$_instance;
 	}
 
 	private function includes() {
-		$includes = plugin_dir_path( __FILE__ ) . 'includes/';
+		$includes = plugin_dir_path( self::FILE ) . 'includes/';
 
 		require_once $includes . 'class-posts-data-table-simple.php';
 		require_once $includes . 'class-posts-data-table-shortcode.php';
 	}
 
 	public function maybe_load_plugin() {
-		// Don't init plugin if Pro version exists
+		// Don't load plugin if Pro version active
 		if ( class_exists( 'Posts_Table_Pro_Plugin' ) ) {
 			return;
 		}
 
 		add_action( 'init', array( $this, 'init' ) );
+		add_filter( 'plugin_action_links_' . plugin_basename( self::FILE ), array( $this, 'add_pro_version_link' ) );
 	}
 
 	public function init() {
@@ -77,15 +84,15 @@ class Posts_Data_Table_Plugin {
 	public function register_styles() {
 		$suffix = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
 
-		wp_enqueue_style( 'jquery-data-tables', plugins_url( 'assets/css/datatables/datatables.min.css', __FILE__ ), array(), '1.10.15' );
-		wp_enqueue_style( 'posts-data-table', plugins_url( "assets/css/posts-data-table{$suffix}.css", __FILE__ ), array( 'jquery-data-tables' ), self::VERSION );
+		wp_enqueue_style( 'jquery-data-tables', plugins_url( 'assets/css/datatables/datatables.min.css', self::FILE ), array(), '1.10.15' );
+		wp_enqueue_style( 'posts-data-table', plugins_url( "assets/css/posts-data-table{$suffix}.css", self::FILE ), array( 'jquery-data-tables' ), self::VERSION );
 	}
 
 	public function register_scripts() {
 		$suffix = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
 
-		wp_enqueue_script( 'jquery-data-tables', plugins_url( "assets/js/datatables/datatables{$suffix}.js", __FILE__ ), array( 'jquery' ), '1.10.15', true );
-		wp_enqueue_script( 'posts-data-table', plugins_url( "assets/js/posts-data-table{$suffix}.js", __FILE__ ), array( 'jquery-data-tables' ), self::VERSION, true );
+		wp_enqueue_script( 'jquery-data-tables', plugins_url( "assets/js/datatables/datatables{$suffix}.js", self::FILE ), array( 'jquery' ), '1.10.15', true );
+		wp_enqueue_script( 'posts-data-table', plugins_url( "assets/js/posts-data-table{$suffix}.js", self::FILE ), array( 'jquery-data-tables' ), self::VERSION, true );
 
 		$locale				 = get_locale();
 		$supported_locales	 = $this->get_supported_locales();
@@ -99,7 +106,7 @@ class Posts_Data_Table_Plugin {
 	}
 
 	public function add_pro_version_link( $links ) {
-		$links[] = sprintf( '<a href="%1$s" target="_blank">%2$s</a>', esc_url( 'https://barn2.co.uk/wordpress-plugins/posts-table-pro/' ), __( 'Pro Version', 'posts-data-table' ) );
+		$links[] = sprintf( '<a href="%1$s" target="_blank">%2$s</a>', esc_url( 'https://barn2.co.uk/wordpress-plugins/posts-table-pro/' ), __( 'Posts Table Pro', 'posts-data-table' ) );
 		return $links;
 	}
 
@@ -110,7 +117,7 @@ class Posts_Data_Table_Plugin {
 	 * @return array The supported locales
 	 */
 	private function get_supported_locales() {
-		$lang_file_base_url = plugins_url( 'languages/data-tables/', __FILE__ );
+		$lang_file_base_url = plugins_url( 'languages/data-tables/', self::FILE );
 
 		return apply_filters( 'posts_data_table_supported_languages', array(
 			'es_ES'	 => $lang_file_base_url . 'Spanish.json',
@@ -125,10 +132,11 @@ class Posts_Data_Table_Plugin {
 	}
 
 	private function load_textdomain() {
-		load_plugin_textdomain( 'posts-data-table', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
+		load_plugin_textdomain( 'posts-data-table', false, dirname( plugin_basename( self::FILE ) ) . '/languages' );
 	}
 
 }
-// end plugin class
-// Load the plugin
-Posts_Data_Table_Plugin::bootstrap();
+// Posts_Data_Table_Plugin class
+
+/* Load the plugin */
+Posts_Data_Table_Plugin::instance();

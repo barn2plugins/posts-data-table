@@ -8,7 +8,6 @@ var gulp = require( 'gulp' ),
 	rename = require( 'gulp-rename' ),
 	run = require( 'gulp-run' ),
 	debug = require( 'gulp-debug' ),
-	prompt = require( 'gulp-prompt' ),
 	checktextdomain = require( 'gulp-checktextdomain' );
 
 const pluginSlug = 'posts-data-table';

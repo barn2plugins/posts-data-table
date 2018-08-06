@@ -3,14 +3,14 @@ msgid ""
 msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "Project-Id-Version: Posts Data Table\n"
-"POT-Creation-Date: 2018-05-21 16:57+0100\n"
+"POT-Creation-Date: 2018-08-06 14:25+0100\n"
 "PO-Revision-Date: 2015-12-10 18:11+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.7\n"
+"X-Generator: Poedit 2.1\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-WPHeader: posts-data-table.php\n"
 "X-Poedit-SourceCharset: UTF-8\n"
@@ -20,41 +20,41 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.js\n"
 
-#: includes/class-posts-data-table-simple.php:55
+#: includes/class-posts-data-table-simple.php:54
 msgid "ID"
 msgstr ""
 
-#: includes/class-posts-data-table-simple.php:60
+#: includes/class-posts-data-table-simple.php:59
 msgid "Title"
 msgstr ""
 
-#: includes/class-posts-data-table-simple.php:65
+#: includes/class-posts-data-table-simple.php:64
 msgid "Categories"
 msgstr ""
 
-#: includes/class-posts-data-table-simple.php:70
+#: includes/class-posts-data-table-simple.php:69
 msgid "Tags"
 msgstr ""
 
-#: includes/class-posts-data-table-simple.php:75
+#: includes/class-posts-data-table-simple.php:74
 msgid "Date"
 msgstr ""
 
-#: includes/class-posts-data-table-simple.php:80
+#: includes/class-posts-data-table-simple.php:79
 msgid "Author"
 msgstr ""
 
-#: includes/class-posts-data-table-simple.php:85
+#: includes/class-posts-data-table-simple.php:84
 msgid "Content"
 msgstr ""
 
-#: includes/class-posts-data-table-simple.php:275
+#: includes/class-posts-data-table-simple.php:274
 #, php-format
 msgid "Posts by %s"
 msgstr ""
 
-#: posts-data-table.php:102
-msgid "Pro Version"
+#: posts-data-table.php:109
+msgid "Posts Table Pro"
 msgstr ""
 
 #. Plugin Name of the plugin/theme
