@@ -12,35 +12,30 @@ A simple plugin to display all your posts in a searchable and sortable table or 
 
 == Description ==
 
-Posts Table with Search & Sort provides an easy way to list all of your site's posts in a searchable and sortable data table.
-Simply add the shortcode `[posts_data_table]` to any page.
+Posts Table with Search & Sort provides an easy way to list all of your site's posts in a searchable and sortable data table. Simply add the shortcode `[posts_data_table]` to any page or widget.
 
-It uses the [jQuery DataTables](http://datatables.net/) plugin to provide the searching and sorting features, as well as pagination and
-responsive layouts for smaller screens.
+It uses the [jQuery DataTables](http://datatables.net/) plugin to provide the searching and sorting features, as well as pagination and responsive layouts for smaller screens.
 
-> **[Posts Table Pro](https://barn2.co.uk/wordpress-plugins/posts-table-pro/) now available, with lots more features including:**
+> **[Posts Table Pro](https://barn2.co.uk/wordpress-plugins/posts-table-pro/) - includes many more features, including:**
 >
-> *   Support for for pages and custom post types (e.g. courses, products, staff, music, books, etc)
-> *   Featured images
-> *   Custom taxonomies, terms and posts tags
-> *   Custom fields & support for Advanced Custom Fields
+> *   Display any custom post type (e.g. courses, products, staff, music, books, etc).
+> *   Featured images with lightbox.
+> *   Dropdown filters for taxonomies, categories, and tags.
+> *   Select posts by custom field, term, date, ID, and more.
+> *   Advanced Custom Fields support.
 >
-> **[WooCommerce Product Table](https://barn2.co.uk/wordpress-plugins/woocommerce-product-table/) now available - create tables of products from your WooCommerce store:**
+> **[WooCommerce Product Table](https://barn2.co.uk/wordpress-plugins/woocommerce-product-table/) - create tables of products from your WooCommerce store:**
 >
-> * Include Add to Cart buttons, quantity, price, reviews, stock level, categories, tags, weight, dimensions, and more!
+> * Include Add to Cart buttons, quantity, price, reviews, stock level, categories, tags, weight, dimensions, and more.
 
-Translations currently provided for French, Spanish and German (more to follow).
+Translations currently provided for French, Spanish, German and Greek. It's WPML compatible, so if you're using WPML posts will be shown for the current language only.
 
-It's compatible with WPML which means that, if you're using this, posts will be shown for the current language only.
+There are a number of options available with the shortcode:
 
-There are a few options available with the shortcode:
-
-*   `columns` - the columns you'd like to show in your table. This can be any of the following columns, given as a comma-separated list:
-id, title, content, category, tags, author, and date. Defaults to 'title,content,date,author,category'
-*   `rows_per_page` - the number of posts to show on each page of results in the table. Set to 'false' to disable pagination. Defaults to 20 rows.
-*   `category` - restrict the table to this category only. Use the category ID or 'slug' here, NOT the name of the category. You can find the slug from the
-Posts -> Categories menu in the WordPress admin.
-*   `tag` - restrict the table to this tag only. Use the tag 'slug' or ID here. You can find the slug from the Posts -> Tags menu.
+*   `columns` - the columns you'd like to show in your table. This can be any of the following (comma-separated): id, title, content, category, tags, author, and date. Defaults to 'title,content,date,author,category'
+*   `rows_per_page` - the number of posts to show on each page of results. Set to 'false' to disable pagination. Defaults to 20 rows per page.
+*   `category` - restrict the table to this category only. Use the category ID or 'slug' here, NOT the name of the category. You can find the slug in the Posts -> Categories menu.
+*   `tag` - restrict the table to this tag only. Use the tag 'slug' or ID here. You can find the slug in the Posts -> Tags menu.
 *   `author` - restrict the posts in the table to the specified author. Use can use author name (user_nicename), author ID or a comma-separated list of IDs.
 *   `post_status` - display posts with this post status (draft, pending, publish, future, private or any). Defaults to 'publish'.
 *   `sort_by` - the column to sort by. Defaults to 'date'. If the column you want to sort by isn't shown in the table, it will be added as a hidden column.
@@ -49,9 +44,7 @@ This means, for example, that you can sort by date without actually showing the 
 *   `search_on_click` - whether to enable automatic searching for categories and authors when clicking on links in the table. Default: true
 *   `wrap` - whether the table content wraps onto more than one line. Set to 'false' to keep everything on one line or 'true' to allow the content to wrap. Default: true
 *   `content_length` - the number of words of post content to show in the table (if you've included the 'content' column). Defaults to 15 words.
-*   `scroll_offset` - advanced: the table scrolls back to the top each time you navigate forward or backwards through the list of posts. This
-value controls the 'offset' for the scroll. For example, if your site uses a sticky header you can adjust the scroll amount here to compensate.
-Enter a whole number (e.g. 50) or set to 'false' to disable scrolling to top.
+*   `scroll_offset` - advanced: the table scrolls back to the top each time you navigate forward or backwards through the list of posts. This value controls the 'offset' for the scroll. For example, if your site uses a sticky header you can adjust the scroll amount here to compensate. Enter a whole number (e.g. 50) or set to 'false' to disable scrolling to top.
 
 ### Examples
 
@@ -89,17 +82,12 @@ Yes, please visit https://barn2.co.uk/posts-table/ to see the posts table in act
 
 = Will the posts table work with my theme? =
 The plugin has been designed to work with different WordPress themes and will take the styling from your theme for the fonts etc. where possible.
-If any parts don't match your site as well as you would like, you can restyle it using CSS or [contact us](https://barn2.co.uk/contact-a-wordpress-designer/)
-about our customization service.
 
 = Does the posts table work with custom post types? =
-No, it only displays standard Posts at the moment. Our [Pro Version](https://barn2.co.uk/wordpress-plugins/posts-table-pro/) supports custom post types, as well
-as taxonomies, custom fields, and much more.
+No, it only displays standard Posts at the moment. Our [Pro Version](https://barn2.co.uk/wordpress-plugins/posts-table-pro/) supports custom post types, as well as taxonomies, custom fields, and much more.
 
 = Can I change the width of the columns? =
-The column widths are calculated automatically by the plugin, based on the contents of each column. However you can override this for one (or more) columns
-by setting an exact width. You would need to add some code to your theme (or in a custom plugin) to do this. The filter to hook into is 'posts_data_table_column_default'.
-Here's an example setting the title column to 80px;
+The column widths are calculated automatically by the plugin, based on the contents of each column. However you can override this for one (or more) columns by setting an exact width. You would need to add some code to your theme (or in a custom plugin) to do this. The filter to hook into is 'posts_data_table_column_default'. Here's an example setting the title column to 80px;
 
 `
 add_filter( 'posts_data_table_column_defaults', 'pdt_change_posts_table_defaults' );
@@ -113,21 +101,16 @@ function change_posts_table_defaults( $column_defaults ) {
 Bear in mind that the plugin might still override your column width if there isn't enough room for the data it contains, or the rest of the columns in the table.
 
 = Does it work on mobiles/tablets? =
-Yes, the table will automatically adapt to fit different screen sizes. If your table has too many columns to fit on smaller screens then a '+' icon will
-appear alongside each post, allowing you to click to view the hidden columns.
+Yes, the table will automatically adapt to fit different screen sizes. If your table has too many columns to fit on smaller screens then a '+' icon will appear alongside each post, allowing you to click to view the hidden columns.
 
 = When I click to the next page on my posts list, I can't see the top of the table =
-This is probably because you have a sticky header (your header sticks to the top of the screen when you scroll down). This means it's covering the
-top of your posts table. You can add a 'scroll offset' to push the table down to prevent this from happening. For example, if your sticky header
-is 50 pixels high then use `[posts_data_table scroll_offset="50"]`
+This is probably because you have a sticky header (your header sticks to the top of the screen when you scroll down). This means it's covering the top of your posts table. You can add a 'scroll offset' to push the table down to prevent this from happening. For example, if your sticky header is 50 pixels high then use `[posts_data_table scroll_offset="50"]`
 
 = How do I use the posts table with WPML? =
 If you have a multilingual site using WPML then the plugin will display your posts in the correct language automatically.
 
 = Can you customize the plugin for me? =
-We have developed this free plugin to be flexible and easy to configure so that it will be suitable for many different websites. If you would
-like us to modify the plugin to suit your exact requirements, please [contact us](https://barn2.co.uk/contact-a-wordpress-designer/) with the
-details and we'll be happy to provide a quote.
+We have developed this free plugin to be flexible and easy to configure so that it will be suitable for many different websites. If you would like to modify the plugin to suit your exact requirements, we would recommend [Codeable](https://barn2.co.uk/go/codeable).
 
 == Screenshots ==
 
