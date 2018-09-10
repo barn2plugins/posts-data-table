@@ -20,32 +20,35 @@ https://youtu.be/xCV6WwZXd5M
 
 Install this plugin to organize your WordPress posts into simple, searchable, and visibly appealing tables. It includes pagination and responsive layouts for smaller screens as standard.
 
-To get started with this WordPress table plugin, simply add the shortcode`[posts_data_table]` to any page or widget.
+To get started with this WordPress table plugin, simply add the shortcode `[posts_data_table]` to any page or widget.
 
 **Posts Table with Search & Sort (free) includes:**
-*  Create sortable and filterable post tables.
-*  Add extra columns: image, excerpt, status, or any custom field or taxonomy.
-*  Streamlined content using pagination.
-*  100% responsive to different screen sizes.
-*  Display WordPress blog posts in a simple HTML table.
-*  WPML compatible for international translations.
+
+* Create sortable and filterable post tables.
+* Add extra columns: image, excerpt, status, or any custom field or taxonomy.
+* Streamlined content using pagination.
+* 100% responsive to different screen sizes.
+* Display WordPress blog posts in a simple HTML table.
+* WPML compatible for international translations.
 
 **[Posts Table Pro](https://barn2.co.uk/wordpress-plugins/posts-table-pro/?utm=content&utm_source=wporg&utm_content=posts-table-free) - our premium version adds lots more functionality:**
-*  Display any custom post type (e.g. documents, audio/music, courses, products, staff and member directories, publications, articles, books, etc).
-*  WordPress media embed support, including audio and video galleries or media playlists.
-*  Showcase featured images with lightboxes.
-*  Dropdown filters for taxonomies, categories, and tags.
-*  Select posts by custom field, term, date, ID, and more.
-*  Advanced Custom Fields support.
-*  Enable AJAX to reduce server load.
-*  100% responsive to different screen sizes.
-*  Support for advanced use cases such as how to create [compelling tables for your blog](https://barn2.co.uk/wordpress-post-table/), [a front-end media library](https://barn2.co.uk/front-end-media-library-wordpress/) or [an intranet for your organization.](https://barn2.co.uk/wordpress-intranet-plugins/)
+
+* Display any custom post type (e.g. documents, audio/music, courses, products, staff and member directories, publications, articles, books, etc).
+* WordPress media embed support, including audio and video galleries or media playlists.
+* Showcase featured images with lightboxes.
+* Dropdown filters for taxonomies, categories, and tags.
+* Select posts by custom field, term, date, ID, and more.
+* Advanced Custom Fields support.
+* Enable AJAX to reduce server load.
+* 100% responsive to different screen sizes.
+* Support for advanced use cases such as how to create [compelling tables for your blog](https://barn2.co.uk/wordpress-post-table/), [a front-end media library](https://barn2.co.uk/front-end-media-library-wordpress/) or [an intranet for your organization.](https://barn2.co.uk/wordpress-intranet-plugins/)
 
 **[WooCommerce Product Table](https://barn2.co.uk/wordpress-plugins/woocommerce-product-table/?utm=content&utm_source=wporg&utm_content=posts-table-free) - create product tables from your WooCommerce store:**
-*  Include Add to Cart buttons, quantity, price, reviews, stock level, categories, tags, weight, dimensions, and more.
-*  Full support for WooCommerce products and stores.
-*  Create custom order forms which increase your conversion rate!
-*  Support for advanced use cases such as [restaurant ordering systems](https://barn2.co.uk/online-restaurant-ordering-system-woocommerce/), [events calendars](https://barn2.co.uk/woocommerce-events/), and [advanced order forms](https://barn2.co.uk/woocommerce-order-form-plugin/).
+
+* Include Add to Cart buttons, quantity, price, reviews, stock level, categories, tags, weight, dimensions, and more.
+* Full support for WooCommerce products and stores.
+* Create custom order forms which increase your conversion rate!
+* Support for advanced use cases such as [restaurant ordering systems](https://barn2.co.uk/online-restaurant-ordering-system-woocommerce/), [events calendars](https://barn2.co.uk/woocommerce-events/), and [advanced order forms](https://barn2.co.uk/woocommerce-order-form-plugin/).
 
 Translations for *Posts Table with Search & Sort* itself are currently provided for French, Spanish, German and Greek. This data-table plugin is WPML-compatible for content translation, so if you're using WPML, you'll be able to display post tables in whichever language you have set up.
 
