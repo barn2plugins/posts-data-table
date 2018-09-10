@@ -22,30 +22,30 @@ Install this plugin to organize your WordPress posts into simple, searchable, an
 
 To get started with this WordPress table plugin, simply add the shortcode`[posts_data_table]` to any page or widget.
 
-> **Posts Table with Search & Sort (free) includes:** 
-> * *Create sortable and filterable post tables.*
-> * *Add extra columns: image, excerpt, status, or any custom field or taxonomy.*
-> * *Streamlined content using pagination.*
-> * *100% responsive to different screen sizes.*
-> * *Display WordPress blog posts in a simple HTML table.*
-> * *WPML compatible for international translations.*
+**Posts Table with Search & Sort (free) includes:**
+*  Create sortable and filterable post tables.
+*  Add extra columns: image, excerpt, status, or any custom field or taxonomy.
+*  Streamlined content using pagination.
+*  100% responsive to different screen sizes.
+*  Display WordPress blog posts in a simple HTML table.
+*  WPML compatible for international translations.
 
-> **[Posts Table Pro](https://barn2.co.uk/wordpress-plugins/posts-table-pro/?utm=content&utm_source=wporg&utm_content=posts-table-free) - our premium version adds lots more functionality:**
-> * *Display any custom post type (e.g. documents, audio/music, courses, products, staff and member directories, publications, articles, books, etc).*
-> * *WordPress media embed support, including audio and video galleries or media playlists.*
-> * *Showcase featured images with lightboxes.*
-> * *Dropdown filters for taxonomies, categories, and tags.*
-> * *Select posts by custom field, term, date, ID, and more.*
-> * *Advanced Custom Fields support.*
-> * *Enable AJAX to reduce server load.*
-> * *100% responsive to different screen sizes.*
-> * *Support for advanced use cases such as how to create [compelling tables for your blog](https://barn2.co.uk/wordpress-post-table/), [a front-end media library](https://barn2.co.uk/front-end-media-library-wordpress/) or [an intranet for your organization.](https://barn2.co.uk/wordpress-intranet-plugins/)*
+**[Posts Table Pro](https://barn2.co.uk/wordpress-plugins/posts-table-pro/?utm=content&utm_source=wporg&utm_content=posts-table-free) - our premium version adds lots more functionality:**
+*  Display any custom post type (e.g. documents, audio/music, courses, products, staff and member directories, publications, articles, books, etc).
+*  WordPress media embed support, including audio and video galleries or media playlists.
+*  Showcase featured images with lightboxes.
+*  Dropdown filters for taxonomies, categories, and tags.
+*  Select posts by custom field, term, date, ID, and more.
+*  Advanced Custom Fields support.
+*  Enable AJAX to reduce server load.
+*  100% responsive to different screen sizes.
+*  Support for advanced use cases such as how to create [compelling tables for your blog](https://barn2.co.uk/wordpress-post-table/), [a front-end media library](https://barn2.co.uk/front-end-media-library-wordpress/) or [an intranet for your organization.](https://barn2.co.uk/wordpress-intranet-plugins/)
 
-> **[WooCommerce Product Table](https://barn2.co.uk/wordpress-plugins/woocommerce-product-table/?utm=content&utm_source=wporg&utm_content=posts-table-free) - create product tables from your WooCommerce store:**
-> * *Include Add to Cart buttons, quantity, price, reviews, stock level, categories, tags, weight, dimensions, and more.*
-> * *Full support for WooCommerce products and stores.*
-> * *Create custom order forms which increase your conversion rate!*
-> * *Support for advanced use cases such as [restaurant ordering systems](https://barn2.co.uk/online-restaurant-ordering-system-woocommerce/), [events calendars](https://barn2.co.uk/woocommerce-events/), and [advanced order forms](https://barn2.co.uk/woocommerce-order-form-plugin/).*
+**[WooCommerce Product Table](https://barn2.co.uk/wordpress-plugins/woocommerce-product-table/?utm=content&utm_source=wporg&utm_content=posts-table-free) - create product tables from your WooCommerce store:**
+*  Include Add to Cart buttons, quantity, price, reviews, stock level, categories, tags, weight, dimensions, and more.
+*  Full support for WooCommerce products and stores.
+*  Create custom order forms which increase your conversion rate!
+*  Support for advanced use cases such as [restaurant ordering systems](https://barn2.co.uk/online-restaurant-ordering-system-woocommerce/), [events calendars](https://barn2.co.uk/woocommerce-events/), and [advanced order forms](https://barn2.co.uk/woocommerce-order-form-plugin/).
 
 Translations for *Posts Table with Search & Sort* itself are currently provided for French, Spanish, German and Greek. This data-table plugin is WPML-compatible for content translation, so if you're using WPML, you'll be able to display post tables in whichever language you have set up.
 
@@ -58,12 +58,11 @@ You can use *Posts Table with Search & Sort* to display your content in searchab
 
 *Posts Table with Search & Sort* uses WordPress shortcodes to generate its tables. To use these, just copy-and-paste into any WordPress post, page, or widget. Here are a couple of examples of shortcodes you can use:
 
-1. **List your posts in a table with 3 columns** (title, content, and date columns) showing the first 10 words of each post in the content column: `[posts\_data\_table columns='title,content,date' content\_length="10"]`
-2. **List posts in a table with with 4 columns** (post ID, title, tags, and author columns), and will be sorted by date in ascending order (oldest posts first): `[posts\_data\_table columns='id,title,tags,author' sort\_by="date" sort\_order="asc"]`
-3. **List posts in a table, with rows on one line** by using the parameter `wrap=false`. If selected columns no longer fit in the table, then a "+" icon will appear to the left of each row to allow access to the rest of the data: `[posts\_data\_table wrap="false" rows\_per\_page="5"]`
-4. **List posts in a table, sortable by any column name** (id, title, date, author, category or content). If the column does not appear in your table, it will be added as a hidden column at the end, so the ordering still works as expected. This example shortcode sorts each post by title. It also shows how to use the `content_length` option to set the number of words displayed in the content column: `[posts\_data\_table sort\_by="title" columns="date,author,title,content" content\_length=5 rows\_per\_page="5"]`
+1. **List your posts in a table with 3 columns** (title, content, and date columns) showing the first 10 words of each post in the content column: `[posts_data_table columns='title,content,date' content_length="10"]`
+2. **List posts in a table with with 4 columns** (post ID, title, tags, and author columns), and will be sorted by date in ascending order (oldest posts first): `[posts_data_table columns='id,title,tags,author' sort_by="date" sort_order="asc"]`
+3. **List posts in a table, with rows on one line** by using the parameter `wrap=false`. If selected columns no longer fit in the table, then a "+" icon will appear to the left of each row to allow access to the rest of the data: `[posts_data_table wrap="false" rows_per_page="5"]`
+4. **List posts in a table, sortable by any column name** (id, title, date, author, category or content). If the column does not appear in your table, it will be added as a hidden column at the end, so the ordering still works as expected. This example shortcode sorts each post by title. It also shows how to use the `content_length` option to set the number of words displayed in the content column: `[posts_data_table sort_by="title" columns="date,author,title,content" content_length=5 rows_per_page="5"]`
 5. **List post in a table, with automatic search and filtering on click** using links in the table. This free version is limited to post categories or author links, but our [Pro version](https://barn2.co.uk/wordpress-plugins/posts-table-pro/?utm=content&utm_source=wporg&utm_content=posts-table-free) extends search on click functionality to post tags and custom taxonomies. Use the following shortcode: `[posts_data_table sort_by="title" columns="date,author,title,content" content_length=5 rows_per_page="5"]`
-
 
 You can [see all of these in action on our demo site](https://barn2.co.uk/posts-table/), and do even more with [Posts Table Pro](https://barn2.co.uk/wordpress-plugins/posts-table-pro/?utm=content&utm_source=wporg&utm_content=posts-table-free), our premium plugin!
 
