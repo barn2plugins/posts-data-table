@@ -25,7 +25,7 @@ To get started with this WordPress table plugin, simply add the shortcode `[post
 **Posts Table with Search & Sort (free) includes:**
 
 * Create sortable and filterable post tables.
-* Add extra columns: image, excerpt, status, or any custom field or taxonomy.
+* Choose any or all of the following columns: post ID, title, content, categories, tags, author, or date.
 * Streamlined content using pagination.
 * 100% responsive to different screen sizes.
 * Display WordPress blog posts in a simple HTML table.
@@ -33,15 +33,19 @@ To get started with this WordPress table plugin, simply add the shortcode `[post
 
 **[Posts Table Pro](https://barn2.co.uk/wordpress-plugins/posts-table-pro/?utm=content&utm_source=wporg&utm_content=posts-table-free) - our premium version adds lots more functionality:**
 
-* Display any custom post type (e.g. documents, audio/music, courses, products, staff and member directories, publications, articles, books, etc).
+[View free & pro comparison table](https://barn2.co.uk/kb/posts-table-free-pro-comparison/)
+
+* Display posts, pages, or any custom post type (e.g. documents, audio/music, courses, products, staff and member directories, publications, articles, books, etc).
+* Add extra columns: image, excerpt, status, or any custom field or taxonomy.
 * WordPress media embed support, including audio and video galleries or media playlists.
 * Showcase featured images with lightboxes.
 * Dropdown filters for taxonomies, categories, and tags.
 * Select posts by custom field, term, date, ID, and more.
 * Advanced Custom Fields support.
 * Enable AJAX to reduce server load.
-* 100% responsive to different screen sizes.
-* Support for advanced use cases such as how to create [compelling tables for your blog](https://barn2.co.uk/wordpress-post-table/), [a front-end media library](https://barn2.co.uk/front-end-media-library-wordpress/) or [an intranet for your organization.](https://barn2.co.uk/wordpress-intranet-plugins/)
+* 100% responsive, with options to control how behaviour on different screen sizes and devices.
+* Support for advanced use cases such as how to create [compelling tables for your blog](https://barn2.co.uk/wordpress-post-table/), a [WordPress document library](https://barn2.co.uk/wordpress-document-library-plugin/), [member directory](https://barn2.co.uk/wordpress-member-directory-plugin/), [audio gallery](https://barn2.co.uk/wordpress-audio-library/), or an [intranet for your organization](https://barn2.co.uk/wordpress-intranet-plugins/).
+* [And much more...](https://barn2.co.uk/our-wordpress-plugins/posts-table-pro-features/)
 
 **[WooCommerce Product Table](https://barn2.co.uk/wordpress-plugins/woocommerce-product-table/?utm=content&utm_source=wporg&utm_content=posts-table-free) - create product tables from your WooCommerce store:**
 
@@ -78,7 +82,7 @@ You can see some practical examples of how to build your own Post Tables above, 
 *  **`columns`** - the columns you'd like to show in your table. This can be any of the following (comma-separated): id, title, content, category, tags, author, and date. Defaults to `title,content,date,author,category`.
 *  **`rows_per_page`** - the number of posts to show on each page of results. Set to `false` to disable pagination. Defaults to 20 rows per page.
 *  **`category`** - restrict the table to this category only. Use the category ID or 'slug' here, NOT the name of the category. You can find the slug in the Posts -\> Categories menu.
-*  tag - restrict the table to this tag only. Use the tag 'slug' or ID here. You can find the slug in the Posts -\> Tags menu.
+*  **`tag`** - restrict the table to this tag only. Use the tag 'slug' or ID here. You can find the slug in the Posts -\> Tags menu.
 *  **`author`** - restrict the posts in the table to the specified author. Use can use author name (`user_nicename`), author ID or a comma-separated list of IDs.
 *  **`post_status`** - display posts with this post status (draft, pending, publish, future, private or any). Defaults to `publish`.
 *  **`sort_by`** - the column to sort by. Defaults to `date`. If the column you want to sort by isn't shown in the table, it will be added as a hidden column. This means, for example, that you can sort by date without actually showing the date column.
@@ -147,10 +151,10 @@ We have developed this free plugin to be flexible and easy to configure so that 
 == Screenshots ==
 
 1. Create sortable and filterable tables! You can choose the columns, and visitors can quickly access posts.
-2. An example of a search on a Post Table. Visitors can add their chosen search term, and reset when done.
+2. An example of a search on a post table. Visitors can add their chosen search term, and reset when done.
 3. Prevent table rows from wrapping onto multiple lines, instead letting the user expand a row for extra information (as shown here).
-4. Your visitors can sort columns to find what they’re looking for. This example shows a Post Table sorted by author.
-5. Filter or search without reloading the page, thanks to AJAX support in every table.
+4. Your visitors can sort columns to find what they're looking for. This example shows a Post Table sorted by Content.
+5. Upgrade to Posts Table Pro for premium features including images, custom field support, multimedia embeds, and more.
 
 == Changelog ==
 
