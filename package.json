@@ -31,7 +31,6 @@
     "gulp-uglify": "^3.0.1",
     "gulp-zip": "^4.2.0",
     "jshint": "^2.9.6",
-    "natives": "^1.1.6",
     "pump": "^3.0.0"
   },
   "dependencies": {}
