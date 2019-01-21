@@ -14,10 +14,11 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 class Posts_Data_Table_Shortcode {
 
-	const SHORTCODE = 'posts_data_table';
+	const SHORTCODE = 'posts_table';
 
 	public static function register_shortcode() {
 		add_shortcode( self::SHORTCODE, array( __CLASS__, 'do_shortcode' ) );
+		add_shortcode( 'posts_data_table', array( __CLASS__, 'do_shortcode' ) ); // back compat: previous shortcode
 	}
 
 	/**

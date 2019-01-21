@@ -1,4 +1,4 @@
 /*!
  * Posts Table with Search & Sort <%= version %>
- * Copyright 2016-2018 Barn2 Media Ltd
+ * Copyright 2016-2019 Barn2 Media Ltd
  */

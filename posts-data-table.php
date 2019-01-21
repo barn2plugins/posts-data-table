@@ -3,18 +3,18 @@
  * The main plugin file for Posts Table with Search & Sort.
  *
  * @wordpress-plugin
- * Plugin Name:       Posts Table with Search & Sort
- * Plugin URI:		  https://wordpress.org/plugins/posts-data-table/
+ * Plugin Name:		Posts Table with Search & Sort
+ * Plugin URI:		https://wordpress.org/plugins/posts-data-table/
  * Description:       Provides a shortcode to show a list of your posts in an instantly searchable & sortable table.
- * Version:           1.1.4
+ * Version:           1.1.5
  * Author:            Barn2 Media
  * Author URI:        https://barn2.co.uk
  * Text Domain:       posts-data-table
  * Domain Path:       /languages
  *
- * Copyright:		  Barn2 Media Ltd
- * License:           GNU General Public License v3.0
- * License URI:       http://www.gnu.org/licenses/gpl-3.0.html
+ * Copyright:			Barn2 Media Ltd
+ * License:			GNU General Public License v3.0
+ * License URI:		https://www.gnu.org/licenses/gpl.html
  */
 // Prevent direct file access
 if ( ! defined( 'ABSPATH' ) ) {
@@ -31,7 +31,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 class Posts_Data_Table_Plugin {
 
-	const VERSION	 = '1.1.4';
+	const VERSION	 = '1.1.5';
 	const FILE	 = __FILE__;
 
 	/**
@@ -41,8 +41,6 @@ class Posts_Data_Table_Plugin {
 
 	public function __construct() {
 		$this->includes();
-
-		add_action( 'plugins_loaded', array( $this, 'maybe_load_plugin' ) );
 	}
 
 	public static function instance() {
@@ -50,6 +48,10 @@ class Posts_Data_Table_Plugin {
 			self::$_instance = new self();
 		}
 		return self::$_instance;
+	}
+
+	public function load() {
+		add_action( 'plugins_loaded', array( $this, 'maybe_load_plugin' ) );
 	}
 
 	private function includes() {
@@ -120,14 +122,14 @@ class Posts_Data_Table_Plugin {
 		$lang_file_base_url = plugins_url( 'languages/data-tables/', self::FILE );
 
 		return apply_filters( 'posts_data_table_supported_languages', array(
-			'es_ES'	 => $lang_file_base_url . 'Spanish.json',
-			'fr_FR'	 => $lang_file_base_url . 'French.json',
-			'fr_BE'	 => $lang_file_base_url . 'French.json',
-			'fr_CA'	 => $lang_file_base_url . 'French.json',
-			'de_DE'	 => $lang_file_base_url . 'German.json',
-			'de_CH'	 => $lang_file_base_url . 'German.json',
-			'el'	 => $lang_file_base_url . 'Greek.json',
-			'el_EL'	 => $lang_file_base_url . 'Greek.json',
+			'es_ES' => $lang_file_base_url . 'Spanish.json',
+			'fr_FR' => $lang_file_base_url . 'French.json',
+			'fr_BE' => $lang_file_base_url . 'French.json',
+			'fr_CA' => $lang_file_base_url . 'French.json',
+			'de_DE' => $lang_file_base_url . 'German.json',
+			'de_CH' => $lang_file_base_url . 'German.json',
+			'el' => $lang_file_base_url . 'Greek.json',
+			'el_EL' => $lang_file_base_url . 'Greek.json',
 			) );
 	}
 
@@ -139,4 +141,4 @@ class Posts_Data_Table_Plugin {
 // Posts_Data_Table_Plugin class
 
 /* Load the plugin */
-Posts_Data_Table_Plugin::instance();
+Posts_Data_Table_Plugin::instance()->load();

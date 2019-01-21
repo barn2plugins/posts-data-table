@@ -1,6 +1,6 @@
 {
   "name": "posts-data-table",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "description": "Post Table with Search and Sort plugin for WordPress",
   "main": "gulpfile.js",
   "scripts": {

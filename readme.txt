@@ -2,11 +2,11 @@
 Contributors: andykeith, barn2media
 Donate link: https://barn2.co.uk
 Tags: WordPress table plugin, data-table plugin, table plugin, table, wordpress table
-Requires at least: 3.0.1
-Tested up to: 5.0
-Stable tag: 1.1.4
-License: GPLv2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Requires at least: 4.0
+Tested up to: 5.0.3
+Stable tag: 1.1.5
+License: GPL-3.0
+License URI: https://www.gnu.org/licenses/gpl.html
 
 Posts Table with Search & Sort is a WordPress table plugin which lets you create searchable and sortable tables of your posts.
 
@@ -158,8 +158,15 @@ We have developed this free plugin to be flexible and easy to configure so that 
 
 == Changelog ==
 
+= 1.1.5 =
+21 January 2019
+
+ * Changed shortcode to 'posts_table' to match Pro version, maintaining support for the previous shortcode.
+ * Ensure all references to software license are GPL-3.0.
+ * Tested up to WordPress 5.0.3.
+
 = 1.1.4 =
-6 Aug 2018
+6 August 2018
 
  * Minor code improvements.
  * Added GPL license to main plugin folder.
