@@ -160,6 +160,7 @@ We have developed this free plugin to be flexible and easy to configure so that 
 == Changelog ==
 
 = 1.2 =
+1 April 2019
 
  * Restructure and improve codebase.
  * Add plugin settings page.
