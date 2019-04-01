@@ -1,37 +1,39 @@
 {
-  "name": "posts-data-table",
-  "version": "1.1.5",
-  "description": "Post Table with Search and Sort plugin for WordPress",
-  "main": "gulpfile.js",
-  "scripts": {
-    "test": "build"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/andykeith/posts-data-table.git"
-  },
-  "keywords": [
-    "posts",
-    "table",
-    "sort",
-    "filter"
-  ],
-  "author": "Barn2 Media",
-  "license": "GPL-3.0",
-  "devDependencies": {
-    "fs": "0.0.1-security",
-    "gulp": "^4.0.0",
-    "gulp-checktextdomain": "^2.2.0",
-    "gulp-clean-css": "^3.10.0",
-    "gulp-debug": "^4.0.0",
-    "gulp-header": "^2.0.5",
-    "gulp-jshint": "^2.1.0",
-    "gulp-rename": "^1.4.0",
-    "gulp-run": "^1.7.1",
-    "gulp-uglify": "^3.0.1",
-    "gulp-zip": "^4.2.0",
-    "jshint": "^2.9.6",
-    "pump": "^3.0.0"
-  },
-  "dependencies": {}
+	"name": "posts-data-table",
+	"version": "1.2.0",
+	"description": "Post Table with Search and Sort plugin for WordPress",
+	"main": "gulpfile.js",
+	"scripts": {
+		"test": "build"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/andykeith/posts-data-table.git"
+	},
+	"keywords": [
+		"posts",
+		"table",
+		"sort",
+		"filter"
+	],
+	"author": "Barn2 Media",
+	"license": "GPL-3.0",
+	"devDependencies": {
+		"fs": "0.0.1-security",
+		"gulp": "^4.0.0",
+		"gulp-checktextdomain": "^2.2.0",
+		"gulp-clean-css": "^4.0.0",
+		"gulp-debug": "^4.0.0",
+		"gulp-header": "^2.0.7",
+		"gulp-jshint": "^2.1.0",
+		"gulp-rename": "^1.4.0",
+		"gulp-replace": "^1.0.0",
+		"gulp-run": "^1.7.1",
+		"gulp-uglify": "^3.0.2",
+		"jshint": "^2.10.2",
+		"pump": "^3.0.0"
+	},
+	"dependencies": {
+		"npm-check-updates": "^3.1.1"
+	}
 }

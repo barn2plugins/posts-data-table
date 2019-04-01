@@ -1,4 +1,7 @@
 <?php
+
+namespace Barn2\Plugin\Posts_Table_Search_Sort;
+
 // Prevent direct file access
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -7,18 +10,17 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * This class handles the posts table shortcode registration.
  *
- * @package   Posts_Table_Search_And_Sort
  * @author    Barn2 Media <info@barn2.co.uk>
  * @license   GPL-3.0
  * @copyright Barn2 Media Ltd
  */
-class Posts_Data_Table_Shortcode {
+class Table_Shortcode implements \Barn2\Lib\Attachable {
 
 	const SHORTCODE = 'posts_table';
 
-	public static function register_shortcode() {
-		add_shortcode( self::SHORTCODE, array( __CLASS__, 'do_shortcode' ) );
-		add_shortcode( 'posts_data_table', array( __CLASS__, 'do_shortcode' ) ); // back compat: previous shortcode
+	public function attach() {
+		add_shortcode( self::SHORTCODE, array( $this, 'do_shortcode' ) );
+		add_shortcode( 'posts_data_table', array( $this, 'do_shortcode' ) ); // back compat: support old shortcode
 	}
 
 	/**
@@ -28,13 +30,12 @@ class Posts_Data_Table_Shortcode {
 	 * @param string $content The content between the open and close shortcode tags (not used)
 	 * @return string The shortcode output
 	 */
-	public static function do_shortcode( $atts, $content = '' ) {
+	public function do_shortcode( $atts, $content = '' ) {
 		// Parse attributes
-		$atts = shortcode_atts( Posts_Data_Table_Simple::$default_args, $atts, self::SHORTCODE );
+		$atts = shortcode_atts( Simple_Posts_Table::get_defaults(), $atts, self::SHORTCODE );
 
 		// Create table and return output
-		$table = new Posts_Data_Table_Simple();
+		$table = new Simple_Posts_Table();
 		return $table->get_table( $atts );
 	}
-
 }

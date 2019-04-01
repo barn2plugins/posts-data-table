@@ -1,4 +1,7 @@
 <?php
+
+namespace Barn2\Plugin\Posts_Table_Search_Sort;
+
 // Prevent direct file access
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -7,15 +10,23 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * This class is responsible for generating a HTML table from a list of supplied attributes.
  *
- * @package   Posts_Table_Search_And_Sort
  * @author    Barn2 Media <info@barn2.co.uk>
  * @license   GPL-3.0
  * @copyright Barn2 Media Ltd
  */
-class Posts_Data_Table_Simple {
+class Simple_Posts_Table {
+
+	/**
+	 * Stores the number of tables on this page. Used to generate the table ID.
+	 *
+	 * @var int
+	 */
+	private static $table_count = 1;
 
 	/**
 	 * The complete list of table attributes, and their defaults.
+	 *
+	 * @var array
 	 */
 	public static $default_args = array(
 		'columns' => 'title,content,date,author,category',
@@ -32,18 +43,26 @@ class Posts_Data_Table_Simple {
 		'content_length' => 15,
 		'scroll_offset' => 15
 	);
+
 	/**
 	 * An array of all possible columns and their default heading, priority, and column width.
-	 * Initialised once on construction.
+	 *
+	 * @var array
 	 */
 	private static $column_defaults = array();
-	private static $allowed_columns = array();
-	/**
-	 * Stores the number of tables on this page. Used to generate the table ID.
-	 */
-	private static $table_count = 1;
 
-	public function __construct() {
+	/**
+	 * An array of all allowed column keys.
+	 *
+	 * @var array
+	 */
+	private static $allowed_columns = array();
+
+	public static function get_defaults() {
+		return wp_parse_args( Settings::get_table_args(), self::$default_args );
+	}
+
+	public static function get_column_defaults() {
 		if ( empty( self::$column_defaults ) ) {
 			/**
 			 * Priority values are used to determine visiblity at small screen sizes (1 = highest priority, 6 = lowest priority).
@@ -88,9 +107,14 @@ class Posts_Data_Table_Simple {
 			);
 		}
 
+		return self::$column_defaults;
+	}
+
+	public static function get_allowed_columns() {
 		if ( empty( self::$allowed_columns ) ) {
-			self::$allowed_columns = array_keys( self::$column_defaults );
+			self::$allowed_columns = array_keys( self::get_column_defaults() );
 		}
+		return self::$allowed_columns;
 	}
 
 	/**
@@ -100,8 +124,7 @@ class Posts_Data_Table_Simple {
 	 * @return string The posts table HTML output
 	 */
 	public function get_table( $args ) {
-
-		$args = wp_parse_args( $args, self::$default_args );
+		$args = wp_parse_args( $args, self::get_defaults() );
 
 		if ( empty( $args['columns'] ) ) {
 			$args['columns'] = self::$default_args['columns'];
@@ -109,11 +132,11 @@ class Posts_Data_Table_Simple {
 
 		$args['rows_per_page'] = filter_var( $args['rows_per_page'], FILTER_VALIDATE_INT );
 
-		if ( ($args['rows_per_page'] < 1) || ! $args['rows_per_page'] ) {
+		if ( $args['rows_per_page'] < 1 || ! $args['rows_per_page'] ) {
 			$args['rows_per_page'] = false;
 		}
 
-		if ( ! in_array( $args['sort_by'], self::$allowed_columns ) ) {
+		if ( ! in_array( $args['sort_by'], self::get_allowed_columns() ) ) {
 			$args['sort_by'] = self::$default_args['sort_by'];
 		}
 
@@ -131,15 +154,15 @@ class Posts_Data_Table_Simple {
 		}
 
 		$args['search_on_click'] = filter_var( $args['search_on_click'], FILTER_VALIDATE_BOOLEAN );
-		$args['wrap'] = filter_var( $args['wrap'], FILTER_VALIDATE_BOOLEAN );
-		$args['content_length'] = filter_var( $args['content_length'], FILTER_VALIDATE_INT );
-		$args['scroll_offset'] = filter_var( $args['scroll_offset'], FILTER_VALIDATE_INT );
+		$args['wrap']			 = filter_var( $args['wrap'], FILTER_VALIDATE_BOOLEAN );
+		$args['content_length']	 = filter_var( $args['content_length'], FILTER_VALIDATE_INT );
+		$args['scroll_offset']	 = filter_var( $args['scroll_offset'], FILTER_VALIDATE_INT );
 
 		if ( empty( $args['date_format'] ) ) {
 			$args['date_format'] = self::$default_args['date_format'];
 		}
 
-		$output = $table_head = $table_body = $body_row_fmt = '';
+		$output			 = $table_head		 = $table_body		 = $body_row_fmt	 = '';
 
 		// Start building the args needed for our posts query
 		$post_args = array(
@@ -192,25 +215,25 @@ class Posts_Data_Table_Simple {
 		}
 
 		// Allow theme/plugins to override defaults
-		$column_defaults = apply_filters( 'posts_data_table_column_defaults_' . self::$table_count, apply_filters( 'posts_data_table_column_defaults', self::$column_defaults ) );
+		$column_defaults = apply_filters( 'posts_data_table_column_defaults_' . self::$table_count, apply_filters( 'posts_data_table_column_defaults', self::get_column_defaults() ) );
 
 		// Get the columns to be used in this table
-		$columns = array_filter( array_map( 'trim', explode( ',', strtolower( $args['columns'] ) ) ) );
-		$hidden_columns = array();
+		$columns		 = array_filter( array_map( 'trim', explode( ',', strtolower( $args['columns'] ) ) ) );
+		$hidden_columns	 = array();
 
 		// If none of the user-specfied columns are valid, use the default columns instead
-		if ( ! array_intersect( self::$allowed_columns, $columns ) ) {
+		if ( ! array_intersect( self::get_allowed_columns(), $columns ) ) {
 			$columns = explode( ',', self::$default_args['columns'] );
 		}
 
 		// Set hidden columns and sort indexes
-		$table_sort_index = array_search( $args['sort_by'], $columns );
-		$date_sort_index = false;
-		$hidden_date = in_array( 'date', $columns ) || 'date' === $args['sort_by'];
+		$table_sort_index	 = array_search( $args['sort_by'], $columns );
+		$date_sort_index	 = false;
+		$hidden_date		 = in_array( 'date', $columns ) || 'date' === $args['sort_by'];
 
 		if ( $hidden_date ) {
-			$hidden_columns[] = 'timestamp';
-			$date_sort_index = count( $columns );
+			$hidden_columns[]	 = 'timestamp';
+			$date_sort_index	 = count( $columns );
 
 			// If we're sorting by date, make sure we use this hidden column for the initial table sort
 			if ( 'date' === $args['sort_by'] && false === $table_sort_index ) {
@@ -228,11 +251,11 @@ class Posts_Data_Table_Simple {
 
 		// Build table header
 		$heading_fmt = '<th data-name="%1$s" data-priority="%2$u" data-width="%3$s"%5$s>%4$s</th>';
-		$cell_fmt = '<td>{%s}</td>';
+		$cell_fmt	 = '<td>{%s}</td>';
 
 		foreach ( $columns as $column ) {
 			// Double-check column name is valid
-			if ( ! in_array( $column, self::$allowed_columns ) ) {
+			if ( ! in_array( $column, self::get_allowed_columns() ) ) {
 				continue;
 			}
 
@@ -293,12 +316,12 @@ class Posts_Data_Table_Simple {
 		$table_body = sprintf( '<tbody>%s</tbody>', $table_body );
 
 		$paging_attr = 'false';
-		if ( ( $args['rows_per_page'] > 1 ) && ( $args['rows_per_page'] < count( $all_posts ) ) ) {
+		if ( $args['rows_per_page'] && $args['rows_per_page'] < count( $all_posts ) ) {
 			$paging_attr = 'true';
 		}
 
 		// Order attribute should be escaped here rather than in sprintf below as we don't want to escape the double-quotes around "asc" or "desc"
-		$order_attr = ( $table_sort_index === false ) ? '' : sprintf( '[[%u, "%s"]]', esc_attr( $table_sort_index ), esc_attr( $args['sort_order'] ) );
+		$order_attr	 = ( $table_sort_index === false ) ? '' : sprintf( '[[%u, "%s"]]', esc_attr( $table_sort_index ), esc_attr( $args['sort_order'] ) );
 		$offset_attr = ( $args['scroll_offset'] === false ) ? 'false' : $args['scroll_offset'];
 
 		$table_class = 'posts-data-table';
@@ -335,11 +358,13 @@ class Posts_Data_Table_Simple {
 	 * @return string The (truncated) post content
 	 */
 	private function get_post_content( $num_words = 15 ) {
-		$text = get_the_content( '' );
-		$text = strip_shortcodes( $text );
-		$text = apply_filters( 'the_content', $text );
-		$text = wp_trim_words( $text, $num_words, ' &hellip;' );
+		$text	 = get_the_content( '' );
+		$text	 = strip_shortcodes( $text );
+		$text	 = apply_filters( 'the_content', $text );
+
+		if ( $num_words > 0 ) {
+			$text = wp_trim_words( $text, $num_words, ' &hellip;' );
+		}
 		return $text;
 	}
-
 }

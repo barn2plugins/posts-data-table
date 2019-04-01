@@ -1,0 +1,13 @@
+
+.settings_page_posts_table_search_sort .form-table .readonly td,
+.settings_page_posts_table_search_sort .form-table .readonly .description,
+.settings_page_posts_table_search_sort .form-table .readonly td a {
+	color: #999;
+}
+.settings_page_posts_table_search_sort .form-table .pro-version {
+	display: block;
+	margin-top: 5px;
+}
+.settings_page_posts_table_search_sort .pro-version {
+	font-size: 12px;
+}
