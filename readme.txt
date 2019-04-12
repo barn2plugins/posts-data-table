@@ -61,10 +61,12 @@ We make use of the [jQuery DataTables](http://datatables.net/) library to power 
 
 [See our demo for more information](https://barn2.co.uk/posts-table/), or examples of the plugin in action below.
 
-### Examples of how you can create your own WordPress Post Tables
+### How to create your own WordPress Post Tables
 You can use *Posts Table with Search & Sort* to display your content in searchable and sortable tables. This has a huge range of use cases, from a simple archive of your posts, to previews of your content, to sorting by author, tags, date, and more.
 
-*Posts Table with Search & Sort* uses WordPress shortcodes to generate its tables. To use these, just copy-and-paste into any WordPress post, page, or widget. Here are a couple of examples of shortcodes you can use:
+To list blog posts in a table, simply enter the shortcode `[posts_data_table]` to any WordPress page, post, or text widget. The easiest way to set your columns and other options is on the plugin settings page at *Settings > Posts Table With Search & Sort*. These global settings will affect all the posts tables throughout your WordPress site.
+
+You can also add options directly to the shortcode. This allows you to configure each table individually - for example, in order to show different columns in each table, or to list posts from specific categories. Here are a couple of examples of shortcodes you can use:
 
 1. **List your posts in a table with 3 columns** (title, content, and date columns) showing the first 10 words of each post in the content column: `[posts_data_table columns='title,content,date' content_length="10"]`
 2. **List posts in a table with with 4 columns** (post ID, title, tags, and author columns), and will be sorted by date in ascending order (oldest posts first): `[posts_data_table columns='id,title,tags,author' sort_by="date" sort_order="asc"]`
@@ -78,7 +80,7 @@ Popular use cases for Pro take advantage of advanced features, including support
 
 ### Here's the full list of shortcode parameters you can use for this data-table plugin:
 
-You can see some practical examples of how to build your own Post Tables above, and below you'll find a full list of the shortcode parameters you can use to customize the output of your own Posts Tables:
+You can see some practical examples of how to build your own Post Tables above, and below you'll find a full list of the shortcode parameters you can use to customize the output of your own Posts Tables. Remember, most of these options can also be set globally on the plugin settings page at *Settings > Posts Table With Search & Sort*:
 
 *  **`columns`** - the columns you'd like to show in your table. This can be any of the following (comma-separated): id, title, content, category, tags, author, and date. Defaults to `title,content,date,author,category`.
 *  **`rows_per_page`** - the number of posts to show on each page of results. Set to `false` to disable pagination. Defaults to 20 rows per page.
@@ -93,7 +95,6 @@ You can see some practical examples of how to build your own Post Tables above, 
 *  **`content_length`** - the number of words of post content to show in the table (if you've included the `content` column). Defaults to 15 words.
 *  **`scroll_offset`** - advanced: the table scrolls back to the top each time you navigate forward or backwards through the list of posts. This value controls the 'offset' for the scroll. For example, if your site uses a sticky header you can adjust the scroll amount here to compensate. Enter a whole number (e.g. 50) or set to `false` to disable scrolling to top.
 
-
 And, if you need even more features, then have a look at [Posts Table Pro](https://barn2.co.uk/wordpress-plugins/posts-table-pro/?utm=content&utm_source=wporg&utm_content=posts-table-free).
 
 Thank you for using our WordPress table plugin, and enjoy your Post Table :)
@@ -101,19 +102,20 @@ Thank you for using our WordPress table plugin, and enjoy your Post Table :)
 == Installation ==
 
 1. Upload the plugin files to the `/wp-content/plugins/posts-data-table` directory, or install the plugin through the WordPress plugins screen directly.
-2. Activate the plugin through the 'Plugins' screen in WordPress
-3. Add the shortcode `[posts_data_table]` to any page
+2. Activate the plugin through the 'Plugins' screen in WordPress.
+3. Go to *Settings > Posts Table With Search & Sort* and configure your post tables.
+3. Add the shortcode `[posts_data_table]` to any page.
 
 == Frequently Asked Questions ==
 
 = How do I display the posts table? =
-Simply add the shortcode `[posts_data_table]` to any page.
+Simply choose your options at *Settings > Posts Table With Search & Sort*, then add the shortcode `[posts_data_table]` to any page.
 
 = Does it show all posts or can I restrict it to a certain category? =
-By default it will list all of your posts, but you can use the 'category' option in the shortcode to restrict the table to that category only.
+By default it will list all of your posts, but you can use the 'category', 'tag', 'author' or 'post_status' option in the shortcode to restrict the table to that category/tag/author/status only.
 
 = What are the shortcode options? =
-See the main [plugin description](https://wordpress.org/plugins/posts-data-table/) for the list of options.
+See the main [plugin description](https://wordpress.org/plugins/posts-data-table/) above for the list of options.
 
 = Can I see a demo of the plugin? =
 Yes, please visit [our demo page](https://barn2.co.uk/posts-table/) to see the posts table in action.
@@ -122,7 +124,7 @@ Yes, please visit [our demo page](https://barn2.co.uk/posts-table/) to see the p
 The plugin has been designed to work with different WordPress themes and will take the styling from your theme for the fonts etc. where possible.
 
 = Does the posts table work with custom post types? =
-No, it only displays standard Posts at the moment. Our [Pro Version](https://barn2.co.uk/wordpress-plugins/posts-table-pro/?utm=content&utm_source=wporg&utm_content=posts-table-free) supports custom post types, as well as taxonomies, custom fields, and much more.
+No, it only displays standard Posts. Our [Pro Version](https://barn2.co.uk/wordpress-plugins/posts-table-pro/?utm=content&utm_source=wporg&utm_content=posts-table-free) supports custom post types, as well as taxonomies, custom fields, and much more.
 
 = Can I change the width of the columns? =
 The column widths are calculated automatically by the plugin, based on the contents of each column. However you can override this for one (or more) columns by setting an exact width. You would need to add some code to your theme (or in a custom plugin) to do this. The filter to hook into is `posts_data_table_column_defaults`. Here's an example setting the `title` column to 80px;
@@ -155,7 +157,8 @@ We have developed this free plugin to be flexible and easy to configure so that 
 2. An example of a search on a post table. Visitors can add their chosen search term, and reset when done.
 3. Prevent table rows from wrapping onto multiple lines, instead letting the user expand a row for extra information (as shown here).
 4. Your visitors can sort columns to find what they're looking for. This example shows a Post Table sorted by Content.
-5. Upgrade to Posts Table Pro for premium features including images, custom field support, multimedia embeds, and more.
+5. The settings page.
+6. Upgrade to Posts Table Pro for premium features including images, custom field support, multimedia embeds, and more.
 
 == Changelog ==
 
