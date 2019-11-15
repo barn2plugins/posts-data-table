@@ -3,9 +3,9 @@ Contributors: andykeith, barn2media
 Donate link: https://barn2.co.uk
 Tags: wordpress table plugin, data-table plugin, table plugin, table, wordpress table
 Requires at least: 4.4
-Tested up to: 5.1.1
+Tested up to: 5.3
 Requires PHP: 5.3
-Stable tag: 1.2
+Stable tag: 1.3
 License: GPL-3.0
 License URI: https://www.gnu.org/licenses/gpl.html
 
@@ -161,6 +161,11 @@ We have developed this free plugin to be flexible and easy to configure so that 
 6. Upgrade to Posts Table Pro for premium features including images, custom field support, multimedia embeds, and more.
 
 == Changelog ==
+
+= 1.3 =
+
+ * Update plugin architecture and Barn2 library code.
+ * Tested up to WordPress 5.3.
 
 = 1.2 =
 1 April 2019
