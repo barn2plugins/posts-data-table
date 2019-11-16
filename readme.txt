@@ -61,6 +61,8 @@ We make use of the [jQuery DataTables](http://datatables.net/) library to power 
 
 [See our demo for more information](https://barn2.co.uk/posts-table/), or examples of the plugin in action below.
 
+<img src="https://ps.w.org/posts-data-table/assets/posts-table-search-and-sort.gif" alt="Animated GIF of plugin" />
+
 ### How to create your own WordPress Post Tables
 You can use *Posts Table with Search & Sort* to display your content in searchable and sortable tables. This has a huge range of use cases, from a simple archive of your posts, to previews of your content, to sorting by author, tags, date, and more.
 
@@ -75,8 +77,6 @@ You can also add options directly to the shortcode. This allows you to configure
 5. **List post in a table, with automatic search and filtering on click** using links in the table. This free version is limited to post categories or author links, but our [Pro version](https://barn2.co.uk/wordpress-plugins/posts-table-pro/?utm=content&utm_source=wporg&utm_content=posts-table-free) extends search on click functionality to post tags and custom taxonomies. Use the following shortcode: `[posts_data_table sort_by="title" columns="date,author,title,content" content_length=5 rows_per_page="5"]`
 
 You can [see all of these in action on our demo site](https://barn2.co.uk/posts-table/), and do even more with [Posts Table Pro](https://barn2.co.uk/wordpress-plugins/posts-table-pro/?utm=content&utm_source=wporg&utm_content=posts-table-free), our premium plugin!
-
-![Animated GIF of plugin](https://ps.w.org/posts-data-table/assets/posts-table-search-and-sort.gif)
 
 Popular use cases for Pro take advantage of advanced features, including support for custom post types, advanced filtering, and media embed support, letting you [build your own WordPress document library](https://barn2.co.uk/wordpress-document-library-plugin/), [create a WordPress file manager](https://barn2.co.uk/wordpress-file-manager/), or create a [WordPress events table](https://barn2.co.uk/events-calendar-table-list/).
 
