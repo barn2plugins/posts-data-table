@@ -61,8 +61,6 @@ We make use of the [jQuery DataTables](http://datatables.net/) library to power 
 
 [See our demo for more information](https://barn2.co.uk/posts-table/), or examples of the plugin in action below.
 
-<img src="https://ps.w.org/posts-data-table/assets/posts-table-search-and-sort.gif" alt="Animated GIF of plugin" />
-
 ### How to create your own WordPress Post Tables
 You can use *Posts Table with Search & Sort* to display your content in searchable and sortable tables. This has a huge range of use cases, from a simple archive of your posts, to previews of your content, to sorting by author, tags, date, and more.
 
@@ -161,6 +159,7 @@ We have developed this free plugin to be flexible and easy to configure so that 
 4. Your visitors can sort columns to find what they're looking for. This example shows a Post Table sorted by Content.
 5. The settings page.
 6. Upgrade to Posts Table Pro for premium features including images, custom field support, multimedia embeds, and more.
+7. Searching and sorting a posts table.
 
 == Changelog ==
 
