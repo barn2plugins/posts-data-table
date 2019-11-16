@@ -1,2 +1,8 @@
 assets/js/datatables/* linguist-vendored
 assets/css/datatables/* linguist-vendored
+
+/.wordpress-org export-ignore
+/.github export-ignore
+/.git export-ignore
+/.gitattributes export-ignore
+/.gitignore export-ignore
