@@ -103,7 +103,7 @@ if ( ! \class_exists( __NAMESPACE__ . '\Util' ) ) {
          */
         public static function barn2_link( $relative_path, $link_text = '', $new_tab = false ) {
             if ( empty( $link_text ) ) {
-                $link_text = __( 'Read more', 'barn2' );
+                $link_text = __( 'Read more', 'posts-data-table' );
             }
             $target = $new_tab ? ' target="_blank"' : '';
             $return = \sprintf( '<a href="%1$s"%2$s>%3$s</a>', self::barn2_url( $relative_path ), $target, \esc_html( $link_text ) );
