@@ -1,0 +1,84 @@
+= 1.3 =
+16 November 2019
+
+ * Update plugin architecture and Barn2 library code.
+ * Tested up to WordPress 5.3.
+
+= 1.2 =
+1 April 2019
+
+ * Restructure and improve codebase.
+ * Add plugin settings page.
+ * Update DataTables to 1.10.18.
+ * Minimum PHP 5.3 now required.
+
+= 1.1.5 =
+21 January 2019
+
+ * Changed shortcode to 'posts_table' to match Pro version, maintaining support for the previous shortcode.
+ * Ensure all references to software license are GPL-3.0.
+ * Tested up to WordPress 5.0.3.
+
+= 1.1.4 =
+6 August 2018
+
+ * Minor code improvements.
+ * Added GPL license to main plugin folder.
+ * Tested with WordPress 4.9.8.
+
+= 1.1.3 =
+21 May 2018
+
+ * Updated DataTables to 1.10.16.
+ * Tested with WordPress 4.9.6.
+ * Added 'posts_data_table_html_output' filter.
+
+= 1.1.2 =
+17 March 2018
+
+ * Added 'author' and 'post_status' shortcode options.
+ * Added 'posts_data_table_query_args' and 'posts_data_table_row_data_format' filters.
+ * Tested with WordPress 4.9.4
+
+= 1.1.1 =
+19 January 2018
+
+ * Tested with WordPress 4.9.2
+ * Minor styling tweaks.
+
+= 1.1 =
+7 September 2017
+
+ * Added support for a new 'tags' column, to display the post tags in the table.
+ * Added a new shortcode option 'tag' to allow posts to be restricted by tag.
+ * Added a 'date_format' shortcode option to allow the date format to be set. See [PHP date formats](http://php.net/manual/en/function.date.php) for examples.
+ * Category can now be specified by ID or slug, depending on whether a numeric or text value is specified.
+ * Fix bug with sort_by option when column not present in table.
+ * Code restructure and improvement.
+ * Update DataTables library to 1.10.15.
+
+= 1.0.6 =
+ * Added Greek translation (credit: Yofis Florentin)
+ * Added additional language locales for French/German
+
+= 1.0.5 =
+* Upgrade to DataTables 1.10.12
+* Allow column default (priorities, widths, etc) to be set per table.
+* Prevent conflict if both free and Pro version of plugin are activated.
+
+= 1.0.4 =
+Fix bug with localization of main javascript file.
+
+= 1.0.3 =
+Fix a bug with the search and replace of column data, which produced invalid post URLs in some instances.
+
+= 1.0.2 =
+Added 'category' option to allow table to show posts from a single category only.
+
+= 1.0.1 =
+* Changed default for 'wrap' so content will now wrap onto multiple lines by default.
+* Changed default conent length to 15 words.
+* Additional FAQs.
+
+= 1.0 =
+Initial release.
