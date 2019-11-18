@@ -153,13 +153,13 @@ We have developed this free plugin to be flexible and easy to configure so that 
 
 == Screenshots ==
 
-1. Create sortable and filterable tables! You can choose the columns, and visitors can quickly access posts.
-2. An example of a search on a post table. Visitors can add their chosen search term, and reset when done.
-3. Prevent table rows from wrapping onto multiple lines, instead letting the user expand a row for extra information (as shown here).
-4. Your visitors can sort columns to find what they're looking for. This example shows a Post Table sorted by Content.
-5. The settings page.
-6. Upgrade to Posts Table Pro for premium features including images, custom field support, multimedia embeds, and more.
-7. Searching and sorting a posts table.
+1. Searching and sorting a posts table.
+2. Create sortable and filterable tables! You can choose the columns, and visitors can quickly access posts.
+3. An example of a search on a post table. Visitors can add their chosen search term, and reset when done.
+4. Prevent table rows from wrapping onto multiple lines, instead letting the user expand a row for extra information (as shown here).
+5. Your visitors can sort columns to find what they're looking for. This example shows a Post Table sorted by Content.
+6. The settings page.
+7. Upgrade to Posts Table Pro for premium features including images, custom field support, multimedia embeds, and more.
 
 == Changelog ==
 
