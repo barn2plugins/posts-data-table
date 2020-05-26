@@ -3,9 +3,9 @@ Contributors: andykeith, barn2media
 Donate link: https://barn2.co.uk
 Tags: wordpress table plugin, data-table plugin, table plugin, table, wordpress table
 Requires at least: 4.4
-Tested up to: 5.3.2
-Requires PHP: 5.3
-Stable tag: 1.3
+Tested up to: 5.4.1
+Requires PHP: 5.6
+Stable tag: 1.3.1
 License: GPL-3.0
 License URI: https://www.gnu.org/licenses/gpl.html
 
@@ -36,13 +36,13 @@ To get started with this WordPress table plugin, simply add the shortcode `[post
 
 [View free & pro comparison table](https://barn2.co.uk/kb/posts-table-free-pro-comparison/)
 
-* Display posts, pages, or any custom post type (e.g. documents, audio/music, courses, products, staff and member directories, publications, articles, books, etc).
-* Add extra columns: image, excerpt, status, or any custom field or taxonomy.
-* WordPress media embed support, including audio and video galleries or media playlists.
-* Showcase featured images with lightboxes.
+* Display posts, pages, or any custom post type (e.g. documents, audio, music, courses, products, staff and member directories, publications, articles, books, etc).
+* Add extra columns: custom fields, custom taxonomies, post excerpts, status.
+* WordPress media embeds, including audio and video galleries and media playlists.
+* Showcase featured images in a lightbox and choose your own image size.
 * Dropdown filters for taxonomies, categories, and tags.
 * Select posts by custom field, term, date, ID, and more.
-* Advanced Custom Fields support.
+* Advanced Custom Fields and ACF Pro support.
 * Enable AJAX to reduce server load.
 * 100% responsive, with options to control how behaviour on different screen sizes and devices.
 * Support for advanced use cases such as how to create [compelling tables for your blog](https://barn2.co.uk/wordpress-post-table/), a [WordPress document library](https://barn2.co.uk/wordpress-document-library-plugin/), [member directory](https://barn2.co.uk/wordpress-member-directory-plugin/), [audio gallery](https://barn2.co.uk/wordpress-audio-library/), or an [intranet for your organization](https://barn2.co.uk/wordpress-intranet-plugins/).
@@ -68,11 +68,10 @@ To list blog posts in a table, simply enter the shortcode `[posts_data_table]` t
 
 You can also add options directly to the shortcode. This allows you to configure each table individually - for example, in order to show different columns in each table, or to list posts from specific categories. Here are a couple of examples of shortcodes you can use:
 
-1. **List your posts in a table with 3 columns** (title, content, and date columns) showing the first 10 words of each post in the content column: `[posts_data_table columns='title,content,date' content_length="10"]`
-2. **List posts in a table with with 4 columns** (post ID, title, tags, and author columns), and will be sorted by date in ascending order (oldest posts first): `[posts_data_table columns='id,title,tags,author' sort_by="date" sort_order="asc"]`
+1. **List your posts in a table with 4 columns** (image, title, content, and date) showing the first 10 words of each post in the content column: `[posts_data_table columns='image,title,content,date' content_length="10"]`
+2. **List posts in a table with with 5 columns** (post ID, title, tags, date and author), and will be sorted by date in ascending order (oldest posts first): `[posts_data_table columns='id,title,tags,date,author' sort_by="date" sort_order="asc"]`
 3. **List posts in a table, with rows on one line** by using the parameter `wrap=false`. If selected columns no longer fit in the table, then a "+" icon will appear to the left of each row to allow access to the rest of the data: `[posts_data_table wrap="false" rows_per_page="5"]`
 4. **List posts in a table, sortable by any column name** (id, title, date, author, category or content). If the column does not appear in your table, it will be added as a hidden column at the end, so the ordering still works as expected. This example shortcode sorts each post by title. It also shows how to use the `content_length` option to set the number of words displayed in the content column: `[posts_data_table sort_by="title" columns="date,author,title,content" content_length=5 rows_per_page="5"]`
-5. **List post in a table, with automatic search and filtering on click** using links in the table. This free version is limited to post categories or author links, but our [Pro version](https://barn2.co.uk/wordpress-plugins/posts-table-pro/?utm=content&utm_source=wporg&utm_content=posts-table-free) extends search on click functionality to post tags and custom taxonomies. Use the following shortcode: `[posts_data_table sort_by="title" columns="date,author,title,content" content_length=5 rows_per_page="5"]`
 
 You can [see all of these in action on our demo site](https://barn2.co.uk/posts-table/), and do even more with [Posts Table Pro](https://barn2.co.uk/wordpress-plugins/posts-table-pro/?utm=content&utm_source=wporg&utm_content=posts-table-free), our premium plugin!
 
@@ -82,7 +81,7 @@ Popular use cases for Pro take advantage of advanced features, including support
 
 You can see some practical examples of how to build your own Post Tables above, and below you'll find a full list of the shortcode parameters you can use to customize the output of your own Posts Tables. Remember, most of these options can also be set globally on the plugin settings page at *Settings > Posts Table With Search & Sort*:
 
-*  **`columns`** - the columns you'd like to show in your table. This can be any of the following (comma-separated): id, title, content, category, tags, author, and date. Defaults to `title,content,date,author,category`.
+*  **`columns`** - the columns you'd like to show in your table. This can be any of the following (comma-separated): id, image, title, content, category, tags, author, and date. Defaults to `title,content,date,author,category`.
 *  **`rows_per_page`** - the number of posts to show on each page of results. Set to `false` to disable pagination. Defaults to 20 rows per page.
 *  **`category`** - restrict the table to this category only. Use the category ID or 'slug' here, NOT the name of the category. You can find the slug in the Posts -\> Categories menu.
 *  **`tag`** - restrict the table to this tag only. Use the tag 'slug' or ID here. You can find the slug in the Posts -\> Tags menu.
@@ -90,7 +89,7 @@ You can see some practical examples of how to build your own Post Tables above, 
 *  **`post_status`** - display posts with this post status (draft, pending, publish, future, private or any). Defaults to `publish`.
 *  **`sort_by`** - the column to sort by. Defaults to `date`. If the column you want to sort by isn't shown in the table, it will be added as a hidden column. This means, for example, that you can sort by date without actually showing the date column.
 *  **`sort_order`** - whether to sort ascending (`asc`) or descending (`desc`). If you order by date, it will default to `desc` (newest posts first).
-*  **`search_on_click`** - whether to enable automatic searching for categories and authors when clicking on links in the table. Default: `true`.
+*  **`search_on_click`** - whether to enable automatic searching for categories, tags and authors when clicking on links in the table. Default: `true`.
 *  **`wrap`** - whether the table content wraps onto more than one line. Set to `false` to keep everything on one line or `true` to allow the content to wrap. Default: `true`.
 *  **`content_length`** - the number of words of post content to show in the table (if you've included the `content` column). Defaults to 15 words.
 *  **`scroll_offset`** - advanced: the table scrolls back to the top each time you navigate forward or backwards through the list of posts. This value controls the 'offset' for the scroll. For example, if your site uses a sticky header you can adjust the scroll amount here to compensate. Enter a whole number (e.g. 50) or set to `false` to disable scrolling to top.
@@ -159,14 +158,17 @@ We have developed this free plugin to be flexible and easy to configure so that 
 4. Prevent table rows from wrapping onto multiple lines, instead letting the user expand a row for extra information (as shown here).
 5. Your visitors can sort columns to find what they're looking for. This example shows a Post Table sorted by Content.
 6. The settings page.
-7. Upgrade to Posts Table Pro for premium features including images, custom field support, multimedia embeds, and more.
+7. Upgrade to Posts Table Pro for premium features including custom post types, custom fields, multimedia embeds, and much more.
 
 == Changelog ==
 
-= 1.3 =
-16 November 2019
+= 1.3.1 =
+26 May 2020
 
- * Update plugin architecture and Barn2 library code.
- * Tested up to WordPress 5.3.
+ * Added new 'image' column to display the post featured image.
+ * Added search on click support for tags column.
+ * Only load scripts and stylesheets on pages where posts table is displayed.
+ * Updated DataTables library to 1.10.21.
+ * Tested up to WordPress 5.4.1.
 
 See changelog.txt for more details.
