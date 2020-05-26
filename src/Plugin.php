@@ -37,8 +37,7 @@ class Plugin extends Simple_Plugin implements Registerable, Service_Provider {
                 'file'    => $file
         ) );
 
-        require_once plugin_dir_path( $file ) . 'lib/class-wp-settings-api-helper.php';
-        include_once plugin_dir_path( $file ) . 'src/deprecated.php';
+        include_once \plugin_dir_path( $file ) . 'src/deprecated.php';
 
         // Services
         $this->services['shortcode'] = new Table_Shortcode();
@@ -62,11 +61,11 @@ class Plugin extends Simple_Plugin implements Registerable, Service_Provider {
 
         \add_action( 'init', array( $this, 'load_textdomain' ) );
 
-        \array_map( function( $service ) {
-            if ( $service instanceof Registerable ) {
-                $service->register();
-            }
-        }, $this->services );
+        Util::register_services( $this->services );
+    }
+
+    public function load_textdomain() {
+        \load_plugin_textdomain( 'posts-data-table', false, $this->get_slug() . '/languages' );
     }
 
     public function get_service( $id ) {
@@ -76,8 +75,8 @@ class Plugin extends Simple_Plugin implements Registerable, Service_Provider {
         return null;
     }
 
-    public function load_textdomain() {
-        load_plugin_textdomain( 'posts-data-table', false, \dirname( $this->get_basename() ) . '/languages' );
+    public function get_services() {
+        return $this->services;
     }
 
 }
