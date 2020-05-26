@@ -5,7 +5,7 @@ namespace Barn2\Plugin\Posts_Table_Search_Sort;
 /**
  * Responsible for fetching and sanitizing the plugin settings.
  *
- * @author    Barn2 Media <info@barn2.co.uk>
+ * @author    Barn2 Plugins <support@barn2.co.uk>
  * @license   GPL-3.0
  * @copyright Barn2 Media Ltd
  */
