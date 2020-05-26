@@ -8,16 +8,19 @@ use Barn2\Lib\Util;
  * Basic implementation of the Plugin interface which stores core data about a
  * WordPress plugin (ID, version number, etc). Data is passed as an array on construction.
  *
- * @author    Barn2 Media <info@barn2.co.uk>
+ * @package   Barn2/barn2-lib
+ * @author    Barn2 Plugins <info@barn2.co.uk>
  * @license   GPL-3.0
  * @copyright Barn2 Media Ltd
+ * @version   1.2
  */
 class Simple_Plugin implements Plugin {
 
     protected $file;
     protected $data;
     private $basename = null;
-    private $dir_path;
+    private $dir_path = null;
+    private $dir_url  = null;
 
     public function __construct( array $data ) {
         $this->data = \array_merge(
@@ -26,6 +29,7 @@ class Simple_Plugin implements Plugin {
                 'version'            => '',
                 'file'               => null,
                 'is_woocommerce'     => false,
+                'is_edd'             => false,
                 'documentation_path' => '',
                 'settings_path'      => '',
             ), $data
@@ -33,6 +37,13 @@ class Simple_Plugin implements Plugin {
 
         $this->data['documentation_path'] = \ltrim( $this->data['documentation_path'], '/' );
         $this->data['settings_path']      = \ltrim( $this->data['settings_path'], '/' );
+
+        // WooCommerce plugins cannot be EDD plugins (and vice-versa).
+        if ( $this->is_edd() ) {
+            $this->data['is_woocommerce'] = false;
+        } elseif ( $this->is_woocommerce() ) {
+            $this->data['is_edd'] = false;
+        }
     }
 
     /**
@@ -63,6 +74,16 @@ class Simple_Plugin implements Plugin {
     }
 
     /**
+     * Gets the slug for this plugin (e.g. my-plugin).
+     *
+     * @return string The plugin slug.
+     */
+    public function get_slug() {
+        $dir_path = $this->get_dir_path();
+        return ! empty( $dir_path ) ? \basename( $dir_path ) : '';
+    }
+
+    /**
      * Gets the 'basename' for the plugin (e.g. my-plugin/my-plugin.php).
      *
      * @return string The plugin basename.
@@ -75,7 +96,7 @@ class Simple_Plugin implements Plugin {
     }
 
     /**
-     * Get the fill directory path to the plugin folder, with trailing slash (e.g. /wp-content/plugins/my-plugin/).
+     * Get the full directory path to the plugin folder, with trailing slash (e.g. /wp-content/plugins/my-plugin/).
      *
      * @return string The plugin directory path.
      */
@@ -87,21 +108,33 @@ class Simple_Plugin implements Plugin {
     }
 
     /**
-     * Gets the slug for this plugin (e.g. my-plugin).
+     * Get the URL to the plugin folder.
      *
-     * @return string The plugin slug.
+     * @return string (URL)
      */
-    public function get_slug() {
-        return ! empty( $this->data['file'] ) ? \basename( $this->data['file'], '.php' ) : '';
+    public function get_dir_url() {
+        if ( null === $this->dir_url ) {
+            $this->dir_url = ! empty( $this->data['file'] ) ? \plugin_dir_url( $this->data['file'] ) : '';
+        }
+        return $this->dir_url;
     }
 
     /**
-     * Is this plugin a WooCommerce addon?
+     * Is this plugin a WooCommerce extension?
      *
-     * @return boolean true if WooCommerce.
+     * @return boolean true if it's a WooCommerce extension.
      */
     public function is_woocommerce() {
         return (bool) $this->data['is_woocommerce'];
+    }
+
+    /**
+     * Is this plugin an Easy Digital Downloads extension?
+     *
+     * @return boolean true if it's an EDD extension.
+     */
+    public function is_edd() {
+        return (bool) $this->data['is_edd'];
     }
 
     /**
@@ -110,7 +143,16 @@ class Simple_Plugin implements Plugin {
      * @return string (URL)
      */
     public function get_documentation_url() {
-        return trailingslashit( Util::KNOWLEDGE_BASE_URL ) . $this->data['documentation_path'];
+        return esc_url( Util::KNOWLEDGE_BASE_URL . '/' . $this->data['documentation_path'] );
+    }
+
+    /**
+     * Get the support URL for this plugin.
+     *
+     * @return string (URL)
+     */
+    public function get_support_url() {
+        return Util::barn2_url( 'support-center/' );
     }
 
     /**
