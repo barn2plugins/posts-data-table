@@ -3,6 +3,7 @@ namespace Barn2\Plugin\Posts_Table_Search_Sort\Admin;
 
 use Barn2\Lib\Util,
     Barn2\Lib\Registerable,
+    Barn2\Lib\Admin\Settings_API_Helper,
     Barn2\Plugin\Posts_Table_Search_Sort\Simple_Posts_Table,
     Barn2\Plugin\Posts_Table_Search_Sort\Settings;
 
@@ -84,7 +85,7 @@ class Settings_Page implements Registerable {
         $args_setting = Settings::TABLE_ARGS_SETTING;
 
         // Selecting posts
-        \WP_Settings_API_Helper::add_settings_section(
+        Settings_API_Helper::add_settings_section(
             'ptss_post_selection', self::MENU_SLUG, __( 'Posts selection', 'posts-data-table' ), array( $this, 'section_description_selecting_posts' ),
             $this->mark_readonly_settings( array(
                 array(
@@ -99,7 +100,7 @@ class Settings_Page implements Registerable {
         );
 
         // Table content
-        \WP_Settings_API_Helper::add_settings_section(
+        Settings_API_Helper::add_settings_section(
             'ptss_content', self::MENU_SLUG, __( 'Table content', 'posts-data-table' ), array( $this, 'section_description_table_content' ),
             $this->mark_readonly_settings( array(
                 array(
@@ -165,7 +166,7 @@ class Settings_Page implements Registerable {
         );
 
         // Loading posts
-        \WP_Settings_API_Helper::add_settings_section(
+        Settings_API_Helper::add_settings_section(
             'ptss_loading', self::MENU_SLUG, __( 'Table loading', 'posts-data-table' ), '__return_false',
             $this->mark_readonly_settings( array(
                 array(
@@ -210,7 +211,7 @@ class Settings_Page implements Registerable {
         // Sorting
         $sort_columns = \wp_list_pluck( Simple_Posts_Table::get_column_defaults(), 'heading' );
 
-        \WP_Settings_API_Helper::add_settings_section(
+        Settings_API_Helper::add_settings_section(
             'ptss_sorting', self::MENU_SLUG, __( 'Sorting', 'posts-data-table' ), '__return_false',
             $this->mark_readonly_settings( array(
                 array(
@@ -236,7 +237,7 @@ class Settings_Page implements Registerable {
         );
 
         // Table controls
-        \WP_Settings_API_Helper::add_settings_section(
+        Settings_API_Helper::add_settings_section(
             'ptss_controls', self::MENU_SLUG, __( 'Table controls', 'posts-data-table' ), '__return_false',
             $this->mark_readonly_settings( array(
                 array(
@@ -337,7 +338,7 @@ class Settings_Page implements Registerable {
                 );
 
                 $setting['title'] = $setting['title'] .
-                    \sprintf( '<span class="pro-version">%s</span>', Util::barn2_link( 'gggg', __( 'Pro version only', 'posts-data-table' ) ) );
+                    \sprintf( '<span class="pro-version">%s</span>', Util::barn2_link( 'wordpress-plugins/posts-table-pro/', __( 'Pro version only', 'posts-data-table' ), true ) );
             }
         }
 
@@ -350,7 +351,7 @@ class Settings_Page implements Registerable {
             <?php
             \printf(
                 __( 'Posts tables display all published posts for the selected post type. To restrict the posts by category, tag, author, etc, set the relevant option in the [posts_table] shortcode. See the %splugin description%s for details.', 'posts-data-table' ),
-                '<a href="' . \esc_url( 'https://wordpress.org/plugins/posts-data-table/#description' ) . '" target="_blank">',
+                '<a href="' . \esc_url( 'https://wordpress.org/plugins/posts-data-table/#description-header' ) . '" target="_blank">',
                 '</a>'
             );
             ?>
@@ -364,7 +365,7 @@ class Settings_Page implements Registerable {
             <?php
             \printf(
                 __( 'You can override these options by setting the relevant option in the [posts_table] shortcode. See the %splugin description%s for details.', 'posts-data-table' ),
-                '<a href="' . \esc_url( 'https://wordpress.org/plugins/posts-data-table/#description' ) . '" target="_blank">',
+                '<a href="' . \esc_url( 'https://wordpress.org/plugins/posts-data-table/#description-header' ) . '" target="_blank">',
                 '</a>'
             );
             ?>
