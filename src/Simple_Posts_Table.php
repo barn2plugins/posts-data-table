@@ -69,6 +69,11 @@ class Simple_Posts_Table {
                     'priority' => 3,
                     'width'    => ''
                 ),
+                'image'    => array(
+                    'heading'  => __( 'Image', 'posts-data-table' ),
+                    'priority' => 6,
+                    'width'    => ''
+                ),
                 'title'    => array(
                     'heading'  => __( 'Title', 'posts-data-table' ),
                     'priority' => 1,
@@ -76,12 +81,12 @@ class Simple_Posts_Table {
                 ),
                 'category' => array(
                     'heading'  => __( 'Categories', 'posts-data-table' ),
-                    'priority' => 6,
+                    'priority' => 7,
                     'width'    => ''
                 ),
                 'tags'     => array(
                     'heading'  => __( 'Tags', 'posts-data-table' ),
-                    'priority' => 7,
+                    'priority' => 8,
                     'width'    => ''
                 ),
                 'date'     => array(
@@ -119,6 +124,12 @@ class Simple_Posts_Table {
      * @return string The posts table HTML output
      */
     public function get_table( $args ) {
+        // Load the scripts and styles.
+        if ( \apply_filters( 'posts_data_table_load_scripts', true ) ) {
+            \wp_enqueue_style( 'posts-data-table' );
+            \wp_enqueue_script( 'posts-data-table' );
+        }
+
         $args = \wp_parse_args( $args, self::get_defaults() );
 
         if ( empty( $args['columns'] ) ) {
@@ -297,6 +308,7 @@ class Simple_Posts_Table {
 
             $post_data_trans = \apply_filters( 'posts_data_table_row_data_format', array(
                 '{id}'        => $_post->ID,
+                '{image}'     => get_the_post_thumbnail( $_post, apply_filters( 'posts_data_table_image_size', 'thumbnail' ) ),
                 '{title}'     => $title,
                 '{category}'  => \get_the_category_list( ', ', '', $_post->ID ),
                 '{tags}'      => \get_the_tag_list( '', ', ', '', $_post->ID ),

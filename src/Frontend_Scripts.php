@@ -16,6 +16,8 @@ use Barn2\Lib\Util,
  */
 class Frontend_Scripts implements Registerable, Service {
 
+    const DATATABLES_VERSION = '1.10.21';
+
     private $plugin;
 
     public function __construct( Plugin $plugin ) {
@@ -30,15 +32,15 @@ class Frontend_Scripts implements Registerable, Service {
     public function register_styles() {
         $suffix = Util::get_script_suffix();
 
-        \wp_enqueue_style( 'jquery-data-tables', \plugins_url( 'assets/js/datatables/datatables.min.css', $this->plugin->get_file() ), array(), '1.10.18' );
-        \wp_enqueue_style( 'posts-data-table', \plugins_url( "assets/css/posts-data-table{$suffix}.css", $this->plugin->get_file() ), array( 'jquery-data-tables' ), $this->plugin->get_version() );
+        \wp_register_style( 'jquery-data-tables', \plugins_url( 'assets/js/datatables/datatables.min.css', $this->plugin->get_file() ), array(), self::DATATABLES_VERSION );
+        \wp_register_style( 'posts-data-table', \plugins_url( "assets/css/posts-data-table{$suffix}.css", $this->plugin->get_file() ), array( 'jquery-data-tables' ), $this->plugin->get_version() );
     }
 
     public function register_scripts() {
         $suffix = Util::get_script_suffix();
 
-        \wp_enqueue_script( 'jquery-data-tables', \plugins_url( "assets/js/datatables/datatables.min.js", $this->plugin->get_file() ), array( 'jquery' ), '1.10.18', true );
-        \wp_enqueue_script( 'posts-data-table', \plugins_url( "assets/js/posts-data-table{$suffix}.js", $this->plugin->get_file() ), array( 'jquery-data-tables' ), $this->plugin->get_version(), true );
+        \wp_register_script( 'jquery-data-tables', \plugins_url( "assets/js/datatables/datatables.min.js", $this->plugin->get_file() ), array( 'jquery' ), self::DATATABLES_VERSION, true );
+        \wp_register_script( 'posts-data-table', \plugins_url( "assets/js/posts-data-table{$suffix}.js", $this->plugin->get_file() ), array( 'jquery-data-tables' ), $this->plugin->get_version(), true );
 
         $locale            = \get_locale();
         $supported_locales = $this->get_supported_locales();
