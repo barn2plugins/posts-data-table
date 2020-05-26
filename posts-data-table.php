@@ -8,7 +8,7 @@
  * Plugin URI:      https://wordpress.org/plugins/posts-data-table/
  * Description:     Provides a shortcode to show a list of your posts in an instantly searchable & sortable table.
  * Version:         1.3.1
- * Author:          Barn2 Media
+ * Author:          Barn2 Plugins
  * Author URI:      https://barn2.co.uk
  * Text Domain:     posts-data-table
  * Domain Path:     /languages

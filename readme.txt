@@ -15,7 +15,7 @@ Posts Table with Search & Sort is a WordPress table plugin which lets you automa
 
 *Posts Table with Search & Sort* is a WordPress table plugin which helps site owners organize WordPress posts into sortable and filterable tables, making it easy for your audience to find the content they need.
 
-Visitors can easily filter content by date, category or author - making this WordPress table plugin highly adaptable to different use cases.
+Visitors can easily filter content by date, category, tag or author - making this WordPress table plugin highly adaptable to different use cases.
 
 https://youtu.be/xCV6WwZXd5M
 
@@ -26,7 +26,7 @@ To get started with this WordPress table plugin, simply add the shortcode `[post
 **Posts Table with Search & Sort (free) includes:**
 
 * Create sortable and filterable post tables.
-* Choose any or all of the following columns: post ID, title, content, categories, tags, author, or date.
+* Choose any or all of the following columns: post ID, image, title, content, categories, tags, author, or date.
 * Streamlined content using pagination.
 * 100% responsive to different screen sizes.
 * Display WordPress blog posts in a simple HTML table.
@@ -39,7 +39,7 @@ To get started with this WordPress table plugin, simply add the shortcode `[post
 * Display posts, pages, or any custom post type (e.g. documents, audio, music, courses, products, staff and member directories, publications, articles, books, etc).
 * Add extra columns: custom fields, custom taxonomies, post excerpts, status.
 * WordPress media embeds, including audio and video galleries and media playlists.
-* Showcase featured images in a lightbox and choose your own image size.
+* Showcase featured images in a lightbox and choose your image size.
 * Dropdown filters for taxonomies, categories, and tags.
 * Select posts by custom field, term, date, ID, and more.
 * Advanced Custom Fields and ACF Pro support.
@@ -69,9 +69,9 @@ To list blog posts in a table, simply enter the shortcode `[posts_data_table]` t
 You can also add options directly to the shortcode. This allows you to configure each table individually - for example, in order to show different columns in each table, or to list posts from specific categories. Here are a couple of examples of shortcodes you can use:
 
 1. **List your posts in a table with 4 columns** (image, title, content, and date) showing the first 10 words of each post in the content column: `[posts_data_table columns='image,title,content,date' content_length="10"]`
-2. **List posts in a table with with 5 columns** (post ID, title, tags, date and author), and will be sorted by date in ascending order (oldest posts first): `[posts_data_table columns='id,title,tags,date,author' sort_by="date" sort_order="asc"]`
-3. **List posts in a table, with rows on one line** by using the parameter `wrap=false`. If selected columns no longer fit in the table, then a "+" icon will appear to the left of each row to allow access to the rest of the data: `[posts_data_table wrap="false" rows_per_page="5"]`
-4. **List posts in a table, sortable by any column name** (id, title, date, author, category or content). If the column does not appear in your table, it will be added as a hidden column at the end, so the ordering still works as expected. This example shortcode sorts each post by title. It also shows how to use the `content_length` option to set the number of words displayed in the content column: `[posts_data_table sort_by="title" columns="date,author,title,content" content_length=5 rows_per_page="5"]`
+2. **List posts in a table with with 5 columns** (post ID, title, tags, date and author), and sort in ascending date order: `[posts_data_table columns='id,title,tags,date,author' sort_by="date" sort_order="asc"]`
+3. **List posts in a table with rows on one line** by using the parameter `wrap=false`. If selected columns no longer fit in the table, then a "+" icon will appear to the left of each row to allow access to the rest of the data: `[posts_data_table wrap="false" rows_per_page="5"]`
+4. **List posts in a table sortable by any column**. If the column does not appear in your table, it will be added as a hidden column at the end, so the ordering still works as expected. This example sorts each post by title. It also shows how to use `content_length` to set the number of words in the `content` column: `[posts_data_table sort_by="title" columns="date,author,title,content" content_length=5 rows_per_page="5"]`
 
 You can [see all of these in action on our demo site](https://barn2.co.uk/posts-table/), and do even more with [Posts Table Pro](https://barn2.co.uk/wordpress-plugins/posts-table-pro/?utm=content&utm_source=wporg&utm_content=posts-table-free), our premium plugin!
 
@@ -81,12 +81,12 @@ Popular use cases for Pro take advantage of advanced features, including support
 
 You can see some practical examples of how to build your own Post Tables above, and below you'll find a full list of the shortcode parameters you can use to customize the output of your own Posts Tables. Remember, most of these options can also be set globally on the plugin settings page at *Settings > Posts Table With Search & Sort*:
 
-*  **`columns`** - the columns you'd like to show in your table. This can be any of the following (comma-separated): id, image, title, content, category, tags, author, and date. Defaults to `title,content,date,author,category`.
+*  **`columns`** - the columns you'd like to show in your table. This can be any combination of the following (comma-separated): `id`, `image`, `title`, `content`, `category`, `tags`, `author`, or `date`. Default: `title,content,date,author,category`.
 *  **`rows_per_page`** - the number of posts to show on each page of results. Set to `false` to disable pagination. Defaults to 20 rows per page.
 *  **`category`** - restrict the table to this category only. Use the category ID or 'slug' here, NOT the name of the category. You can find the slug in the Posts -\> Categories menu.
 *  **`tag`** - restrict the table to this tag only. Use the tag 'slug' or ID here. You can find the slug in the Posts -\> Tags menu.
 *  **`author`** - restrict the posts in the table to the specified author. Use can use author name (`user_nicename`), author ID or a comma-separated list of IDs.
-*  **`post_status`** - display posts with this post status (draft, pending, publish, future, private or any). Defaults to `publish`.
+*  **`post_status`** - display posts with this post status (draft, pending, publish, future, private or any). Default: `publish`.
 *  **`sort_by`** - the column to sort by. Defaults to `date`. If the column you want to sort by isn't shown in the table, it will be added as a hidden column. This means, for example, that you can sort by date without actually showing the date column.
 *  **`sort_order`** - whether to sort ascending (`asc`) or descending (`desc`). If you order by date, it will default to `desc` (newest posts first).
 *  **`search_on_click`** - whether to enable automatic searching for categories, tags and authors when clicking on links in the table. Default: `true`.
@@ -94,9 +94,9 @@ You can see some practical examples of how to build your own Post Tables above, 
 *  **`content_length`** - the number of words of post content to show in the table (if you've included the `content` column). Defaults to 15 words.
 *  **`scroll_offset`** - advanced: the table scrolls back to the top each time you navigate forward or backwards through the list of posts. This value controls the 'offset' for the scroll. For example, if your site uses a sticky header you can adjust the scroll amount here to compensate. Enter a whole number (e.g. 50) or set to `false` to disable scrolling to top.
 
-And, if you need even more features, then have a look at [Posts Table Pro](https://barn2.co.uk/wordpress-plugins/posts-table-pro/?utm=content&utm_source=wporg&utm_content=posts-table-free).
+And if you need more features, have a look at [Posts Table Pro](https://barn2.co.uk/wordpress-plugins/posts-table-pro/?utm=content&utm_source=wporg&utm_content=posts-table-free).
 
-Thank you for using our WordPress table plugin, and enjoy your Post Table :)
+Thank you for using our WordPress table plugin :)
 
 == Installation ==
 
