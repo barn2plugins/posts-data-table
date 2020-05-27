@@ -23,8 +23,6 @@ Install this plugin to organize your WordPress posts into simple, searchable, an
 
 To get started with this WordPress table plugin, simply add the shortcode `[posts_data_table]` to any page or widget.
 
-![WordPress posts table plugin](https://ps.w.org/posts-data-table/assets/WordPress-List-Posts-Table.jpg)
-
 **Posts Table with Search & Sort (free) includes:**
 
 * Create sortable and filterable post tables.
