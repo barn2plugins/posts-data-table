@@ -3,7 +3,7 @@ Contributors: andykeith, barn2media
 Donate link: https://barn2.co.uk
 Tags: wordpress table plugin, data-table plugin, table plugin, table, wordpress table
 Requires at least: 4.4
-Tested up to: 5.4.1
+Tested up to: 5.4.2
 Requires PHP: 5.6
 Stable tag: 1.3.1-v2
 License: GPL-3.0
@@ -154,11 +154,10 @@ We have developed this free plugin to be flexible and easy to configure so that 
 
 1. Searching and sorting a posts table.
 2. Choose your columns so users can quickly access post information.
-3. An example search for the word "table" - results are displayed instantly.
-4. Sort by any column - this example shows a table sorted by Content.
-5. Prevent rows wrapping onto multiple lines - users can expand a row for extra information.
-6. The settings page.
-7. Upgrade to Posts Table Pro for premium features including custom post types, custom fields, multimedia embeds, and much more.
+3. Sort by any column - this example shows a table sorted by Content.
+4. Prevent rows wrapping onto multiple lines - users can expand a row for extra information.
+5. The settings page.
+6. Upgrade to Posts Table Pro for premium features including custom post types, custom fields, multimedia embeds, and much more.
 
 == Changelog ==
 
