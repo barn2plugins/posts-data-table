@@ -136,6 +136,14 @@ class Simple_Posts_Table {
             $args['columns'] = self::$default_args['columns'];
         }
 
+        // Get the columns to be used in this table
+        $columns = array_filter( array_map( 'trim', explode( ',', strtolower( $args['columns'] ) ) ) );
+        $columns = array_intersect( $columns, self::get_allowed_columns() );
+
+        if ( empty( $columns ) ) {
+            $columns = explode( ',', self::$default_args['columns'] );
+        }
+
         $args['rows_per_page'] = filter_var( $args['rows_per_page'], FILTER_VALIDATE_INT );
 
         if ( $args['rows_per_page'] < 1 || ! $args['rows_per_page'] ) {
@@ -220,17 +228,7 @@ class Simple_Posts_Table {
             return $output;
         }
 
-        // Allow theme/plugins to override defaults
-        $column_defaults = apply_filters( 'posts_data_table_column_defaults_' . self::$table_count, apply_filters( 'posts_data_table_column_defaults', self::get_column_defaults() ) );
-
-        // Get the columns to be used in this table
-        $columns        = array_filter( array_map( 'trim', explode( ',', strtolower( $args['columns'] ) ) ) );
         $hidden_columns = array();
-
-        // If none of the user-specfied columns are valid, use the default columns instead
-        if ( ! array_intersect( self::get_allowed_columns(), $columns ) ) {
-            $columns = explode( ',', self::$default_args['columns'] );
-        }
 
         // Set hidden columns and sort indexes
         $table_sort_index = array_search( $args['sort_by'], $columns );
@@ -254,6 +252,9 @@ class Simple_Posts_Table {
             // Set the table sort index to the index of the hidden sort column
             $table_sort_index = $date_sort_index ? $date_sort_index + 1 : \count( $columns );
         }
+
+        // Allow theme/plugins to override defaults
+        $column_defaults = apply_filters( 'posts_data_table_column_defaults_' . self::$table_count, apply_filters( 'posts_data_table_column_defaults', self::get_column_defaults() ) );
 
         // Build table header
         $heading_fmt = '<th data-name="%1$s" data-priority="%2$u" data-width="%3$s"%5$s>%4$s</th>';

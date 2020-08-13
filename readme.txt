@@ -165,6 +165,7 @@ We have developed this free plugin to be flexible and easy to configure so that 
 Release date 13 August 2020
 
  * Tested up to WordPress 5.5.
+ * Fixed a bug when an invalid column was used in the plugin settings or shortcode.
  * Minor code improvements.
 
 See changelog.txt for more details.
