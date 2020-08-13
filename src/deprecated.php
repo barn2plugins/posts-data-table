@@ -6,7 +6,7 @@
 class Posts_Data_Table_Plugin {
 
     public static function instance() {
-        _doing_it_wrong( __FUNCTION__, 'Replaced by Barn2\Plugin\Posts_Table_Search_Sort\Plugin::instance()', '1.2' );
+        _doing_it_wrong( __METHOD__, 'Barn2\Plugin\Posts_Table_Search_Sort\Plugin::instance()', '1.2' );
 
         return Barn2\Plugin\Posts_Table_Search_Sort\Plugin::instance();
     }
@@ -19,7 +19,7 @@ class Posts_Data_Table_Plugin {
 class Posts_Data_Table_Shortcode {
 
     public static function do_shortcode( $atts, $content = '' ) {
-        _doing_it_wrong( __FUNCTION__, 'Replaced by Barn2\Plugin\Posts_Table_Search_Sort\Table_Shortcode->do_shortcode()', '1.2' );
+        _doing_it_wrong( __METHOD__, 'Barn2\Plugin\Posts_Table_Search_Sort\Table_Shortcode->do_shortcode()', '1.2' );
 
         $shortcode = new Barn2\Plugin\Posts_Table_Search_Sort\Table_Shortcode();
         return $shortcode->do_shortcode( $atts, $content );

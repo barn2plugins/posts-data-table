@@ -1,6 +1,6 @@
 <?php
 
-namespace Barn2\Lib;
+namespace Barn2\PTS_Lib;
 
 if ( ! \interface_exists( __NAMESPACE__ . '\\Registerable' ) ) {
 

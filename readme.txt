@@ -5,7 +5,7 @@ Tags: wordpress table plugin, data-table plugin, table plugin, table, wordpress 
 Requires at least: 4.4
 Tested up to: 5.5
 Requires PHP: 5.6
-Stable tag: 1.3.1-v2
+Stable tag: 1.3.2
 License: GPL-3.0
 License URI: https://www.gnu.org/licenses/gpl.html
 
@@ -161,13 +161,10 @@ We have developed this free plugin to be flexible and easy to configure so that 
 
 == Changelog ==
 
-= 1.3.1 =
-26 May 2020
+= 1.3.2 =
+Release date 13 August 2020
 
- * Added new 'image' column to display the post featured image.
- * Added search on click support for tags column.
- * Only load scripts and stylesheets on pages where posts table is displayed.
- * Updated DataTables library to 1.10.21.
- * Tested up to WordPress 5.4.1.
+ * Tested up to WordPress 5.5.
+ * Minor code improvements.
 
 See changelog.txt for more details.

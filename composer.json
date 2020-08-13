@@ -1,0 +1,23 @@
+{
+    "name": "barn2/posts-data-table",
+    "description": "Posts Table with Search and Sort plugin for WordPress.",
+    "type": "project",
+    "license": "GPL-3.0",
+    "authors": [
+        {
+            "name": "Barn2 Plugin",
+            "email": "support@barn2.co.uk"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Barn2\\Plugin\\Posts_Table_Search_Sort\\": "src",
+            "Barn2\\PTS_Lib\\": "lib"
+        },
+        "files": [
+            "src/deprecated.php"
+        ]
+    }
+}

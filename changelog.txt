@@ -1,5 +1,11 @@
+= 1.3.2 =
+Release date 13 August 2020
+
+ * Tested up to WordPress 5.5.
+ * Minor code improvements.
+
 = 1.3.1 =
-26 May 2020
+Release date 26 May 2020
 
  * Added new 'image' column to display the post featured image.
  * Added search on click support for tags column.
@@ -8,13 +14,13 @@
  * Tested up to WordPress 5.4.1.
 
 = 1.3 =
-16 November 2019
+Release date 16 November 2019
 
  * Update plugin architecture and Barn2 library code.
  * Tested up to WordPress 5.3.
 
 = 1.2 =
-1 April 2019
+Release date 1 April 2019
 
  * Restructure and improve codebase.
  * Add plugin settings page.
@@ -22,41 +28,41 @@
  * Minimum PHP 5.3 now required.
 
 = 1.1.5 =
-21 January 2019
+Release date 21 January 2019
 
  * Changed shortcode to 'posts_table' to match Pro version, maintaining support for the previous shortcode.
  * Ensure all references to software license are GPL-3.0.
  * Tested up to WordPress 5.0.3.
 
 = 1.1.4 =
-6 August 2018
+Release date 6 August 2018
 
  * Minor code improvements.
  * Added GPL license to main plugin folder.
  * Tested with WordPress 4.9.8.
 
 = 1.1.3 =
-21 May 2018
+Release date 21 May 2018
 
  * Updated DataTables to 1.10.16.
  * Tested with WordPress 4.9.6.
  * Added 'posts_data_table_html_output' filter.
 
 = 1.1.2 =
-17 March 2018
+Release date 17 March 2018
 
  * Added 'author' and 'post_status' shortcode options.
  * Added 'posts_data_table_query_args' and 'posts_data_table_row_data_format' filters.
  * Tested with WordPress 4.9.4
 
 = 1.1.1 =
-19 January 2018
+Release date 19 January 2018
 
  * Tested with WordPress 4.9.2
  * Minor styling tweaks.
 
 = 1.1 =
-7 September 2017
+Release date 7 September 2017
 
  * Added support for a new 'tags' column, to display the post tags in the table.
  * Added a new shortcode option 'tag' to allow posts to be restricted by tag.

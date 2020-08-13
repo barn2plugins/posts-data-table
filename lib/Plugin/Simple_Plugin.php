@@ -1,8 +1,8 @@
 <?php
 
-namespace Barn2\Lib\Plugin;
+namespace Barn2\PTS_Lib\Plugin;
 
-use Barn2\Lib\Util;
+use Barn2\PTS_Lib\Util;
 
 /**
  * Basic implementation of the Plugin interface which stores core data about a

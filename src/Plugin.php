@@ -1,15 +1,15 @@
 <?php
-
 namespace Barn2\Plugin\Posts_Table_Search_Sort;
 
-use Barn2\Lib\Service_Provider,
-    Barn2\Lib\Registerable,
-    Barn2\Lib\Plugin\Simple_Plugin,
-    Barn2\Lib\Util;
+use Barn2\PTS_Lib\Service_Provider,
+    Barn2\PTS_Lib\Registerable,
+    Barn2\PTS_Lib\Plugin\Simple_Plugin,
+    Barn2\PTS_Lib\Util;
 
 /**
  * The main plugin class.
  *
+ * @package   Barn2\posts-table-search-sort
  * @author    Barn2 Plugins <support@barn2.co.uk>
  * @license   GPL-3.0
  * @copyright Barn2 Media Ltd
@@ -37,7 +37,7 @@ class Plugin extends Simple_Plugin implements Registerable, Service_Provider {
                 'file'    => $file
         ) );
 
-        include_once \plugin_dir_path( $file ) . 'src/deprecated.php';
+        include_once plugin_dir_path( $file ) . 'src/deprecated.php';
 
         // Services
         $this->services['shortcode'] = new Table_Shortcode();
@@ -50,22 +50,22 @@ class Plugin extends Simple_Plugin implements Registerable, Service_Provider {
     }
 
     public function register() {
-        \add_action( 'plugins_loaded', array( $this, 'maybe_load_plugin' ) );
+        add_action( 'plugins_loaded', array( $this, 'maybe_load_plugin' ) );
     }
 
     public function maybe_load_plugin() {
         // Don't load plugin if Pro version active
-        if ( \class_exists( '\Posts_Table_Pro_Plugin' ) ) {
+        if ( class_exists( '\Posts_Table_Pro_Plugin' ) ) {
             return;
         }
 
-        \add_action( 'init', array( $this, 'load_textdomain' ) );
+        add_action( 'init', array( $this, 'load_textdomain' ) );
 
         Util::register_services( $this->services );
     }
 
     public function load_textdomain() {
-        \load_plugin_textdomain( 'posts-data-table', false, $this->get_slug() . '/languages' );
+        load_plugin_textdomain( 'posts-data-table', false, $this->get_slug() . '/languages' );
     }
 
     public function get_service( $id ) {

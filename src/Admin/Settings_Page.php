@@ -1,15 +1,16 @@
 <?php
 namespace Barn2\Plugin\Posts_Table_Search_Sort\Admin;
 
-use Barn2\Lib\Util,
-    Barn2\Lib\Registerable,
-    Barn2\Lib\Admin\Settings_API_Helper,
+use Barn2\PTS_Lib\Util,
+    Barn2\PTS_Lib\Registerable,
+    Barn2\PTS_Lib\Admin\Settings_API_Helper,
     Barn2\Plugin\Posts_Table_Search_Sort\Simple_Posts_Table,
     Barn2\Plugin\Posts_Table_Search_Sort\Settings;
 
 /**
  * This class handles our plugin settings page in the admin.
  *
+ * @package   Barn2\posts-table-search-sort
  * @author    Barn2 Plugins <support@barn2.co.uk>
  * @license   GPL-3.0
  * @copyright Barn2 Media Ltd
@@ -39,12 +40,12 @@ class Settings_Page implements Registerable {
     );
 
     public function register() {
-        \add_action( 'admin_menu', array( $this, 'add_settings_page' ) );
-        \add_action( 'admin_init', array( $this, 'register_settings' ) );
+        add_action( 'admin_menu', array( $this, 'add_settings_page' ) );
+        add_action( 'admin_init', array( $this, 'register_settings' ) );
     }
 
     public function add_settings_page() {
-        \add_options_page(
+        add_options_page(
             __( 'Posts Table With Search &amp; Sort', 'posts-data-table' ),
             __( 'Posts Table With Search &amp; Sort', 'posts-data-table' ),
             'manage_options',
@@ -60,13 +61,13 @@ class Settings_Page implements Registerable {
             <form action="options.php" method="post">
                 <?php
                 // Output the hidden form fields (_wpnonce, etc)
-                \settings_fields( self::OPTION_GROUP );
+                settings_fields( self::OPTION_GROUP );
 
                 // Output the sections and their settings
-                \do_settings_sections( self::MENU_SLUG );
+                do_settings_sections( self::MENU_SLUG );
                 ?>
                 <p class="submit">
-                    <input name="Submit" type="submit" name="submit" class="button button-primary" value="<?php \esc_attr_e( 'Save Changes', 'posts-data-table' ); ?>" />
+                    <input name="Submit" type="submit" name="submit" class="button button-primary" value="<?php esc_attr_e( 'Save Changes', 'posts-data-table' ); ?>" />
                 </p>
             </form>
         </div>
@@ -75,7 +76,7 @@ class Settings_Page implements Registerable {
 
     public function register_settings() {
         // Register the settings
-        \register_setting( self::OPTION_GROUP, Settings::TABLE_ARGS_SETTING, array(
+        register_setting( self::OPTION_GROUP, Settings::TABLE_ARGS_SETTING, array(
             'type'              => 'string', // array type not supported, so just use string
             'description'       => 'Posts Table with Search and Sort - table defaults',
             'sanitize_callback' => '\Barn2\Plugin\Posts_Table_Search_Sort\Settings::sanitize_table_args'
@@ -174,7 +175,7 @@ class Settings_Page implements Registerable {
                     'type'    => 'checkbox',
                     'id'      => $args_setting . '[lazy_load]',
                     'label'   => __( 'Load the posts one page at a time', 'posts-data-table' ),
-                    'desc'    => \sprintf( __( 'Enable this if you have many posts or experience slow page load times. ', 'posts-data-table' ) ) . Util::barn2_link( 'kb/posts-table-lazy-load/' ),
+                    'desc'    => sprintf( __( 'Enable this if you have many posts or experience slow page load times. ', 'posts-data-table' ) ) . Util::barn2_link( 'kb/posts-table-lazy-load/' ),
                     'default' => false,
                 ),
                 array(
@@ -209,7 +210,7 @@ class Settings_Page implements Registerable {
         );
 
         // Sorting
-        $sort_columns = \wp_list_pluck( Simple_Posts_Table::get_column_defaults(), 'heading' );
+        $sort_columns = wp_list_pluck( Simple_Posts_Table::get_column_defaults(), 'heading' );
 
         Settings_API_Helper::add_settings_section(
             'ptss_sorting', self::MENU_SLUG, __( 'Sorting', 'posts-data-table' ), '__return_false',
@@ -329,16 +330,16 @@ class Settings_Page implements Registerable {
 
     public function mark_readonly_settings( $settings ) {
         foreach ( $settings as &$setting ) {
-            $subkey = \preg_filter( '/^[\w\[\]]+\[(\w+)\]$/', '$1', $setting['id'] );
+            $subkey = preg_filter( '/^[\w\[\]]+\[(\w+)\]$/', '$1', $setting['id'] );
 
-            if ( $subkey && false !== \array_search( $subkey, self::$readonly_settings ) ) {
+            if ( $subkey && false !== array_search( $subkey, self::$readonly_settings ) ) {
                 $setting['field_class']       = 'readonly';
                 $setting['custom_attributes'] = array(
                     'disabled' => 'disabled'
                 );
 
                 $setting['title'] = $setting['title'] .
-                    \sprintf( '<span class="pro-version">%s</span>', Util::barn2_link( 'wordpress-plugins/posts-table-pro/', __( 'Pro version only', 'posts-data-table' ), true ) );
+                    sprintf( '<span class="pro-version">%s</span>', Util::barn2_link( 'wordpress-plugins/posts-table-pro/', __( 'Pro version only', 'posts-data-table' ), true ) );
             }
         }
 
@@ -349,9 +350,9 @@ class Settings_Page implements Registerable {
         ?>
         <p>
             <?php
-            \printf(
+            printf(
                 __( 'Posts tables display all published posts for the selected post type. To restrict the posts by category, tag, author, etc, set the relevant option in the [posts_table] shortcode. See the %splugin description%s for details.', 'posts-data-table' ),
-                '<a href="' . \esc_url( 'https://wordpress.org/plugins/posts-data-table/#description-header' ) . '" target="_blank">',
+                '<a href="' . esc_url( 'https://wordpress.org/plugins/posts-data-table/#description-header' ) . '" target="_blank">',
                 '</a>'
             );
             ?>
@@ -363,9 +364,9 @@ class Settings_Page implements Registerable {
         ?>
         <p>
             <?php
-            \printf(
+            printf(
                 __( 'You can override these options by setting the relevant option in the [posts_table] shortcode. See the %splugin description%s for details.', 'posts-data-table' ),
-                '<a href="' . \esc_url( 'https://wordpress.org/plugins/posts-data-table/#description-header' ) . '" target="_blank">',
+                '<a href="' . esc_url( 'https://wordpress.org/plugins/posts-data-table/#description-header' ) . '" target="_blank">',
                 '</a>'
             );
             ?>

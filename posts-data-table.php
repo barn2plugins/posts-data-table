@@ -1,13 +1,17 @@
 <?php
-
 /**
  * The main plugin file for Posts Table with Search & Sort.
+ *
+ * @package   Barn2\posts-table-search-sort
+ * @author    Barn2 Plugins <support@barn2.co.uk>
+ * @license   GPL-3.0
+ * @copyright Barn2 Media Ltd
  *
  * @wordpress-plugin
  * Plugin Name:     Posts Table with Search & Sort
  * Plugin URI:      https://wordpress.org/plugins/posts-data-table/
- * Description:     Provides a shortcode to show a list of your posts in an instantly searchable & sortable table.
- * Version:         1.3.1
+ * Description:     List your posts in an instantly searchable & sortable table.
+ * Version:         1.3.2
  * Author:          Barn2 Plugins
  * Author URI:      https://barn2.co.uk
  * Text Domain:     posts-data-table
@@ -28,7 +32,7 @@ const PLUGIN_VERSION = '1.3.1';
 const PLUGIN_FILE    = __FILE__;
 
 // Autoloader.
-require_once plugin_dir_path( __FILE__ ) . 'autoloader.php';
+require_once __DIR__ . '/vendor/autoload.php';
 
 // Helper function to access the shared plugin instance.
 function posts_table_search_sort() {

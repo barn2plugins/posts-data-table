@@ -1,5 +1,5 @@
 <?php
-namespace Barn2\Lib\Admin;
+namespace Barn2\PTS_Lib\Admin;
 
 /**
  * Helper functions for the WordPress Settings API.

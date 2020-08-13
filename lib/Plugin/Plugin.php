@@ -1,6 +1,6 @@
 <?php
 
-namespace Barn2\Lib\Plugin;
+namespace Barn2\PTS_Lib\Plugin;
 
 /**
  * Basic interface implemented by all Barn2 plugins.

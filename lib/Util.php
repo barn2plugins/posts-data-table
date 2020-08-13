@@ -1,17 +1,16 @@
 <?php
-
-namespace Barn2\Lib;
+namespace Barn2\PTS_Lib;
 
 if ( ! \class_exists( __NAMESPACE__ . '\\Util' ) ) {
 
     /**
      * Utility functions for Barn2 plugins.
      *
-     * @package   Barn2/barn2-lib
-     * @author    Barn2 Plugins <info@barn2.co.uk>
+     * @package   Barn2\barn2-lib
+     * @author    Barn2 Plugins <support@barn2.co.uk>
      * @license   GPL-3.0
      * @copyright Barn2 Media Ltd
-     * @version   1.4.5
+     * @version   1.4.8
      */
     class Util {
 
@@ -30,24 +29,24 @@ if ( ! \class_exists( __NAMESPACE__ . '\\Util' ) ) {
             if ( empty( $link_text ) ) {
                 $link_text = __( 'Read more', 'posts-data-table' );
             }
-            return self::format_link( self::barn2_url( $relative_path ), \esc_html( $link_text ), $new_tab );
+            return self::format_link( self::barn2_url( $relative_path ), esc_html( $link_text ), $new_tab );
         }
 
         public static function barn2_url( $relative_path ) {
-            return \esc_url( 'https://barn2.co.uk/' . \ltrim( $relative_path, '/' ) );
+            return esc_url( 'https://barn2.co.uk/' . ltrim( $relative_path, '/' ) );
         }
 
         public static function format_link( $url, $link_text, $new_tab = false ) {
-            return \sprintf( '%1$s%2$s</a>', self::format_link_open( $url, $new_tab ), $link_text );
+            return sprintf( '%1$s%2$s</a>', self::format_link_open( $url, $new_tab ), $link_text );
         }
 
         public static function format_link_open( $url, $new_tab = false ) {
             $target = $new_tab ? ' target="_blank"' : '';
-            return \sprintf( '<a href="%1$s"%2$s>', \esc_url( $url ), $target );
+            return sprintf( '<a href="%1$s"%2$s>', esc_url( $url ), $target );
         }
 
         public static function format_store_url( $path = '' ) {
-            return self::EDD_STORE_URL . '/' . \ltrim( $path, ' /' );
+            return self::EDD_STORE_URL . '/' . ltrim( $path, ' /' );
         }
 
         public static function format_store_link( $path, $link_text, $new_tab = true ) {
@@ -70,31 +69,35 @@ if ( ! \class_exists( __NAMESPACE__ . '\\Util' ) ) {
                 $args['discount'] = $discount_code;
             }
 
-            return self::format_store_url( '?' . \http_build_query( $args ) );
+            return self::format_store_url( '?' . http_build_query( $args ) );
         }
 
         public static function is_admin() {
-            return \is_admin();
+            return is_admin();
         }
 
         public static function is_front_end() {
-            return ( ! \is_admin() || \defined( 'DOING_AJAX' ) ) && ! \defined( 'DOING_CRON' );
+            return ( ! is_admin() || defined( 'DOING_AJAX' ) ) && ! defined( 'DOING_CRON' );
         }
 
         public static function is_woocommerce_active() {
-            return \class_exists( '\WooCommerce' );
+            return class_exists( '\WooCommerce' );
+        }
+
+        public static function is_product_addons_active() {
+            return class_exists( '\WC_Product_Addons' );
         }
 
         public static function is_edd_active() {
-            return \class_exists( '\Easy_Digital_Downloads' );
+            return class_exists( '\Easy_Digital_Downloads' );
         }
 
         public static function is_protected_categories_active() {
             if ( function_exists( '\Barn2\Plugin\WC_Protected_Categories\wpc' ) ) {
                 return \Barn2\Plugin\WC_Protected_Categories\wpc()->has_valid_license();
             } else {
-                if ( \class_exists( '\WC_Protected_Categories_Plugin' ) ) {
-                    if ( \method_exists( \WC_Protected_Categories_Plugin::instance(), 'has_valid_license' ) ) {
+                if ( class_exists( '\WC_Protected_Categories_Plugin' ) ) {
+                    if ( method_exists( \WC_Protected_Categories_Plugin::instance(), 'has_valid_license' ) ) {
                         return \WC_Protected_Categories_Plugin::instance()->has_valid_license();
                     }
                     return true;
@@ -106,8 +109,8 @@ if ( ! \class_exists( __NAMESPACE__ . '\\Util' ) ) {
         public static function is_product_table_active() {
             if ( function_exists( '\Barn2\Plugin\WC_Product_Table\wpt' ) ) {
                 return \Barn2\Plugin\WC_Product_Table\wpt()->has_valid_license();
-            } elseif ( \class_exists( '\WC_Product_Table_Plugin' ) ) {
-                if ( \method_exists( \WC_Product_Table_Plugin::instance(), 'has_valid_license' ) ) {
+            } elseif ( class_exists( '\WC_Product_Table_Plugin' ) ) {
+                if ( method_exists( \WC_Product_Table_Plugin::instance(), 'has_valid_license' ) ) {
                     return \WC_Product_Table_Plugin::instance()->has_valid_license();
                 }
                 return true;
@@ -119,7 +122,7 @@ if ( ! \class_exists( __NAMESPACE__ . '\\Util' ) ) {
             if ( function_exists( '\Barn2\Plugin\WC_Quick_View_Pro\wqv' ) ) {
                 return \Barn2\Plugin\WC_Quick_View_Pro\wqv()->has_valid_license();
             } else {
-                if ( \class_exists( '\Barn2\Plugin\WC_Quick_View_Pro\Quick_View_Plugin' ) ) {
+                if ( class_exists( '\Barn2\Plugin\WC_Quick_View_Pro\Quick_View_Plugin' ) ) {
                     return \Barn2\Plugin\WC_Quick_View_Pro\Quick_View_Plugin::instance()->has_valid_license();
                 }
                 return false;
@@ -127,11 +130,14 @@ if ( ! \class_exists( __NAMESPACE__ . '\\Util' ) ) {
         }
 
         public static function get_script_suffix() {
-            return \defined( 'SCRIPT_DEBUG' ) && \SCRIPT_DEBUG ? '' : '.min';
+            return defined( 'SCRIPT_DEBUG' ) && \SCRIPT_DEBUG ? '' : '.min';
         }
 
         public static function register_services( $services ) {
             array_map( function( $service ) {
+                if ( ( $service instanceof Conditional ) && ! $service->is_required() ) {
+                    return;
+                }
                 if ( $service instanceof Registerable ) {
                     $service->register();
                 }
