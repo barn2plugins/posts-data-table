@@ -24,7 +24,7 @@ class Simple_Posts_Table {
      * @var array
      */
     public static $default_args = array(
-        'columns'         => 'title,content,date,author,category',
+        'columns'         => 'title,content,date,author,categories',
         'rows_per_page'   => 20,
         'sort_by'         => 'date',
         'sort_order'      => '',
@@ -64,42 +64,42 @@ class Simple_Posts_Table {
              * Column widths are automatically calculated by DataTables, but can be overridden by using filter 'posts_data_table_column_defaults'.
              */
             self::$column_defaults = array(
-                'id'       => array(
+                'id'         => array(
                     'heading'  => __( 'ID', 'posts-data-table' ),
                     'priority' => 3,
                     'width'    => ''
                 ),
-                'image'    => array(
+                'image'      => array(
                     'heading'  => __( 'Image', 'posts-data-table' ),
                     'priority' => 6,
                     'width'    => ''
                 ),
-                'title'    => array(
+                'title'      => array(
                     'heading'  => __( 'Title', 'posts-data-table' ),
                     'priority' => 1,
                     'width'    => ''
                 ),
-                'category' => array(
+                'categories' => array(
                     'heading'  => __( 'Categories', 'posts-data-table' ),
                     'priority' => 7,
                     'width'    => ''
                 ),
-                'tags'     => array(
+                'tags'       => array(
                     'heading'  => __( 'Tags', 'posts-data-table' ),
                     'priority' => 8,
                     'width'    => ''
                 ),
-                'date'     => array(
+                'date'       => array(
                     'heading'  => __( 'Date', 'posts-data-table' ),
                     'priority' => 2,
                     'width'    => ''
                 ),
-                'author'   => array(
+                'author'     => array(
                     'heading'  => __( 'Author', 'posts-data-table' ),
                     'priority' => 4,
                     'width'    => ''
                 ),
-                'content'  => array(
+                'content'    => array(
                     'heading'  => __( 'Content', 'posts-data-table' ),
                     'priority' => 5,
                     'width'    => ''
@@ -131,6 +131,7 @@ class Simple_Posts_Table {
         }
 
         $args = wp_parse_args( $args, self::get_defaults() );
+        $args = $this->back_compat_args( $args );
 
         if ( empty( $args['columns'] ) ) {
             $args['columns'] = self::$default_args['columns'];
@@ -308,15 +309,15 @@ class Simple_Posts_Table {
             );
 
             $post_data_trans = apply_filters( 'posts_data_table_row_data_format', array(
-                '{id}'        => $_post->ID,
-                '{image}'     => get_the_post_thumbnail( $_post, apply_filters( 'posts_data_table_image_size', 'thumbnail' ) ),
-                '{title}'     => $title,
-                '{category}'  => \get_the_category_list( ', ', '', $_post->ID ),
-                '{tags}'      => \get_the_tag_list( '', ', ', '', $_post->ID ),
-                '{date}'      => \get_the_date( $args['date_format'], $_post ),
-                '{author}'    => $author,
-                '{content}'   => $this->get_post_content( $args['content_length'] ),
-                '{timestamp}' => $_post->post_date
+                '{id}'         => $_post->ID,
+                '{image}'      => get_the_post_thumbnail( $_post, apply_filters( 'posts_data_table_image_size', 'thumbnail' ) ),
+                '{title}'      => $title,
+                '{categories}' => \get_the_category_list( ', ', '', $_post->ID ),
+                '{tags}'       => \get_the_tag_list( '', ', ', '', $_post->ID ),
+                '{date}'       => \get_the_date( $args['date_format'], $_post ),
+                '{author}'     => $author,
+                '{content}'    => $this->get_post_content( $args['content_length'] ),
+                '{timestamp}'  => $_post->post_date
                 ) );
 
             $table_body .= strtr( $body_row_fmt, $post_data_trans );
@@ -363,6 +364,24 @@ class Simple_Posts_Table {
         self::$table_count ++;
 
         return apply_filters( 'posts_data_table_html_output', $output, $args );
+    }
+
+    private function back_compat_args( $args ) {
+        if ( ! empty( $args['columns'] ) ) {
+            $columns = array_map( 'trim', explode( ',', $args['columns'] ) );
+
+            if ( false !== ( $index = array_search( 'category', $columns, true ) ) ) {
+                $columns[$index] = 'categories';
+            }
+
+            $args['columns'] = implode( ',', $columns );
+        }
+
+        if ( ! empty( $args['sort_by'] ) && 'category' === $args['sort_by'] ) {
+            $args['sort_by'] = 'categories';
+        }
+
+        return $args;
     }
 
     /**
