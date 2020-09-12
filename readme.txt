@@ -81,7 +81,7 @@ Popular use cases for Pro take advantage of advanced features, including support
 
 You can see some practical examples of how to build your own Post Tables above, and below you'll find a full list of the shortcode parameters you can use to customize the output of your own Posts Tables. Remember, most of these options can also be set globally on the plugin settings page at *Settings > Posts Table With Search & Sort*:
 
-*  **`columns`** - the columns you'd like to show in your table. This can be any combination of the following (comma-separated): `id`, `image`, `title`, `content`, `category`, `tags`, `author`, or `date`. Default: `title,content,date,author,category`.
+*  **`columns`** - the columns you'd like to show in your table. This can be any combination of the following (comma-separated): `id`, `image`, `title`, `content`, `categories`, `tags`, `author`, or `date`. Default: `title,content,date,author,categories`.
 *  **`rows_per_page`** - the number of posts to show on each page of results. Set to `false` to disable pagination. Defaults to 20 rows per page.
 *  **`category`** - restrict the table to this category only. Use the category ID or 'slug' here, NOT the name of the category. You can find the slug in the Posts -\> Categories menu.
 *  **`tag`** - restrict the table to this tag only. Use the tag 'slug' or ID here. You can find the slug in the Posts -\> Tags menu.
