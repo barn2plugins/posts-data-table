@@ -8,7 +8,7 @@ use Barn2\PTS_Lib\Util;
  * Basic implementation of the Plugin interface which stores core data about a
  * WordPress plugin (ID, version number, etc). Data is passed as an array on construction.
  *
- * @package   Barn2/barn2-lib
+ * @package   Barn2\barn2-lib
  * @author    Barn2 Plugins <info@barn2.co.uk>
  * @license   GPL-3.0
  * @copyright Barn2 Media Ltd

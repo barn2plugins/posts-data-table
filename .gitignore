@@ -1,2 +1,3 @@
-/node_modules/
-/vendor/DataTables/
+node_modules/
+vendor/DataTables/
+docs/

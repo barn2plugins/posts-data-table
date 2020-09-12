@@ -2,10 +2,10 @@
 Contributors: andykeith, barn2media
 Donate link: https://barn2.co.uk
 Tags: wordpress table plugin, data-table plugin, table plugin, table, wordpress table
-Requires at least: 4.4
-Tested up to: 5.5
+Requires at least: 4.7
+Tested up to: 5.5.1
 Requires PHP: 5.6
-Stable tag: 1.3.2
+Stable tag: 1.3.3
 License: GPL-3.0
 License URI: https://www.gnu.org/licenses/gpl.html
 
@@ -161,11 +161,9 @@ We have developed this free plugin to be flexible and easy to configure so that 
 
 == Changelog ==
 
-= 1.3.2 =
-Release date 13 August 2020
+= 1.3.3 =
+Release date 12 September 2020
 
- * Tested up to WordPress 5.5.
- * Fixed a bug when an invalid column was used in the plugin settings or shortcode.
- * Minor code improvements.
+ * Renamed 'category' column to 'categories' for consistency with Pro version (backwards compatibility maintained).
 
 See changelog.txt for more details.

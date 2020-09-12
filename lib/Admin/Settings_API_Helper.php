@@ -4,7 +4,7 @@ namespace Barn2\PTS_Lib\Admin;
 /**
  * Helper functions for the WordPress Settings API.
  *
- * @package   Barn2/barn2-lib
+ * @package   Barn2\barn2-lib
  * @author    Barn2 Plugins <info@barn2.co.uk>
  * @license   GPL-3.0
  * @copyright Barn2 Media Ltd

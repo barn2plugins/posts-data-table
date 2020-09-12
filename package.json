@@ -1,25 +1,25 @@
 {
-  "name": "posts-data-table",
-  "version": "1.0.0",
-  "description": "Posts Table with Search and Sort plugin for WordPress.",
-  "main": "gulpfile.js",
-  "directories": {
-    "lib": "lib"
-  },
-  "scripts": {
-    "test": "default"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/andykeith/posts-data-table.git"
-  },
-  "author": "Barn2 Plugins <support@barn2.co.uk>",
-  "license": "GPL-3.0",
-  "bugs": {
-    "url": "https://github.com/andykeith/posts-data-table/issues"
-  },
-  "homepage": "https://github.com/andykeith/posts-data-table#readme",
-  "devDependencies": {
-    "gulp": "^4.0.2"
-  }
+    "name": "posts-data-table",
+    "version": "1.3.3",
+    "description": "Posts Table with Search and Sort plugin for WordPress.",
+    "main": "gulpfile.js",
+    "directories": {
+        "lib": "lib"
+    },
+    "scripts": {
+        "test": "default"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/andykeith/posts-data-table.git"
+    },
+    "author": "Barn2 Plugins <support@barn2.co.uk>",
+    "license": "GPL-3.0",
+    "bugs": {
+        "url": "https://github.com/andykeith/posts-data-table/issues"
+    },
+    "homepage": "https://github.com/andykeith/posts-data-table#readme",
+    "devDependencies": {
+        "gulp": "^4.0.2"
+    }
 }

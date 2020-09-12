@@ -5,7 +5,7 @@ namespace Barn2\PTS_Lib\Plugin;
 /**
  * Basic interface implemented by all Barn2 plugins.
  *
- * @package   Barn2/barn2-lib
+ * @package   Barn2\barn2-lib
  * @author    Barn2 Plugins <info@barn2.co.uk>
  * @license   GPL-3.0
  * @copyright Barn2 Media Ltd
