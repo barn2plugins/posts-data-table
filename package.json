@@ -11,14 +11,14 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/andykeith/posts-data-table.git"
+        "url": "git+https://github.com/Barn2Media/posts-data-table.git"
     },
     "author": "Barn2 Plugins <support@barn2.co.uk>",
     "license": "GPL-3.0",
     "bugs": {
-        "url": "https://github.com/andykeith/posts-data-table/issues"
+        "url": "https://github.com/Barn2Media/posts-data-table/issues"
     },
-    "homepage": "https://github.com/andykeith/posts-data-table#readme",
+    "homepage": "https://github.com/Barn2Media/posts-data-table#readme",
     "devDependencies": {
         "gulp": "^4.0.2"
     }

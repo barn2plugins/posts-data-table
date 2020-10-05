@@ -59,7 +59,7 @@ Translations for *Posts Table with Search & Sort* itself are currently provided 
 
 We make use of the [jQuery DataTables](http://datatables.net/) library to power the searching and sorting features.
 
-[See our demo for more information](https://barn2.co.uk/posts-table/), or examples of the plugin in action below.
+[See the demo](https://barn2.co.uk/posts-table/) for examples of the plugin in action, and view the full [plugin documentation](https://barn2.co.uk/kb-categories/posts-table-search-sort-free-kb/) in our Knowledge Base.
 
 ### How to create your own WordPress Post Tables
 You can use *Posts Table with Search & Sort* to display your content in searchable and sortable tables. This has a huge range of use cases, from a simple archive of your posts, to previews of your content, to sorting by author, tags, date, and more.
@@ -85,7 +85,7 @@ You can see some practical examples of how to build your own Post Tables above, 
 *  **`rows_per_page`** - the number of posts to show on each page of results. Set to `false` to disable pagination. Defaults to 20 rows per page.
 *  **`category`** - restrict the table to this category only. Use the category ID or 'slug' here, NOT the name of the category. You can find the slug in the Posts -\> Categories menu.
 *  **`tag`** - restrict the table to this tag only. Use the tag 'slug' or ID here. You can find the slug in the Posts -\> Tags menu.
-*  **`author`** - restrict the posts in the table to the specified author. Use can use author name (`user_nicename`), author ID or a comma-separated list of IDs.
+*  **`author`** - restrict the posts in the table to the specified author. Use the author name (`user_nicename`), author ID or a comma-separated list of IDs.
 *  **`post_status`** - display posts with this post status (draft, pending, publish, future, private or any). Default: `publish`.
 *  **`sort_by`** - the column to sort by. Defaults to `date`. If the column you want to sort by isn't shown in the table, it will be added as a hidden column. This means, for example, that you can sort by date without actually showing the date column.
 *  **`sort_order`** - whether to sort ascending (`asc`) or descending (`desc`). If you order by date, it will default to `desc` (newest posts first).
@@ -149,6 +149,9 @@ If you have a multilingual site using WPML then the plugin will display your pos
 
 = Can you customize the plugin for me? =
 We have developed this free plugin to be flexible and easy to configure so that it will be suitable for many different websites. If you would like to modify the plugin to suit your exact requirements, we would recommend [Codeable](https://barn2.co.uk/go/codeable)
+
+= Where can I find the documentation? =
+Please visit our [Knowledge Base](https://barn2.co.uk/kb-categories/posts-table-search-sort-free-kb/).
 
 == Screenshots ==
 
