@@ -94,7 +94,7 @@ You can see some practical examples of how to build your own Post Tables above, 
 *  **`content_length`** - the number of words of post content to show in the table (if you've included the `content` column). Defaults to 15 words.
 *  **`scroll_offset`** - advanced: the table scrolls back to the top each time you navigate forward or backwards through the list of posts. This value controls the 'offset' for the scroll. For example, if your site uses a sticky header you can adjust the scroll amount here to compensate. Enter a whole number (e.g. 50) or set to `false` to disable scrolling to top.
 
-And if you need more features, have a look at [Posts Table Pro](https://barn2.co.uk/wordpress-plugins/posts-table-pro/?utm=content&utm_source=wporg&utm_content=posts-table-free).
+View the [full documentation](https://barn2.co.uk/kb-categories/posts-table-search-sort-free-kb/) in our Knowledge Base, and if you need more features have a look at [Posts Table Pro](https://barn2.co.uk/wordpress-plugins/posts-table-pro/?utm=content&utm_source=wporg&utm_content=posts-table-free).
 
 Thank you for using our WordPress table plugin :)
 
