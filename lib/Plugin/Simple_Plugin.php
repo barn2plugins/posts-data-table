@@ -24,6 +24,7 @@ class Simple_Plugin implements Plugin {
     public function __construct( array $data ) {
         $this->data = array_merge(
             array(
+                'id'                 => 0,
                 'name'               => '',
                 'version'            => '',
                 'file'               => null,
@@ -34,8 +35,14 @@ class Simple_Plugin implements Plugin {
             ), $data
         );
 
+        $this->data['id']                 = (int) $this->data['id'];
         $this->data['documentation_path'] = ltrim( $this->data['documentation_path'], '/' );
         $this->data['settings_path']      = ltrim( $this->data['settings_path'], '/' );
+
+        // Check for 'item_id' in case 'id' not set.
+        if ( ! $this->get_id() && ! empty( $this->data['item_id'] ) ) {
+            $this->data['id'] = (int) $this->data['item_id'];
+        }
 
         // WooCommerce plugins cannot be EDD plugins (and vice-versa).
         if ( $this->is_edd() ) {
@@ -46,7 +53,16 @@ class Simple_Plugin implements Plugin {
     }
 
     /**
-     * Gets the name of this plugin.
+     * Get the plugin ID, usually the EDD Download ID.
+     *
+     * $return int The plugin ID.
+     */
+    public function get_id() {
+        return $this->data['id'];
+    }
+
+    /**
+     * Get the name of this plugin.
      *
      * @return string The plugin name.
      */
@@ -55,7 +71,7 @@ class Simple_Plugin implements Plugin {
     }
 
     /**
-     * Gets the plugin version number (e.g. 1.3.2).
+     * Get the plugin version number (e.g. 1.3.2).
      *
      * @return string The version number.
      */
@@ -64,7 +80,7 @@ class Simple_Plugin implements Plugin {
     }
 
     /**
-     * Gets the full path to the main plugin file.
+     * Get the full path to the main plugin file.
      *
      * @return string The plugin file.
      */
@@ -73,7 +89,7 @@ class Simple_Plugin implements Plugin {
     }
 
     /**
-     * Gets the slug for this plugin (e.g. my-plugin).
+     * Get the slug for this plugin (e.g. my-plugin).
      *
      * @return string The plugin slug.
      */
@@ -83,7 +99,7 @@ class Simple_Plugin implements Plugin {
     }
 
     /**
-     * Gets the 'basename' for the plugin (e.g. my-plugin/my-plugin.php).
+     * Get the 'basename' for the plugin (e.g. my-plugin/my-plugin.php).
      *
      * @return string The plugin basename.
      */

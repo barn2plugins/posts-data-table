@@ -1,0 +1,110 @@
+#barn2_plugin_promo {
+  padding: 15px;
+  margin-top: 10px;
+  border: 1px solid #e5e5e5;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04);
+  background: #fff;
+  box-sizing: border-box;
+}
+@media (min-width: 1200px) {
+  #barn2_plugin_promo {
+    float: right;
+    width: 30%;
+    padding-left: 20px;
+    margin-top: 0;
+  }
+  #barn2_plugin_promo ~ p.submit {
+    clear: both;
+  }
+}
+#barn2_plugin_promo h2 {
+  font-size: 23px;
+  line-height: 25px;
+  margin-top: 0;
+}
+#barn2_plugin_promo h2:first-child {
+  margin-bottom: 0;
+}
+#barn2_plugin_promo h2 + p img {
+  margin-top: 0;
+}
+#barn2_plugin_promo img {
+  max-width: 100%;
+  height: auto;
+}
+#barn2_plugin_promo .aligncenter {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+#barn2_plugin_promo .btn {
+  display: inline-block;
+  font-weight: 600;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  border: 1px solid transparent;
+  padding: 8px 36px 9px;
+  font-size: 16px;
+  line-height: 1.89;
+  border-radius: 999px;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  text-decoration: none;
+  margin-top: 10px;
+}
+#barn2_plugin_promo .btn-primary {
+  color: #fff;
+  background-color: #03a0c7;
+  border-color: #03a0c7;
+  box-shadow: 0 7px 10px 0 rgba(3, 160, 199, 0.1);
+}
+#barn2_plugin_promo .btn-primary:hover {
+  color: #03a0c7;
+  background-color: #fff;
+  border-color: #03a0c7 !important;
+}
+
+@media (min-width: 1200px) {
+  #product_table_settings_start.promo,
+#quick_view_settings_start.promo,
+#wc_protected_categories_settings.promo,
+#private_store_settings_start.promo,
+#bulk_variations_pro_settings_start.promo,
+.barn2-settings.promo {
+    float: left;
+    width: 67%;
+  }
+  #product_table_settings_start.promo ~ p.submit,
+#quick_view_settings_start.promo ~ p.submit,
+#wc_protected_categories_settings.promo ~ p.submit,
+#private_store_settings_start.promo ~ p.submit,
+#bulk_variations_pro_settings_start.promo ~ p.submit,
+.barn2-settings.promo ~ p.submit {
+    clear: both;
+  }
+}
+.barn2-settings-flex {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.barn2-settings-flex #barn2_plugin_promo {
+  float: none !important;
+  width: auto;
+  flex-shrink: 0.8;
+  flex-basis: 500px;
+  max-width: 500px;
+}
+@media (min-width: 1100px) {
+  .barn2-settings-flex {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+  .barn2-settings-flex #barn2_plugin_promo {
+    margin-left: 30px;
+  }
+}

@@ -1,5 +1,4 @@
 <?php
-
 namespace Barn2\PTS_Lib\Plugin;
 
 /**
@@ -12,6 +11,13 @@ namespace Barn2\PTS_Lib\Plugin;
  * @version   1.2
  */
 interface Plugin {
+
+    /**
+     * Get the plugin ID.
+     *
+     * $return int The plugin ID.
+     */
+    public function get_id();
 
     /**
      * Gets the name of this plugin.
