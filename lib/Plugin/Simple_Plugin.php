@@ -22,17 +22,16 @@ class Simple_Plugin implements Plugin {
     private $dir_url  = null;
 
     public function __construct( array $data ) {
-        $this->data = array_merge(
-            array(
-                'id'                 => 0,
-                'name'               => '',
-                'version'            => '',
-                'file'               => null,
-                'is_woocommerce'     => false,
-                'is_edd'             => false,
-                'documentation_path' => '',
-                'settings_path'      => '',
-            ), $data
+        $this->data = array_merge( [
+            'id'                 => 0,
+            'name'               => '',
+            'version'            => '',
+            'file'               => null,
+            'is_woocommerce'     => false,
+            'is_edd'             => false,
+            'documentation_path' => '',
+            'settings_path'      => '',
+            ], $data
         );
 
         $this->data['id']                 = (int) $this->data['id'];

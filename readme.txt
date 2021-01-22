@@ -167,6 +167,7 @@ Please visit our [Knowledge Base](https://barn2.co.uk/kb-categories/posts-table-
 = 1.3.4 =
 Release date 22 January 2020
 
- * Fixed 'search on click' feature.
+ * Fixed the 'search on click' feature.
+ * Updated plugin settings page.
 
 See changelog.txt for more details.
