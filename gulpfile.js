@@ -2,7 +2,7 @@ const pluginData = {
     name: 'Posts Table with Search & Sort',
     libNamespace: 'Barn2\\PTS_Lib',
     libIncludes: ['Plugin/Plugin.php', 'Plugin/Simple_Plugin.php', 'Registerable.php', 'Service.php', 'Service_Provider.php', 'Util.php',
-        'Admin/Settings_API_Helper.php'],
+        'Admin/Settings_API_Helper.php', 'Admin/Plugin_Promo.php', 'assets/css/**'],
     requiresES6: true
 };
 
