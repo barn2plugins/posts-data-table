@@ -16,7 +16,8 @@ use Barn2\PTS_Lib\Service_Provider,
  */
 class Plugin extends Simple_Plugin implements Registerable, Service_Provider {
 
-    const NAME = 'Posts Table with Search and Sort';
+    const NAME    = 'Posts Table with Search and Sort';
+    const ITEM_ID = 8006;
 
     /**
      * @var array $services
@@ -30,12 +31,12 @@ class Plugin extends Simple_Plugin implements Registerable, Service_Provider {
      * @param string $version The current plugin version
      */
     public function __construct( $file = null, $version = '1.0' ) {
-        parent::__construct(
-            array(
-                'name'    => self::NAME,
-                'version' => $version,
-                'file'    => $file
-        ) );
+        parent::__construct( [
+            'id'      => self::ITEM_ID,
+            'name'    => self::NAME,
+            'version' => $version,
+            'file'    => $file
+        ] );
 
         include_once plugin_dir_path( $file ) . 'src/deprecated.php';
 
@@ -50,7 +51,7 @@ class Plugin extends Simple_Plugin implements Registerable, Service_Provider {
     }
 
     public function register() {
-        add_action( 'plugins_loaded', array( $this, 'maybe_load_plugin' ) );
+        add_action( 'plugins_loaded', [ $this, 'maybe_load_plugin' ] );
     }
 
     public function maybe_load_plugin() {
@@ -59,7 +60,7 @@ class Plugin extends Simple_Plugin implements Registerable, Service_Provider {
             return;
         }
 
-        add_action( 'init', array( $this, 'load_textdomain' ) );
+        add_action( 'init', [ $this, 'load_textdomain' ] );
 
         Util::register_services( $this->services );
     }

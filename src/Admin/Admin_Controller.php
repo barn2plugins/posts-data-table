@@ -21,7 +21,7 @@ class Admin_Controller implements Registerable, Service {
 
     public function __construct( Plugin $plugin ) {
         $this->plugin        = $plugin;
-        $this->settings_page = new Settings_Page();
+        $this->settings_page = new Settings_Page( $plugin );
     }
 
     public function register() {
