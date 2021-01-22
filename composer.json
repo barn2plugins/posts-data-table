@@ -1,7 +1,7 @@
 {
     "name": "barn2/posts-data-table",
     "description": "Posts Table with Search and Sort plugin for WordPress.",
-    "type": "project",
+    "type": "wordpress-plugin",
     "license": "GPL-3.0",
     "authors": [
         {

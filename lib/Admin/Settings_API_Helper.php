@@ -5,31 +5,34 @@ namespace Barn2\PTS_Lib\Admin;
  * Helper functions for the WordPress Settings API.
  *
  * @package   Barn2\barn2-lib
- * @author    Barn2 Plugins <info@barn2.co.uk>
+ * @author    Barn2 Plugins <support@barn2.co.uk>
  * @license   GPL-3.0
  * @copyright Barn2 Media Ltd
- * @version   1.2
+ * @version   1.3.3
  */
 class Settings_API_Helper {
 
     public static function add_settings_section( $section, $page, $title, $description_callback, $settings = false ) {
-        if ( ! \is_callable( $description_callback ) ) {
+        if ( ! is_callable( $description_callback ) ) {
             $description_callback = '__return_false';
         }
-        \add_settings_section( $section, $title, $description_callback, $page );
+
+        add_settings_section( $section, $title, $description_callback, $page );
         self::add_settings_fields( $settings, $section, $page );
     }
 
     public static function add_settings_fields( $settings, $section, $page ) {
-        if ( ! $settings || ! \is_array( $settings ) ) {
+        if ( ! $settings || ! is_array( $settings ) ) {
             return;
         }
+
         foreach ( $settings as $setting ) {
-            if ( ! \is_array( $setting ) || empty( $setting['id'] ) ) {
+            if ( ! is_array( $setting ) || empty( $setting['id'] ) ) {
                 continue;
             }
 
-            $args = \wp_parse_args( $setting, \array_fill_keys( array( 'id', 'type', 'desc', 'label', 'title', 'class', 'field_class', 'default', 'suffix', 'custom_attributes' ), '' ) );
+            $args = wp_parse_args( $setting, array_fill_keys( array( 'id', 'type', 'desc', 'label', 'title', 'class', 'field_class', 'default', 'suffix',
+                'custom_attributes' ), '' ) );
 
             $args['input_class'] = $args['class'];
             unset( $args['class'] );
@@ -39,8 +42,8 @@ class Settings_API_Helper {
 
             $setting_callback = array( __CLASS__, 'settings_field_' . $args['type'] );
 
-            if ( \is_callable( $setting_callback ) ) {
-                \add_settings_field( $args['id'], $args['title'], $setting_callback, $page, $section, $args );
+            if ( is_callable( $setting_callback ) ) {
+                add_settings_field( $args['id'], $args['title'], $setting_callback, $page, $section, $args );
             }
         }
     }
@@ -49,9 +52,9 @@ class Settings_API_Helper {
         $class = ! empty( $args['input_class'] ) ? $args['input_class'] : 'regular-text';
         $type  = ! empty( $args['type'] ) ? $args['type'] : 'text';
         ?>
-        <input id="<?php echo \esc_attr( $args['id'] ); ?>" name="<?php echo \esc_attr( $args['id'] ); ?>" class="<?php echo \esc_attr( $class ); ?>" type="<?php echo \esc_attr( $type ); ?>" value="<?php echo \esc_attr( self::get_value( $args['id'], $args['default'] ) ); ?>"<?php self::custom_attributes( $args ); ?>/><?php
+        <input id="<?php echo esc_attr( $args['id'] ); ?>" name="<?php echo esc_attr( $args['id'] ); ?>" class="<?php echo esc_attr( $class ); ?>" type="<?php echo esc_attr( $type ); ?>" value="<?php echo esc_attr( self::get_value( $args['id'], $args['default'] ) ); ?>"<?php self::custom_attributes( $args ); ?> /><?php
         if ( ! empty( $args['suffix'] ) ) {
-            echo ' ' . \esc_html( $args['suffix'] );
+            echo ' ' . esc_html( $args['suffix'] );
         }
         self::field_description( $args );
     }
@@ -64,9 +67,9 @@ class Settings_API_Helper {
 
     public static function settings_field_textarea( $args ) {
         $class = ! empty( $args['input_class'] ) ? $args['input_class'] : 'large-text';
-        $rows  = isset( $args['rows'] ) ? \absint( $args['rows'] ) : 4;
+        $rows  = isset( $args['rows'] ) ? absint( $args['rows'] ) : 4;
         ?>
-        <textarea id="<?php echo \esc_attr( $args['id'] ); ?>" name="<?php echo \esc_attr( $args['id'] ); ?>" class="<?php echo \esc_attr( $class ); ?>" rows="<?php echo \esc_attr( $rows ); ?>"<?php self::custom_attributes( $args ); ?>><?php echo \esc_textarea( self::get_value( $args['id'], $args['default'] ) ); ?></textarea>
+        <textarea id="<?php echo esc_attr( $args['id'] ); ?>" name="<?php echo esc_attr( $args['id'] ); ?>" class="<?php echo esc_attr( $class ); ?>" rows="<?php echo esc_attr( $rows ); ?>"<?php self::custom_attributes( $args ); ?>><?php echo esc_textarea( self::get_value( $args['id'], $args['default'] ) ); ?></textarea>
         <?php
         self::field_description( $args );
     }
@@ -74,13 +77,13 @@ class Settings_API_Helper {
     public static function settings_field_select( $args ) {
         $current_value = self::get_value( $args['id'], $args['default'] );
         ?>
-        <select id="<?php echo \esc_attr( $args['id'] ); ?>" name="<?php echo \esc_attr( $args['id'] ); ?>" class="<?php echo \esc_attr( $args['input_class'] ); ?>"<?php self::custom_attributes( $args ); ?>>
+        <select id="<?php echo esc_attr( $args['id'] ); ?>" name="<?php echo esc_attr( $args['id'] ); ?>" class="<?php echo esc_attr( $args['input_class'] ); ?>"<?php self::custom_attributes( $args ); ?>>
             <?php foreach ( $args['options'] as $value => $option ) : ?>
-                <option value="<?php echo \esc_attr( $value ); ?>"<?php \selected( $value, $current_value ); ?>><?php echo \esc_html( $option ); ?></option>
+                <option value="<?php echo esc_attr( $value ); ?>"<?php selected( $value, $current_value ); ?>><?php echo esc_html( $option ); ?></option>
             <?php endforeach; ?>
         </select><?php
         if ( ! empty( $args['suffix'] ) ) {
-            echo ' ' . \esc_html( $args['suffix'] );
+            echo ' ' . esc_html( $args['suffix'] );
         }
         self::field_description( $args );
     }
@@ -89,24 +92,94 @@ class Settings_API_Helper {
         $current_value = self::get_value( $args['id'], $args['default'] );
         ?>
         <fieldset>
-            <legend class="screen-reader-text"><?php echo \esc_html( $args['title'] ); ?></legend>
-            <label for="<?php echo \esc_attr( $args['id'] ); ?>">
-                <input id="<?php echo \esc_attr( $args['id'] ); ?>" name="<?php echo \esc_attr( $args['id'] ); ?>" class="<?php echo \esc_attr( $args['input_class'] ); ?>" type="checkbox"<?php \checked( $current_value ); ?> value="1"<?php self::custom_attributes( $args ); ?>/>
-                <?php
-                if ( ! empty( $args['label'] ) ) {
-                    echo \esc_html( $args['label'] );
-                }
-                ?>
+            <legend class="screen-reader-text"><span><?php echo esc_html( $args['title'] ); ?></span></legend>
+            <label for="<?php echo esc_attr( $args['id'] ); ?>">
+                <input type="checkbox" id="<?php echo esc_attr( $args['id'] ); ?>" name="<?php echo esc_attr( $args['id'] ); ?>" class="<?php echo esc_attr( $args['input_class'] ); ?>"<?php checked( $current_value ); ?> value="1"<?php self::custom_attributes( $args ); ?> />
+                <?php echo esc_html( $args['label'] ); ?>
             </label>
+            <?php self::field_description( $args ); ?>
         </fieldset>
-        <?php self::field_description( $args ); ?>
+        <?php
+    }
+
+    public static function settings_field_radio( $args ) {
+        $current_value = self::get_value( $args['id'], $args['default'] );
+        ?>
+        <fieldset>
+            <legend class="screen-reader-text"><span><?php echo esc_html( $args['title'] ); ?></span></legend>
+            <?php foreach ( $args['options'] as $value => $label ) : ?>
+                <label>
+                    <input type="radio" id="<?php echo esc_attr( $args['id'] ); ?>" name="<?php echo esc_attr( $args['id'] ); ?>" class="<?php echo esc_attr( $args['input_class'] ); ?>"<?php checked( $value, $current_value ); ?> value="<?php echo esc_attr( $value ); ?>"<?php self::custom_attributes( $args ); ?> />
+                    <?php echo esc_html( $label ); ?>
+                </label><br/>
+            <?php endforeach; ?>
+            <?php self::field_description( $args ); ?>
+        </fieldset>
         <?php
     }
 
     public static function settings_field_hidden( $args ) {
         ?>
-        <input type="hidden" name="<?php echo \esc_attr( $args['id'] ); ?>" value="<?php echo \esc_attr( $args['default'] ); ?>" />
+        <input type="hidden" name="<?php echo esc_attr( $args['id'] ); ?>" value="<?php echo esc_attr( $args['default'] ); ?>"<?php self::custom_attributes( $args ); ?> />
         <?php
+    }
+
+    public static function settings_field_color( $args ) {
+        $current_value = self::get_value( $args['id'], $args['default'] );
+        ?>
+        <div class="color-field">
+            <input
+                type="text"
+                name="<?php echo esc_attr( $args['id'] ); ?>"
+                id="<?php echo esc_attr( $args['id'] ); ?>"
+                class="color-picker"
+                value="<?php echo esc_attr( $current_value ); ?>" />
+
+            <?php self::field_description( $args ); ?>
+        </div>
+        <?php
+    }
+
+    public static function settings_field_color_size( $args ) {
+        $current_value = self::get_value( $args['id'], $args['default'] );
+
+        $color_id    = $args['id'] . '[color]';
+        $color_value = isset( $current_value['color'] ) ? $current_value['color'] : '';
+
+        $size_id          = $args['id'] . '[size]';
+        $size_value       = isset( $current_value['size'] ) ? $current_value['size'] : '';
+        $size_placeholder = ! empty( $args['placeholder'] ) ? $args['placeholder'] : __( 'Size', 'posts-data-table' );
+
+        if ( empty( $args['custom_attributes'] ) ) {
+            $args['custom_attributes'] = [];
+        }
+
+        $args['custom_attributes'] = array_merge( [ 'min' => 0, 'size' => 4 ], $args['custom_attributes'] );
+        $size_attributes           = self::get_custom_attributes( $args );
+        ?>
+        <div class="color-size-field">
+            <input
+                type="text"
+                name="<?php echo esc_attr( $color_id ); ?>"
+                id="<?php echo esc_attr( $color_id ); ?>"
+                class="color-picker"
+                value="<?php echo esc_attr( $color_value ); ?>" />
+            <input
+                type="number"
+                name="<?php echo esc_attr( $size_id ); ?>"
+                id="<?php echo esc_attr( $size_id ); ?>"
+                class="color-size"
+                value="<?php echo esc_attr( $size_value ); ?>"
+                placeholder="<?php echo esc_attr( $size_placeholder ); ?>"
+                <?php echo $size_attributes; ?> />
+
+            <?php self::field_description( $args ); ?>
+        </div>
+        <?php
+    }
+
+    public static function settings_field_help_note( $args ) {
+        self::field_description( $args );
     }
 
     private static function field_description( $args ) {
@@ -121,28 +194,29 @@ class Settings_API_Helper {
 
     private static function get_custom_attributes( $args ) {
         if ( empty( $args['custom_attributes'] ) ) {
-            return;
+            return '';
         }
         $custom_atts = $args['custom_attributes'];
         $result      = '';
 
         foreach ( $custom_atts as $att => $value ) {
-            $result .= \sprintf( ' %s="%s"', \sanitize_key( $att ), \esc_attr( $value ) );
+            $result .= sprintf( ' %s="%s"', sanitize_key( $att ), esc_attr( $value ) );
         }
+
         return $result;
     }
 
     private static function get_value( $option, $default = false ) {
         $value        = '';
         $matches      = array();
-        $subkey_match = \preg_match( '/(\w+)\[(\w+)\]/U', $option, $matches );
+        $subkey_match = preg_match( '/(\w+)\[(\w+)\]/U', $option, $matches );
 
         if ( $subkey_match && isset( $matches[1], $matches[2] ) ) {
             $subkey        = $matches[2];
-            $parent_option = \get_option( $matches[1], array() );
+            $parent_option = get_option( $matches[1], array() );
             $value         = isset( $parent_option[$subkey] ) ? $parent_option[$subkey] : $default;
         } else {
-            $value = \get_option( $option, $default );
+            $value = get_option( $option, $default );
         }
 
         return $value;
