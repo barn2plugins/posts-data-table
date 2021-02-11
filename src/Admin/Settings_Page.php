@@ -74,7 +74,7 @@ class Settings_Page implements Registerable {
     public function render_settings_page() {
         ?>
         <div class="wrap barn2-settings barn2-settings-flex">
-            <?php do_action( 'barn2_before_plugin_settings' ); ?>
+            <?php do_action( 'barn2_before_plugin_settings', $this->plugin->get_id() ); ?>
             <div class="barn2-settings-inner">
                 <h1><?php _e( 'Posts Table with Search and Sort', 'posts-data-table' ); ?></h1>
                 <form action="options.php" method="post">
@@ -90,7 +90,7 @@ class Settings_Page implements Registerable {
                     </p>
                 </form>
             </div>
-            <?php do_action( 'barn2_after_plugin_settings' ); ?>
+            <?php do_action( 'barn2_after_plugin_settings', $this->plugin->get_id() ); ?>
         </div>
         <?php
     }
@@ -129,7 +129,7 @@ class Settings_Page implements Registerable {
                     'id'      => $args_setting . '[columns]',
                     'title'   => __( 'Columns', 'posts-data-table' ),
                     'type'    => 'text',
-                    'desc'    => __( 'The columns displayed in your table (comma-separated). ', 'posts-data-table' ),
+                    'desc'    => __( 'The columns displayed in your table. Enter a comma-separated list. ', 'posts-data-table' ),
                     'default' => $default_args['columns'],
                 ],
                 [
@@ -372,8 +372,8 @@ class Settings_Page implements Registerable {
         <p>
             <?php
             printf(
-                __( 'Posts tables display all published posts for the selected post type. To restrict the posts by category, tag, author, etc, set the relevant option in the [posts_table] shortcode. See the %splugin description%s for details.', 'posts-data-table' ),
-                '<a href="' . esc_url( 'https://wordpress.org/plugins/posts-data-table/#description-header' ) . '" target="_blank">',
+                __( 'Post tables list all published posts by default. To restrict posts by category, tag, author, etc. add the %1$scorresponding option%2$s to the [posts_table] shortcode.', 'posts-data-table' ),
+                Util::format_link_open( Util::barn2_url( 'kb-categories/posts-table-search-sort-free-kb/' ), true ),
                 '</a>'
             );
             ?>
@@ -386,8 +386,8 @@ class Settings_Page implements Registerable {
         <p>
             <?php
             printf(
-                __( 'You can override these options by setting the relevant option in the [posts_table] shortcode. See the %splugin description%s for details.', 'posts-data-table' ),
-                '<a href="' . esc_url( 'https://wordpress.org/plugins/posts-data-table/#description-header' ) . '" target="_blank">',
+                __( 'You can override these settings for individual tables by adding options to the [posts_table] shortcode. See the %1$sKnowledge Base%2$s for details.', 'posts-data-table' ),
+                Util::format_link_open( Util::barn2_url( 'kb-categories/posts-table-search-sort-free-kb/' ), true ),
                 '</a>'
             );
             ?>
