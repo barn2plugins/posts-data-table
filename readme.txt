@@ -3,7 +3,7 @@ Contributors: andykeith, barn2media
 Donate link: https://barn2.co.uk
 Tags: wordpress table plugin, data-table plugin, table plugin, table, wordpress table
 Requires at least: 4.8
-Tested up to: 5.6
+Tested up to: 5.7.1
 Requires PHP: 5.6
 Stable tag: 1.3.4
 License: GPL-3.0
@@ -57,9 +57,9 @@ To get started with this WordPress table plugin, simply add the shortcode `[post
 
 Translations for *Posts Table with Search & Sort* itself are currently provided for French, Spanish, German and Greek. This data-table plugin is WPML-compatible for content translation, so if you're using WPML, you'll be able to display post tables in whichever language you have set up.
 
-We make use of the [jQuery DataTables](http://datatables.net/) library to power the searching and sorting features.
+We make use of the jQuery DataTables library to power the searching and sorting features.
 
-[See the demo](https://barn2.co.uk/posts-table/) for examples of the plugin in action, and view the full [plugin documentation](https://barn2.co.uk/kb-categories/posts-table-search-sort-free-kb/) in our Knowledge Base.
+[See the demo](https://poststable-free.barn2.com) for examples of the plugin in action, and view the full [plugin documentation](https://barn2.co.uk/kb-categories/posts-table-search-sort-free-kb/) in our Knowledge Base.
 
 ### How to create your own WordPress Post Tables
 You can use *Posts Table with Search & Sort* to display your content in searchable and sortable tables. This has a huge range of use cases, from a simple archive of your posts, to previews of your content, to sorting by author, tags, date, and more.
@@ -73,7 +73,7 @@ You can also add options directly to the shortcode. This allows you to configure
 3. **List posts in a table with rows on one line** by using the parameter `wrap=false`. If selected columns no longer fit in the table, then a "+" icon will appear to the left of each row to allow access to the rest of the data: `[posts_data_table wrap="false" rows_per_page="5"]`
 4. **List posts in a table sortable by any column**. If the column does not appear in your table, it will be added as a hidden column at the end, so the ordering still works as expected. This example sorts each post by title. It also shows how to use `content_length` to set the number of words in the `content` column: `[posts_data_table sort_by="title" columns="date,author,title,content" content_length=5 rows_per_page="5"]`
 
-You can [see all of these in action on our demo site](https://barn2.co.uk/posts-table/), and do even more with [Posts Table Pro](https://barn2.co.uk/wordpress-plugins/posts-table-pro/?utm=content&utm_source=wporg&utm_content=posts-table-free), our premium plugin!
+You can see all of these in action [on the plugin demo](https://poststable-free.barn2.com), and do even more with [Posts Table Pro](https://barn2.co.uk/wordpress-plugins/posts-table-pro/?utm=content&utm_source=wporg&utm_content=posts-table-free), our premium plugin!
 
 Popular use cases for Pro take advantage of advanced features, including support for custom post types, advanced filtering, and media embed support, letting you [build your own WordPress document library](https://barn2.co.uk/wordpress-document-library-plugin/), [create a WordPress file manager](https://barn2.co.uk/wordpress-file-manager/), or create a [WordPress events table](https://barn2.co.uk/events-calendar-table-list/).
 
@@ -94,7 +94,7 @@ You can see some practical examples of how to build your own Post Tables above, 
 *  **`content_length`** - the number of words of post content to show in the table (if you've included the `content` column). Defaults to 15 words.
 *  **`scroll_offset`** - advanced: the table scrolls back to the top each time you navigate forward or backwards through the list of posts. This value controls the 'offset' for the scroll. For example, if your site uses a sticky header you can adjust the scroll amount here to compensate. Enter a whole number (e.g. 50) or set to `false` to disable scrolling to top.
 
-View the [full documentation](https://barn2.co.uk/kb-categories/posts-table-search-sort-free-kb/) in our Knowledge Base, and if you need more features have a look at [Posts Table Pro](https://barn2.co.uk/wordpress-plugins/posts-table-pro/?utm=content&utm_source=wporg&utm_content=posts-table-free).
+View the [full documentation](https://barn2.co.uk/kb-categories/posts-table-search-sort-free-kb/), checkout the [demo](https://poststable-free.barn2.com), and if you need more features have a look at [Posts Table Pro](https://barn2.co.uk/wordpress-plugins/posts-table-pro/?utm=content&utm_source=wporg&utm_content=posts-table-free).
 
 Thank you for using our WordPress table plugin :)
 
@@ -117,7 +117,7 @@ By default it will list all of your posts, but you can use the 'category', 'tag'
 See the main [plugin description](https://wordpress.org/plugins/posts-data-table/) above for the list of options.
 
 = Can I see a demo of the plugin? =
-Yes, please visit [our demo page](https://barn2.co.uk/posts-table/) to see the posts table in action.
+Yes, please visit [our plugin demo](https://poststable-free.barn2.com) to see the posts table in action.
 
 = Will the posts table work with my theme? =
 The plugin has been designed to work with different WordPress themes and will take the styling from your theme for the fonts etc. where possible.
