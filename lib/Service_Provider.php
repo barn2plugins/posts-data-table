@@ -6,7 +6,7 @@ namespace Barn2\PTS_Lib;
  * An object that provides services (instances of Barn2\PTS_Lib\Service).
  *
  * @package   Barn2\barn2-lib
- * @author    Barn2 Plugins <support@barn2.co.uk>
+ * @author    Barn2 Plugins <support@barn2.com>
  * @license   GPL-3.0
  * @copyright Barn2 Media Ltd
  * @version   1.1

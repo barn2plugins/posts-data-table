@@ -2,16 +2,17 @@
 namespace Barn2\PTS_Lib\Admin;
 
 use Barn2\PTS_Lib\Registerable,
-    Barn2\PTS_Lib\Plugin\Plugin;
+    Barn2\PTS_Lib\Plugin\Plugin,
+    Barn2\PTS_Lib\Util;
 
 /**
  * Provides functions to add the plugin promo to the plugin settings page in the WordPress admin.
  *
  * @package   Barn2\barn2-lib
- * @author    Barn2 Plugins <support@barn2.co.uk>
+ * @author    Barn2 Plugins <support@barn2.com>
  * @license   GPL-3.0
  * @copyright Barn2 Media Ltd
- * @version   1.0
+ * @version   1.1
  */
 class Plugin_Promo implements Registerable {
 
@@ -24,7 +25,7 @@ class Plugin_Promo implements Registerable {
     }
 
     public function register() {
-        add_action( 'barn2_after_plugin_settings', [ $this, 'render_promo' ] );
+        add_action( 'barn2_after_plugin_settings', [ $this, 'render_promo' ], 10, 1 );
         add_action( 'admin_enqueue_scripts', [ $this, 'load_styles' ] );
     }
 
@@ -32,7 +33,11 @@ class Plugin_Promo implements Registerable {
         wp_enqueue_style( 'barn2-promo', plugins_url( 'lib/assets/css/admin/plugin-promo.min.css', $this->plugin->get_file() ) );
     }
 
-    public function render_promo() {
+    public function render_promo( $plugin_id ) {
+        if ( $plugin_id !== $this->plugin_id ) {
+            return;
+        }
+
         $promo_content = $this->get_promo_content();
 
         if ( ! empty( $promo_content ) ) {
@@ -42,7 +47,7 @@ class Plugin_Promo implements Registerable {
 
     private function get_promo_content() {
         if ( ( $promo_content = get_transient( 'barn2_plugin_promo_' . $this->plugin_id ) ) === false ) {
-            $promo_response = wp_remote_get( 'https://barn2.co.uk/wp-json/barn2/v2/pluginpromo/' . $this->plugin_id . '?_=' . date( 'mdY' ) );
+            $promo_response = wp_remote_get( Util::barn2_url( '/wp-json/barn2/v2/pluginpromo/' . $this->plugin_id . '?_=' . date( 'mdY' ) ) );
 
             if ( wp_remote_retrieve_response_code( $promo_response ) != 200 ) {
                 return;

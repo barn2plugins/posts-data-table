@@ -1,16 +1,45 @@
 <?php
 namespace Barn2\PTS_Lib\Admin;
 
+use Barn2\PTS_Lib\Registerable,
+    Barn2\PTS_Lib\Conditional,
+    Barn2\PTS_Lib\Plugin\Plugin,
+    Barn2\PTS_Lib\Util,
+    Barn2\PTS_Lib\Admin\Settings_Scripts;
+
 /**
  * Helper functions for the WordPress Settings API.
  *
  * @package   Barn2\barn2-lib
- * @author    Barn2 Plugins <support@barn2.co.uk>
+ * @author    Barn2 Plugins <support@barn2.com>
  * @license   GPL-3.0
  * @copyright Barn2 Media Ltd
- * @version   1.3.3
+ * @version   1.4
  */
-class Settings_API_Helper {
+class Settings_API_Helper implements Registerable, Conditional {
+
+    /**
+     * @var Plugin The plugin object.
+     */
+    private $plugin;
+
+    /**
+     * @var Settings_Scripts Responsible for registering any additional settings scripts.
+     */
+    private $scripts;
+
+    public function __construct( Plugin $plugin ) {
+        $this->plugin  = $plugin;
+        $this->scripts = new Settings_Scripts( $plugin );
+    }
+
+    public function is_required() {
+        return Util::is_admin();
+    }
+
+    public function register() {
+        $this->scripts->register();
+    }
 
     public static function add_settings_section( $section, $page, $title, $description_callback, $settings = false ) {
         if ( ! is_callable( $description_callback ) ) {
@@ -56,12 +85,15 @@ class Settings_API_Helper {
         if ( ! empty( $args['suffix'] ) ) {
             echo ' ' . esc_html( $args['suffix'] );
         }
+        self::field_tooltip( $args );
         self::field_description( $args );
     }
 
     public static function settings_field_number( $args ) {
         $args['input_class'] = ! empty( $args['input_class'] ) ? $args['input_class'] : 'small-text';
         $args['type']        = 'number';
+
+        self::field_tooltip( $args );
         self::settings_field_text( $args );
     }
 
@@ -71,6 +103,7 @@ class Settings_API_Helper {
         ?>
         <textarea id="<?php echo esc_attr( $args['id'] ); ?>" name="<?php echo esc_attr( $args['id'] ); ?>" class="<?php echo esc_attr( $class ); ?>" rows="<?php echo esc_attr( $rows ); ?>"<?php self::custom_attributes( $args ); ?>><?php echo esc_textarea( self::get_value( $args['id'], $args['default'] ) ); ?></textarea>
         <?php
+        self::field_tooltip( $args );
         self::field_description( $args );
     }
 
@@ -81,10 +114,14 @@ class Settings_API_Helper {
             <?php foreach ( $args['options'] as $value => $option ) : ?>
                 <option value="<?php echo esc_attr( $value ); ?>"<?php selected( $value, $current_value ); ?>><?php echo esc_html( $option ); ?></option>
             <?php endforeach; ?>
-        </select><?php
+        </select>
+        <?php
+        self::field_tooltip( $args );
+
         if ( ! empty( $args['suffix'] ) ) {
             echo ' ' . esc_html( $args['suffix'] );
         }
+
         self::field_description( $args );
     }
 
@@ -116,6 +153,36 @@ class Settings_API_Helper {
             <?php self::field_description( $args ); ?>
         </fieldset>
         <?php
+        self::field_tooltip( $args );
+    }
+
+    public static function settings_field_multicheckbox( $args ) {
+        ?>
+        <fieldset>
+            <legend class="screen-reader-text"><?php echo esc_html( $args['title'] ); ?></legend>
+            <?php
+            foreach ( $args['options'] as $value => $option ) :
+                $current_value = self::get_value( sprintf( '%1$s[%2$s]', $args['id'], $value ), $args['default'][$value] );
+                ?>
+                <label for="<?php echo esc_attr( sprintf( '%1$s-%2$s', $args['id'], $value ) ); ?>">
+                    <input
+                        id="<?php echo esc_attr( sprintf( '%1$s-%2$s', $args['id'], $value ) ); ?>"
+                        name="<?php echo esc_attr( sprintf( '%1$s[%2$s]', $args['id'], $value ) ); ?>"
+                        class="<?php echo esc_attr( $args['input_class'] ); ?>"
+                        type="checkbox"
+                        <?php checked( $current_value ); ?>
+                        value="1"
+                        <?php self::custom_attributes( $args ); ?>
+                        />
+                        <?php echo esc_html( $option ); ?>
+                </label>
+                <br>
+            <?php endforeach; ?>
+
+        </fieldset>
+        <?php
+        self::field_description( $args );
+        self::field_tooltip( $args );
     }
 
     public static function settings_field_hidden( $args ) {
@@ -125,6 +192,9 @@ class Settings_API_Helper {
     }
 
     public static function settings_field_color( $args ) {
+        wp_enqueue_script( 'wp-color-picker' );
+        wp_enqueue_style( 'wp-color-picker' );
+
         $current_value = self::get_value( $args['id'], $args['default'] );
         ?>
         <div class="color-field">
@@ -141,6 +211,9 @@ class Settings_API_Helper {
     }
 
     public static function settings_field_color_size( $args ) {
+        wp_enqueue_script( 'wp-color-picker' );
+        wp_enqueue_style( 'wp-color-picker' );
+
         $current_value = self::get_value( $args['id'], $args['default'] );
 
         $color_id    = $args['id'] . '[color]';
@@ -186,6 +259,31 @@ class Settings_API_Helper {
         if ( ! empty( $args['desc'] ) ) {
             echo '<p class="description">' . $args['desc'] . '</p>';
         }
+    }
+
+    private static function field_tooltip( $args ) {
+        if ( ! empty( $args['desc_tip'] ) ) {
+            wp_enqueue_script( 'barn2-tiptip' );
+
+            $tip = self::sanitize_tooltip( $args['desc_tip'] );
+
+            echo '<span class="barn2-help-tip" data-tip="' . $tip . '"></span>';
+        }
+    }
+
+    private static function sanitize_tooltip( $content ) {
+        return htmlspecialchars( wp_kses( html_entity_decode( $content ), array(
+            'br'     => [],
+            'em'     => [],
+            'strong' => [],
+            'small'  => [],
+            'span'   => [],
+            'ul'     => [],
+            'li'     => [],
+            'ol'     => [],
+            'p'      => [],
+            'a'      => [],
+            ) ) );
     }
 
     private static function custom_attributes( $args ) {

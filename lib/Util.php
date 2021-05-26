@@ -5,20 +5,21 @@ namespace Barn2\PTS_Lib;
  * Utility functions for Barn2 plugins.
  *
  * @package   Barn2\barn2-lib
- * @author    Barn2 Plugins <support@barn2.co.uk>
+ * @author    Barn2 Plugins <support@barn2.com>
  * @license   GPL-3.0
  * @copyright Barn2 Media Ltd
- * @version   1.4.8
+ * @version   1.5.1
  */
 class Util {
 
-    const EDD_STORE_URL      = 'https://barn2.co.uk';
-    const KNOWLEDGE_BASE_URL = 'https://barn2.co.uk';
+    const BARN2_URL          = 'https://barn2.com';
+    const EDD_STORE_URL      = 'https://barn2.com';
+    const KNOWLEDGE_BASE_URL = 'https://barn2.com';
 
     /**
      * Formats a HTML link to a path on the Barn2 site.
      *
-     * @param string $relative_path The path relative to https://barn2.co.uk.
+     * @param string $relative_path The path relative to https://barn2.com.
      * @param string $link_text The link text.
      * @param boolean $new_tab Whether to open the link in a new tab.
      * @return string The hyperlink.
@@ -31,7 +32,11 @@ class Util {
     }
 
     public static function barn2_url( $relative_path ) {
-        return esc_url( 'https://barn2.co.uk/' . ltrim( $relative_path, '/' ) );
+        return esc_url( trailingslashit( self::BARN2_URL ) . ltrim( $relative_path, '/' ) );
+    }
+
+    public static function format_barn2_link_open( $relative_path, $new_tab = false ) {
+        return self::format_link_open( self::barn2_url( $relative_path ), $new_tab );
     }
 
     public static function format_link( $url, $link_text, $new_tab = false ) {
@@ -43,16 +48,16 @@ class Util {
         return sprintf( '<a href="%1$s"%2$s>', esc_url( $url ), $target );
     }
 
-    public static function format_store_url( $path = '' ) {
-        return self::EDD_STORE_URL . '/' . ltrim( $path, ' /' );
+    public static function store_url( $relative_path ) {
+        return self::EDD_STORE_URL . '/' . ltrim( $relative_path, ' /' );
     }
 
-    public static function format_store_link( $path, $link_text, $new_tab = true ) {
-        return self::format_link( self::format_store_url( $path ), $link_text, $new_tab );
+    public static function format_store_link( $relative_path, $link_text, $new_tab = true ) {
+        return self::format_link( self::store_url( $relative_path ), $link_text, $new_tab );
     }
 
-    public static function format_store_link_open( $path, $new_tab = true ) {
-        return self::format_link_open( self::format_store_url( $path ), $new_tab );
+    public static function format_store_link_open( $relative_path, $new_tab = true ) {
+        return self::format_link_open( self::store_url( $relative_path ), $new_tab );
     }
 
     public static function get_add_to_cart_url( $download_id, $price_id = 0, $discount_code = '' ) {
@@ -67,7 +72,7 @@ class Util {
             $args['discount'] = $discount_code;
         }
 
-        return self::format_store_url( '?' . http_build_query( $args ) );
+        return self::store_url( '?' . http_build_query( $args ) );
     }
 
     public static function is_admin() {
@@ -136,7 +141,7 @@ class Util {
     }
 
     public static function register_services( $services ) {
-        array_map( function( $service ) {
+        array_map( function ( $service ) {
             if ( ( $service instanceof Conditional ) && ! $service->is_required() ) {
                 return;
             }
@@ -147,6 +152,13 @@ class Util {
                 $service->schedule();
             }
         }, $services );
+    }
+
+    /**
+     * @deprecated 1.5 Renamed store_url
+     */
+    public static function format_store_url( $relative_path ) {
+        return self::store_url( $relative_path );
     }
 
 }

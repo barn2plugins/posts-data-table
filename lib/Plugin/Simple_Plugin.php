@@ -8,7 +8,7 @@ use Barn2\PTS_Lib\Util;
  * WordPress plugin (ID, version number, etc). Data is passed as an array on construction.
  *
  * @package   Barn2\barn2-lib
- * @author    Barn2 Plugins <support@barn2.co.uk>
+ * @author    Barn2 Plugins <support@barn2.com>
  * @license   GPL-3.0
  * @copyright Barn2 Media Ltd
  * @version   1.2
