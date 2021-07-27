@@ -1,5 +1,14 @@
 <?php
+
 namespace Barn2\PTS_Lib;
+
+use Barn2\Plugin\WC_Quick_View_Pro\Quick_View_Plugin,
+    WC_Product_Table_Plugin,
+    WC_Protected_Categories_Plugin;
+use function Barn2\Plugin\WC_Product_Table\wpt;
+use function Barn2\Plugin\WC_Protected_Categories\wpc;
+use function Barn2\Plugin\WC_Quick_View_Pro\wqv;
+use function Barn2\Plugin\WC_Restaurant_Ordering\wro;
 
 /**
  * Utility functions for Barn2 plugins.
@@ -12,8 +21,8 @@ namespace Barn2\PTS_Lib;
  */
 class Util {
 
-    const BARN2_URL          = 'https://barn2.com';
-    const EDD_STORE_URL      = 'https://barn2.com';
+    const BARN2_URL = 'https://barn2.com';
+    const EDD_STORE_URL = 'https://barn2.com';
     const KNOWLEDGE_BASE_URL = 'https://barn2.com';
 
     /**
@@ -101,11 +110,11 @@ class Util {
 
     public static function is_protected_categories_active() {
         if ( function_exists( '\Barn2\Plugin\WC_Protected_Categories\wpc' ) ) {
-            return \Barn2\Plugin\WC_Protected_Categories\wpc()->has_valid_license();
+            return wpc()->has_valid_license();
         } else {
             if ( class_exists( '\WC_Protected_Categories_Plugin' ) ) {
-                if ( method_exists( \WC_Protected_Categories_Plugin::instance(), 'has_valid_license' ) ) {
-                    return \WC_Protected_Categories_Plugin::instance()->has_valid_license();
+                if ( method_exists( WC_Protected_Categories_Plugin::instance(), 'has_valid_license' ) ) {
+                    return WC_Protected_Categories_Plugin::instance()->has_valid_license();
                 }
                 return true;
             }
@@ -115,10 +124,10 @@ class Util {
 
     public static function is_product_table_active() {
         if ( function_exists( '\Barn2\Plugin\WC_Product_Table\wpt' ) ) {
-            return \Barn2\Plugin\WC_Product_Table\wpt()->has_valid_license();
+            return wpt()->has_valid_license();
         } elseif ( class_exists( '\WC_Product_Table_Plugin' ) ) {
-            if ( method_exists( \WC_Product_Table_Plugin::instance(), 'has_valid_license' ) ) {
-                return \WC_Product_Table_Plugin::instance()->has_valid_license();
+            if ( method_exists( WC_Product_Table_Plugin::instance(), 'has_valid_license' ) ) {
+                return WC_Product_Table_Plugin::instance()->has_valid_license();
             }
             return true;
         }
@@ -127,13 +136,21 @@ class Util {
 
     public static function is_quick_view_pro_active() {
         if ( function_exists( '\Barn2\Plugin\WC_Quick_View_Pro\wqv' ) ) {
-            return \Barn2\Plugin\WC_Quick_View_Pro\wqv()->has_valid_license();
+            return wqv()->has_valid_license();
         } else {
             if ( class_exists( '\Barn2\Plugin\WC_Quick_View_Pro\Quick_View_Plugin' ) ) {
-                return \Barn2\Plugin\WC_Quick_View_Pro\Quick_View_Plugin::instance()->has_valid_license();
+                return Quick_View_Plugin::instance()->has_valid_license();
             }
             return false;
         }
+    }
+
+    public static function is_restaurant_ordering_active() {
+        if ( function_exists( '\Barn2\Plugin\WC_Restaurant_Ordering\wro' ) ) {
+            return wro()->has_valid_license();
+        }
+
+        return false;
     }
 
     public static function get_script_suffix() {
