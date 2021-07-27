@@ -5,7 +5,7 @@ Tags: wordpress table plugin, data-table plugin, table plugin, table, wordpress 
 Requires at least: 4.8
 Tested up to: 5.8
 Requires PHP: 5.6
-Stable tag: 1.3.4
+Stable tag: 1.3.5
 License: GPL-3.0
 License URI: https://www.gnu.org/licenses/gpl.html
 
@@ -164,10 +164,11 @@ Please visit our [Knowledge Base](https://barn2.co.uk/kb-categories/posts-table-
 
 == Changelog ==
 
-= 1.3.4 =
-Release date 22 January 2020
+= 1.3.5 =
+Release date 27 January 2021
 
- * Fixed the 'search on click' feature.
- * Updated plugin settings page.
+ * Added missing Conditional interface
+
+<!-- more -->
 
 See changelog.txt for more details.
