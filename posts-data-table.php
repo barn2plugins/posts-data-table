@@ -35,7 +35,11 @@ const PLUGIN_FILE    = __FILE__;
 // Autoloader.
 require_once __DIR__ . '/vendor/autoload.php';
 
-// Helper function to access the shared plugin instance.
+/**
+ * Helper function to access the shared plugin instance.
+ *
+ * @return Plugin
+ */
 function posts_table_search_sort() {
 	return Plugin_Factory::create( PLUGIN_FILE, PLUGIN_VERSION );
 }

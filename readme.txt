@@ -5,7 +5,7 @@ Tags: wordpress table plugin, data-table plugin, table plugin, table, wordpress 
 Requires at least: 5.0
 Tested up to: 5.8.1
 Requires PHP: 5.6
-Stable tag: 1.3.6-B1
+Stable tag: 1.3.6
 License: GPL-3.0
 License URI: https://www.gnu.org/licenses/gpl.html
 
@@ -169,7 +169,5 @@ Release date 8 October 2021
 
  * Minor code improvements.
  * Tested up to WordPress 5.8.1
-
-<!-- more -->
 
 See changelog.txt for more details.
