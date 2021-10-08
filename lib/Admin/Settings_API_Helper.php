@@ -157,29 +157,30 @@ class Settings_API_Helper implements Registerable, Conditional {
     }
 
     public static function settings_field_multicheckbox( $args ) {
+        $current_value = self::get_value( $args['id'], $args['default'] );
         ?>
+
         <fieldset>
             <legend class="screen-reader-text"><?php echo esc_html( $args['title'] ); ?></legend>
-            <?php
-            foreach ( $args['options'] as $value => $option ) :
-                $current_value = self::get_value( sprintf( '%1$s[%2$s]', $args['id'], $value ), $args['default'][$value] );
-                ?>
+
+            <?php foreach ( $args['options'] as $value => $option ) : ?>
+
                 <label for="<?php echo esc_attr( sprintf( '%1$s-%2$s', $args['id'], $value ) ); ?>">
+
                     <input
                         id="<?php echo esc_attr( sprintf( '%1$s-%2$s', $args['id'], $value ) ); ?>"
                         name="<?php echo esc_attr( sprintf( '%1$s[%2$s]', $args['id'], $value ) ); ?>"
                         class="<?php echo esc_attr( $args['input_class'] ); ?>"
                         type="checkbox"
-                        <?php checked( $current_value ); ?>
+                        <?php checked( $current_value[ $value ] ); ?>
                         value="1"
                         <?php self::custom_attributes( $args ); ?>
-                        />
-                        <?php echo esc_html( $option ); ?>
-                </label>
-                <br>
+                    />
+                    <?php echo esc_html( $option ); ?>
+                </label><br>
             <?php endforeach; ?>
-
         </fieldset>
+
         <?php
         self::field_description( $args );
         self::field_tooltip( $args );

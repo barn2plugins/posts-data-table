@@ -4,7 +4,8 @@ namespace Barn2\PTS_Lib;
 
 use Barn2\Plugin\WC_Quick_View_Pro\Quick_View_Plugin,
     WC_Product_Table_Plugin,
-    WC_Protected_Categories_Plugin;
+    WC_Protected_Categories_Plugin,
+    Barn2\PTS_Lib\Plugin\Plugin;
 use function Barn2\Plugin\WC_Product_Table\wpt;
 use function Barn2\Plugin\WC_Protected_Categories\wpc;
 use function Barn2\Plugin\WC_Quick_View_Pro\wqv;
@@ -178,4 +179,25 @@ class Util {
         return self::store_url( $relative_path );
     }
 
+    /**
+     * Retrieves an array of internal WP dependencies for bundled JS files.
+     *
+     * @param Barn2\PTS_Lib\Plugin $plugin
+     * @param string $filename
+     * @return array
+     */
+    public static function get_script_dependencies( $plugin, $filename ) {
+        $script_dependencies_file = $plugin->get_dir_path() . 'assets/js/wp-dependencies.php';
+        $script_dependencies = file_exists( $script_dependencies_file ) ? require( $script_dependencies_file ) : false;
+
+        if ( $script_dependencies === false ) {
+            return [];
+        }
+
+        if ( ! isset( $script_dependencies[ $filename ] ) ) {
+            return [];
+        }
+
+        return $script_dependencies[ $filename ]['dependencies'];
+    }
 }

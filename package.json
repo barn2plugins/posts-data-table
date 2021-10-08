@@ -1,6 +1,6 @@
 {
     "name": "posts-data-table",
-    "version": "1.3.4",
+    "version": "1.3.6",
     "description": "Posts Table with Search and Sort plugin for WordPress.",
     "main": "gulpfile.js",
     "directories": {
@@ -13,7 +13,7 @@
         "type": "git",
         "url": "git+https://github.com/Barn2Media/posts-data-table.git"
     },
-    "author": "Barn2 Plugins <support@barn2.co.uk>",
+    "author": "Barn2 Plugins <support@barn2.com>",
     "license": "GPL-3.0",
     "bugs": {
         "url": "https://github.com/Barn2Media/posts-data-table/issues"
