@@ -1,11 +1,11 @@
 === Posts Table with Search & Sort ===
 Contributors: andykeith, barn2media
-Donate link: https://barn2.co.uk
+Donate link: https://barn2.com
 Tags: wordpress table plugin, data-table plugin, table plugin, table, wordpress table
-Requires at least: 4.8
-Tested up to: 5.8
+Requires at least: 5.0
+Tested up to: 5.8.1
 Requires PHP: 5.6
-Stable tag: 1.3.5
+Stable tag: 1.3.6-B1
 License: GPL-3.0
 License URI: https://www.gnu.org/licenses/gpl.html
 
@@ -32,9 +32,9 @@ To get started with this WordPress table plugin, simply add the shortcode `[post
 * Display WordPress blog posts in a simple HTML table.
 * WPML compatible for international translations.
 
-**[Posts Table Pro](https://barn2.co.uk/wordpress-plugins/posts-table-pro/?utm=content&utm_source=wporg&utm_content=posts-table-free) - our premium version adds lots more functionality:**
+**[Posts Table Pro](https://barn2.com/wordpress-plugins/posts-table-pro/?utm=content&utm_source=wporg&utm_content=posts-table-free) - our premium version adds lots more functionality:**
 
-[View free & pro comparison table](https://barn2.co.uk/kb/posts-table-free-pro-comparison/)
+[View free & pro comparison table](https://barn2.com/kb/posts-table-free-pro-comparison/)
 
 * Display posts, pages, or any custom post type (e.g. documents, audio, music, courses, products, staff and member directories, publications, articles, books, etc).
 * Add extra columns: custom fields, custom taxonomies, post excerpts, status.
@@ -45,21 +45,21 @@ To get started with this WordPress table plugin, simply add the shortcode `[post
 * Advanced Custom Fields and ACF Pro support.
 * Enable AJAX to reduce server load.
 * 100% responsive, with options to control how behaviour on different screen sizes and devices.
-* Support for advanced use cases such as how to create [compelling tables for your blog](https://barn2.co.uk/wordpress-post-table/), a [WordPress document library](https://barn2.co.uk/wordpress-document-library-plugin/), [member directory](https://barn2.co.uk/wordpress-member-directory-plugin/), [audio gallery](https://barn2.co.uk/wordpress-audio-library/), or an [intranet for your organization](https://barn2.co.uk/wordpress-intranet-plugins/).
-* [And much more...](https://barn2.co.uk/our-wordpress-plugins/posts-table-pro-features/)
+* Support for advanced use cases such as how to create [compelling tables for your blog](https://barn2.com/wordpress-post-table/), a [WordPress document library](https://barn2.com/wordpress-document-library-plugin/), [member directory](https://barn2.com/wordpress-member-directory-plugin/), [audio gallery](https://barn2.com/wordpress-audio-library/), or an [intranet for your organization](https://barn2.com/wordpress-intranet-plugins/).
+* [And much more...](https://barn2.com/our-wordpress-plugins/posts-table-pro-features/)
 
-**[WooCommerce Product Table](https://barn2.co.uk/wordpress-plugins/woocommerce-product-table/?utm=content&utm_source=wporg&utm_content=posts-table-free) - create product tables from your WooCommerce store:**
+**[WooCommerce Product Table](https://barn2.com/wordpress-plugins/woocommerce-product-table/?utm=content&utm_source=wporg&utm_content=posts-table-free) - create product tables from your WooCommerce store:**
 
 * Include Add to Cart buttons, quantity, price, reviews, stock level, categories, tags, weight, dimensions, and more.
 * Full support for WooCommerce products and stores.
 * Create custom order forms which increase your conversion rate!
-* Support for advanced use cases such as [restaurant ordering systems](https://barn2.co.uk/online-restaurant-ordering-system-woocommerce/), [events calendars](https://barn2.co.uk/woocommerce-events/), and [advanced order forms](https://barn2.co.uk/woocommerce-order-form-plugin/).
+* Support for advanced use cases such as [restaurant ordering systems](https://barn2.com/online-restaurant-ordering-system-woocommerce/), [events calendars](https://barn2.com/woocommerce-events/), and [advanced order forms](https://barn2.com/woocommerce-order-form-plugin/).
 
 Translations for *Posts Table with Search & Sort* itself are currently provided for French, Spanish, German and Greek. This data-table plugin is WPML-compatible for content translation, so if you're using WPML, you'll be able to display post tables in whichever language you have set up.
 
 We make use of the jQuery DataTables library to power the searching and sorting features.
 
-[See the demo](https://poststable-free.barn2.com) for examples of the plugin in action, and view the full [plugin documentation](https://barn2.co.uk/kb-categories/posts-table-search-sort-free-kb/) in our Knowledge Base.
+[See the demo](https://poststable-free.barn2.com) for examples of the plugin in action, and view the full [plugin documentation](https://barn2.com/kb-categories/posts-table-search-sort-free-kb/) in our Knowledge Base.
 
 ### How to create your own WordPress Post Tables
 You can use *Posts Table with Search & Sort* to display your content in searchable and sortable tables. This has a huge range of use cases, from a simple archive of your posts, to previews of your content, to sorting by author, tags, date, and more.
@@ -73,9 +73,9 @@ You can also add options directly to the shortcode. This allows you to configure
 3. **List posts in a table with rows on one line** by using the parameter `wrap=false`. If selected columns no longer fit in the table, then a "+" icon will appear to the left of each row to allow access to the rest of the data: `[posts_data_table wrap="false" rows_per_page="5"]`
 4. **List posts in a table sortable by any column**. If the column does not appear in your table, it will be added as a hidden column at the end, so the ordering still works as expected. This example sorts each post by title. It also shows how to use `content_length` to set the number of words in the `content` column: `[posts_data_table sort_by="title" columns="date,author,title,content" content_length=5 rows_per_page="5"]`
 
-You can see all of these in action [on the plugin demo](https://poststable-free.barn2.com), and do even more with [Posts Table Pro](https://barn2.co.uk/wordpress-plugins/posts-table-pro/?utm=content&utm_source=wporg&utm_content=posts-table-free), our premium plugin!
+You can see all of these in action [on the plugin demo](https://poststable-free.barn2.com), and do even more with [Posts Table Pro](https://barn2.com/wordpress-plugins/posts-table-pro/?utm=content&utm_source=wporg&utm_content=posts-table-free), our premium plugin!
 
-Popular use cases for Pro take advantage of advanced features, including support for custom post types, advanced filtering, and media embed support, letting you [build your own WordPress document library](https://barn2.co.uk/wordpress-document-library-plugin/), [create a WordPress file manager](https://barn2.co.uk/wordpress-file-manager/), or create a [WordPress events table](https://barn2.co.uk/events-calendar-table-list/).
+Popular use cases for Pro take advantage of advanced features, including support for custom post types, advanced filtering, and media embed support, letting you [build your own WordPress document library](https://barn2.com/wordpress-document-library-plugin/), [create a WordPress file manager](https://barn2.com/wordpress-file-manager/), or create a [WordPress events table](https://barn2.com/events-calendar-table-list/).
 
 ### Here's the full list of shortcode parameters you can use for this data-table plugin:
 
@@ -94,7 +94,7 @@ You can see some practical examples of how to build your own Post Tables above, 
 *  **`content_length`** - the number of words of post content to show in the table (if you've included the `content` column). Defaults to 15 words.
 *  **`scroll_offset`** - advanced: the table scrolls back to the top each time you navigate forward or backwards through the list of posts. This value controls the 'offset' for the scroll. For example, if your site uses a sticky header you can adjust the scroll amount here to compensate. Enter a whole number (e.g. 50) or set to `false` to disable scrolling to top.
 
-View the [full documentation](https://barn2.co.uk/kb-categories/posts-table-search-sort-free-kb/), checkout the [demo](https://poststable-free.barn2.com), and if you need more features have a look at [Posts Table Pro](https://barn2.co.uk/wordpress-plugins/posts-table-pro/?utm=content&utm_source=wporg&utm_content=posts-table-free).
+View the [full documentation](https://barn2.com/kb-categories/posts-table-search-sort-free-kb/), checkout the [demo](https://poststable-free.barn2.com), and if you need more features have a look at [Posts Table Pro](https://barn2.com/wordpress-plugins/posts-table-pro/?utm=content&utm_source=wporg&utm_content=posts-table-free).
 
 Thank you for using our WordPress table plugin :)
 
@@ -123,10 +123,10 @@ Yes, please visit [our plugin demo](https://poststable-free.barn2.com) to see th
 The plugin has been designed to work with different WordPress themes and will take the styling from your theme for the fonts etc. where possible.
 
 = Does the posts table work with custom post types? =
-No, it only displays standard Posts. Our [Pro Version](https://barn2.co.uk/wordpress-plugins/posts-table-pro/?utm=content&utm_source=wporg&utm_content=posts-table-free) supports custom post types, as well as taxonomies, custom fields, and much more.
+No, it only displays standard Posts. Our [Pro Version](https://barn2.com/wordpress-plugins/posts-table-pro/?utm=content&utm_source=wporg&utm_content=posts-table-free) supports custom post types, as well as taxonomies, custom fields, and much more.
 
 = Can I change the width of the columns? =
-The column widths are calculated automatically by the plugin, based on the contents of each column. However you can override this for one (or more) columns by setting an exact width. You would need to add some code to your theme (or in a custom plugin) to do this. The filter to hook into is `posts_data_table_column_defaults`. Here's an example setting the `title` column to 80px;
+The column widths are calculated automatically by the plugin, based on the contents of each column. However, you can override this for one (or more) columns by setting an exact width. You would need to add some code to your theme (or in a custom plugin) to do this. The filter to hook into is `posts_data_table_column_defaults`. Here's an example setting the `title` column to 80px;
 
 `
 add_filter( 'posts_data_table_column_defaults', 'posts_table_set_title_column_width' );
@@ -148,10 +148,10 @@ This is probably because you have a sticky header (your header sticks to the top
 If you have a multilingual site using WPML then the plugin will display your posts in the correct language automatically.
 
 = Can you customize the plugin for me? =
-We have developed this free plugin to be flexible and easy to configure so that it will be suitable for many different websites. If you would like to modify the plugin to suit your exact requirements, we would recommend [Codeable](https://barn2.co.uk/go/codeable)
+We have developed this free plugin to be flexible and easy to configure so that it will be suitable for many different websites. If you would like to modify the plugin to suit your exact requirements, we would recommend [Codeable](https://barn2.com/go/codeable)
 
 = Where can I find the documentation? =
-Please visit our [Knowledge Base](https://barn2.co.uk/kb-categories/posts-table-search-sort-free-kb/).
+Please visit our [Knowledge Base](https://barn2.com/kb-categories/posts-table-search-sort-free-kb/).
 
 == Screenshots ==
 
@@ -164,10 +164,11 @@ Please visit our [Knowledge Base](https://barn2.co.uk/kb-categories/posts-table-
 
 == Changelog ==
 
-= 1.3.5 =
-Release date 27 January 2021
+= 1.3.6 =
+Release date 8 October 2021
 
- * Added missing Conditional interface
+ * Minor code improvements.
+ * Tested up to WordPress 5.8.1
 
 <!-- more -->
 
