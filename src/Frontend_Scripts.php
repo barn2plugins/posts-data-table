@@ -78,6 +78,7 @@ class Frontend_Scripts implements Registerable, Service {
 				'de_CH' => $lang_file_base_url . 'German.json',
 				'el'    => $lang_file_base_url . 'Greek.json',
 				'el_EL' => $lang_file_base_url . 'Greek.json',
+				'zh_TW' => $lang_file_base_url . 'Taiwan.json',
 			]
 		);
 	}
