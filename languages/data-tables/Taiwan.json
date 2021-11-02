@@ -1,0 +1,23 @@
+{
+    "emptyTable": "表格中沒有可供顯示的資料",
+    "info": "總計 _TOTAL_ 個項目，目前顯示第 _START_ 至第 _END_ 個項目",
+    "infoEmpty": "總計 0 個項目，目前顯示第 0 至第 0 個項目",
+    "infoFiltered": "(全部 _MAX_ 個項目的篩選結果)",
+	"infoPostFix": "",
+    "thousands": ",",
+    "lengthMenu": "每頁顯示 _MENU_ 個項目",
+    "loadingRecords": "正在載入...",
+    "processing": "正在處理...",
+    "search": "搜尋:",
+    "zeroRecords": "找不到符合條件的記錄",
+    "paginate": {
+        "first": "第一頁",
+        "last": "最末頁",
+        "next": "下一頁",
+        "previous": "上一頁"
+    },
+    "aria": {
+        "sortAscending": ": 啟用以升冪方式排序欄位",
+        "sortDescending": ": 啟用以降冪方式排序欄位"
+    }
+}  
