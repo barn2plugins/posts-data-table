@@ -1,8 +1,7 @@
 const pluginData = {
 	name: 'Posts Table with Search & Sort',
 	libNamespace: 'Barn2\\PTS_Lib',
-	libIncludes: ['Plugin/Plugin.php', 'Plugin/Simple_Plugin.php', 'Registerable.php', 'Service.php', 'Service_Provider.php', 'Util.php',
-		'Admin/Settings_API_Helper.php', 'Admin/Plugin_Promo.php', 'assets/css/**'],
+	libIncludes: ['Plugin/Plugin.php', 'Plugin/Simple_Plugin.php', '*.php',	'Admin/**', 'assets/css/**', '!class-*.php'],
 	requiresES6: true
 };
 
@@ -21,7 +20,10 @@ function getBarn2Build() {
 	} else {
 		throw new Error( "Error: please set the BARN2_LIB environment variable to path of Barn2 Library project" );
 	}
+
 	build.setupBuild( pluginData );
+	updateVendor();
+
 	return build;
 }
 
@@ -30,7 +32,10 @@ function test( cb ) {
 	cb();
 }
 
-const releasePTSS = series( barn2build.releaseFreePlugin, barn2build.updatePluginDemo );
+function updateVendor() {
+	return src( ['vendor/DataTables/*.js', 'vendor/DataTables/*.min.css', 'vendor/DataTables/DataTables-*/images/*'] )
+		.pipe( dest( 'assets/js/datatables' ) );
+}
 
 module.exports = {
 	default: test,
@@ -38,9 +43,6 @@ module.exports = {
 	assets: barn2build.buildAssets,
 	library: barn2build.updateLibrary,
 	zip: barn2build.createZipFile,
-	release: releasePTSS,
-	pluginTesting: barn2build.updatePluginTesting,
-	watch: () => {
-		watch( 'assets/scss/**/*.scss', barn2build.compileSass );
-	}
+	release: barn2build.releaseFreePlugin,
+	pluginTesting: barn2build.updatePluginTesting
 };

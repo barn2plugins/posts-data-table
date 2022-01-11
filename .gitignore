@@ -1,3 +1,4 @@
-node_modules/
-vendor/DataTables/
-docs/
+/node_modules/
+/vendor/DataTables/
+/docs/
+/.phpdoc/

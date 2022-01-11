@@ -1,6 +1,6 @@
 {
     "name": "posts-data-table",
-    "version": "1.3.6",
+    "version": "1.3.7",
     "description": "Posts Table with Search and Sort plugin for WordPress.",
     "main": "gulpfile.js",
     "directories": {
@@ -20,6 +20,7 @@
     },
     "homepage": "https://github.com/Barn2Media/posts-data-table#readme",
     "devDependencies": {
+        "@barn2/webpack-config": "file:../barn2-lib/build/webpack-config/barn2-webpack-config-1.0.20.tgz",
         "gulp": "^4.0.2"
     }
 }
