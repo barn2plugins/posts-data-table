@@ -74,7 +74,7 @@ class Settings_Page implements Registerable {
 
 	public function render_settings_page() {
 		?>
-		<div class="wrap barn2-settings barn2-settings-flex">
+		<div class="wrap barn2-plugins-settings">
 			<?php do_action( 'barn2_before_plugin_settings', $this->plugin->get_id() ); ?>
 			<div class="barn2-settings-inner">
 				<h1><?php esc_html_e( 'Posts Table with Search and Sort', 'posts-data-table' ); ?></h1>

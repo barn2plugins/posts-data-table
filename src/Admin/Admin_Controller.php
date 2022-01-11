@@ -40,7 +40,7 @@ class Admin_Controller implements Registerable, Service {
 			$links,
 			sprintf(
 				'<a href="%1$s">%2$s</a>',
-				esc_url( admin_url( 'options-general.php?page=' . Settings_Page::MENU_SLUG ) ),
+				esc_url( $this->plugin->get_settings_page_url() ),
 				esc_html__( 'Settings', 'posts-data-table' )
 			)
 		);

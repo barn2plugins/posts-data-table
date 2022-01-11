@@ -2,6 +2,7 @@
 
 namespace Barn2\Plugin\Posts_Table_Search_Sort;
 
+use Barn2\Plugin\Posts_Table_Search_Sort\Admin\Settings_Page;
 use Barn2\PTS_Lib\Plugin\Simple_Plugin;
 use Barn2\PTS_Lib\Registerable;
 use Barn2\PTS_Lib\Service_Provider;
@@ -26,7 +27,7 @@ class Plugin extends Simple_Plugin implements Registerable, Service_Provider {
 	private $services;
 
 	/**
-	 * Constructs and initalizes an EDD VAT plugin instance.
+	 * Constructs and initializes an EDD VAT plugin instance.
 	 *
 	 * @param string $file    The main plugin __FILE__
 	 * @param string $version The current plugin version
@@ -34,10 +35,11 @@ class Plugin extends Simple_Plugin implements Registerable, Service_Provider {
 	public function __construct( $file = null, $version = '1.0' ) {
 		parent::__construct(
 			[
-				'id'      => self::ITEM_ID,
-				'name'    => self::NAME,
-				'version' => $version,
-				'file'    => $file
+				'id'            => self::ITEM_ID,
+				'name'          => self::NAME,
+				'version'       => $version,
+				'file'          => $file,
+				'settings_path' => 'options-general.php?page=' . Settings_Page::MENU_SLUG
 			]
 		);
 
