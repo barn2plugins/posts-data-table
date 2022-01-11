@@ -3,9 +3,9 @@ Contributors: andykeith, barn2media
 Donate link: https://barn2.com
 Tags: wordpress table plugin, data-table plugin, table plugin, table, wordpress table
 Requires at least: 5.0
-Tested up to: 5.8.1
+Tested up to: 5.8.3
 Requires PHP: 5.6
-Stable tag: 1.3.6
+Stable tag: 1.3.7
 License: GPL-3.0
 License URI: https://www.gnu.org/licenses/gpl.html
 
@@ -55,7 +55,7 @@ To get started with this WordPress table plugin, simply add the shortcode `[post
 * Create custom order forms which increase your conversion rate!
 * Support for advanced use cases such as [restaurant ordering systems](https://barn2.com/online-restaurant-ordering-system-woocommerce/), [events calendars](https://barn2.com/woocommerce-events/), and [advanced order forms](https://barn2.com/woocommerce-order-form-plugin/).
 
-Translations for *Posts Table with Search & Sort* itself are currently provided for French, Spanish, German and Greek. This data-table plugin is WPML-compatible for content translation, so if you're using WPML, you'll be able to display post tables in whichever language you have set up.
+Translations for *Posts Table with Search & Sort* are currently provided for French, Spanish, German, Greek and Chinese (Taiwan). This data-table plugin is WPML-compatible for content translation, so if you're using WPML, you'll be able to display post tables in whichever language you have set up.
 
 We make use of the jQuery DataTables library to power the searching and sorting features.
 
@@ -148,7 +148,7 @@ This is probably because you have a sticky header (your header sticks to the top
 If you have a multilingual site using WPML then the plugin will display your posts in the correct language automatically.
 
 = Can you customize the plugin for me? =
-We have developed this free plugin to be flexible and easy to configure so that it will be suitable for many different websites. If you would like to modify the plugin to suit your exact requirements, we would recommend [Codeable](https://barn2.com/go/codeable)
+We developed this free plugin to be flexible and easy to configure so that it will be suitable for many different websites. If you would like to modify the plugin to suit your exact requirements, we would recommend [Codeable](https://barn2.com/go/codeable)
 
 = Where can I find the documentation? =
 Please visit our [Knowledge Base](https://barn2.com/kb-categories/posts-table-search-sort-free-kb/).
@@ -164,10 +164,10 @@ Please visit our [Knowledge Base](https://barn2.com/kb-categories/posts-table-se
 
 == Changelog ==
 
-= 1.3.6 =
-Release date 8 October 2021
+= 1.3.7 =
+Release date 11 January 2022
 
- * Minor code improvements.
- * Tested up to WordPress 5.8.1
+ * Added Traditional Chinese translation (credit: @alexlion1114).
+ * Updated DataTables library to 1.11.3.
 
 See changelog.txt for more details.
