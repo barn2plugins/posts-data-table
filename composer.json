@@ -11,6 +11,15 @@
     ],
     "minimum-stability": "stable",
     "require": {},
+    "require-dev": {
+        "barn2/php-standards": "dev-master"
+    },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "git@bitbucket.org:barn2plugins/php-standards.git"
+        }
+    ],
     "autoload": {
         "psr-4": {
             "Barn2\\Plugin\\Posts_Table_Search_Sort\\": "src",
