@@ -11,11 +11,11 @@ namespace Barn2\PTS_Lib;
  */
 interface Conditional {
 
-    /**
-     * Is this object required?
-     *
-     * @return boolean true if required, false otherwise.
-     */
-    public function is_required();
+	/**
+	 * Is this object required?
+	 *
+	 * @return boolean true if required, false otherwise.
+	 */
+	public function is_required();
 
 }

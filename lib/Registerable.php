@@ -1,4 +1,5 @@
 <?php
+
 namespace Barn2\PTS_Lib;
 
 /**
@@ -12,6 +13,11 @@ namespace Barn2\PTS_Lib;
  */
 interface Registerable {
 
-    public function register();
+	/**
+	 * Register this object with WordPress.
+	 *
+	 * @return void
+	 */
+	public function register();
 
 }

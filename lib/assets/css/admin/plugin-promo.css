@@ -1,4 +1,4 @@
-#barn2_plugin_promo {
+#barn2_plugins_promo {
   padding: 15px;
   margin-top: 10px;
   border: 1px solid #e5e5e5;
@@ -6,38 +6,27 @@
   background: #fff;
   box-sizing: border-box;
 }
-@media (min-width: 1200px) {
-  #barn2_plugin_promo {
-    float: right;
-    width: 30%;
-    padding-left: 20px;
-    margin-top: 0;
-  }
-  #barn2_plugin_promo ~ p.submit {
-    clear: both;
-  }
-}
-#barn2_plugin_promo h2 {
+#barn2_plugins_promo h2 {
   font-size: 23px;
   line-height: 25px;
   margin-top: 0;
 }
-#barn2_plugin_promo h2:first-child {
+#barn2_plugins_promo h2:first-child {
   margin-bottom: 0;
 }
-#barn2_plugin_promo h2 + p img {
+#barn2_plugins_promo h2 + p img {
   margin-top: 0;
 }
-#barn2_plugin_promo img {
+#barn2_plugins_promo img {
   max-width: 100%;
   height: auto;
 }
-#barn2_plugin_promo .aligncenter {
+#barn2_plugins_promo .aligncenter {
   margin-left: auto;
   margin-right: auto;
   display: block;
 }
-#barn2_plugin_promo .btn {
+#barn2_plugins_promo .btn {
   display: inline-block;
   font-weight: 600;
   text-align: center;
@@ -56,55 +45,40 @@
   text-decoration: none;
   margin-top: 10px;
 }
-#barn2_plugin_promo .btn-primary {
+#barn2_plugins_promo .btn-primary {
   color: #fff;
   background-color: #03a0c7;
   border-color: #03a0c7;
   box-shadow: 0 7px 10px 0 rgba(3, 160, 199, 0.1);
 }
-#barn2_plugin_promo .btn-primary:hover {
+#barn2_plugins_promo .btn-primary:hover {
   color: #03a0c7;
   background-color: #fff;
   border-color: #03a0c7 !important;
 }
 
-@media (min-width: 1200px) {
-  #product_table_settings_start.promo,
-#quick_view_settings_start.promo,
-#wc_protected_categories_settings.promo,
-#private_store_settings_start.promo,
-#bulk_variations_pro_settings_start.promo,
-.barn2-settings.promo {
-    float: left;
-    width: 67%;
-  }
-  #product_table_settings_start.promo ~ p.submit,
-#quick_view_settings_start.promo ~ p.submit,
-#wc_protected_categories_settings.promo ~ p.submit,
-#private_store_settings_start.promo ~ p.submit,
-#bulk_variations_pro_settings_start.promo ~ p.submit,
-.barn2-settings.promo ~ p.submit {
-    clear: both;
-  }
-}
-.barn2-settings-flex {
+.barn2-plugins-settings {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.barn2-settings-flex #barn2_plugin_promo {
-  float: none !important;
-  width: auto;
-  flex-shrink: 0.8;
-  flex-basis: 500px;
+.barn2-plugins-settings #barn2_plugins_promo {
   max-width: 500px;
 }
 @media (min-width: 1100px) {
-  .barn2-settings-flex {
+  .barn2-plugins-settings {
     flex-direction: row;
     align-items: flex-start;
+    float: none !important;
+    width: 100% !important;
   }
-  .barn2-settings-flex #barn2_plugin_promo {
+  .barn2-plugins-settings .barn2-settings-inner {
+    flex: 2;
+  }
+  .barn2-plugins-settings #barn2_plugins_promo {
+    flex: 1;
+    max-width: 30%;
     margin-left: 30px;
+    margin-right: 20px;
   }
 }

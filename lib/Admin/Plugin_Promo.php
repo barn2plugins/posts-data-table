@@ -2,8 +2,8 @@
 namespace Barn2\PTS_Lib\Admin;
 
 use Barn2\PTS_Lib\Registerable,
-    Barn2\PTS_Lib\Plugin\Plugin,
-    Barn2\PTS_Lib\Util;
+	Barn2\PTS_Lib\Plugin\Plugin,
+	Barn2\PTS_Lib\Util;
 
 /**
  * Provides functions to add the plugin promo to the plugin settings page in the WordPress admin.
@@ -16,53 +16,60 @@ use Barn2\PTS_Lib\Registerable,
  */
 class Plugin_Promo implements Registerable {
 
-    private $plugin;
-    private $plugin_id;
+	private $plugin;
+	private $plugin_id;
 
-    public function __construct( Plugin $plugin ) {
-        $this->plugin    = $plugin;
-        $this->plugin_id = $plugin->get_id();
-    }
+	public function __construct( Plugin $plugin ) {
+		$this->plugin    = $plugin;
+		$this->plugin_id = $plugin->get_id();
+	}
 
-    public function register() {
-        add_action( 'barn2_after_plugin_settings', [ $this, 'render_promo' ], 10, 1 );
-        add_action( 'admin_enqueue_scripts', [ $this, 'load_styles' ] );
-    }
+	public function register() {
+		add_action( 'barn2_after_plugin_settings', [ $this, 'render_promo' ], 10, 1 );
+		add_action( 'admin_enqueue_scripts', [ $this, 'load_styles' ] );
+	}
 
-    public function load_styles() {
-        wp_enqueue_style( 'barn2-promo', plugins_url( 'lib/assets/css/admin/plugin-promo.min.css', $this->plugin->get_file() ) );
-    }
+	public function load_styles( $hook ) {
+		$parsed_url = wp_parse_url( $this->plugin->get_settings_page_url() );
+		if ( isset( $parsed_url['query'] ) ) {
+			parse_str( $parsed_url['query'], $args );
 
-    public function render_promo( $plugin_id ) {
-        if ( $plugin_id !== $this->plugin_id ) {
-            return;
-        }
+			if ( isset( $args['page'] ) && false !== strpos( $hook, $args['page'] ) ) {
+				wp_enqueue_style( 'barn2-plugins-promo', plugins_url( 'lib/assets/css/admin/plugin-promo.min.css', $this->plugin->get_file() ) );
+			}
+		}
+	}
 
-        $promo_content = $this->get_promo_content();
+	public function render_promo( $plugin_id ) {
+		if ( $plugin_id !== $this->plugin_id ) {
+			return;
+		}
 
-        if ( ! empty( $promo_content ) ) {
-            echo '<div id="barn2_plugin_promo" class="barn2-plugin-promo">' . $promo_content . '</div>';
-        }
-    }
+		$promo_content = $this->get_promo_content();
 
-    private function get_promo_content() {
-        if ( ( $promo_content = get_transient( 'barn2_plugin_promo_' . $this->plugin_id ) ) === false ) {
-            $promo_response = wp_remote_get( Util::barn2_url( '/wp-json/barn2/v2/pluginpromo/' . $this->plugin_id . '?_=' . date( 'mdY' ) ) );
+		if ( ! empty( $promo_content ) ) {
+			echo '<div id="barn2_plugins_promo" class="barn2-plugins-promo">' . $promo_content . '</div>';
+		}
+	}
 
-            if ( wp_remote_retrieve_response_code( $promo_response ) != 200 ) {
-                return;
-            }
+	private function get_promo_content() {
+		if ( ( $promo_content = get_transient( 'barn2_plugin_promo_' . $this->plugin_id ) ) === false ) {
+			$promo_response = wp_remote_get( Util::barn2_url( '/wp-json/barn2/v2/pluginpromo/' . $this->plugin_id . '?_=' . date( 'mdY' ) ) );
 
-            $promo_content = json_decode( wp_remote_retrieve_body( $promo_response ), true );
+			if ( wp_remote_retrieve_response_code( $promo_response ) != 200 ) {
+				return;
+			}
 
-            set_transient( 'barn2_plugin_promo_' . $this->plugin_id, $promo_content, DAY_IN_SECONDS );
-        }
+			$promo_content = json_decode( wp_remote_retrieve_body( $promo_response ), true );
 
-        if ( empty( $promo_content ) || is_array( $promo_content ) ) {
-            return;
-        }
+			set_transient( 'barn2_plugin_promo_' . $this->plugin_id, $promo_content, DAY_IN_SECONDS );
+		}
 
-        return $promo_content;
-    }
+		if ( empty( $promo_content ) || is_array( $promo_content ) ) {
+			return;
+		}
+
+		return $promo_content;
+	}
 
 }

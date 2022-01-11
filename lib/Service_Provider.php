@@ -13,19 +13,19 @@ namespace Barn2\PTS_Lib;
  */
 interface Service_Provider {
 
-    /**
-     * Get the service for the specified ID.
-     *
-     * @param string $id The service ID
-     * @return Service The service object
-     */
-    public function get_service( $id );
+	/**
+	 * Get the service for the specified ID.
+	 *
+	 * @param string $id The service ID
+	 * @return Service The service object
+	 */
+	public function get_service( $id );
 
-    /**
-     * Get the list of services provided.
-     *
-     * @return array The list of service objects.
-     */
-    public function get_services();
+	/**
+	 * Get the list of services provided.
+	 *
+	 * @return array The list of service objects.
+	 */
+	public function get_services();
 
 }
