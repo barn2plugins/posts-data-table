@@ -3,8 +3,8 @@ Contributors: andykeith, barn2media
 Donate link: https://barn2.com
 Tags: wordpress table plugin, data-table plugin, table plugin, table, wordpress table
 Requires at least: 5.0
-Tested up to: 5.8.3
-Requires PHP: 5.6
+Tested up to: 5.9
+Requires PHP: 7.1
 Stable tag: 1.3.7
 License: GPL-3.0
 License URI: https://www.gnu.org/licenses/gpl.html
