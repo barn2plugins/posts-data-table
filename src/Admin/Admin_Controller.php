@@ -51,7 +51,7 @@ class Admin_Controller implements Registerable, Service {
 		if ( $file === $this->plugin->get_basename() ) {
 			$links[] = sprintf(
 				'<a href="%1$s" target="_blank"><strong>%2$s</strong></a>',
-				esc_url( 'https://barn2.com/wordpress-plugins/posts-table-pro/' ),
+				esc_url( 'https://barn2.com/wordpress-plugins/posts-table-pro/?utm_source=settings&utm_medium=settings&utm_campaign=settingsinline&utm_content=ptss-ptp' ),
 				esc_html__( 'Pro Version', 'posts-data-table' )
 			);
 		}
