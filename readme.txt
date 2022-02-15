@@ -164,10 +164,9 @@ Please visit our [Knowledge Base](https://barn2.com/kb-categories/posts-table-se
 
 == Changelog ==
 
-= 1.3.7 =
-Release date 11 January 2022
+= 1.3.8 =
+Release date 15 February 2022
 
- * Added Traditional Chinese translation (credit: @alexlion1114).
- * Updated DataTables library to 1.11.3.
+ * Minor improvements on the Settings page
 
 See changelog.txt for more details.
