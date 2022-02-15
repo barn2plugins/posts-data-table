@@ -403,7 +403,7 @@ class Settings_Page implements Registerable {
 			<?php
 			printf(
 				__( 'Post tables list all published posts by default. To restrict posts by category, tag, author, etc. add the %1$scorresponding option%2$s to the [posts_table] shortcode.', 'posts-data-table' ),
-				Util::format_link_open( Util::barn2_url( 'kb-categories/posts-table-search-sort-free-kb/' ), true ),
+				Util::format_link_open( Util::barn2_url( 'kb-categories/posts-table-search-sort-free-kb/?utm_source=settings&utm_medium=settings&utm_campaign=settingsinline&utm_content=ptss-ptp' ), true ),
 				'</a>'
 			);
 			?>
@@ -417,7 +417,7 @@ class Settings_Page implements Registerable {
 			<?php
 			printf(
 				__( 'You can override these settings for individual tables by adding options to the [posts_table] shortcode. See the %1$sKnowledge Base%2$s for details.', 'posts-data-table' ),
-				Util::format_link_open( Util::barn2_url( 'kb-categories/posts-table-search-sort-free-kb/' ), true ),
+				Util::format_link_open( Util::barn2_url( 'kb-categories/posts-table-search-sort-free-kb/?utm_source=settings&utm_medium=settings&utm_campaign=settingsinline&utm_content=ptss-ptp' ), true ),
 				'</a>'
 			);
 			?>
