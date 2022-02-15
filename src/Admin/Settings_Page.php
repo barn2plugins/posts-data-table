@@ -150,7 +150,7 @@ class Settings_Page implements Registerable {
 						'id'      => $args_setting . '[image_size]',
 						'title'   => __( 'Image size', 'posts-data-table' ),
 						'type'    => 'text',
-						'desc'    => __( "W x H in pixels. Sets the image size when using the 'image' column. ", 'posts-data-table' ) . Util::barn2_link( 'kb/ptp-column-widths/#image-size' ),
+						'desc'    => __( "W x H in pixels. Sets the image size when using the 'image' column. ", 'posts-data-table' ) . Util::barn2_link( 'kb/ptp-column-widths/#image-size?utm_source=settings&utm_medium=settings&utm_campaign=settingsinline&utm_content=ptss-ptp' ),
 						'default' => 'thumbnail',
 					],
 					[
@@ -195,7 +195,7 @@ class Settings_Page implements Registerable {
 						'id'      => $args_setting . '[links]',
 						'title'   => __( 'Links', 'posts-data-table' ),
 						'type'    => 'text',
-						'desc'    => __( 'Display links to the single post page, category, tag, or term archive. ', 'posts-data-table' ) . Util::barn2_link( 'kb/links-posts-table/' ),
+						'desc'    => __( 'Display links to the single post page, category, tag, or term archive. ', 'posts-data-table' ) . Util::barn2_link( 'kb/links-posts-table/?utm_source=settings&utm_medium=settings&utm_campaign=settingsinline&utm_content=ptss-ptp' ),
 						'default' => 'all',
 					]
 				]
@@ -215,7 +215,7 @@ class Settings_Page implements Registerable {
 						'type'    => 'checkbox',
 						'id'      => $args_setting . '[lazy_load]',
 						'label'   => __( 'Load the posts one page at a time', 'posts-data-table' ),
-						'desc'    => sprintf( __( 'Enable this if you have many posts or experience slow page load times. ', 'posts-data-table' ) ) . Util::barn2_link( 'kb/posts-table-lazy-load/' ),
+						'desc'    => sprintf( __( 'Enable this if you have many posts or experience slow page load times. ', 'posts-data-table' ) ) . Util::barn2_link( 'kb/posts-table-lazy-load/?utm_source=settings&utm_medium=settings&utm_campaign=settingsinline&utm_content=ptss-ptp' ),
 						'default' => false,
 					],
 					[
@@ -300,7 +300,7 @@ class Settings_Page implements Registerable {
 							'true'   => __( 'Show based on columns in table', 'posts-data-table' ),
 							'custom' => __( 'Custom', 'posts-data-table' )
 						],
-						'desc'    => __( 'Dropdown lists to filter the table by category, tag, attribute, or custom taxonomy. ', 'posts-data-table' ) . Util::barn2_link( 'kb/posts-table-filters/' ),
+						'desc'    => __( 'Dropdown lists to filter the table by category, tag, attribute, or custom taxonomy. ', 'posts-data-table' ) . Util::barn2_link( 'kb/posts-table-filters/?utm_source=settings&utm_medium=settings&utm_campaign=settingsinline&utm_content=ptss-ptp' ),
 						'default' => true,
 					],
 					[
@@ -390,7 +390,7 @@ class Settings_Page implements Registerable {
 				];
 
 				$setting['title'] = $setting['title'] .
-									sprintf( '<span class="pro-version">%s</span>', Util::barn2_link( 'wordpress-plugins/posts-table-pro/', __( 'Pro version only', 'posts-data-table' ), true ) );
+									sprintf( '<span class="pro-version">%s</span>', Util::barn2_link( 'wordpress-plugins/posts-table-pro/?utm_source=settings&utm_medium=settings&utm_campaign=settingsinline&utm_content=ptss-ptp', __( 'Pro version only', 'posts-data-table' ), true ) );
 			}
 		}
 
