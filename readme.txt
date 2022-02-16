@@ -45,7 +45,7 @@ To get started with this WordPress table plugin, simply add the shortcode `[post
 * Advanced Custom Fields and ACF Pro support.
 * Enable AJAX to reduce server load.
 * 100% responsive, with options to control how behaviour on different screen sizes and devices.
-* Support for advanced use cases such as how to create [compelling tables for your blog](https://barn2.com/wordpress-post-table/?utm=content&utm_source=wporg&utm_content=posts-table-free), a [WordPress document library](https://barn2.com/wordpress-document-library-plugin/?utm=content&utm_source=wporg&utm_content=posts-table-free), [member directory](https://barn2.com/wordpress-member-directory-plugin/), [audio gallery](https://barn2.com/wordpress-audio-library/), or an [intranet for your organization](https://barn2.com/wordpress-intranet-plugins/?utm=content&utm_source=wporg&utm_content=posts-table-free).
+* Support for advanced use cases such as how to create [compelling tables for your blog](https://barn2.com/wordpress-post-table/?utm=content&utm_source=wporg&utm_content=posts-table-free), a [WordPress document library](https://barn2.com/wordpress-document-library-plugin/?utm=content&utm_source=wporg&utm_content=posts-table-free), [member directory](https://barn2.com/wordpress-member-directory-plugin/?utm=content&utm_source=wporg&utm_content=posts-table-free), [audio gallery](https://barn2.com/wordpress-audio-library/?utm=content&utm_source=wporg&utm_content=posts-table-free), or an [intranet for your organization](https://barn2.com/wordpress-intranet-plugins/?utm=content&utm_source=wporg&utm_content=posts-table-free).
 * [And much more...](https://barn2.com/our-wordpress-plugins/posts-table-pro-features/?utm=content&utm_source=wporg&utm_content=posts-table-free)
 
 **[WooCommerce Product Table](https://barn2.com/wordpress-plugins/woocommerce-product-table/?utm=content&utm_source=wporg&utm_content=posts-table-free) - create product tables from your WooCommerce store:**
@@ -75,7 +75,7 @@ You can also add options directly to the shortcode. This allows you to configure
 
 You can see all of these in action [on the plugin demo](https://poststable-free.barn2.com/?utm=content&utm_source=wporg&utm_content=posts-table-free), and do even more with [Posts Table Pro](https://barn2.com/wordpress-plugins/posts-table-pro/?utm=content&utm_source=wporg&utm_content=posts-table-free), our premium plugin!
 
-Popular use cases for Pro take advantage of advanced features, including support for custom post types, advanced filtering, and media embed support, letting you [build your own WordPress document library](https://barn2.com/wordpress-document-library-plugin/?utm=content&utm_source=wporg&utm_content=posts-table-free), [create a WordPress file manager](https://barn2.com/wordpress-file-manager/), or create a [WordPress events table](https://barn2.com/events-calendar-table-list/?utm=content&utm_source=wporg&utm_content=posts-table-free).
+Popular use cases for Pro take advantage of advanced features, including support for custom post types, advanced filtering, and media embed support, letting you [build your own WordPress document library](https://barn2.com/wordpress-document-library-plugin/?utm=content&utm_source=wporg&utm_content=posts-table-free), [create a WordPress file manager](https://barn2.com/wordpress-file-manager/?utm=content&utm_source=wporg&utm_content=posts-table-free), or create a [WordPress events table](https://barn2.com/events-calendar-table-list/?utm=content&utm_source=wporg&utm_content=posts-table-free).
 
 ### Here's the full list of shortcode parameters you can use for this data-table plugin:
 
@@ -94,7 +94,7 @@ You can see some practical examples of how to build your own Post Tables above, 
 *  **`content_length`** - the number of words of post content to show in the table (if you've included the `content` column). Defaults to 15 words.
 *  **`scroll_offset`** - advanced: the table scrolls back to the top each time you navigate forward or backwards through the list of posts. This value controls the 'offset' for the scroll. For example, if your site uses a sticky header you can adjust the scroll amount here to compensate. Enter a whole number (e.g. 50) or set to `false` to disable scrolling to top.
 
-View the [full documentation](https://barn2.com/kb-categories/posts-table-search-sort-free-kb/?utm=content&utm_source=wporg&utm_content=posts-table-free), checkout the [demo](https://poststable-free.barn2.com?utm=content&utm_source=wporg&utm_content=posts-table-free), and if you need more features have a look at [Posts Table Pro](https://barn2.com/wordpress-plugins/posts-table-pro/?utm=content&utm_source=wporg&utm_content=posts-table-free).
+View the [full documentation](https://barn2.com/kb-categories/posts-table-search-sort-free-kb/?utm=content&utm_source=wporg&utm_content=posts-table-free), checkout the [demo](https://poststable-free.barn2.com/?utm=content&utm_source=wporg&utm_content=posts-table-free), and if you need more features have a look at [Posts Table Pro](https://barn2.com/wordpress-plugins/posts-table-pro/?utm=content&utm_source=wporg&utm_content=posts-table-free).
 
 Thank you for using our WordPress table plugin :)
 
