@@ -2,3 +2,8 @@
 /vendor/DataTables/
 /docs/
 /.phpdoc/
+bin
+/vendor/*
+!/vendor/composer/
+!/vendor/autoload.php
+vendor-bin
