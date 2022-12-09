@@ -48,6 +48,19 @@ class ComposerStaticInitfb3a4de6c50f8f4e22675e159c48cfe4
     );
 
     public static $classMap = array (
+        'Barn2\\Plugin\\Posts_Table_Search_Sort\\Dependencies\\Barn2\\Setup_Wizard\\Api' => __DIR__ . '/../..' . '/dependencies/src/Api.php',
+        'Barn2\\Plugin\\Posts_Table_Search_Sort\\Dependencies\\Barn2\\Setup_Wizard\\Interfaces\\Bootable' => __DIR__ . '/../..' . '/dependencies/src/Interfaces/Bootable.php',
+        'Barn2\\Plugin\\Posts_Table_Search_Sort\\Dependencies\\Barn2\\Setup_Wizard\\Interfaces\\Deferrable' => __DIR__ . '/../..' . '/dependencies/src/Interfaces/Deferrable.php',
+        'Barn2\\Plugin\\Posts_Table_Search_Sort\\Dependencies\\Barn2\\Setup_Wizard\\Interfaces\\Pluggable' => __DIR__ . '/../..' . '/dependencies/src/Interfaces/Pluggable.php',
+        'Barn2\\Plugin\\Posts_Table_Search_Sort\\Dependencies\\Barn2\\Setup_Wizard\\Interfaces\\Restartable' => __DIR__ . '/../..' . '/dependencies/src/Interfaces/Restartable.php',
+        'Barn2\\Plugin\\Posts_Table_Search_Sort\\Dependencies\\Barn2\\Setup_Wizard\\Setup_Wizard' => __DIR__ . '/../..' . '/dependencies/src/Setup_Wizard.php',
+        'Barn2\\Plugin\\Posts_Table_Search_Sort\\Dependencies\\Barn2\\Setup_Wizard\\Starter' => __DIR__ . '/../..' . '/dependencies/src/Starter.php',
+        'Barn2\\Plugin\\Posts_Table_Search_Sort\\Dependencies\\Barn2\\Setup_Wizard\\Step' => __DIR__ . '/../..' . '/dependencies/src/Step.php',
+        'Barn2\\Plugin\\Posts_Table_Search_Sort\\Dependencies\\Barn2\\Setup_Wizard\\Steps\\Cross_Selling' => __DIR__ . '/../..' . '/dependencies/src/Steps/Cross_Selling.php',
+        'Barn2\\Plugin\\Posts_Table_Search_Sort\\Dependencies\\Barn2\\Setup_Wizard\\Steps\\Ready' => __DIR__ . '/../..' . '/dependencies/src/Steps/Ready.php',
+        'Barn2\\Plugin\\Posts_Table_Search_Sort\\Dependencies\\Barn2\\Setup_Wizard\\Steps\\Welcome' => __DIR__ . '/../..' . '/dependencies/src/Steps/Welcome.php',
+        'Barn2\\Plugin\\Posts_Table_Search_Sort\\Dependencies\\Barn2\\Setup_Wizard\\Steps\\Welcome_Free' => __DIR__ . '/../..' . '/dependencies/src/Steps/Welcome_Free.php',
+        'Barn2\\Plugin\\Posts_Table_Search_Sort\\Dependencies\\Barn2\\Setup_Wizard\\Util' => __DIR__ . '/../..' . '/dependencies/src/Util.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
     );
 
