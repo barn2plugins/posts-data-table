@@ -20,6 +20,7 @@ class ComposerStaticInitfb3a4de6c50f8f4e22675e159c48cfe4
             'Barn2\\Setup_Wizard\\' => 19,
             'Barn2\\Plugin\\Posts_Table_Search_Sort\\' => 37,
             'Barn2\\PTS_Lib\\' => 14,
+            'Bamarni\\Composer\\Bin\\' => 21,
         ),
     );
 
@@ -39,6 +40,10 @@ class ComposerStaticInitfb3a4de6c50f8f4e22675e159c48cfe4
         'Barn2\\PTS_Lib\\' => 
         array (
             0 => __DIR__ . '/../..' . '/lib',
+        ),
+        'Bamarni\\Composer\\Bin\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/bamarni/composer-bin-plugin/src',
         ),
     );
 

@@ -10,4 +10,5 @@ return array(
     'Barn2\\Setup_Wizard\\' => array($vendorDir . '/barn2/setup-wizard/src'),
     'Barn2\\Plugin\\Posts_Table_Search_Sort\\' => array($baseDir . '/src'),
     'Barn2\\PTS_Lib\\' => array($baseDir . '/lib'),
+    'Bamarni\\Composer\\Bin\\' => array($vendorDir . '/bamarni/composer-bin-plugin/src'),
 );
