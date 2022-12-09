@@ -9,15 +9,18 @@
             "email": "support@barn2.com"
         }
     ],
-    "minimum-stability": "stable",
-    "require": {},
     "require-dev": {
-        "barn2/php-standards": "dev-master"
+        "barn2/php-standards": "dev-master",
+        "barn2/setup-wizard": "^1.2"
     },
     "repositories": [
         {
             "type": "vcs",
             "url": "git@bitbucket.org:barn2plugins/php-standards.git"
+        },
+        {
+            "type": "vcs",
+            "url": "git@bitbucket.org:barn2plugins/setup-wizard.git"
         }
     ],
     "autoload": {
@@ -28,5 +31,33 @@
         "files": [
             "src/deprecated.php"
         ]
-    }
+    },
+    "scripts": {
+        "lint": "phpcs .",
+        "lint-fix": "phpcbf .",
+        "phpunit": "phpunit",
+		"documentor": "phpDocumentor -t docs",
+        "phpunit-coverage": "phpunit --coverage-text",
+		"no-dev": "composer update --prefer-dist --no-dev",
+		"install-scoper": [
+            "composer bin php-scoper config minimum-stability dev",
+            "composer bin php-scoper config prefer-stable true",
+            "composer bin php-scoper require --dev humbug/php-scoper --with-all-dependencies"
+        ],
+        "scoper": "bin/php-scoper add-prefix --config .scoper.inc.php --output-dir dependencies/"
+    },
+    "config": {
+        "bin-dir": "bin",
+        "sort-packages": true,
+        "preferred-install": {
+            "*": "dist"
+        },
+        "allow-plugins": {
+            "bamarni/composer-bin-plugin": true,
+            "dealerdirect/phpcodesniffer-composer-installer": true,
+            "composer/package-versions-deprecated": true
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }

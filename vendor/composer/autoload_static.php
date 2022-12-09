@@ -11,14 +11,27 @@ class ComposerStaticInitfb3a4de6c50f8f4e22675e159c48cfe4
     );
 
     public static $prefixLengthsPsr4 = array (
+        'D' => 
+        array (
+            'Dealerdirect\\Composer\\Plugin\\Installers\\PHPCodeSniffer\\' => 55,
+        ),
         'B' => 
         array (
+            'Barn2\\Setup_Wizard\\' => 19,
             'Barn2\\Plugin\\Posts_Table_Search_Sort\\' => 37,
             'Barn2\\PTS_Lib\\' => 14,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
+        'Dealerdirect\\Composer\\Plugin\\Installers\\PHPCodeSniffer\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/dealerdirect/phpcodesniffer-composer-installer/src',
+        ),
+        'Barn2\\Setup_Wizard\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/barn2/setup-wizard/src',
+        ),
         'Barn2\\Plugin\\Posts_Table_Search_Sort\\' => 
         array (
             0 => __DIR__ . '/../..' . '/src',

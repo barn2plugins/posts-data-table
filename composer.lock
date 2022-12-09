@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a81fdadf2aaa2eea9647bfe7d173cbf5",
+    "content-hash": "d0055464beb387b3fc958c1227f3cf85",
     "packages": [],
     "packages-dev": [
         {
@@ -29,6 +29,66 @@
             ],
             "description": "Barn2 PHPCS Standards",
             "time": "2021-11-25T15:34:48+00:00"
+        },
+        {
+            "name": "barn2/setup-wizard",
+            "version": "1.2.0",
+            "source": {
+                "type": "git",
+                "url": "git@bitbucket.org:barn2plugins/setup-wizard.git",
+                "reference": "b68b35098faa724225f7bc41fa25782d96bf1cc0"
+            },
+            "require-dev": {
+                "barn2/php-standards": "dev-master",
+                "dealerdirect/phpcodesniffer-composer-installer": "^0.7.0",
+                "php-mock/php-mock-phpunit": "^2.5",
+                "phpunit/phpunit": "^9.0.1",
+                "symfony/var-dumper": "^5.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Barn2\\Setup_Wizard\\": "src/"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "Barn2\\Setup_Wizard\\Tests\\": "tests"
+                }
+            },
+            "scripts": {
+                "lint": [
+                    "phpcs ."
+                ],
+                "lint-fix": [
+                    "phpcbf ."
+                ],
+                "phpunit": [
+                    "phpunit"
+                ],
+                "documentor": [
+                    "phpDocumentor -t docs"
+                ],
+                "no-dev": [
+                    "composer update --prefer-dist --no-dev"
+                ],
+                "phpunit-coverage": [
+                    "phpunit --coverage-text"
+                ]
+            },
+            "authors": [
+                {
+                    "name": "Barn2 Plugins",
+                    "email": "support@barn2.com",
+                    "homepage": "https://barn2.com"
+                }
+            ],
+            "description": "Setup wizard library for WordPress plugins.",
+            "homepage": "https://barn2.com",
+            "keywords": [
+                "wordpress"
+            ],
+            "time": "2022-12-09T16:43:35+00:00"
         },
         {
             "name": "dealerdirect/phpcodesniffer-composer-installer",
@@ -381,13 +441,13 @@
         }
     ],
     "aliases": [],
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "stability-flags": {
         "barn2/php-standards": 20
     },
-    "prefer-stable": false,
+    "prefer-stable": true,
     "prefer-lowest": false,
     "platform": [],
     "platform-dev": [],
-    "plugin-api-version": "2.1.0"
+    "plugin-api-version": "2.3.0"
 }
