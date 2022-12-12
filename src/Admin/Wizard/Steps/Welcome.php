@@ -4,10 +4,18 @@ namespace Barn2\Plugin\Posts_Table_Search_Sort\Admin\Wizard\Steps;
 
 use Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Barn2\Setup_Wizard\Steps\Welcome_Free;
 
+/**
+ * Layout Settings Step.
+ *
+ * @package   Barn2/posts-data-table
+ * @author    Barn2 Plugins <info@barn2.com>
+ * @license   GPL-3.0
+ * @copyright Barn2 Media Ltd
+ */
 class Welcome extends Welcome_Free {
 
 	/**
-	 * Constructor.
+	 * {@inheritdoc}
 	 */
 	public function __construct() {
 		$this->set_id( 'welcome_free' );

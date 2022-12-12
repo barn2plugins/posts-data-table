@@ -6,6 +6,14 @@ use Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Barn2\Setup_Wizard\Setup_W
 use Barn2\PTS_Lib\Plugin\Plugin;
 use Barn2\PTS_Lib\Registerable;
 
+/**
+ * Setup wizard service.
+ *
+ * @package   Barn2/posts-data-table
+ * @author    Barn2 Plugins <info@barn2.com>
+ * @license   GPL-3.0
+ * @copyright Barn2 Media Ltd
+ */
 class Setup_Wizard implements Registerable {
 
 	/**
@@ -18,7 +26,7 @@ class Setup_Wizard implements Registerable {
 	/**
 	 * Wizard instance
 	 *
-	 * @var WPF_Setup_Wizard
+	 * @var Wizard
 	 */
 	private $wizard;
 
@@ -32,6 +40,7 @@ class Setup_Wizard implements Registerable {
 
 		$steps = [
 			new Steps\Welcome(),
+			new Steps\Layout()
 		];
 
 		$wizard = new Wizard( $this->plugin, $steps );
