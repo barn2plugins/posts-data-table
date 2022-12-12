@@ -46,8 +46,9 @@ class Plugin extends Simple_Plugin implements Registerable, Service_Provider {
 		include_once plugin_dir_path( $file ) . 'src/deprecated.php';
 
 		// Services
-		$this->services['shortcode'] = new Table_Shortcode();
-		$this->services['scripts']   = new Frontend_Scripts( $this );
+		$this->services['shortcode']    = new Table_Shortcode();
+		$this->services['scripts']      = new Frontend_Scripts( $this );
+		$this->services['setup_wizard'] = new Admin\Wizard\Setup_Wizard( $this );
 
 		// Admin only services
 		if ( Util::is_admin() ) {
