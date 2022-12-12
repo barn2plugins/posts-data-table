@@ -4,6 +4,7 @@ namespace Barn2\Plugin\Posts_Table_Search_Sort\Admin\Wizard\Steps;
 
 use Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Barn2\Setup_Wizard\Api;
 use Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Barn2\Setup_Wizard\Step;
+use Barn2\Plugin\Posts_Table_Search_Sort\Settings;
 use Barn2\PTS_Lib\Util;
 
 /**
@@ -48,7 +49,7 @@ class Layout extends Step {
 				'label'       => __( 'Columns' ),
 				'description' => __( 'List the columns to include in your posts tables.' ) . ' ' . Util::barn2_link( 'kb/list-your-wordpress-blog-posts/#table-columns', esc_html__( 'Read more', 'document-library-lite' ), true ),
 				'type'        => 'text',
-				'value'       => '',
+				'value'       => Settings::get_table_args()['columns'] ?? 'title,content,date,author,categories',
 			],
 		];
 
