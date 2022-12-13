@@ -51,7 +51,8 @@ class Setup_Wizard implements Registerable {
 
 		$wizard->configure(
 			[
-				'skip_url' => admin_url( 'edit.php?post_type=product&page=filters&tab=settings' ),
+				'skip_url'    => admin_url( 'options-general.php?page=posts_table_search_sort' ),
+				'plugin_slug' => 'posts-table-with-search-and-sort',
 			]
 		);
 
