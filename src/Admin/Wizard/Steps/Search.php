@@ -30,13 +30,16 @@ class Search extends Step {
 	 * {@inheritdoc}
 	 */
 	public function setup_fields() {
+
+		$values = Settings::get_table_args();
+
 		$fields = [
 			'sort_by'    => [
 				'label'       => __( 'Sort by', 'posts-data-table' ),
 				'description' => __( 'The initial sort order applied to the table.', 'posts-data-table' ),
 				'type'        => 'select',
 				'options'     => $this->get_sort_by(),
-				'value'       => 'id',
+				'value'       => $values['sort_by'] ?? 'id',
 			],
 			'sort_order' => [
 				'label'   => __( 'Sort direction', 'posts-data-table' ),
@@ -55,7 +58,7 @@ class Search extends Step {
 						'label' => __( 'Descending (Z to A, 99 to 1)', 'posts-data-table' ),
 					],
 				],
-				'value'   => '',
+				'value'   => $values['sort_order'] ?? '',
 			],
 			'search'     => [
 				'label'   => __( 'Search filters', 'posts-data-table' ),
