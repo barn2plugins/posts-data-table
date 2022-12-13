@@ -40,7 +40,8 @@ class Setup_Wizard implements Registerable {
 
 		$steps = [
 			new Steps\Welcome(),
-			new Steps\Layout()
+			new Steps\Layout(),
+			new Steps\Loading()
 		];
 
 		$wizard = new Wizard( $this->plugin, $steps );
