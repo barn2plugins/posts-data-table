@@ -6,6 +6,14 @@ use Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Barn2\Setup_Wizard\Api;
 use Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Barn2\Setup_Wizard\Step;
 use Barn2\Plugin\Posts_Table_Search_Sort\Simple_Posts_Table;
 
+/**
+ * Search settings step.
+ *
+ * @package   Barn2/posts-data-table
+ * @author    Barn2 Plugins <info@barn2.com>
+ * @license   GPL-3.0
+ * @copyright Barn2 Media Ltd
+ */
 class Search extends Step {
 	/**
 	 * {@inheritdoc}
@@ -22,18 +30,54 @@ class Search extends Step {
 	 */
 	public function setup_fields() {
 		$fields = [
-			'sort_by' => [
+			'sort_by'    => [
 				'label'       => __( 'Sort by', 'posts-data-table' ),
 				'description' => __( 'The initial sort order applied to the table.', 'posts-data-table' ),
 				'type'        => 'select',
 				'options'     => $this->get_sort_by(),
 				'value'       => 'id',
 			],
+			'sort_order' => [
+				'label'   => __( 'Sort direction', 'posts-data-table' ),
+				'type'    => 'select',
+				'options' => [
+					[
+						'value' => '',
+						'label' => __( 'Automatic', 'posts-data-table' ),
+					],
+					[
+						'value' => 'asc',
+						'label' => __( 'Ascending (A to Z, 1 to 99)', 'posts-data-table' ),
+					],
+					[
+						'value' => 'desc',
+						'label' => __( 'Descending (Z to A, 99 to 1)', 'posts-data-table' ),
+					],
+				],
+				'value'   => '',
+			],
+			'search'     => [
+				'label'   => __( 'Search filters', 'posts-data-table' ),
+				'type'    => 'select',
+				'options' => [
+					[
+						'value' => '',
+						'label' => __( 'Disabled', 'posts-data-table' ),
+					],
+				],
+				'value'   => '',
+				'premium' => true,
+			],
 		];
 
 		return $fields;
 	}
 
+	/**
+	 * Get formatted list of sort options.
+	 *
+	 * @return array
+	 */
 	private function get_sort_by() {
 
 		$available_columns = wp_list_pluck( Simple_Posts_Table::get_column_defaults(), 'heading' );
