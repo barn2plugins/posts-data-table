@@ -16,7 +16,7 @@ use Barn2\PTS_Lib\Util;
  * @copyright Barn2 Media Ltd
  */
 class Layout extends Step {
-    
+
 	/**
 	 * {@inheritdoc}
 	 */
@@ -51,6 +51,12 @@ class Layout extends Step {
 				'type'        => 'text',
 				'value'       => Settings::get_table_args()['columns'] ?? 'title,content,date,author,categories',
 			],
+			'length'  => [
+				'label'       => __( 'Content length' ),
+				'description' => __( 'If you have included a ‘content’ column, then enter the number of characters to appear in the table. Enter -1 to show the full content.' ),
+				'type'        => 'number',
+				'value'       => Settings::get_table_args()['content_length'] ?? 15,
+			],
 		];
 
 		return $fields;
@@ -60,6 +66,17 @@ class Layout extends Step {
 	 * {@inheritdoc}
 	 */
 	public function submit( array $values ) {
+
+		$columns = isset( $values['columns'] ) ? $values['columns'] : 'title,content,date,author,categories';
+		$length  = isset( $values['length'] ) ? $values['length'] : 15;
+
+		$options                   = Settings::get_table_args();
+		$options['columns']        = $columns;
+		$options['content_length'] = $length;
+		$options                   = Settings::sanitize_table_args( $options );
+
+		update_option( Settings::TABLE_ARGS_SETTING, $options );
+
 		return Api::send_success_response();
 	}
 
