@@ -4,6 +4,7 @@ namespace Barn2\Plugin\Posts_Table_Search_Sort\Admin\Wizard\Steps;
 
 use Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Barn2\Setup_Wizard\Api;
 use Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Barn2\Setup_Wizard\Step;
+use Barn2\Plugin\Posts_Table_Search_Sort\Settings;
 use Barn2\Plugin\Posts_Table_Search_Sort\Simple_Posts_Table;
 
 /**
@@ -97,6 +98,18 @@ class Search extends Step {
 	 * {@inheritdoc}
 	 */
 	public function submit( array $values ) {
+
+		$sort_by    = $values['sort_by'] ?? 'id';
+		$sort_order = $values['sort_order'] ?? '';
+		$options    = Settings::get_table_args();
+
+		$options['sort_by']    = $sort_by;
+		$options['sort_order'] = $sort_order;
+
+		$options = Settings::sanitize_table_args( $options );
+
+		update_option( Settings::TABLE_ARGS_SETTING, $options );
+
 		return Api::send_success_response();
 	}
 
