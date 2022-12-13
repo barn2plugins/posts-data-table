@@ -25,7 +25,7 @@ class Util
     {
         $values = [];
         if ($with_empty) {
-            $values[] = ['value' => '', 'label' => __('Select an option', 'posts-data-table')];
+            $values[] = ['value' => '', 'label' => __('Select an option', 'barn2-setup-wizard')];
         }
         foreach ($array as $key => $value) {
             $values[] = ['value' => $key, 'label' => \html_entity_decode($value)];

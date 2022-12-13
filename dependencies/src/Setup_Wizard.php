@@ -36,15 +36,15 @@ class Setup_Wizard implements Bootable, JsonSerializable
     /**
      * Holds the EDD_Licensing class.
      *
-     * @var object
+     * @var object|boolean
      */
-    private $edd_api;
+    private $edd_api = \false;
     /**
      * Holds the Plugin_License class.
      *
-     * @var object
+     * @var object|boolean
      */
-    private $plugin_license;
+    private $plugin_license = \false;
     /**
      * Specify the hook to use to which the restart button will be attached.
      *
@@ -130,7 +130,7 @@ class Setup_Wizard implements Bootable, JsonSerializable
      */
     public function configure($args = [])
     {
-        $defaults = ['plugin_name' => $this->plugin->get_name(), 'plugin_slug' => $this->plugin->get_slug(), 'plugin_product_id' => $this->plugin->get_id(), 'skip_url' => admin_url(), 'license_tooltip' => '', 'utm_id' => '', 'premium_url' => '', 'completed' => $this->is_completed(), 'barn2_api' => 'https://barn2.com/wp-json/upsell/v1/settings', 'ready_links' => []];
+        $defaults = ['plugin_name' => $this->plugin->get_name(), 'plugin_slug' => $this->plugin->get_slug(), 'plugin_product_id' => $this->plugin->get_id(), 'skip_url' => admin_url(), 'license_tooltip' => '', 'utm_id' => '', 'premium_url' => '', 'completed' => $this->is_completed(), 'barn2_api' => 'https://barn2.com/wp-json/upsell/v1/settings', 'ready_links' => [], 'is_free' => empty($this->get_licensing())];
         $args = wp_parse_args($args, $defaults);
         $this->js_args = $args;
         return $this;
@@ -139,7 +139,6 @@ class Setup_Wizard implements Bootable, JsonSerializable
      * Assign a Plugin_License and an EDD_Licensing class to the setup wizard.
      *
      * @param string $plugin_license_class full class path to the barn2lib Plugin_License class.
-     * @param string $edd_licensing_class full class path to the barn2lib EDD_Licensing class.
      * @return Setup_Wizard
      */
     public function add_license_class(string $plugin_license_class)
@@ -281,7 +280,7 @@ class Setup_Wizard implements Bootable, JsonSerializable
     /**
      * Get all initially hidden steps.
      *
-     * @return void
+     * @return array
      */
     private function get_initially_hidden_steps()
     {
@@ -331,7 +330,7 @@ class Setup_Wizard implements Bootable, JsonSerializable
     {
         $menu_slug = $this->get_slug();
         /* translators: %s: The name of the plugin. */
-        $page_title = \sprintf(__('%s setup wizard', 'posts-data-table'), $this->plugin->get_name());
+        $page_title = \sprintf(__('%s setup wizard', 'barn2-setup-wizard'), $this->plugin->get_name());
         add_menu_page($page_title, $page_title, 'manage_options', $menu_slug, [$this, 'render_setup_wizard_page']);
     }
     /**
@@ -421,7 +420,7 @@ class Setup_Wizard implements Bootable, JsonSerializable
 			jQuery( '.barn2-wiz-restart-btn' ).on( 'click', function( e ) {
 				/* translators: %s: The name of the plugin. */
 				return confirm( '<?php 
-        echo esc_html(\sprintf(__('Warning: This will overwrite your existing settings for %s. Are you sure you want to continue?', 'posts-data-table'), $this->plugin->get_name()));
+        echo esc_html(\sprintf(__('Warning: This will overwrite your existing settings for %s. Are you sure you want to continue?', 'barn2-setup-wizard'), $this->plugin->get_name()));
         ?>' );
 			});
 		</script>
@@ -457,7 +456,7 @@ class Setup_Wizard implements Bootable, JsonSerializable
             $version = isset($custom_asset['dependencies']['version']) ? $custom_asset['dependencies']['version'] : $script_asset['version'];
             wp_enqueue_script($slug . '-custom-asset', $custom_asset['url'], $deps, $version, \true);
         }
-        wp_add_inline_script($slug, 'const barn2_setup_wizard = ' . \json_encode($this), 'before');
+        wp_add_inline_script($slug, 'const barn2_setup_wizard = ' . wp_json_encode($this), 'before');
     }
     /**
      * Attach the restart wizard button.
@@ -471,15 +470,15 @@ class Setup_Wizard implements Bootable, JsonSerializable
 		<div class="barn2-setup-wizard-restart">
 			<hr>
 			<h3><?php 
-        esc_html_e('Setup wizard', 'posts-data-table');
+        esc_html_e('Setup wizard', 'barn2-setup-wizard');
         ?></h3>
 			<p><?php 
-        esc_html_e('If you need to access the setup wizard again, please click on the button below.', 'posts-data-table');
+        esc_html_e('If you need to access the setup wizard again, please click on the button below.', 'barn2-setup-wizard');
         ?></p>
 			<a href="<?php 
         echo esc_url($url);
         ?>" class="button barn2-wiz-restart-btn"><?php 
-        esc_html_e('Setup wizard', 'posts-data-table');
+        esc_html_e('Setup wizard', 'barn2-setup-wizard');
         ?></a>
 			<hr>
 		</div>
@@ -494,7 +493,7 @@ class Setup_Wizard implements Bootable, JsonSerializable
 			jQuery( '.barn2-wiz-restart-btn' ).on( 'click', function( e ) {
 				/* translators: %s: The name of the plugin. */
 				return confirm( '<?php 
-        echo esc_html(\sprintf(__('Warning: This will overwrite your existing settings for %s. Are you sure you want to continue?', 'posts-data-table'), $this->plugin->get_name()));
+        echo esc_html(\sprintf(__('Warning: This will overwrite your existing settings for %s. Are you sure you want to continue?', 'barn2-setup-wizard'), $this->plugin->get_name()));
         ?>' );
 			});
 		</script>
@@ -529,7 +528,7 @@ class Setup_Wizard implements Bootable, JsonSerializable
             if ($title_setting && isset($title_setting[\key($title_setting)]['desc'])) {
                 $desc = $title_setting[\key($title_setting)]['desc'];
                 $p_closing_tag = \strrpos($desc, '</p>');
-                $new_desc = \substr_replace($desc, ' | <a class="barn2-wiz-restart-btn" href="' . esc_url($url) . '">' . esc_html__('Setup wizard', 'posts-data-table') . '</a>', $p_closing_tag, 0);
+                $new_desc = \substr_replace($desc, ' | <a class="barn2-wiz-restart-btn" href="' . esc_url($url) . '">' . esc_html__('Setup wizard', 'barn2-setup-wizard') . '</a>', $p_closing_tag, 0);
                 $settings[\key($title_setting)]['desc'] = $new_desc;
             }
             return $settings;

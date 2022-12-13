@@ -21,7 +21,7 @@ class Welcome_Free extends Step
     public function __construct()
     {
         $this->set_id('welcome_free');
-        $this->set_name(esc_html__('Welcome', 'posts-data-table'));
+        $this->set_name(esc_html__('Welcome', 'barn2-setup-wizard'));
     }
     /**
      * {@inheritdoc}

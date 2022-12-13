@@ -20,8 +20,8 @@ class Ready extends Step
     public function __construct()
     {
         $this->set_id('ready');
-        $this->set_name(esc_html__('Ready', 'posts-data-table'));
-        $this->set_title(esc_html__('Setup Complete', 'posts-data-table'));
+        $this->set_name(esc_html__('Ready', 'barn2-setup-wizard'));
+        $this->set_title(esc_html__('Setup Complete', 'barn2-setup-wizard'));
     }
     /**
      * {@inheritdoc}

@@ -81,7 +81,7 @@ class Api implements JsonSerializable
     public function check_permissions($request)
     {
         return \true;
-        // return wp_verify_nonce( $request->get_header( 'x-wp-nonce' ), 'wp_rest' ) && current_user_can( 'manage_options' );
+        //return wp_verify_nonce( $request->get_header( 'x-wp-nonce' ), 'wp_rest' ) && current_user_can( 'manage_options' );
     }
     /**
      * Get the api namespace for the steps.
@@ -149,7 +149,7 @@ class Api implements JsonSerializable
         $step = $request->get_param('step');
         $step = $this->get_step_by_key($step);
         if (empty($step) || !$step instanceof Step) {
-            return self::send_error_response(['message' => __('Could not find the appropriate step.', 'posts-data-table')]);
+            return self::send_error_response(['message' => __('Could not find the appropriate step.', 'barn2-setup-wizard')]);
         }
         $values = Util::clean($request->get_param('values'));
         return $step->submit($values);
@@ -172,6 +172,9 @@ class Api implements JsonSerializable
     private function get_license_details()
     {
         $license_handler = $this->get_plugin()->get_license();
+        if (!\method_exists($this->get_plugin(), 'get_license')) {
+            return ['status' => '', 'exists' => \false, 'key' => '', 'status_help_text' => '', 'error_message' => '', 'free_plugin' => \true];
+        }
         return ['status' => $license_handler->get_status(), 'exists' => $license_handler->exists(), 'key' => $license_handler->get_license_key(), 'status_help_text' => $license_handler->get_status_help_text(), 'error_message' => $license_handler->get_error_message()];
     }
     /**
@@ -186,10 +189,10 @@ class Api implements JsonSerializable
         $action = $request->get_param('action');
         $allowed_actions = ['activate', 'check', 'deactivate'];
         if (empty($license_key)) {
-            return self::send_error_response(['message' => __('Please enter a license key.', 'posts-data-table')]);
+            return self::send_error_response(['message' => __('Please enter a license key.', 'barn2-setup-wizard')]);
         }
         if (!\in_array($action, $allowed_actions, \true)) {
-            return self::send_error_response(['message' => __('Invalid action requested.', 'posts-data-table')]);
+            return self::send_error_response(['message' => __('Invalid action requested.', 'barn2-setup-wizard')]);
         }
         $license_handler = $this->get_plugin()->get_license();
         switch ($action) {

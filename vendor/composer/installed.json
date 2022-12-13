@@ -88,12 +88,12 @@
         },
         {
             "name": "barn2/setup-wizard",
-            "version": "1.2.0",
-            "version_normalized": "1.2.0.0",
+            "version": "1.2.1",
+            "version_normalized": "1.2.1.0",
             "source": {
                 "type": "git",
                 "url": "git@bitbucket.org:barn2plugins/setup-wizard.git",
-                "reference": "b68b35098faa724225f7bc41fa25782d96bf1cc0"
+                "reference": "0f0329eced139322bc5fa00ecce65150efe9dc47"
             },
             "require-dev": {
                 "barn2/php-standards": "dev-master",
@@ -102,7 +102,7 @@
                 "phpunit/phpunit": "^9.0.1",
                 "symfony/var-dumper": "^5.1"
             },
-            "time": "2022-12-09T16:43:35+00:00",
+            "time": "2022-12-13T13:49:38+00:00",
             "type": "library",
             "installation-source": "source",
             "autoload": {
