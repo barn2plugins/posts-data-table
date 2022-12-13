@@ -19,8 +19,8 @@ class Completed extends Ready {
 	 */
 	public function __construct() {
 		parent::__construct();
-		$this->set_name( esc_html__( 'Ready', 'woocommerce-product-filters' ) );
-		$this->set_title( esc_html__( 'Ready!', 'woocommerce-product-filters' ) );
+		$this->set_name( esc_html__( 'Ready', 'posts-data-table' ) );
+		$this->set_title( esc_html__( 'Ready!', 'posts-data-table' ) );
 		$this->set_description(
 			''
 		);

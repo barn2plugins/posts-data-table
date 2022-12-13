@@ -149,7 +149,7 @@ class Api implements JsonSerializable
         $step = $request->get_param('step');
         $step = $this->get_step_by_key($step);
         if (empty($step) || !$step instanceof Step) {
-            return self::send_error_response(['message' => __('Could not find the appropriate step.', 'barn2-setup-wizard')]);
+            return self::send_error_response(['message' => __('Could not find the appropriate step.', 'posts-data-table')]);
         }
         $values = Util::clean($request->get_param('values'));
         return $step->submit($values);
@@ -186,10 +186,10 @@ class Api implements JsonSerializable
         $action = $request->get_param('action');
         $allowed_actions = ['activate', 'check', 'deactivate'];
         if (empty($license_key)) {
-            return self::send_error_response(['message' => __('Please enter a license key.', 'barn2-setup-wizard')]);
+            return self::send_error_response(['message' => __('Please enter a license key.', 'posts-data-table')]);
         }
         if (!\in_array($action, $allowed_actions, \true)) {
-            return self::send_error_response(['message' => __('Invalid action requested.', 'barn2-setup-wizard')]);
+            return self::send_error_response(['message' => __('Invalid action requested.', 'posts-data-table')]);
         }
         $license_handler = $this->get_plugin()->get_license();
         switch ($action) {

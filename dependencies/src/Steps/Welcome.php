@@ -22,7 +22,7 @@ class Welcome extends Step
     public function __construct()
     {
         $this->set_id('welcome');
-        $this->set_name(esc_html__('Welcome', 'barn2-setup-wizard'));
+        $this->set_name(esc_html__('Welcome', 'posts-data-table'));
     }
     /**
      * {@inheritdoc}

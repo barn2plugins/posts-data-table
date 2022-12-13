@@ -22,9 +22,9 @@ class Loading extends Step {
 	 */
 	public function __construct() {
 		$this->set_id( 'loading' );
-		$this->set_name( esc_html__( 'Loading', 'document-library-lite' ) );
-		$this->set_description( esc_html__( 'Control how the posts in the table load.', 'document-library-lite' ) );
-		$this->set_title( esc_html__( 'Table loading', 'document-library-lite' ) );
+		$this->set_name( esc_html__( 'Loading', 'posts-data-table' ) );
+		$this->set_description( esc_html__( 'Control how the posts in the table load.', 'posts-data-table' ) );
+		$this->set_title( esc_html__( 'Table loading', 'posts-data-table' ) );
 	}
 
 	/**
@@ -33,15 +33,15 @@ class Loading extends Step {
 	public function setup_fields() {
 		$fields = [
 			'posts_per_page' => [
-				'label'       => __( 'Posts per page' ),
-				'description' => __( 'The number of posts per page of results. Enter -1 to display all posts on one page.' ),
+				'label'       => __( 'Posts per page', 'posts-data-table' ),
+				'description' => __( 'The number of posts per page of results. Enter -1 to display all posts on one page.', 'posts-data-table' ),
 				'type'        => 'number',
 				'value'       => Settings::get_table_args()['rows_per_page'] ?? 20,
 			],
 			'lazy_load'      => [
-				'title'       => __( 'Lazy load' ),
-				'label'       => __( 'Load the posts one page at a time' ),
-				'description' => __( 'Enable this if you have many posts or experience slow page load times.' ) . ' ' . Util::barn2_link( 'kb/posts-table-lazy-load/', esc_html__( 'Read more', 'document-library-lite' ), true ),
+				'title'       => __( 'Lazy load', 'posts-data-table' ),
+				'label'       => __( 'Load the posts one page at a time', 'posts-data-table' ),
+				'description' => __( 'Enable this if you have many posts or experience slow page load times.', 'posts-data-table' ) . ' ' . Util::barn2_link( 'kb/posts-table-lazy-load/', esc_html__( 'Read more', 'posts-data-table' ), true ),
 				'type'        => 'checkbox',
 				'value'       => false,
 				'premium'     => true,
