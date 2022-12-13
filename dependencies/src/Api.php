@@ -171,10 +171,10 @@ class Api implements JsonSerializable
      */
     private function get_license_details()
     {
-        $license_handler = $this->get_plugin()->get_license();
         if (!\method_exists($this->get_plugin(), 'get_license')) {
             return ['status' => '', 'exists' => \false, 'key' => '', 'status_help_text' => '', 'error_message' => '', 'free_plugin' => \true];
         }
+        $license_handler = $this->get_plugin()->get_license();
         return ['status' => $license_handler->get_status(), 'exists' => $license_handler->exists(), 'key' => $license_handler->get_license_key(), 'status_help_text' => $license_handler->get_status_help_text(), 'error_message' => $license_handler->get_error_message()];
     }
     /**
