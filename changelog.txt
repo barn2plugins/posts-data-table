@@ -1,3 +1,9 @@
+= 1.3.9 =
+Release date 19 December 2022
+
+ * Added `utm_medium` and `utm_campaign` to readme file links 
+ * Tested up to WordPress 6.1.1
+
 = 1.3.8 =
 Release date 15 February 2022
 
