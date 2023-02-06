@@ -20,9 +20,12 @@ class Completed extends Ready {
 	public function __construct() {
 		parent::__construct();
 		$this->set_name( esc_html__( 'Ready', 'posts-data-table' ) );
-		$this->set_title( esc_html__( 'Ready!', 'posts-data-table' ) );
+		$this->set_title( esc_html__( 'Setup Complete', 'posts-data-table' ) );
 		$this->set_description(
-			''
+			sprintf(
+				__( 'You’re all set! Take a look at our <a href="%s" target="_blank">Knowledge Base</a> for further instructions, tutorials, videos, and much more.' ),
+				'https://barn2.com/kb/list-your-wordpress-blog-posts/'
+			)
 		);
 	}
 
