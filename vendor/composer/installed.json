@@ -88,12 +88,12 @@
         },
         {
             "name": "barn2/setup-wizard",
-            "version": "1.2.2",
-            "version_normalized": "1.2.2.0",
+            "version": "1.2.7",
+            "version_normalized": "1.2.7.0",
             "source": {
                 "type": "git",
                 "url": "git@bitbucket.org:barn2plugins/setup-wizard.git",
-                "reference": "b11248c1c8170d7f6a15d93581c6fb78daa67143"
+                "reference": "02ee467415211518c1e9a3754865331f16a666d1"
             },
             "require-dev": {
                 "barn2/php-standards": "dev-master",
@@ -102,7 +102,7 @@
                 "phpunit/phpunit": "^9.0.1",
                 "symfony/var-dumper": "^5.1"
             },
-            "time": "2022-12-13T13:54:17+00:00",
+            "time": "2023-02-02T16:50:20+00:00",
             "type": "library",
             "installation-source": "source",
             "autoload": {
@@ -412,23 +412,22 @@
         },
         {
             "name": "phpcsstandards/phpcsextra",
-            "version": "1.0.0-rc1",
-            "version_normalized": "1.0.0.0-RC1",
+            "version": "1.0.2",
+            "version_normalized": "1.0.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHPCSStandards/PHPCSExtra.git",
-                "reference": "e0e58d3d807b08aaa26b3df1a4a04a01a1d4ffa0"
+                "reference": "a077c4ad65b906768ed2f820701958b57f605be0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHPCSStandards/PHPCSExtra/zipball/e0e58d3d807b08aaa26b3df1a4a04a01a1d4ffa0",
-                "reference": "e0e58d3d807b08aaa26b3df1a4a04a01a1d4ffa0",
+                "url": "https://api.github.com/repos/PHPCSStandards/PHPCSExtra/zipball/a077c4ad65b906768ed2f820701958b57f605be0",
+                "reference": "a077c4ad65b906768ed2f820701958b57f605be0",
                 "shasum": ""
             },
             "require": {
-                "dealerdirect/phpcodesniffer-composer-installer": "^0.4.1 || ^0.5 || ^0.6.2 || ^0.7",
                 "php": ">=5.4",
-                "phpcsstandards/phpcsutils": "^1.0 || dev-develop",
+                "phpcsstandards/phpcsutils": "^1.0",
                 "squizlabs/php_codesniffer": "^3.7.1"
             },
             "require-dev": {
@@ -438,7 +437,7 @@
                 "phpcsstandards/phpcsdevtools": "^1.2.0",
                 "phpunit/phpunit": "^4.5 || ^5.0 || ^6.0 || ^7.0"
             },
-            "time": "2022-12-07T08:22:01+00:00",
+            "time": "2023-01-09T22:15:31+00:00",
             "type": "phpcodesniffer-standard",
             "extra": {
                 "branch-alias": {
@@ -479,21 +478,21 @@
         },
         {
             "name": "phpcsstandards/phpcsutils",
-            "version": "1.0.0-alpha4",
-            "version_normalized": "1.0.0.0-alpha4",
+            "version": "1.0.1",
+            "version_normalized": "1.0.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHPCSStandards/PHPCSUtils.git",
-                "reference": "37c6da9a0aede973974ae02ef1af2dd641355e86"
+                "reference": "4fd2e30c7465112ca2e3646037bfb9e6f0f4d4f3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHPCSStandards/PHPCSUtils/zipball/37c6da9a0aede973974ae02ef1af2dd641355e86",
-                "reference": "37c6da9a0aede973974ae02ef1af2dd641355e86",
+                "url": "https://api.github.com/repos/PHPCSStandards/PHPCSUtils/zipball/4fd2e30c7465112ca2e3646037bfb9e6f0f4d4f3",
+                "reference": "4fd2e30c7465112ca2e3646037bfb9e6f0f4d4f3",
                 "shasum": ""
             },
             "require": {
-                "dealerdirect/phpcodesniffer-composer-installer": "^0.4.1 || ^0.5 || ^0.6.2 || ^0.7",
+                "dealerdirect/phpcodesniffer-composer-installer": "^0.4.1 || ^0.5 || ^0.6.2 || ^0.7 || ^1.0",
                 "php": ">=5.4",
                 "squizlabs/php_codesniffer": "^3.7.1 || 4.0.x-dev@dev"
             },
@@ -505,7 +504,7 @@
                 "phpunit/phpunit": "^4.8.36 || ^5.7.21 || ^6.0 || ^7.0 || ^8.0 || ^9.3",
                 "yoast/phpunit-polyfills": "^1.0.1"
             },
-            "time": "2022-10-25T13:57:45+00:00",
+            "time": "2023-01-05T12:08:37+00:00",
             "type": "phpcodesniffer-standard",
             "extra": {
                 "branch-alias": {
@@ -620,15 +619,16 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/WordPress/WordPress-Coding-Standards.git",
-                "reference": "0d5783b1e992020f29d928250ca2a1050cf63fb7"
+                "reference": "546f59c67854589bb8f6b49a30e642e75ff419ad"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/WordPress/WordPress-Coding-Standards/zipball/0d5783b1e992020f29d928250ca2a1050cf63fb7",
-                "reference": "0d5783b1e992020f29d928250ca2a1050cf63fb7",
+                "url": "https://api.github.com/repos/WordPress/WordPress-Coding-Standards/zipball/546f59c67854589bb8f6b49a30e642e75ff419ad",
+                "reference": "546f59c67854589bb8f6b49a30e642e75ff419ad",
                 "shasum": ""
             },
             "require": {
+                "ext-filter": "*",
                 "php": ">=5.4",
                 "phpcsstandards/phpcsextra": "^1.0",
                 "phpcsstandards/phpcsutils": "^1.0",
@@ -641,7 +641,10 @@
                 "phpcsstandards/phpcsdevtools": "^1.2.0",
                 "phpunit/phpunit": "^4.0 || ^5.0 || ^6.0 || ^7.0"
             },
-            "time": "2022-12-10T13:26:41+00:00",
+            "suggest": {
+                "ext-mbstring": "For improved results"
+            },
+            "time": "2023-01-13T13:37:27+00:00",
             "default-branch": true,
             "type": "phpcodesniffer-standard",
             "installation-source": "dist",
