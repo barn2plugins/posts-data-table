@@ -1,361 +1,506 @@
-#, fuzzy
+# Copyright (C) 2023 Barn2 Plugins
+# This file is distributed under the GNU General Public License v3.0.
 msgid ""
 msgstr ""
-"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
-"Project-Id-Version: Posts Data Table\n"
-"POT-Creation-Date: 2021-05-26 21:42+0100\n"
-"PO-Revision-Date: 2015-12-10 18:11+0000\n"
-"Last-Translator: \n"
-"Language-Team: \n"
+"Project-Id-Version: Posts Table with Search & Sort 1.3.8\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/posts-data-table\n"
+"POT-Creation-Date: 2023-02-06 17:22:42+00:00\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.4.3\n"
-"X-Poedit-Basepath: ..\n"
-"X-Poedit-WPHeader: posts-data-table.php\n"
-"X-Poedit-SourceCharset: UTF-8\n"
-"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
-"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;"
-"_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
-"X-Poedit-SearchPath-0: .\n"
-"X-Poedit-SearchPathExcluded-0: *.js\n"
+"PO-Revision-Date: 2023-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"X-Generator: node-wp-i18n 1.2.6\n"
 
-#: lib/Admin/Settings_API_Helper.php:224
+#: dependencies/src/Api.php:152 vendor/barn2/setup-wizard/src/Api.php:216
+msgid "Could not find the appropriate step."
+msgstr ""
+
+#: dependencies/src/Api.php:192 vendor/barn2/setup-wizard/src/Api.php:285
+msgid "Please enter a license key."
+msgstr ""
+
+#: dependencies/src/Api.php:195 vendor/barn2/setup-wizard/src/Api.php:293
+msgid "Invalid action requested."
+msgstr ""
+
+#: dependencies/src/Setup_Wizard.php:333
+#: vendor/barn2/setup-wizard/src/Setup_Wizard.php:382
+#. translators: %s: The name of the plugin.
+msgid "%s setup wizard"
+msgstr ""
+
+#: dependencies/src/Setup_Wizard.php:423 dependencies/src/Setup_Wizard.php:496
+#: vendor/barn2/setup-wizard/src/Setup_Wizard.php:484
+#: vendor/barn2/setup-wizard/src/Setup_Wizard.php:584
+msgid ""
+"Warning: This will overwrite your existing settings for %s. Are you sure "
+"you want to continue?"
+msgstr ""
+
+#: dependencies/src/Setup_Wizard.php:473 dependencies/src/Setup_Wizard.php:481
+#: dependencies/src/Setup_Wizard.php:531
+#: vendor/barn2/setup-wizard/src/Setup_Wizard.php:569
+#: vendor/barn2/setup-wizard/src/Setup_Wizard.php:571
+#: vendor/barn2/setup-wizard/src/Setup_Wizard.php:631
+msgid "Setup wizard"
+msgstr ""
+
+#: dependencies/src/Setup_Wizard.php:476
+#: vendor/barn2/setup-wizard/src/Setup_Wizard.php:570
+msgid ""
+"If you need to access the setup wizard again, please click on the button "
+"below."
+msgstr ""
+
+#: dependencies/src/Steps/Cross_Selling.php:23
+#: src/Admin/Wizard/Steps/Upsell.php:22
+#: vendor/barn2/setup-wizard/src/Steps/Cross_Selling.php:22
+msgid "More"
+msgstr ""
+
+#: dependencies/src/Steps/Cross_Selling.php:24
+#: src/Admin/Wizard/Steps/Upsell.php:24
+#: vendor/barn2/setup-wizard/src/Steps/Cross_Selling.php:23
+msgid "Extra features"
+msgstr ""
+
+#: dependencies/src/Steps/Cross_Selling.php:25
+#: vendor/barn2/setup-wizard/src/Steps/Cross_Selling.php:24
+msgid "Enhance your site with these fantastic plugins from Barn2."
+msgstr ""
+
+#: dependencies/src/Steps/Ready.php:23 src/Admin/Wizard/Steps/Completed.php:22
+#: vendor/barn2/setup-wizard/src/Steps/Ready.php:22
+msgid "Ready"
+msgstr ""
+
+#: dependencies/src/Steps/Ready.php:24 src/Admin/Wizard/Steps/Completed.php:23
+#: vendor/barn2/setup-wizard/src/Steps/Ready.php:23
+msgid "Setup Complete"
+msgstr ""
+
+#: dependencies/src/Steps/Welcome.php:25
+#: dependencies/src/Steps/Welcome_Free.php:24
+#: src/Admin/Wizard/Steps/Welcome.php:23
+#: vendor/barn2/setup-wizard/src/Steps/Welcome.php:24
+#: vendor/barn2/setup-wizard/src/Steps/Welcome_Free.php:23
+msgid "Welcome"
+msgstr ""
+
+#: dependencies/src/Util.php:28 vendor/barn2/setup-wizard/src/Util.php:31
+msgid "Select an option"
+msgstr ""
+
+#: lib/Admin/Settings_API_Helper.php:298
 msgid "Size"
 msgstr ""
 
-#: lib/Util.php:29
+#: lib/Util.php:39 src/Admin/Wizard/Steps/Layout.php:50
+#: src/Admin/Wizard/Steps/Loading.php:44
 msgid "Read more"
 msgstr ""
 
-#: src/Admin/Admin_Controller.php:43
+#: src/Admin/Admin_Controller.php:44
 msgid "Settings"
 msgstr ""
 
-#: src/Admin/Admin_Controller.php:53
+#: src/Admin/Admin_Controller.php:55
 msgid "Pro Version"
 msgstr ""
 
-#: src/Admin/Settings_Page.php:66 src/Admin/Settings_Page.php:67
+#: src/Admin/Settings_Page.php:67 src/Admin/Settings_Page.php:68
 msgid "Posts Table With Search &amp; Sort"
 msgstr ""
 
-#: src/Admin/Settings_Page.php:79
+#: src/Admin/Settings_Page.php:80
 msgid "Posts Table with Search and Sort"
 msgstr ""
 
-#: src/Admin/Settings_Page.php:89
+#: src/Admin/Settings_Page.php:90
 msgid "Save Changes"
 msgstr ""
 
-#: src/Admin/Settings_Page.php:111
+#: src/Admin/Settings_Page.php:118
 msgid "Posts selection"
 msgstr ""
 
-#: src/Admin/Settings_Page.php:115
+#: src/Admin/Settings_Page.php:124 src/Admin/Wizard/Steps/Layout.php:36
 msgid "Post type"
 msgstr ""
 
-#: src/Admin/Settings_Page.php:117
+#: src/Admin/Settings_Page.php:126 src/Admin/Wizard/Steps/Layout.php:37
 msgid "The default post type for your tables."
 msgstr ""
 
-#: src/Admin/Settings_Page.php:126
+#: src/Admin/Settings_Page.php:138
 msgid "Table content"
 msgstr ""
 
-#: src/Admin/Settings_Page.php:130
+#: src/Admin/Settings_Page.php:144 src/Admin/Wizard/Steps/Layout.php:49
 msgid "Columns"
 msgstr ""
 
-#: src/Admin/Settings_Page.php:132
+#: src/Admin/Settings_Page.php:146
 msgid "The columns displayed in your table. Enter a comma-separated list. "
 msgstr ""
 
-#: src/Admin/Settings_Page.php:137
+#: src/Admin/Settings_Page.php:151
 msgid "Image size"
 msgstr ""
 
-#: src/Admin/Settings_Page.php:139
+#: src/Admin/Settings_Page.php:153
 msgid "W x H in pixels. Sets the image size when using the 'image' column. "
 msgstr ""
 
-#: src/Admin/Settings_Page.php:144
+#: src/Admin/Settings_Page.php:158
 msgid "Image lightbox"
 msgstr ""
 
-#: src/Admin/Settings_Page.php:146
+#: src/Admin/Settings_Page.php:160
 msgid "Display featured images in a lightbox when opened"
 msgstr ""
 
-#: src/Admin/Settings_Page.php:150
+#: src/Admin/Settings_Page.php:164
 msgid "Shortcodes"
 msgstr ""
 
-#: src/Admin/Settings_Page.php:153
-msgid ""
-"Display shortcodes, HTML and other formatting inside the table content"
+#: src/Admin/Settings_Page.php:167
+msgid "Display shortcodes, HTML and other formatting inside the table content"
 msgstr ""
 
-#: src/Admin/Settings_Page.php:158
+#: src/Admin/Settings_Page.php:172 src/Admin/Wizard/Steps/Layout.php:55
 msgid "Content length"
 msgstr ""
 
-#: src/Admin/Settings_Page.php:161 src/Admin/Settings_Page.php:173
+#: src/Admin/Settings_Page.php:175 src/Admin/Settings_Page.php:187
 msgid "words"
 msgstr ""
 
-#: src/Admin/Settings_Page.php:162
+#: src/Admin/Settings_Page.php:176
 msgid "Enter -1 to show the full post content."
 msgstr ""
 
-#: src/Admin/Settings_Page.php:170
+#: src/Admin/Settings_Page.php:184
 msgid "Excerpt length"
 msgstr ""
 
-#: src/Admin/Settings_Page.php:174
+#: src/Admin/Settings_Page.php:188
 msgid "Enter -1 to show the full excerpt."
 msgstr ""
 
-#: src/Admin/Settings_Page.php:182
+#: src/Admin/Settings_Page.php:196
 msgid "Links"
 msgstr ""
 
-#: src/Admin/Settings_Page.php:184
-msgid ""
-"Display links to the single post page, category, tag, or term archive. "
+#: src/Admin/Settings_Page.php:198
+msgid "Display links to the single post page, category, tag, or term archive. "
 msgstr ""
 
-#: src/Admin/Settings_Page.php:192
+#: src/Admin/Settings_Page.php:209 src/Admin/Wizard/Steps/Loading.php:27
 msgid "Table loading"
 msgstr ""
 
-#: src/Admin/Settings_Page.php:195
+#: src/Admin/Settings_Page.php:214 src/Admin/Wizard/Steps/Loading.php:42
 msgid "Lazy load"
 msgstr ""
 
-#: src/Admin/Settings_Page.php:198
+#: src/Admin/Settings_Page.php:217 src/Admin/Wizard/Steps/Loading.php:43
 msgid "Load the posts one page at a time"
 msgstr ""
 
-#: src/Admin/Settings_Page.php:199
-msgid ""
-"Enable this if you have many posts or experience slow page load times. "
+#: src/Admin/Settings_Page.php:218
+msgid "Enable this if you have many posts or experience slow page load times. "
 msgstr ""
 
-#: src/Admin/Settings_Page.php:203
+#: src/Admin/Settings_Page.php:222
 msgid "Post limit"
 msgstr ""
 
-#: src/Admin/Settings_Page.php:206
+#: src/Admin/Settings_Page.php:225
 msgid "The maximum (total) number of posts to display in one table."
 msgstr ""
 
-#: src/Admin/Settings_Page.php:214
+#: src/Admin/Settings_Page.php:233 src/Admin/Wizard/Steps/Loading.php:36
 msgid "Posts per page"
 msgstr ""
 
-#: src/Admin/Settings_Page.php:217
+#: src/Admin/Settings_Page.php:236 src/Admin/Wizard/Steps/Loading.php:37
 msgid ""
 "The number of posts per page of results. Enter -1 to display all posts on "
 "one page."
 msgstr ""
 
-#: src/Admin/Settings_Page.php:224
+#: src/Admin/Settings_Page.php:243
 msgid "Caching"
 msgstr ""
 
-#: src/Admin/Settings_Page.php:227
+#: src/Admin/Settings_Page.php:246
 msgid "Cache table contents to improve load time"
 msgstr ""
 
-#: src/Admin/Settings_Page.php:237
+#: src/Admin/Settings_Page.php:259
 msgid "Sorting"
 msgstr ""
 
-#: src/Admin/Settings_Page.php:240
+#: src/Admin/Settings_Page.php:264 src/Admin/Wizard/Steps/Search.php:38
 msgid "Sort by"
 msgstr ""
 
-#: src/Admin/Settings_Page.php:244
+#: src/Admin/Settings_Page.php:268
 msgid "The initial sort order applied to the table. "
 msgstr ""
 
-#: src/Admin/Settings_Page.php:248
+#: src/Admin/Settings_Page.php:272 src/Admin/Wizard/Steps/Search.php:45
 msgid "Sort direction"
 msgstr ""
 
-#: src/Admin/Settings_Page.php:252
+#: src/Admin/Settings_Page.php:276 src/Admin/Wizard/Steps/Search.php:50
 msgid "Automatic"
 msgstr ""
 
-#: src/Admin/Settings_Page.php:253
+#: src/Admin/Settings_Page.php:277 src/Admin/Wizard/Steps/Search.php:54
 msgid "Ascending (A to Z, 1 to 99)"
 msgstr ""
 
-#: src/Admin/Settings_Page.php:254
+#: src/Admin/Settings_Page.php:278 src/Admin/Wizard/Steps/Search.php:58
 msgid "Descending (Z to A, 99 to 1)"
 msgstr ""
 
-#: src/Admin/Settings_Page.php:263
+#: src/Admin/Settings_Page.php:290
 msgid "Table controls"
 msgstr ""
 
-#: src/Admin/Settings_Page.php:266
+#: src/Admin/Settings_Page.php:295 src/Admin/Wizard/Steps/Search.php:64
 msgid "Search filters"
 msgstr ""
 
-#: src/Admin/Settings_Page.php:270
+#: src/Admin/Settings_Page.php:299 src/Admin/Wizard/Steps/Search.php:69
 msgid "Disabled"
 msgstr ""
 
-#: src/Admin/Settings_Page.php:271
+#: src/Admin/Settings_Page.php:300
 msgid "Show based on columns in table"
 msgstr ""
 
-#: src/Admin/Settings_Page.php:272
+#: src/Admin/Settings_Page.php:301
 msgid "Custom"
 msgstr ""
 
-#: src/Admin/Settings_Page.php:274
+#: src/Admin/Settings_Page.php:303
 msgid ""
 "Dropdown lists to filter the table by category, tag, attribute, or custom "
 "taxonomy. "
 msgstr ""
 
-#: src/Admin/Settings_Page.php:278
+#: src/Admin/Settings_Page.php:307
 msgid "Page length"
 msgstr ""
 
-#: src/Admin/Settings_Page.php:282 src/Admin/Settings_Page.php:295
-#: src/Admin/Settings_Page.php:307 src/Admin/Settings_Page.php:320
+#: src/Admin/Settings_Page.php:311 src/Admin/Settings_Page.php:324
+#: src/Admin/Settings_Page.php:336 src/Admin/Settings_Page.php:349
 msgid "Above table"
 msgstr ""
 
-#: src/Admin/Settings_Page.php:283 src/Admin/Settings_Page.php:296
-#: src/Admin/Settings_Page.php:308 src/Admin/Settings_Page.php:321
+#: src/Admin/Settings_Page.php:312 src/Admin/Settings_Page.php:325
+#: src/Admin/Settings_Page.php:337 src/Admin/Settings_Page.php:350
 msgid "Below table"
 msgstr ""
 
-#: src/Admin/Settings_Page.php:284 src/Admin/Settings_Page.php:297
-#: src/Admin/Settings_Page.php:309 src/Admin/Settings_Page.php:322
+#: src/Admin/Settings_Page.php:313 src/Admin/Settings_Page.php:326
+#: src/Admin/Settings_Page.php:338 src/Admin/Settings_Page.php:351
 msgid "Above and below table"
 msgstr ""
 
-#: src/Admin/Settings_Page.php:285 src/Admin/Settings_Page.php:298
-#: src/Admin/Settings_Page.php:310 src/Admin/Settings_Page.php:323
+#: src/Admin/Settings_Page.php:314 src/Admin/Settings_Page.php:327
+#: src/Admin/Settings_Page.php:339 src/Admin/Settings_Page.php:352
 msgid "Hidden"
 msgstr ""
 
-#: src/Admin/Settings_Page.php:287
+#: src/Admin/Settings_Page.php:316
 msgid "The position of the 'Show [x] entries' dropdown list."
 msgstr ""
 
-#: src/Admin/Settings_Page.php:291
+#: src/Admin/Settings_Page.php:320
 msgid "Search box"
 msgstr ""
 
-#: src/Admin/Settings_Page.php:303
+#: src/Admin/Settings_Page.php:332
 msgid "Totals"
 msgstr ""
 
-#: src/Admin/Settings_Page.php:312
+#: src/Admin/Settings_Page.php:341
 msgid "The position of the post totals, e.g. 'Showing 1 to 5 of 10 entries'."
 msgstr ""
 
-#: src/Admin/Settings_Page.php:316
+#: src/Admin/Settings_Page.php:345
 msgid "Pagination buttons"
 msgstr ""
 
-#: src/Admin/Settings_Page.php:325
+#: src/Admin/Settings_Page.php:354
 msgid "The position of the paging buttons which scroll between results."
 msgstr ""
 
-#: src/Admin/Settings_Page.php:329
+#: src/Admin/Settings_Page.php:358
 msgid "Pagination type"
 msgstr ""
 
-#: src/Admin/Settings_Page.php:333
+#: src/Admin/Settings_Page.php:362
 msgid "Numbers only"
 msgstr ""
 
-#: src/Admin/Settings_Page.php:334
+#: src/Admin/Settings_Page.php:363
 msgid "Prev|Next"
 msgstr ""
 
-#: src/Admin/Settings_Page.php:335
+#: src/Admin/Settings_Page.php:364
 msgid "Prev|Next + Numbers"
 msgstr ""
 
-#: src/Admin/Settings_Page.php:336
+#: src/Admin/Settings_Page.php:365
 msgid "Prev|Next|First|Last"
 msgstr ""
 
-#: src/Admin/Settings_Page.php:337
+#: src/Admin/Settings_Page.php:366
 msgid "Prev|Next|First|Last + Numbers"
 msgstr ""
 
-#: src/Admin/Settings_Page.php:342
+#: src/Admin/Settings_Page.php:371
 msgid "Reset button"
 msgstr ""
 
-#: src/Admin/Settings_Page.php:345
+#: src/Admin/Settings_Page.php:374
 msgid "Show a reset button above the table"
 msgstr ""
 
-#: src/Admin/Settings_Page.php:363
+#: src/Admin/Settings_Page.php:393
 msgid "Pro version only"
 msgstr ""
 
-#: src/Admin/Settings_Page.php:375
-#, php-format
+#: src/Admin/Settings_Page.php:405
 msgid ""
 "Post tables list all published posts by default. To restrict posts by "
 "category, tag, author, etc. add the %1$scorresponding option%2$s to the "
 "[posts_table] shortcode."
 msgstr ""
 
-#: src/Admin/Settings_Page.php:389
-#, php-format
+#: src/Admin/Settings_Page.php:419
 msgid ""
 "You can override these settings for individual tables by adding options to "
 "the [posts_table] shortcode. See the %1$sKnowledge Base%2$s for details."
 msgstr ""
 
-#: src/Simple_Posts_Table.php:68
+#: src/Admin/Wizard/Setup_Wizard.php:58
+msgid "Go to settings page"
+msgstr ""
+
+#: src/Admin/Wizard/Steps/Completed.php:26
+msgid ""
+"You’re all set! Take a look at our <a href=\"%s\" "
+"target=\"_blank\">Knowledge Base</a> for further instructions, tutorials, "
+"videos, and much more."
+msgstr ""
+
+#: src/Admin/Wizard/Steps/Layout.php:25
+msgid "Layout and Content"
+msgstr ""
+
+#: src/Admin/Wizard/Steps/Layout.php:26
+msgid "First, choose what to include in your post tables."
+msgstr ""
+
+#: src/Admin/Wizard/Steps/Layout.php:27
+msgid "Layout and content"
+msgstr ""
+
+#: src/Admin/Wizard/Steps/Layout.php:42
+msgid "Post"
+msgstr ""
+
+#: src/Admin/Wizard/Steps/Layout.php:50
+msgid "List the columns to include in your posts tables."
+msgstr ""
+
+#: src/Admin/Wizard/Steps/Layout.php:56
+msgid ""
+"If you have included a ‘content’ column, then enter the number of "
+"characters to appear in the table. Enter -1 to show the full content."
+msgstr ""
+
+#: src/Admin/Wizard/Steps/Loading.php:25
+msgid "Loading"
+msgstr ""
+
+#: src/Admin/Wizard/Steps/Loading.php:26
+msgid "Control how the posts in the table load."
+msgstr ""
+
+#: src/Admin/Wizard/Steps/Loading.php:44
+msgid "Enable this if you have many posts or experience slow page load times."
+msgstr ""
+
+#: src/Admin/Wizard/Steps/Search.php:24 src/Admin/Wizard/Steps/Search.php:26
+msgid "Search and Sort"
+msgstr ""
+
+#: src/Admin/Wizard/Steps/Search.php:25
+msgid "Next, make it quick and easy for people to find your posts."
+msgstr ""
+
+#: src/Admin/Wizard/Steps/Search.php:39
+msgid "The initial sort order applied to the table."
+msgstr ""
+
+#: src/Admin/Wizard/Steps/Upsell.php:23
+msgid "Enhance your store with these fantastic plugins from Barn2."
+msgstr ""
+
+#: src/Admin/Wizard/Steps/Welcome.php:25
+msgid "Start creating post tables in no time."
+msgstr ""
+
+#: src/Admin/Wizard/Steps/Welcome.php:35
+msgid ""
+"Use this setup wizard to quickly configure your post tables. You can change "
+"these options later on the settings page, or override them in the shortcode "
+"for individual tables."
+msgstr ""
+
+#: src/Simple_Posts_Table.php:69
 msgid "ID"
 msgstr ""
 
-#: src/Simple_Posts_Table.php:73
+#: src/Simple_Posts_Table.php:74
 msgid "Image"
 msgstr ""
 
-#: src/Simple_Posts_Table.php:78
+#: src/Simple_Posts_Table.php:79
 msgid "Title"
 msgstr ""
 
-#: src/Simple_Posts_Table.php:83
+#: src/Simple_Posts_Table.php:84
 msgid "Categories"
 msgstr ""
 
-#: src/Simple_Posts_Table.php:88
+#: src/Simple_Posts_Table.php:89
 msgid "Tags"
 msgstr ""
 
-#: src/Simple_Posts_Table.php:93
+#: src/Simple_Posts_Table.php:94
 msgid "Date"
 msgstr ""
 
-#: src/Simple_Posts_Table.php:98
+#: src/Simple_Posts_Table.php:99
 msgid "Author"
 msgstr ""
 
-#: src/Simple_Posts_Table.php:103
+#: src/Simple_Posts_Table.php:104
 msgid "Content"
 msgstr ""
 
-#: src/Simple_Posts_Table.php:307
-#, php-format
+#: src/Simple_Posts_Table.php:313
+#. translators: %s: the author's name
 msgid "Posts by %s"
 msgstr ""
 
@@ -376,5 +521,5 @@ msgid "Barn2 Plugins"
 msgstr ""
 
 #. Author URI of the plugin/theme
-msgid "https://barn2.co.uk"
+msgid "https://barn2.com"
 msgstr ""
