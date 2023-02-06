@@ -53,6 +53,12 @@ class Setup_Wizard implements Registerable {
 			[
 				'skip_url'    => admin_url( 'options-general.php?page=posts_table_search_sort' ),
 				'plugin_slug' => 'posts-table-with-search-and-sort',
+				'signpost'        => [
+					[
+						'title' => __( 'Go to settings page', 'document-library-pro' ),
+						'href'  => admin_url( 'options-general.php?page=posts_table_search_sort' ),
+					],
+				]
 			]
 		);
 
