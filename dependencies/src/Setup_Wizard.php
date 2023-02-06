@@ -330,7 +330,7 @@ class Setup_Wizard implements Bootable, JsonSerializable
     {
         $menu_slug = $this->get_slug();
         /* translators: %s: The name of the plugin. */
-        $page_title = \sprintf(__('%s setup wizard', 'barn2-setup-wizard'), $this->plugin->get_name());
+        $page_title = \sprintf(__('%s setup wizard', 'posts-data-table'), $this->plugin->get_name());
         add_menu_page($page_title, $page_title, 'manage_options', $menu_slug, [$this, 'render_setup_wizard_page']);
     }
     /**
@@ -420,7 +420,7 @@ class Setup_Wizard implements Bootable, JsonSerializable
 			jQuery( '.barn2-wiz-restart-btn' ).on( 'click', function( e ) {
 				/* translators: %s: The name of the plugin. */
 				return confirm( '<?php 
-        echo esc_html(\sprintf(__('Warning: This will overwrite your existing settings for %s. Are you sure you want to continue?', 'barn2-setup-wizard'), $this->plugin->get_name()));
+        echo esc_html(\sprintf(__('Warning: This will overwrite your existing settings for %s. Are you sure you want to continue?', 'posts-data-table'), $this->plugin->get_name()));
         ?>' );
 			});
 		</script>
@@ -470,15 +470,15 @@ class Setup_Wizard implements Bootable, JsonSerializable
 		<div class="barn2-setup-wizard-restart">
 			<hr>
 			<h3><?php 
-        esc_html_e('Setup wizard', 'barn2-setup-wizard');
+        esc_html_e('Setup wizard', 'posts-data-table');
         ?></h3>
 			<p><?php 
-        esc_html_e('If you need to access the setup wizard again, please click on the button below.', 'barn2-setup-wizard');
+        esc_html_e('If you need to access the setup wizard again, please click on the button below.', 'posts-data-table');
         ?></p>
 			<a href="<?php 
         echo esc_url($url);
         ?>" class="button barn2-wiz-restart-btn"><?php 
-        esc_html_e('Setup wizard', 'barn2-setup-wizard');
+        esc_html_e('Setup wizard', 'posts-data-table');
         ?></a>
 			<hr>
 		</div>
@@ -493,7 +493,7 @@ class Setup_Wizard implements Bootable, JsonSerializable
 			jQuery( '.barn2-wiz-restart-btn' ).on( 'click', function( e ) {
 				/* translators: %s: The name of the plugin. */
 				return confirm( '<?php 
-        echo esc_html(\sprintf(__('Warning: This will overwrite your existing settings for %s. Are you sure you want to continue?', 'barn2-setup-wizard'), $this->plugin->get_name()));
+        echo esc_html(\sprintf(__('Warning: This will overwrite your existing settings for %s. Are you sure you want to continue?', 'posts-data-table'), $this->plugin->get_name()));
         ?>' );
 			});
 		</script>
@@ -528,7 +528,7 @@ class Setup_Wizard implements Bootable, JsonSerializable
             if ($title_setting && isset($title_setting[\key($title_setting)]['desc'])) {
                 $desc = $title_setting[\key($title_setting)]['desc'];
                 $p_closing_tag = \strrpos($desc, '</p>');
-                $new_desc = \substr_replace($desc, ' | <a class="barn2-wiz-restart-btn" href="' . esc_url($url) . '">' . esc_html__('Setup wizard', 'barn2-setup-wizard') . '</a>', $p_closing_tag, 0);
+                $new_desc = \substr_replace($desc, ' | <a class="barn2-wiz-restart-btn" href="' . esc_url($url) . '">' . esc_html__('Setup wizard', 'posts-data-table') . '</a>', $p_closing_tag, 0);
                 $settings[\key($title_setting)]['desc'] = $new_desc;
             }
             return $settings;

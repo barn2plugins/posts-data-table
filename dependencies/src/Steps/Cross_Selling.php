@@ -20,9 +20,9 @@ class Cross_Selling extends Step
     public function __construct()
     {
         $this->set_id('more');
-        $this->set_name(esc_html__('More', 'barn2-setup-wizard'));
-        $this->set_title(esc_html__('Extra features', 'barn2-setup-wizard'));
-        $this->set_description(esc_html__('Enhance your site with these fantastic plugins from Barn2.', 'barn2-setup-wizard'));
+        $this->set_name(esc_html__('More', 'posts-data-table'));
+        $this->set_title(esc_html__('Extra features', 'posts-data-table'));
+        $this->set_description(esc_html__('Enhance your site with these fantastic plugins from Barn2.', 'posts-data-table'));
     }
     /**
      * {@inheritdoc}
