@@ -5,7 +5,7 @@ Tags: wordpress table plugin, data-table plugin, table plugin, table, wordpress 
 Requires at least: 5.0
 Tested up to: 6.1.1
 Requires PHP: 7.1
-Stable tag: 1.3.9
+Stable tag: 1.4.0
 License: GPL-3.0
 License URI: https://www.gnu.org/licenses/gpl.html
 
@@ -164,10 +164,9 @@ Please visit our [Knowledge Base](https://barn2.com/kb-categories/posts-table-se
 
 == Changelog ==
 
-= 1.3.9 =
-Release date 19 December 2022
+= 1.4.0 =
+Release date 21 March 2023
 
- * Minor improvements on readme file links 
- * Tested up to WordPress 6.1.1
+ * Added setup wizard
 
 See changelog.txt for more details.
