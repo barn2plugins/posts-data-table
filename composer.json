@@ -3,21 +3,22 @@
     "description": "Posts Table with Search and Sort plugin for WordPress.",
     "type": "wordpress-plugin",
     "license": "GPL-3.0",
-    "authors": [
-        {
-            "name": "Barn2 Plugins",
-            "email": "support@barn2.com"
-        }
-    ],
-    "minimum-stability": "stable",
-    "require": {},
+    "authors": [{
+        "name": "Barn2 Plugins",
+        "email": "support@barn2.com"
+    }],
     "require-dev": {
-        "barn2/php-standards": "dev-master"
+        "bamarni/composer-bin-plugin": "^1.8",
+        "barn2/php-standards": "dev-master",
+        "barn2/setup-wizard": "^1.2"
     },
-    "repositories": [
-        {
+    "repositories": [{
             "type": "vcs",
             "url": "git@bitbucket.org:barn2plugins/php-standards.git"
+        },
+        {
+            "type": "vcs",
+            "url": "git@bitbucket.org:barn2plugins/setup-wizard.git"
         }
     ],
     "autoload": {
@@ -25,8 +26,39 @@
             "Barn2\\Plugin\\Posts_Table_Search_Sort\\": "src",
             "Barn2\\PTS_Lib\\": "lib"
         },
+        "classmap": [
+            "dependencies/src"
+        ],
         "files": [
             "src/deprecated.php"
         ]
-    }
+    },
+    "scripts": {
+        "lint": "phpcs .",
+        "lint-fix": "phpcbf .",
+        "phpunit": "phpunit",
+        "documentor": "phpDocumentor -t docs",
+        "phpunit-coverage": "phpunit --coverage-text",
+        "no-dev": "composer update --prefer-dist --no-dev",
+        "install-scoper": [
+            "composer bin php-scoper config minimum-stability dev",
+            "composer bin php-scoper config prefer-stable true",
+            "composer bin php-scoper require --dev humbug/php-scoper --with-all-dependencies"
+        ],
+        "scoper": "bin/php-scoper add-prefix --config .scoper.inc.php --output-dir dependencies/"
+    },
+    "config": {
+        "bin-dir": "bin",
+        "sort-packages": true,
+        "preferred-install": {
+            "*": "dist"
+        },
+        "allow-plugins": {
+            "bamarni/composer-bin-plugin": true,
+            "dealerdirect/phpcodesniffer-composer-installer": true,
+            "composer/package-versions-deprecated": true
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }
