@@ -1,0 +1,67 @@
+
+table.posts-data-table {
+    table-layout: auto;
+    margin-bottom: 0 !important;
+}
+table.posts-data-table td {
+    vertical-align: top;
+}
+table.posts-data-table th {
+    line-height: 1.45;
+}
+table.posts-data-table thead .sorting_desc {
+    background-position: 100% 40%;
+}
+table.posts-data-table thead .sorting_asc {
+    background-position: 100% 60%;
+}
+table.posts-data-table.nowrap td.child {
+    white-space: normal;
+}
+.dataTables_wrapper {
+    margin-top: 1.2em;
+    margin-bottom: 2.2em;
+}
+.dataTables_wrapper label {
+    font-weight: normal;
+}
+.dataTables_wrapper .dataTables_length, .dataTables_wrapper .dataTables_filter {
+    padding-bottom: 0.7em;
+}
+.dataTables_wrapper .dataTables_length select, .dataTables_wrapper .dataTables_filter input[type="search"] {
+    padding: 0.2em 0.5em;
+    margin-bottom: 0;
+    width: auto;
+    height: auto;
+    line-height: 1.25;
+}
+.dataTables_wrapper .dataTables_filter input[type="search"] {
+    padding: 0.3em 0.5em;
+}
+.dataTables_wrapper .dataTables_info {
+    padding-top: 0.8em;
+}
+.dataTables_wrapper .dataTables_paginate {
+    padding-top: 0.5em;
+}
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+    padding: 0.3em 0.9em;
+    box-shadow: none;
+}
+table.posts-data-table.dtr-inline.collapsed>tbody>tr>td:first-child::before,
+table.posts-data-table.dtr-inline.collapsed>tbody>tr>th:first-child::before {
+    box-shadow: none;
+	border: none;
+    font-size: 14px;
+	top: 12px;
+    height: 12px;
+    width: 12px;
+	line-height: 12px;
+    font-weight: bold;
+    background-color: #377837;
+	border-radius: 2px;
+}
+table.posts-data-table.dtr-inline.collapsed>tbody>tr.parent>td:first-child::before,
+table.posts-data-table.dtr-inline.collapsed>tbody>tr.parent>th:first-child::before {
+    background-color: #bd3737;
+}
