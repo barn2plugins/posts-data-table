@@ -3,7 +3,7 @@ const Barn2Configuration = require( '@barn2media/webpack-config' );
 
 const config = new Barn2Configuration(
 	[
-		'admin/posts-data-table-main/index.js',
+		'posts-data-table-main/index.js',
 	],
 	[
 		'admin/posts-data-table-admin.scss',

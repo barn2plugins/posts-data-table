@@ -34,14 +34,14 @@ class Frontend_Scripts implements Registerable, Service {
 		$suffix = Util::get_script_suffix();
 
 		wp_register_style( 'jquery-datatables-pss', plugins_url( 'assets/js/datatables/datatables.min.css', $this->plugin->get_file() ), [], self::DATATABLES_VERSION );
-		wp_register_style( 'posts-data-table', plugins_url( "assets/css/posts-data-table{$suffix}.css", $this->plugin->get_file() ), [ 'jquery-datatables-pss' ], $this->plugin->get_version() );
+		wp_register_style( 'posts-data-table', plugins_url( "assets/css/posts-data-table-main.css", $this->plugin->get_file() ), [ 'jquery-datatables-pss' ], $this->plugin->get_version() );
 	}
 
 	public function register_scripts() {
 		$suffix = Util::get_script_suffix();
 
 		wp_register_script( 'jquery-datatables-pss', plugins_url( "assets/js/datatables/datatables{$suffix}.js", $this->plugin->get_file() ), [ 'jquery' ], self::DATATABLES_VERSION, true );
-		wp_register_script( 'posts-data-table', plugins_url( "assets/js/posts-data-table{$suffix}.js", $this->plugin->get_file() ), [ 'jquery', 'jquery-datatables-pss' ], $this->plugin->get_version(), true );
+		wp_register_script( 'posts-data-table', plugins_url( "assets/js/posts-data-table-main.js", $this->plugin->get_file() ), [ 'jquery', 'jquery-datatables-pss' ], $this->plugin->get_version(), true );
 
 		$locale            = get_locale();
 		$supported_locales = $this->get_supported_locales();

@@ -62,7 +62,7 @@ class Admin_Controller implements Registerable, Service {
 	public function settings_page_scripts( $hook ) {
 		if ( 'settings_page_posts_table_search_sort' === $hook ) {
 			$suffix = Util::get_script_suffix();
-			wp_enqueue_style( 'ptss-admin', plugins_url( "assets/css/admin/posts-data-table-admin{$suffix}.css", $this->plugin->get_file() ), [], $this->plugin->get_version() );
+			wp_enqueue_style( 'ptss-admin', plugins_url( "assets/css/admin/posts-data-table-admin.css", $this->plugin->get_file() ), [], $this->plugin->get_version() );
 		}
 	}
 
