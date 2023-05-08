@@ -20,7 +20,7 @@
     },
     "homepage": "https://github.com/Barn2Media/posts-data-table#readme",
     "devDependencies": {
-        "@barn2/webpack-config": "file:../barn2-lib/build/webpack-config/barn2-webpack-config-1.0.20.tgz",
+        "@barn2media/webpack-config": "2.0.0",
         "gulp": "^4.0.2"
     }
 }
