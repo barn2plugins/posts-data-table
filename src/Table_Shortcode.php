@@ -1,8 +1,8 @@
 <?php
 namespace Barn2\Plugin\Posts_Table_Search_Sort;
 
-use Barn2\PTS_Lib\Registerable,
-	Barn2\PTS_Lib\Service;
+use Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Lib\Registerable,
+	Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Lib\Service;
 
 /**
  * This class handles the posts table shortcode registration.

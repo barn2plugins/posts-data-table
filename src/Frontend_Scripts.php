@@ -2,10 +2,10 @@
 
 namespace Barn2\Plugin\Posts_Table_Search_Sort;
 
-use Barn2\PTS_Lib\Plugin\Plugin;
-use Barn2\PTS_Lib\Registerable;
-use Barn2\PTS_Lib\Service;
-use Barn2\PTS_Lib\Util;
+use Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Lib\Plugin\Plugin;
+use Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Lib\Registerable;
+use Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Lib\Service;
+use Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Lib\Util;
 
 /**
  * Registers the frontend styles and scripts for the post tables.
