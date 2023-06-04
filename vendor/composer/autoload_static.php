@@ -11,6 +11,10 @@ class ComposerStaticInitfb3a4de6c50f8f4e22675e159c48cfe4
     );
 
     public static $prefixLengthsPsr4 = array (
+        'W' => 
+        array (
+            'WPTRT\\AdminNotices\\' => 19,
+        ),
         'D' => 
         array (
             'Dealerdirect\\Composer\\Plugin\\Installers\\PHPCodeSniffer\\' => 55,
@@ -19,12 +23,16 @@ class ComposerStaticInitfb3a4de6c50f8f4e22675e159c48cfe4
         array (
             'Barn2\\Setup_Wizard\\' => 19,
             'Barn2\\Plugin\\Posts_Table_Search_Sort\\' => 37,
-            'Barn2\\PTS_Lib\\' => 14,
+            'Barn2\\Lib\\' => 10,
             'Bamarni\\Composer\\Bin\\' => 21,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
+        'WPTRT\\AdminNotices\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/wptrt/admin-notices/src',
+        ),
         'Dealerdirect\\Composer\\Plugin\\Installers\\PHPCodeSniffer\\' => 
         array (
             0 => __DIR__ . '/..' . '/dealerdirect/phpcodesniffer-composer-installer/src',
@@ -37,9 +45,9 @@ class ComposerStaticInitfb3a4de6c50f8f4e22675e159c48cfe4
         array (
             0 => __DIR__ . '/../..' . '/src',
         ),
-        'Barn2\\PTS_Lib\\' => 
+        'Barn2\\Lib\\' => 
         array (
-            0 => __DIR__ . '/../..' . '/lib',
+            0 => __DIR__ . '/..' . '/barn2/barn2-lib/src',
         ),
         'Bamarni\\Composer\\Bin\\' => 
         array (
@@ -61,6 +69,10 @@ class ComposerStaticInitfb3a4de6c50f8f4e22675e159c48cfe4
         'Barn2\\Plugin\\Posts_Table_Search_Sort\\Dependencies\\Barn2\\Setup_Wizard\\Steps\\Welcome' => __DIR__ . '/../..' . '/dependencies/src/Steps/Welcome.php',
         'Barn2\\Plugin\\Posts_Table_Search_Sort\\Dependencies\\Barn2\\Setup_Wizard\\Steps\\Welcome_Free' => __DIR__ . '/../..' . '/dependencies/src/Steps/Welcome_Free.php',
         'Barn2\\Plugin\\Posts_Table_Search_Sort\\Dependencies\\Barn2\\Setup_Wizard\\Util' => __DIR__ . '/../..' . '/dependencies/src/Util.php',
+        'Barn2\\Plugin\\Posts_Table_Search_Sort\\Dependencies\\ComposerAutoloaderInit8f46b741b3fc545944ffe0b77210fba6' => __DIR__ . '/../..' . '/dependencies/vendor/composer/autoload_real.php',
+        'Barn2\\Plugin\\Posts_Table_Search_Sort\\Dependencies\\Composer\\Autoload\\ClassLoader' => __DIR__ . '/../..' . '/dependencies/vendor/composer/ClassLoader.php',
+        'Barn2\\Plugin\\Posts_Table_Search_Sort\\Dependencies\\Composer\\Autoload\\ComposerStaticInit8f46b741b3fc545944ffe0b77210fba6' => __DIR__ . '/../..' . '/dependencies/vendor/composer/autoload_static.php',
+        'Barn2\\Plugin\\Posts_Table_Search_Sort\\Dependencies\\Composer\\InstalledVersions' => __DIR__ . '/../..' . '/dependencies/vendor/composer/InstalledVersions.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
         'PHPCSUtils\\AbstractSniffs\\AbstractArrayDeclarationSniff' => __DIR__ . '/..' . '/phpcsstandards/phpcsutils/PHPCSUtils/AbstractSniffs/AbstractArrayDeclarationSniff.php',
         'PHPCSUtils\\BackCompat\\BCFile' => __DIR__ . '/..' . '/phpcsstandards/phpcsutils/PHPCSUtils/BackCompat/BCFile.php',
@@ -75,6 +87,7 @@ class ComposerStaticInitfb3a4de6c50f8f4e22675e159c48cfe4
         'PHPCSUtils\\Internal\\IsShortArrayOrList' => __DIR__ . '/..' . '/phpcsstandards/phpcsutils/PHPCSUtils/Internal/IsShortArrayOrList.php',
         'PHPCSUtils\\Internal\\IsShortArrayOrListWithCache' => __DIR__ . '/..' . '/phpcsstandards/phpcsutils/PHPCSUtils/Internal/IsShortArrayOrListWithCache.php',
         'PHPCSUtils\\Internal\\NoFileCache' => __DIR__ . '/..' . '/phpcsstandards/phpcsutils/PHPCSUtils/Internal/NoFileCache.php',
+        'PHPCSUtils\\Internal\\StableCollections' => __DIR__ . '/..' . '/phpcsstandards/phpcsutils/PHPCSUtils/Internal/StableCollections.php',
         'PHPCSUtils\\TestUtils\\UtilityMethodTestCase' => __DIR__ . '/..' . '/phpcsstandards/phpcsutils/PHPCSUtils/TestUtils/UtilityMethodTestCase.php',
         'PHPCSUtils\\Tokens\\Collections' => __DIR__ . '/..' . '/phpcsstandards/phpcsutils/PHPCSUtils/Tokens/Collections.php',
         'PHPCSUtils\\Tokens\\TokenHelper' => __DIR__ . '/..' . '/phpcsstandards/phpcsutils/PHPCSUtils/Tokens/TokenHelper.php',
