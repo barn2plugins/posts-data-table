@@ -153,6 +153,9 @@ We developed this free plugin to be flexible and easy to configure so that it wi
 = Where can I find the documentation? =
 Please visit our [Knowledge Base](https://barn2.com/kb-categories/posts-table-search-sort-free-kb/?utm=content&utm_source=wporg&utm_medium=freeplugin&utm_campaign=freepluginwporg&utm_content=posts-table-free).
 
+= Where do I report security bugs found in this plugin? =
+Please report any security bugs through the [Patchstack Vulnerability Disclosure Program](https://patchstack.com/database/vdp/posts-data-table). The Patchstack team will assist you with verification, CVE assignment, and notify the developers of this plugin.
+
 == Screenshots ==
 
 1. Searching and sorting a posts table.
