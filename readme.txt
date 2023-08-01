@@ -171,6 +171,6 @@ Please report any security bugs through the [Patchstack Vulnerability Disclosure
 Release date 08 May 2023
 
  * Updated the webpack config 
- * Tested up to WordPress 6.2
+ * Tested up to WordPress 6.2.2
 
 See changelog.txt for more details.
