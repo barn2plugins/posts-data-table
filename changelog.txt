@@ -1,3 +1,9 @@
+= 1.4.2 =
+Release date 03 September 2023
+
+ * Added the security policies
+ * Tested up to WordPress 6.3
+
 = 1.4.1 = 
 Release date 08 May 2023 
 

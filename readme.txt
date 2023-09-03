@@ -3,13 +3,13 @@ Contributors: andykeith, barn2media
 Donate link: https://barn2.com
 Tags: wordpress table plugin, data-table plugin, table plugin, table, wordpress table
 Requires at least: 5.0
-Tested up to: 6.2
+Tested up to: 6.3
 Requires PHP: 7.1
-Stable tag: 1.4.1
+Stable tag: 1.4.2
 License: GPL-3.0
 License URI: https://www.gnu.org/licenses/gpl.html
 
-Posts Table with Search & Sort is a WordPress table plugin which lets you automatically create searchable and sortable tables of your posts.
+Automatically create searchable and sortable tables of your posts.
 
 == Description ==
 
@@ -21,7 +21,7 @@ https://youtu.be/xCV6WwZXd5M
 
 Install this plugin to organize your WordPress posts into simple, searchable, and visibly appealing tables. It includes pagination and responsive layouts for smaller screens as standard.
 
-To get started with this WordPress table plugin, simply add the shortcode `[posts_data_table]` to any page or widget.
+To get started with this WordPress table plugin, simply add the shortcode `[posts_table]` to any page or widget.
 
 **Posts Table with Search & Sort (free) includes:**
 
@@ -64,14 +64,14 @@ We make use of the jQuery DataTables library to power the searching and sorting 
 ### How to create your own WordPress Post Tables
 You can use *Posts Table with Search & Sort* to display your content in searchable and sortable tables. This has a huge range of use cases, from a simple archive of your posts, to previews of your content, to sorting by author, tags, date, and more.
 
-To list blog posts in a table, simply enter the shortcode `[posts_data_table]` to any WordPress page, post, or text widget. The easiest way to set your columns and other options is on the plugin settings page at *Settings > Posts Table With Search & Sort*. These global settings will affect all the posts tables throughout your WordPress site.
+To list blog posts in a table, simply enter the shortcode `[posts_table]` to any WordPress page, post, or text widget. The easiest way to set your columns and other options is on the plugin settings page at *Settings > Posts Table With Search & Sort*. These global settings will affect all the posts tables throughout your WordPress site.
 
 You can also add options directly to the shortcode. This allows you to configure each table individually - for example, in order to show different columns in each table, or to list posts from specific categories. Here are a couple of examples of shortcodes you can use:
 
-1. **List your posts in a table with 4 columns** (image, title, content, and date) showing the first 10 words of each post in the content column: `[posts_data_table columns='image,title,content,date' content_length="10"]`
-2. **List posts in a table with with 5 columns** (post ID, title, tags, date and author), and sort in ascending date order: `[posts_data_table columns='id,title,tags,date,author' sort_by="date" sort_order="asc"]`
-3. **List posts in a table with rows on one line** by using the parameter `wrap=false`. If selected columns no longer fit in the table, then a "+" icon will appear to the left of each row to allow access to the rest of the data: `[posts_data_table wrap="false" rows_per_page="5"]`
-4. **List posts in a table sortable by any column**. If the column does not appear in your table, it will be added as a hidden column at the end, so the ordering still works as expected. This example sorts each post by title. It also shows how to use `content_length` to set the number of words in the `content` column: `[posts_data_table sort_by="title" columns="date,author,title,content" content_length=5 rows_per_page="5"]`
+1. **List your posts in a table with 4 columns** (image, title, content, and date) showing the first 10 words of each post in the content column: `[posts_table columns='image,title,content,date' content_length="10"]`
+2. **List posts in a table with with 5 columns** (post ID, title, tags, date and author), and sort in ascending date order: `[posts_table columns='id,title,tags,date,author' sort_by="date" sort_order="asc"]`
+3. **List posts in a table with rows on one line** by using the parameter `wrap=false`. If selected columns no longer fit in the table, then a "+" icon will appear to the left of each row to allow access to the rest of the data: `[posts_table wrap="false" rows_per_page="5"]`
+4. **List posts in a table sortable by any column**. If the column does not appear in your table, it will be added as a hidden column at the end, so the ordering still works as expected. This example sorts each post by title. It also shows how to use `content_length` to set the number of words in the `content` column: `[posts_table sort_by="title" columns="date,author,title,content" content_length=5 rows_per_page="5"]`
 
 You can see all of these in action [on the plugin demo](https://poststable-free.barn2.com/?utm=content&utm_source=wporg&utm_medium=freeplugin&utm_campaign=freepluginwporg&utm_content=posts-table-free), and do even more with [Posts Table Pro](https://barn2.com/wordpress-plugins/posts-table-pro/?utm=content&utm_source=wporg&utm_medium=freeplugin&utm_campaign=freepluginwporg&utm_content=posts-table-free), our premium plugin!
 
@@ -103,12 +103,12 @@ Thank you for using our WordPress table plugin :)
 1. Upload the plugin files to the `/wp-content/plugins/posts-data-table` directory, or install the plugin through the WordPress plugins screen directly.
 2. Activate the plugin through the 'Plugins' screen in WordPress.
 3. Go to *Settings > Posts Table With Search & Sort* and configure your post tables.
-3. Add the shortcode `[posts_data_table]` to any page.
+3. Add the shortcode `[posts_table]` to any page.
 
 == Frequently Asked Questions ==
 
 = How do I display the posts table? =
-Simply choose your options at *Settings > Posts Table With Search & Sort*, then add the shortcode `[posts_data_table]` to any page.
+Simply choose your options at *Settings > Posts Table With Search & Sort*, then add the shortcode `[posts_table]` to any page.
 
 = Does it show all posts or can I restrict it to a certain category? =
 By default it will list all of your posts, but you can use the 'category', 'tag', 'author' or 'post_status' option in the shortcode to restrict the table to that category/tag/author/status only.
@@ -142,7 +142,7 @@ Bear in mind that the plugin might still override your column width if there isn
 Yes, the table will automatically adapt to fit different screen sizes. If your table has too many columns to fit on smaller screens then a '+' icon will appear alongside each post, allowing you to click to view the hidden columns.
 
 = When I click to the next page on my posts list, I can't see the top of the table =
-This is probably because you have a sticky header (your header sticks to the top of the screen when you scroll down). This means it's covering the top of your posts table. You can add a 'scroll offset' to push the table down to prevent this from happening. For example, if your sticky header is 50 pixels high then use `[posts_data_table scroll_offset="50"]`
+This is probably because you have a sticky header (your header sticks to the top of the screen when you scroll down). This means it's covering the top of your posts table. You can add a 'scroll offset' to push the table down to prevent this from happening. For example, if your sticky header is 50 pixels high then use `[posts_table scroll_offset="50"]`
 
 = How do I use the posts table with WPML? =
 If you have a multilingual site using WPML then the plugin will display your posts in the correct language automatically.
@@ -152,6 +152,9 @@ We developed this free plugin to be flexible and easy to configure so that it wi
 
 = Where can I find the documentation? =
 Please visit our [Knowledge Base](https://barn2.com/kb-categories/posts-table-search-sort-free-kb/?utm=content&utm_source=wporg&utm_medium=freeplugin&utm_campaign=freepluginwporg&utm_content=posts-table-free).
+
+= Where do I report security bugs found in this plugin? =
+Please report any security bugs through the [Patchstack Vulnerability Disclosure Program](https://patchstack.com/database/vdp/posts-data-table). The Patchstack team will assist you with verification, CVE assignment, and notify the developers of this plugin.
 
 == Screenshots ==
 
@@ -164,10 +167,10 @@ Please visit our [Knowledge Base](https://barn2.com/kb-categories/posts-table-se
 
 == Changelog ==
 
-= 1.4.1 =
-Release date 08 May 2023
+= 1.4.2 =
+Release date 03 September 2023
 
- * Updated the webpack config 
- * Tested up to WordPress 6.2
+ * Added the security policies
+ * Tested up to WordPress 6.3
 
 See changelog.txt for more details.
