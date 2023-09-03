@@ -1,10 +1,10 @@
 <?php
 namespace Barn2\Plugin\Posts_Table_Search_Sort\Admin;
 
-use Barn2\PTS_Lib\Util,
-	Barn2\PTS_Lib\Plugin\Plugin,
-	Barn2\PTS_Lib\Registerable,
-	Barn2\PTS_Lib\Service;
+use Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Lib\Util,
+	Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Lib\Plugin\Plugin,
+	Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Lib\Registerable,
+	Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Lib\Service;
 
 /**
  * Handles general admin functions, such as adding links to our settings page in the Plugins menu.

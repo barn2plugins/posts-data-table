@@ -4,11 +4,11 @@ namespace Barn2\Plugin\Posts_Table_Search_Sort\Admin;
 
 use Barn2\Plugin\Posts_Table_Search_Sort\Settings;
 use Barn2\Plugin\Posts_Table_Search_Sort\Simple_Posts_Table;
-use Barn2\PTS_Lib\Admin\Plugin_Promo;
-use Barn2\PTS_Lib\Admin\Settings_API_Helper;
-use Barn2\PTS_Lib\Plugin\Plugin;
-use Barn2\PTS_Lib\Registerable;
-use Barn2\PTS_Lib\Util;
+use Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Lib\Admin\Plugin_Promo;
+use Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Lib\Admin\Settings_API_Helper;
+use Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Lib\Plugin\Plugin;
+use Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Lib\Registerable;
+use Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Lib\Util;
 
 /**
  * This class handles our plugin settings page in the admin.

@@ -2,7 +2,7 @@
 
 namespace Barn2\Plugin\Posts_Table_Search_Sort\Admin\Wizard\Steps;
 
-use Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Barn2\Setup_Wizard\Steps\Cross_Selling;
+use Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Setup_Wizard\Steps\Cross_Selling;
 
 /**
  * Upsell step.
