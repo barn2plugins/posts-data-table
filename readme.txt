@@ -2,10 +2,10 @@
 Contributors: andykeith, barn2media
 Donate link: https://barn2.com
 Tags: wordpress table plugin, data-table plugin, table plugin, table, wordpress table
-Requires at least: 5.0
-Tested up to: 6.3
-Requires PHP: 7.1
-Stable tag: 1.4.2
+Requires at least: 6.0
+Tested up to: 6.4
+Requires PHP: 7.4
+Stable tag: 1.4.3
 License: GPL-3.0
 License URI: https://www.gnu.org/licenses/gpl.html
 
@@ -167,10 +167,10 @@ Please report any security bugs through the [Patchstack Vulnerability Disclosure
 
 == Changelog ==
 
-= 1.4.2 =
-Release date 03 September 2023
+= 1.4.3 =
+Release date 16 November 2023
 
- * Added the security policies
- * Tested up to WordPress 6.3
+* Dev: Updated internal libraries
+* Dev: Tested up WordPress 6.4
 
 See changelog.txt for more details.

@@ -1,6 +1,6 @@
 {
     "name": "posts-data-table",
-    "version": "1.4.2",
+    "version": "1.4.3",
     "description": "Posts Table with Search and Sort plugin for WordPress.",
     "main": "gulpfile.js",
     "directories": {
@@ -23,14 +23,14 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/Barn2Media/posts-data-table.git"
+        "url": "git+https://github.com/Barn2Plugins/posts-data-table.git"
     },
     "author": "Barn2 Plugins <support@barn2.com>",
     "license": "GPL-3.0",
     "bugs": {
-        "url": "https://github.com/Barn2Media/posts-data-table/issues"
+        "url": "https://github.com/Barn2Plugins/posts-data-table/issues"
     },
-    "homepage": "https://github.com/Barn2Media/posts-data-table#readme",
+    "homepage": "https://github.com/Barn2Plugins/posts-data-table#readme",
     "devDependencies": {
         "@barn2media/webpack-config": "2.0.0",
         "gulp": "^4.0.2"
