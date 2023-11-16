@@ -12,7 +12,7 @@
         "barn2/php-standards": "dev-master",
         "barn2/setup-wizard": "^1.2", 
         "barn2/barn2-lib": "^1.1",
-        "barn2/php-scoper-excludes": "^0.1.0",
+        "barn2/php-scoper-excludes": "^0.2.0",
         "dealerdirect/phpcodesniffer-composer-installer": "^0.7.2"
     },
     "repositories": [

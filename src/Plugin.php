@@ -43,21 +43,15 @@ class Plugin extends Simple_Plugin implements Registerable, Service_Provider {
 			]
 		);
 
-		include_once plugin_dir_path( $file ) . 'src/deprecated.php';
-
-		// Services
-		$this->services['shortcode']    = new Table_Shortcode();
-		$this->services['scripts']      = new Frontend_Scripts( $this );
-		$this->services['setup_wizard'] = new Admin\Wizard\Setup_Wizard( $this );
-
-		// Admin only services
-		if ( Util::is_admin() ) {
-			$this->services['admin'] = new Admin\Admin_Controller( $this );
-		}
+		$this->add_service( 'plugin_setup', new Plugin_Setup( $this->get_file(), $this ), true );
 	}
 
 	public function register() {
-		add_action( 'plugins_loaded', [ $this, 'maybe_load_plugin' ] );
+		parent::register();
+		add_action( 'plugins_loaded', [ $this, 'add_services' ] );
+
+		add_action( 'init', [ $this, 'register_services' ] );
+		add_action( 'init', [ $this, 'load_textdomain' ], 5 );
 	}
 
 	public function maybe_load_plugin() {
@@ -65,26 +59,21 @@ class Plugin extends Simple_Plugin implements Registerable, Service_Provider {
 		if ( class_exists( '\Posts_Table_Pro_Plugin' ) ) {
 			return;
 		}
-
-		add_action( 'init', [ $this, 'load_textdomain' ] );
-
-		Util::register_services( $this->services );
 	}
 
 	public function load_textdomain() {
 		load_plugin_textdomain( 'posts-data-table', false, $this->get_slug() . '/languages' );
 	}
 
-	public function get_service( $id ) {
-		if ( isset( $this->services[ $id ] ) ) {
-			return $this->services[ $id ];
+	public function add_services() {
+		$this->add_service( 'shortcode', new Table_Shortcode() );
+		$this->add_service( 'scripts', new Frontend_Scripts( $this ) );
+		$this->add_service( 'setup_wizard', new Admin\Wizard\Setup_Wizard( $this ) );
+
+		// Admin only services
+		if ( Util::is_admin() ) {
+			$this->add_service( 'admin', new Admin\Admin_Controller( $this ) );
 		}
-
-		return null;
-	}
-
-	public function get_services() {
-		return $this->services;
 	}
 
 }
