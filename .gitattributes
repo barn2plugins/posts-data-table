@@ -10,3 +10,8 @@ assets/css/datatables/* linguist-vendored
 /package.json export-ignore
 /package-lock.json export-ignore
 /composer.lock export-ignore
+/webpack.config.json export-ignore
+/yarn.lock export-ignore
+/composer.json export-ignore
+/.scoper.inc.php export-ignore
+/phpcs.xml export-ignore

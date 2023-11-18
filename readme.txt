@@ -5,7 +5,7 @@ Tags: wordpress table plugin, data-table plugin, table plugin, table, wordpress 
 Requires at least: 6.0
 Tested up to: 6.4
 Requires PHP: 7.4
-Stable tag: 1.4.3
+Stable tag: 1.4.4
 License: GPL-3.0
 License URI: https://www.gnu.org/licenses/gpl.html
 
@@ -166,6 +166,11 @@ Please report any security bugs through the [Patchstack Vulnerability Disclosure
 6. Upgrade to Posts Table Pro for premium features including custom post types, custom fields, multimedia embeds, and much more.
 
 == Changelog ==
+
+= 1.4.4 =
+Release date 18 November 2023
+
+* Fix: Table doesn't show when the pro version is activated
 
 = 1.4.3 =
 Release date 16 November 2023
