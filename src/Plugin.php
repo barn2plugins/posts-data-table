@@ -56,7 +56,7 @@ class Plugin extends Simple_Plugin implements Registerable, Service_Provider {
 
 	public function maybe_load_plugin() {
 		// Don't load plugin if Pro version active
-		if ( class_exists( '\Posts_Table_Pro_Plugin' ) ) {
+		if ( Util::is_barn2_plugin_active('\\Barn2\\Plugin\\Posts_Table_Pro\\ptp') ) {
 			return;
 		}
 	}
@@ -66,6 +66,10 @@ class Plugin extends Simple_Plugin implements Registerable, Service_Provider {
 	}
 
 	public function add_services() {
+		if ( Util::is_barn2_plugin_active('\\Barn2\\Plugin\\Posts_Table_Pro\\ptp') ) {
+			return;
+		}
+
 		$this->add_service( 'shortcode', new Table_Shortcode() );
 		$this->add_service( 'scripts', new Frontend_Scripts( $this ) );
 		$this->add_service( 'setup_wizard', new Admin\Wizard\Setup_Wizard( $this ) );
