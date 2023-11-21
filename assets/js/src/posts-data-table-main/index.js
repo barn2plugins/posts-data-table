@@ -56,6 +56,9 @@
                 } );
             }
 
+            // Show the table - loading class removed on init.dt
+	    	$table.addClass( 'loading' ).css( 'visibility', 'visible' );
+
         } ); // each table
 
     } ); // end document.ready

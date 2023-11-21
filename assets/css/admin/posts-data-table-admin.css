@@ -1,1 +1,25 @@
-.settings_page_posts_table_search_sort .form-table .readonly .description,.settings_page_posts_table_search_sort .form-table .readonly td,.settings_page_posts_table_search_sort .form-table .readonly td a{color:#999}.settings_page_posts_table_search_sort .form-table .pro-version{display:block;margin-top:5px}.settings_page_posts_table_search_sort .pro-version{font-size:12px}@media screen and (min-width:1100px){.barn2-plugins-settings #barn2_plugins_promo{flex:1 0 30%!important}}
+/*!**********************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./assets/scss/admin/posts-data-table-admin.scss ***!
+  \**********************************************************************************************************************************************************************************************************************************************************************/
+.settings_page_posts_table_search_sort .form-table .readonly td,
+.settings_page_posts_table_search_sort .form-table .readonly .description,
+.settings_page_posts_table_search_sort .form-table .readonly td a {
+  color: #999;
+}
+
+.settings_page_posts_table_search_sort .form-table .pro-version {
+  display: block;
+  margin-top: 5px;
+}
+
+.settings_page_posts_table_search_sort .pro-version {
+  font-size: 12px;
+}
+
+@media screen and (min-width: 1100px) {
+  .barn2-plugins-settings #barn2_plugins_promo {
+    flex: 1 0 30% !important;
+  }
+}
+
+/*# sourceMappingURL=posts-data-table-admin.css.map*/
