@@ -87,7 +87,7 @@ class Settings_Page implements Registerable {
 			'barn2_plugins_title_links',
 			[
 				'doc'     => [
-					'url'    => 'https://barn2.com/kb/list-your-wordpress-blog-posts/',
+					'url'    => 'https://barn2.com/kb-categories/posts-table-search-sort-free-kb/',
 					'label'  => __( 'Documentation', 'posts-data-table' ),
 					'target' => '_blank',
 				],
@@ -449,7 +449,7 @@ class Settings_Page implements Registerable {
 			<?php
 			printf(
 				__( 'Post tables list all published posts by default. To restrict posts by category, tag, author, etc. add the %1$scorresponding option%2$s to the [posts_table] shortcode.', 'posts-data-table' ),
-				Util::format_link_open( Util::barn2_url( 'kb-categories/posts-table-search-sort-free-kb/?utm_source=settings&utm_medium=settings&utm_campaign=settingsinline&utm_content=ptss-ptp' ), true ),
+				Util::format_link_open( Util::barn2_url( 'kb/list-your-wordpress-blog-posts/#shortcode-options' ), true ),
 				'</a>'
 			);
 			?>

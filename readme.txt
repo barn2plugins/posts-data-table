@@ -68,8 +68,8 @@ To list blog posts in a table, simply enter the shortcode `[posts_table]` to any
 
 You can also add options directly to the shortcode. This allows you to configure each table individually - for example, in order to show different columns in each table, or to list posts from specific categories. Here are a couple of examples of shortcodes you can use:
 
-1. **List your posts in a table with 4 columns** (image, title, content, and date) showing the first 10 words of each post in the content column: `[posts_table columns='image,title,content,date' content_length="10"]`
-2. **List posts in a table with with 5 columns** (post ID, title, tags, date and author), and sort in ascending date order: `[posts_table columns='id,title,tags,date,author' sort_by="date" sort_order="asc"]`
+1. **List your posts in a table with 4 columns** (image, title, content, and date) showing the first 10 words of each post in the content column: `[posts_table columns="image,title,content,date" content_length="10"]`
+2. **List posts in a table with with 5 columns** (post ID, title, tags, date and author), and sort in ascending date order: `[posts_table columns="id,title,tags,date,author" sort_by="date" sort_order="asc"]`
 3. **List posts in a table with rows on one line** by using the parameter `wrap=false`. If selected columns no longer fit in the table, then a "+" icon will appear to the left of each row to allow access to the rest of the data: `[posts_table wrap="false" rows_per_page="5"]`
 4. **List posts in a table sortable by any column**. If the column does not appear in your table, it will be added as a hidden column at the end, so the ordering still works as expected. This example sorts each post by title. It also shows how to use `content_length` to set the number of words in the `content` column: `[posts_table sort_by="title" columns="date,author,title,content" content_length=5 rows_per_page="5"]`
 
@@ -170,12 +170,6 @@ Please report any security bugs through the [Patchstack Vulnerability Disclosure
 = 1.4.4 =
 Release date 18 November 2023
 
-* Fix: Table doesn't show when the pro version is activated
-
-= 1.4.3 =
-Release date 16 November 2023
-
-* Dev: Updated internal libraries
-* Dev: Tested up WordPress 6.4
+* Fix: Table doesn't show when other Barn2 plugins are activated
 
 See changelog.txt for more details.

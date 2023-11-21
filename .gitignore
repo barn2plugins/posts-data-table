@@ -8,3 +8,4 @@ bin
 !/vendor/autoload.php
 vendor-bin
 /assets/dist
+posts-data-table.zip
