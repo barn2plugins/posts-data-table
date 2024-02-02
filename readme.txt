@@ -89,6 +89,7 @@ You can see some practical examples of how to build your own Post Tables above, 
 *  **`post_status`** - display posts with this post status (draft, pending, publish, future, private or any). Default: `publish`.
 *  **`sort_by`** - the column to sort by. Defaults to `date`. If the column you want to sort by isn't shown in the table, it will be added as a hidden column. This means, for example, that you can sort by date without actually showing the date column.
 *  **`sort_order`** - whether to sort ascending (`asc`) or descending (`desc`). If you order by date, it will default to `desc` (newest posts first).
+*  **`date_format`** - you can set the `date_format` option to choose the way the post date is displayed in the table. The default is Y/m/d. See [this page](https://dev.to/osejudith/php-date-time-cheat-sheet-48dm) for the full list of date formatting options.
 *  **`search_on_click`** - whether to enable automatic searching for categories, tags and authors when clicking on links in the table. Default: `true`.
 *  **`wrap`** - whether the table content wraps onto more than one line. Set to `false` to keep everything on one line or `true` to allow the content to wrap. Default: `true`.
 *  **`content_length`** - the number of words of post content to show in the table (if you've included the `content` column). Defaults to 15 words.
