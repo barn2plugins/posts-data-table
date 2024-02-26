@@ -1,0 +1,56 @@
+{
+  "landingPage": "/",
+  "preferredVersions": {
+      "php": "8.0",
+      "wp": "latest"
+  },
+  "phpExtensionBundles": [],
+  "steps": [
+      {
+          "step": "login",
+          "username": "admin",
+          "password": "password"
+      },
+      {
+          "step": "installPlugin",
+          "pluginZipFile": {
+              "resource": "wordpress.org\/plugins",
+              "slug": "posts-data-table"
+          },
+          "options": {
+              "activate": true
+          }
+      },
+      {
+        "step": "runPHP",
+        "code": "<?php\ninclude 'wordpress/wp-load.php';\nwp_insert_term( 'News', 'category', array( 'slug' => 'news'));\nwp_insert_term( 'Tutorial', 'category', array( 'slug' => 'tutorial'));"
+      },
+      {
+        "step": "runPHP",
+        "code": "<?php\ninclude 'wordpress/wp-load.php';\nwp_insert_post(array(\n'import_id' => 5,\n'post_title' => 'Sample post',\n'post_content' => '<!-- wp:paragraph -->\n<p>You can show different columns in the Posts Table plugin.</p>\n<!-- \/wp:paragraph -->',\n'post_status' => 'publish',\n'post_author' => 1\n, 'post_category' => [2] ));"
+      },
+      {
+        "step": "runPHP",
+        "code": "<?php\ninclude 'wordpress/wp-load.php';\nwp_insert_post(array(\n'import_id' => 6,\n'post_title' => 'Different posts',\n'post_content' => '<!-- wp:paragraph -->\n<p>You can show different content in the Posts Table plugin.</p>\n<!-- \/wp:paragraph -->',\n'post_status' => 'publish',\n'post_author' => 1\n, 'post_category' => [3] ));"
+      },
+      {
+        "step": "runPHP",
+        "code": "<?php\ninclude 'wordpress/wp-load.php';\nwp_insert_post(array(\n'import_id' => 7,\n'post_title' => 'Posts table',\n'post_content' => '<!-- wp:paragraph -->\n<p>You can sort the columns data in the table.</p>\n<!-- \/wp:paragraph -->',\n'post_status' => 'publish',\n'post_author' => 1\n, 'post_category' => [2] ));"
+      },
+      {
+        "step": "runPHP",
+        "code": "<?php\ninclude 'wordpress/wp-load.php';\nwp_insert_post(array(\n'import_id' => 8,\n'post_title' => 'Search in table',\n'post_content' => '<!-- wp:paragraph -->\n<p>Search anything in the table content.</p>\n<!-- \/wp:paragraph -->',\n'post_status' => 'publish',\n'post_author' => 1\n, 'post_category' => [3] ));"
+      },
+      {
+        "step": "runPHP",
+        "code": "<?php\ninclude 'wordpress/wp-load.php';\nwp_insert_post(array(\n'import_id' => 20,\n'post_title' => 'Posts data table',\n'post_content' => '<!-- wp:paragraph -->\n<p>[posts_table]</p>\n<!-- \/wp:paragraph -->',\n'post_status' => 'publish',\n'post_author' => 1,\n'post_type' => 'page'\n));\nwp_delete_post(2, true);"
+      },
+      {
+        "step": "setSiteOptions",
+        "options": {
+            "show_on_front": "page",
+            "page_on_front": "20"
+        }
+      }
+  ]
+}
