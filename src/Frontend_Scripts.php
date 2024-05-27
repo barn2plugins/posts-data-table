@@ -4,7 +4,7 @@ namespace Barn2\Plugin\Posts_Table_Search_Sort;
 
 use Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Lib\Plugin\Plugin;
 use Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Lib\Registerable;
-use Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Lib\Service;
+use Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Lib\Service\Standard_Service;
 use Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Lib\Util;
 
 /**
@@ -15,7 +15,7 @@ use Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Lib\Util;
  * @license   GPL-3.0
  * @copyright Barn2 Media Ltd
  */
-class Frontend_Scripts implements Registerable, Service {
+class Frontend_Scripts implements Registerable, Standard_Service {
 
 	const DATATABLES_VERSION = '1.11.3';
 

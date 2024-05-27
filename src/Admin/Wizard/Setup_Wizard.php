@@ -5,6 +5,7 @@ namespace Barn2\Plugin\Posts_Table_Search_Sort\Admin\Wizard;
 use Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Setup_Wizard\Setup_Wizard as Wizard;
 use Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Lib\Plugin\Plugin;
 use Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Lib\Registerable;
+use Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Lib\Service\Standard_Service;
 
 /**
  * Setup wizard service.
@@ -14,7 +15,7 @@ use Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Lib\Registerable;
  * @license   GPL-3.0
  * @copyright Barn2 Media Ltd
  */
-class Setup_Wizard implements Registerable {
+class Setup_Wizard implements Registerable, Standard_Service {
 
 	/**
 	 * Plugin instance

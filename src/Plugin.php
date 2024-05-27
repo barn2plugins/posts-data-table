@@ -4,8 +4,6 @@ namespace Barn2\Plugin\Posts_Table_Search_Sort;
 
 use Barn2\Plugin\Posts_Table_Search_Sort\Admin\Settings_Page;
 use Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Lib\Plugin\Simple_Plugin;
-use Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Lib\Registerable;
-use Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Lib\Service_Provider;
 use Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Lib\Util;
 
 /**
@@ -16,7 +14,7 @@ use Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Lib\Util;
  * @license   GPL-3.0
  * @copyright Barn2 Media Ltd
  */
-class Plugin extends Simple_Plugin implements Registerable, Service_Provider {
+class Plugin extends Simple_Plugin {
 
 	const NAME    = 'Posts Table with Search and Sort';
 	const ITEM_ID = 8006;
@@ -42,16 +40,6 @@ class Plugin extends Simple_Plugin implements Registerable, Service_Provider {
 				'settings_path' => 'options-general.php?page=' . Settings_Page::MENU_SLUG
 			]
 		);
-
-		$this->add_service( 'plugin_setup', new Plugin_Setup( $this->get_file(), $this ), true );
-	}
-
-	public function register() {
-		parent::register();
-		add_action( 'plugins_loaded', [ $this, 'add_services' ] );
-
-		add_action( 'init', [ $this, 'register_services' ] );
-		add_action( 'init', [ $this, 'load_textdomain' ], 5 );
 	}
 
 	public function maybe_load_plugin() {
@@ -61,23 +49,15 @@ class Plugin extends Simple_Plugin implements Registerable, Service_Provider {
 		}
 	}
 
-	public function load_textdomain() {
-		load_plugin_textdomain( 'posts-data-table', false, $this->get_slug() . '/languages' );
-	}
-
 	public function add_services() {
 		if ( Util::is_barn2_plugin_active('\\Barn2\\Plugin\\Posts_Table_Pro\\ptp') ) {
 			return;
 		}
-
+		$this->add_service( 'plugin_setup', new Plugin_Setup( $this->get_file(), $this ), true );
 		$this->add_service( 'shortcode', new Table_Shortcode() );
 		$this->add_service( 'scripts', new Frontend_Scripts( $this ) );
 		$this->add_service( 'setup_wizard', new Admin\Wizard\Setup_Wizard( $this ) );
-
-		// Admin only services
-		if ( Util::is_admin() ) {
-			$this->add_service( 'admin', new Admin\Admin_Controller( $this ) );
-		}
+		$this->add_service( 'admin', new Admin\Admin_Controller( $this ) );
 	}
 
 }

@@ -4,7 +4,7 @@ namespace Barn2\Plugin\Posts_Table_Search_Sort\Admin;
 use Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Lib\Util,
 	Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Lib\Plugin\Plugin,
 	Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Lib\Registerable,
-	Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Lib\Service;
+	Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Lib\Service\Standard_Service;
 
 /**
  * Handles general admin functions, such as adding links to our settings page in the Plugins menu.
@@ -14,7 +14,7 @@ use Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Lib\Util,
  * @license   GPL-3.0
  * @copyright Barn2 Media Ltd
  */
-class Admin_Controller implements Registerable, Service {
+class Admin_Controller implements Registerable, Standard_Service {
 
 	private $plugin;
 	private $settings_page;

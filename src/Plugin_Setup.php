@@ -6,7 +6,8 @@ use Barn2\Plugin\Posts_Table_Search_Sort\Admin\Wizard\Starter,
 	Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Lib\Plugin\Plugin,
 	Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Lib\Plugin\Plugin_Activation_Listener,
 	Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Lib\Util as Lib_Util,
-	Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Lib\Registerable;
+	Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Lib\Registerable,
+	Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Lib\Service\Standard_Service;
 
 /**
  * Plugin Setup
@@ -16,7 +17,7 @@ use Barn2\Plugin\Posts_Table_Search_Sort\Admin\Wizard\Starter,
  * @license   GPL-3.0
  * @copyright Barn2 Media Ltd
  */
-class Plugin_Setup implements Registerable {
+class Plugin_Setup implements Registerable, Standard_Service {
 	/**
 	 * Plugin's entry file
 	 *
