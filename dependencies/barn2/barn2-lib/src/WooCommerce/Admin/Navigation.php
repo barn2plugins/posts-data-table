@@ -2,7 +2,10 @@
 
 namespace Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Lib\WooCommerce\Admin;
 
-use Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Lib\Registerable, Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Lib\Plugin\Plugin, Automattic\WooCommerce\Admin\Features\Navigation\Menu;
+use Automattic\WooCommerce\Admin\Features\Navigation\Menu;
+use Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Lib\Plugin\Plugin;
+use Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Lib\Registerable;
+use Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Lib\Service\Standard_Service;
 /**
  * Adds support for new WooCommerce navigation
  *
@@ -12,7 +15,7 @@ use Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Lib\Registerable, Barn2\Pl
  * @copyright Barn2 Media Ltd
  * @version   1.0
  */
-class Navigation implements Registerable
+class Navigation implements Registerable, Standard_Service
 {
     private $plugin;
     private $navigation_id;

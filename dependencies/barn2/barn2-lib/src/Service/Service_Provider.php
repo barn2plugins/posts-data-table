@@ -1,9 +1,9 @@
 <?php
 
-namespace Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Lib;
+namespace Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Lib\Service;
 
 /**
- * An object that provides services (instances of Barn2\Lib\Service).
+ * An object that provides services (instances of Barn2\Lib\Service\Service).
  *
  * @package   Barn2\barn2-lib
  * @author    Barn2 Plugins <support@barn2.com>

@@ -12,6 +12,18 @@ namespace Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Lib\Plugin;
  */
 interface Plugin_Activation_Listener
 {
-    public function on_activate();
-    public function on_deactivate();
+    /**
+     * Fires when the plugin is activated.
+     *
+     * @param boolean $network_wide Whether the plugin is being activated network-wide or not.
+     * @return void
+     */
+    public function on_activate($network_wide);
+    /**
+     * Fires when the plugin is deactivated.
+     *
+     * @param boolean $network_wide Whether the plugin is being deactivated network-wide or not.
+     * @return void
+     */
+    public function on_deactivate($network_wide);
 }

@@ -1,9 +1,9 @@
 <?php
 
-namespace Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Lib;
+namespace Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Lib\Service;
 
 /**
- * Marker interface to denote a service.
+ * Marker interface to denote a premium service.
  *
  * @package   Barn2\barn2-lib
  * @author    Barn2 Plugins <support@barn2.com>
@@ -11,6 +11,6 @@ namespace Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Lib;
  * @copyright Barn2 Media Ltd
  * @version   1.0
  */
-interface Service
+interface Premium_Service extends Service
 {
 }

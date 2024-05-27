@@ -5,6 +5,7 @@ namespace Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Lib\Plugin\License\A
 use Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Lib\Admin\Settings_API_Helper;
 use Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Lib\Plugin\License\License;
 use Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Lib\Registerable;
+use Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Lib\Service\Core_Service;
 use WC_Admin_Settings;
 /**
  * Handles the display and saving of the license key on the plugin settings page.
@@ -15,7 +16,7 @@ use WC_Admin_Settings;
  * @copyright Barn2 Media Ltd
  * @version   1.2
  */
-class License_Key_Setting implements Registerable, License_Setting
+class License_Key_Setting implements Registerable, License_Setting, Core_Service
 {
     const OVERRIDE_HASH = 'caf9da518b5d4b46c2ef1f9d7cba50ad';
     const ACTIVATE_KEY = 'activate_key';

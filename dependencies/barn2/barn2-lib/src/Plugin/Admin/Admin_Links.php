@@ -4,8 +4,7 @@ namespace Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Lib\Plugin\Admin;
 
 use Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Lib\Plugin\Plugin;
 use Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Lib\Registerable;
-use Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Lib\Service;
-use Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Lib\Util;
+use Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Lib\Service\Standard_Service;
 /**
  * Core admin functions for our plugins (e.g. adding the settings link).
  *
@@ -14,7 +13,7 @@ use Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Lib\Util;
  * @license   GPL-3.0
  * @copyright Barn2 Media Ltd
  */
-class Admin_Links implements Registerable, Service
+class Admin_Links implements Registerable, Standard_Service
 {
     /**
      * @var Plugin The core plugin data (ID, version, etc).
@@ -34,14 +33,6 @@ class Admin_Links implements Registerable, Service
     public function add_settings_link($links)
     {
         if (!($settings_url = $this->plugin->get_settings_page_url())) {
-            return $links;
-        }
-        // Don't add link if it's a WooCommerce plugin but WooCommerce is not active.
-        if ($this->plugin->is_woocommerce() && !Util::is_woocommerce_active()) {
-            return $links;
-        }
-        // Don't add link if it's an EDD plugin but EDD is not active.
-        if ($this->plugin->is_edd() && !Util::is_edd_active()) {
             return $links;
         }
         \array_unshift($links, \sprintf('<a href="%1$s">%2$s</a>', \esc_url($settings_url), __('Settings', 'barn2')));

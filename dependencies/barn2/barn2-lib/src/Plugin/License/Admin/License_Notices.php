@@ -4,6 +4,7 @@ namespace Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Lib\Plugin\License\A
 
 use Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Lib\Plugin\Licensed_Plugin;
 use Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Lib\Registerable;
+use Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Lib\Service\Core_Service;
 use Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Lib\Util;
 /**
  * Handles the display of admin notices for the plugin license (e.g. license expired).
@@ -14,14 +15,14 @@ use Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Lib\Util;
  * @copyright Barn2 Media Ltd
  * @version   1.2
  */
-class License_Notices implements Registerable
+class License_Notices implements Registerable, Core_Service
 {
     const FIRST_ACTIVATION = 'first_activation';
     const EXPIRED = 'expired';
     const DISABLED = 'disabled';
     const SITE_MOVED = 'site_moved';
     /**
-     * @var Licensable_Plugin The plugin to handle notices for.
+     * @var Licensed_Plugin The plugin to handle notices for.
      */
     private $plugin;
     public function __construct(Licensed_Plugin $plugin)
@@ -75,7 +76,7 @@ class License_Notices implements Registerable
         echo \esc_attr(self::FIRST_ACTIVATION);
         ?>">
 			<p>
-			<?php 
+				<?php 
         // phpcs:disable WordPress.Security.EscapeOutput
         \printf(
             /* translators: 1: the plugin name, 2: settings link start, 3: settings link end. */
@@ -86,7 +87,7 @@ class License_Notices implements Registerable
         );
         // phpcs:enable WordPress.Security.EscapeOutput
         ?>
-				</p>
+			</p>
 		</div>
 		<?php 
     }
@@ -100,7 +101,7 @@ class License_Notices implements Registerable
         echo \esc_attr(self::EXPIRED);
         ?>">
 			<p>
-			<?php 
+				<?php 
         // phpcs:disable WordPress.Security.EscapeOutput
         \printf(
             /* translators: 1: the plugin name, 2: renewal link start, 3: renewal link end. */
@@ -111,7 +112,7 @@ class License_Notices implements Registerable
         );
         // phpcs:enable WordPress.Security.EscapeOutput
         ?>
-				</p>
+			</p>
 		</div>
 		<?php 
     }
@@ -125,7 +126,7 @@ class License_Notices implements Registerable
         echo \esc_attr(self::DISABLED);
         ?>">
 			<p>
-			<?php 
+				<?php 
         // phpcs:disable WordPress.Security.EscapeOutput
         \printf(
             /* translators: 1: the plugin name, 2: renewal link start, 3: renewal link end. */
@@ -136,7 +137,7 @@ class License_Notices implements Registerable
         );
         // phpcs:enable WordPress.Security.EscapeOutput
         ?>
-				</p>
+			</p>
 		</div>
 		<?php 
     }
@@ -153,7 +154,7 @@ class License_Notices implements Registerable
         echo \esc_attr(self::SITE_MOVED);
         ?>">
 			<p>
-			<?php 
+				<?php 
         // phpcs:disable WordPress.Security.EscapeOutput
         \printf(
             /* translators: 1: the plugin name, 2: settings link start, 3: settings link end. */
@@ -164,7 +165,7 @@ class License_Notices implements Registerable
         );
         // phpcs:enable WordPress.Security.EscapeOutput
         ?>
-				</p>
+			</p>
 		</div>
 		<?php 
     }

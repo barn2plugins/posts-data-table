@@ -10,7 +10,7 @@ use Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Lib\Plugin\Plugin;
  * @author    Barn2 Plugins <support@barn2.com>
  * @license   GPL-3.0
  * @copyright Barn2 Media Ltd
- * @version   1.5.4
+ * @version   1.6
  */
 class Util
 {
@@ -342,7 +342,8 @@ class Util
      *
      * @param Plugin $plugin
      * @return array The plugin data from the plugin header
-     * @since 1.5.4
+     * @since      1.5.4
+     * @deprecated 1.5.5 Use Simple_Plugin::get_plugin_data() instead
      */
     public static function get_plugin_data(Plugin $plugin)
     {
@@ -383,6 +384,20 @@ class Util
         return $barn2_installed;
     }
     /**
+     * Check if a plugin is installed on the WordPress site (whether active or not).
+     *
+     * @param string $plugin_file The plugin file relative to the plugins directory. e.g. my-plugin/my-plugin.php
+     * @return bool
+     */
+    public static function is_plugin_installed($plugin_file)
+    {
+        if (!\function_exists('get_plugins')) {
+            require_once \ABSPATH . 'wp-admin/includes/plugin.php';
+        }
+        $plugins = \get_plugins();
+        return isset($plugins[$plugin_file]);
+    }
+    /**
      * Sanitize anything.
      *
      * @param mixed $var the thing to sanitize.
@@ -391,25 +406,80 @@ class Util
     public static function clean($var)
     {
         if (\is_array($var)) {
-            return \array_map('self::clean', $var);
+            return \array_map([__CLASS__, 'clean'], $var);
         } else {
             return \is_scalar($var) ? \sanitize_text_field($var) : $var;
         }
     }
     /**
-     * Declare compatibility with the High-Performance Order Storage 
+     * Declare compatibility with the High-Performance Order Storage
      * feature in WooCommerce.
-     * 
+     *
      * @param string $plugin_entry_file The main plugin file.
-     * @param bool $compatible Whether the plugin is compatible with HPOS.
+     * @param bool   $compatible        Whether the plugin is compatible with HPOS.
      * @return void
+     * @deprecated 1.6.0 HPOS compatibility is handled automatically by Simple_Plugin so this function is not needed.
      */
     public static function declare_hpos_compatibility($plugin_entry_file, $compatible = \true)
     {
+        \_deprecated_function(__METHOD__, '1.6.0', 'Handled automatically by Simple_Plugin');
         \add_action('before_woocommerce_init', function () use($plugin_entry_file, $compatible) {
             if (\class_exists(\Automattic\WooCommerce\Utilities\FeaturesUtil::class)) {
                 \Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility('custom_order_tables', $plugin_entry_file, $compatible);
             }
         });
+    }
+    /**
+     * Get the link to a plugin on wordpress.org.
+     *
+     * @param string $plugin_name
+     * @param string $plugin_slug
+     * @return string
+     */
+    public static function get_plugin_link($plugin_name, $plugin_slug)
+    {
+        return \sprintf('<a href="%1$s">%2$s</a>', 'https://wordpress.org/plugins/' . $plugin_slug, $plugin_name);
+    }
+    /**
+     * Get the link to install, activate or upgrade a plugin.
+     *
+     * @param string $plugin_name     The name of the plugin.
+     * @param string $plugin_slug     The slug of the plugin.
+     * @param string $plugin_basename The basename of the plugin (e.g. 'woocommerce/woocommerce.php').
+     * @param string $action          The action to perform on the plugin (install, activate or upgrade).
+     * @return string
+     */
+    public static function get_plugin_install_activate_upgrade_link($plugin_name, $plugin_slug, $plugin_basename, $action = null)
+    {
+        if (\is_wp_error(\validate_plugin($plugin_basename)) || $action === 'install') {
+            $action = 'install-plugin';
+            $command = 'Install';
+            $page = 'update.php';
+            $file = $plugin_slug;
+            $nonce_key = "{$action}_{$file}";
+        } elseif (\is_plugin_inactive($plugin_basename) || $action === 'activate') {
+            $action = 'activate';
+            $command = 'Activate';
+            $page = 'plugins.php';
+            $file = $plugin_basename;
+            $nonce_key = "{$action}-plugin_{$file}";
+        } elseif ($action === 'upgrade') {
+            $action = 'upgrade-plugin';
+            $command = 'Upgrade';
+            $page = 'update.php';
+            $file = $plugin_basename;
+            $nonce_key = "{$action}_{$file}";
+        }
+        // there is no `else` clause here because there shouldn't be other cases
+        // if `$action` is still `null`, then the function will return an empty string
+        if (\is_null($action)) {
+            return '';
+        }
+        $plugin_install_activate_link = \wp_nonce_url(\add_query_arg(
+            ['action' => $action, 'plugin' => $file],
+            // on multisites, the installation of a plugin must happen on the network admin, hence the use of `self_admin_url()`
+            $action === 'install' ? \self_admin_url($page) : \admin_url($page)
+        ), $nonce_key);
+        return \sprintf(' <a href="%1$s">%2$s</a>', $plugin_install_activate_link, "{$command} {$plugin_name}");
     }
 }

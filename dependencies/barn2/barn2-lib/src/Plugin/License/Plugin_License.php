@@ -3,6 +3,7 @@
 namespace Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Lib\Plugin\License;
 
 use Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Lib\Registerable;
+use Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Lib\Service\Core_Service;
 use Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Lib\Util;
 use DateTime;
 /**
@@ -14,7 +15,7 @@ use DateTime;
  * @copyright Barn2 Media Ltd
  * @version   1.2.1
  */
-class Plugin_License implements Registerable, License
+class Plugin_License implements Registerable, License, Core_Service
 {
     const RENEWAL_DISCOUNT_CODE = 'RENEWAL20';
     private $item_id;
@@ -26,9 +27,9 @@ class Plugin_License implements Registerable, License
     /**
      * Creates a new plugin license instance.
      *
-     * @param int $item_id             The item ID for this plugin.
-     * @param License_API $license_api The API to perform the various license actions (activate, deactivate, etc).
-     * @param string $legacy_db_prefix Legacy plugins only - the database prefix for the license settings.
+     * @param int         $item_id          The item ID for this plugin.
+     * @param License_API $license_api      The API to perform the various license actions (activate, deactivate, etc).
+     * @param string      $legacy_db_prefix Legacy plugins only - the database prefix for the license settings.
      */
     public function __construct($item_id, License_API $license_api, $legacy_db_prefix = '')
     {

@@ -4,7 +4,6 @@ namespace Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Lib\WooCommerce\Admi
 
 use Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Lib\Admin\Abstract_Plugin_Promo;
 use Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Lib\Admin\Settings_Util;
-use Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Lib\Admin\Plugin_Promo as OG_Promo;
 use Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Lib\Plugin\Plugin;
 use Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Lib\Registerable;
 /**
@@ -50,7 +49,7 @@ class Plugin_Promo extends Abstract_Plugin_Promo implements Registerable
             }
         }
         \add_filter('woocommerce_get_settings_' . $this->tab, [$this, 'add_plugin_promo_field'], 11, 2);
-        \add_action('admin_enqueue_scripts', [$this, 'parent::load_styles']);
+        \add_action('admin_enqueue_scripts', [$this, 'load_styles']);
     }
     public function add_plugin_promo_field($settings, $current_section)
     {
@@ -87,16 +86,21 @@ class Plugin_Promo extends Abstract_Plugin_Promo implements Registerable
     {
         $promo_sidebar = parent::get_promo_sidebar();
         if (!empty($promo_sidebar)) {
-            $GLOBALS['hide_save_button'] = \true;
+            global $hide_save_button;
+            if (empty($hide_save_button)) {
+                $hide_save_button = \true;
+                ?>
+				<p class="submit barn2-settings-submit">
+					<button name="save" class="button-primary woocommerce-save-button" type="submit"
+							value="<?php 
+                esc_attr_e('Save changes', 'woocommerce');
+                ?>"><?php 
+                esc_html_e('Save changes', 'woocommerce');
+                ?></button>
+				</p>
+				<?php 
+            }
             ?>
-			<p class="submit barn2-settings-submit">
-				<button name="save" class="button-primary woocommerce-save-button" type="submit"
-						value="<?php 
-            esc_attr_e('Save changes', 'woocommerce');
-            ?>"><?php 
-            esc_html_e('Save changes', 'woocommerce');
-            ?></button>
-			</p>
 			</div><!-- barn2-promo-inner -->
 			<?php 
             // Promo content is sanitized via barn2_kses_post.

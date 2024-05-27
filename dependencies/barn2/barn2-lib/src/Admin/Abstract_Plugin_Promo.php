@@ -3,6 +3,7 @@
 namespace Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Lib\Admin;
 
 use Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Lib\Plugin\Plugin;
+use Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Lib\Service\Standard_Service;
 use Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Lib\Util;
 /**
  * Abstract class to handle the plugin promo sidebar used in most Barn2 plugins.
@@ -11,9 +12,9 @@ use Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Lib\Util;
  * @author    Barn2 Plugins <support@barn2.com>
  * @license   GPL-3.0
  * @copyright Barn2 Media Ltd
- * @version   1.0
+ * @version   1.0.1
  */
-abstract class Abstract_Plugin_Promo
+abstract class Abstract_Plugin_Promo implements Standard_Service
 {
     /**
      * The plugin object.
@@ -74,12 +75,11 @@ abstract class Abstract_Plugin_Promo
                 \set_transient('barn2_plugin_review_banner_' . $plugin_id, $review_content, 7 * \DAY_IN_SECONDS);
             }
         }
-        $plugins_installed = Util::get_installed_barn2_plugins() ?: [];
+        $plugins_installed = \array_column(Util::get_installed_barn2_plugins() ?: [], 'ITEM_ID');
         if (\false === $promo_response_data || !\is_array($promo_response_data)) {
             $promo_content_url = Util::barn2_api_url('/wp-json/promos/v1/get/' . $plugin_id . '?_=' . \gmdate('mdY'));
             $promo_content_url = \add_query_arg('source', \rawurlencode(\get_bloginfo('url')), $promo_content_url);
             if ($plugins_installed) {
-                $plugins_installed = \array_column($plugins_installed, 'ITEM_ID');
                 $promo_content_url = \add_query_arg('plugins_installed', \implode(',', $plugins_installed), $promo_content_url);
             }
             $promo_response = \wp_remote_get($promo_content_url, ['sslverify' => \defined('WP_DEBUG') && \WP_DEBUG ? \false : \true]);
