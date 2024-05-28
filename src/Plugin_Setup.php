@@ -2,12 +2,12 @@
 
 namespace Barn2\Plugin\Posts_Table_Search_Sort;
 
-use Barn2\Plugin\Posts_Table_Search_Sort\Admin\Wizard\Starter,
-	Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Lib\Plugin\Plugin,
-	Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Lib\Plugin\Plugin_Activation_Listener,
-	Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Lib\Util as Lib_Util,
-	Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Lib\Registerable,
-	Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Lib\Service\Standard_Service;
+use Barn2\Plugin\Posts_Table_Search_Sort\Admin\Wizard\Starter;
+use	Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Lib\Plugin\Plugin;
+use	Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Lib\Plugin\Plugin_Activation_Listener;
+use	Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Lib\Util as Lib_Util;
+use	Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Lib\Registerable;
+use	Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Lib\Service\Standard_Service;
 
 /**
  * Plugin Setup
