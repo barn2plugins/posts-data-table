@@ -32,7 +32,6 @@
     },
     "homepage": "https://github.com/Barn2Plugins/posts-data-table#readme",
     "devDependencies": {
-        "@barn2media/webpack-config": "2.0.0",
-        "gulp": "^4.0.2"
+        "@barn2plugins/webpack-config": "2.0.0",
     }
 }
