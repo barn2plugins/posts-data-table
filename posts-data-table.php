@@ -32,7 +32,7 @@ if ( ! defined( '\ABSPATH' ) ) {
 	exit;
 }
 
-const PLUGIN_VERSION = '1.4.5';
+const PLUGIN_VERSION = '1.4.6';
 const PLUGIN_FILE    = __FILE__;
 
 // Autoloader.
