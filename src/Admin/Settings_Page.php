@@ -9,6 +9,7 @@ use Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Lib\Admin\Settings_API_Hel
 use Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Lib\Plugin\Plugin;
 use Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Lib\Registerable;
 use Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Lib\Util;
+use Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Lib\Service\Standard_Service;
 
 /**
  * This class handles our plugin settings page in the admin.
@@ -18,7 +19,7 @@ use Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Lib\Util;
  * @license   GPL-3.0
  * @copyright Barn2 Media Ltd
  */
-class Settings_Page implements Registerable {
+class Settings_Page implements Registerable, Standard_Service {
 
 	const MENU_SLUG    = 'posts_table_search_sort';
 	const OPTION_GROUP = 'posts_table_search_sort_main';

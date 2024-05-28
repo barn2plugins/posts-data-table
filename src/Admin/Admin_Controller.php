@@ -4,7 +4,8 @@ namespace Barn2\Plugin\Posts_Table_Search_Sort\Admin;
 use Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Lib\Util,
 	Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Lib\Plugin\Plugin,
 	Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Lib\Registerable,
-	Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Lib\Service\Standard_Service;
+	Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Lib\Service\Standard_Service,
+	Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Lib\Service\Service_Container;
 
 /**
  * Handles general admin functions, such as adding links to our settings page in the Plugins menu.
@@ -16,15 +17,19 @@ use Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Lib\Util,
  */
 class Admin_Controller implements Registerable, Standard_Service {
 
+	use Service_Container;
+
 	private $plugin;
 	private $settings_page;
 
 	public function __construct( Plugin $plugin ) {
 		$this->plugin        = $plugin;
-		$this->settings_page = new Settings_Page( $plugin );
+		// $this->settings_page = new Settings_Page( $plugin );
 	}
 
 	public function register() {
+		$this->register_services();
+		$this->start_all_services();
 		// Extra links on Plugins page
 		add_filter( 'plugin_action_links_' . $this->plugin->get_basename(), [ $this, 'add_settings_link' ] );
 		add_filter( 'plugin_row_meta', [ $this, 'add_pro_version_link' ], 10, 2 );
@@ -32,7 +37,7 @@ class Admin_Controller implements Registerable, Standard_Service {
 		// Admin scripts
 		add_action( 'admin_enqueue_scripts', [ $this, 'settings_page_scripts' ] );
 
-		$this->settings_page->register();
+		// $this->settings_page->register();
 	}
 
 	public function add_settings_link( $links ) {
@@ -57,6 +62,10 @@ class Admin_Controller implements Registerable, Standard_Service {
 		}
 
 		return $links;
+	}
+
+	public function add_services() {
+		$this->add_service( 'settings_page', new Settings_Page( $this->plugin ) );
 	}
 
 	public function settings_page_scripts( $hook ) {
