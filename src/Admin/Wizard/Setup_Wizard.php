@@ -63,6 +63,8 @@ class Setup_Wizard implements Registerable, Standard_Service {
 			]
 		);
 
+		$wizard->add_restart_link( '', '' );
+
 		$this->wizard = $wizard;
 	}
 

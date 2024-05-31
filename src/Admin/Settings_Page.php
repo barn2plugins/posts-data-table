@@ -7,6 +7,7 @@ use Barn2\Plugin\Posts_Table_Search_Sort\Simple_Posts_Table;
 use Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Lib\Admin\Plugin_Promo;
 use Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Lib\Admin\Settings_API_Helper;
 use Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Lib\Plugin\Plugin;
+use Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Lib\Admin\Settings_Util;
 use Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Lib\Registerable;
 use Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Lib\Util;
 use Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Lib\Service\Standard_Service;
@@ -97,6 +98,11 @@ class Settings_Page implements Registerable, Standard_Service {
 					'label'  => __( 'Setup wizard', 'posts-data-table' ),
 					'target' => '_blank',
 				],
+				'support' => [
+					'url'    => 'https://wordpress.org/support/plugin/posts-data-table/',
+					'label'  => __( 'Support', 'posts-data-table' ),
+					'target' => '_blank',
+				],
 			],
 			$plugin
 		);
@@ -123,7 +129,9 @@ class Settings_Page implements Registerable, Standard_Service {
 			<div class="barn2-settings-inner">
 				<h1><?php esc_html_e( 'Posts Table with Search and Sort', 'posts-data-table' ); ?></h1>
 
-				<?php echo wp_kses_post( $this->get_title_description( $this->plugin, '' ) ); ?>
+				<div class="links-area">
+					<?php $this->support_links(); ?>
+				</div>
 
 				<form action="options.php" method="post">
 					<?php
@@ -470,6 +478,17 @@ class Settings_Page implements Registerable, Standard_Service {
 			?>
 		</p>
 		<?php
+	}
+
+	/**
+	 * Output the Barn2 Support Links.
+	 */
+	public function support_links() {
+		printf(
+			'<p>%s</p><p>%s</p>',
+			Settings_Util::get_help_links( $this->plugin ), // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			''
+		);
 	}
 
 }

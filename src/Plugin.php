@@ -33,6 +33,7 @@ class Plugin extends Simple_Plugin {
 				'name'          => self::NAME,
 				'version'       => $version,
 				'file'          => $file,
+				'documentation_path' => '/kb-categories/posts-table-search-sort-free-kb/',
 				'settings_path' => 'options-general.php?page=' . Settings_Page::MENU_SLUG
 			]
 		);
