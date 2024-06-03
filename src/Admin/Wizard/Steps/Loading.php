@@ -57,7 +57,7 @@ class Loading extends Step {
 	public function submit( array $values ) {
 
 		$options                   = Settings::get_table_args();
-		$options['posts_per_page'] = isset( $values['posts_per_page'] ) ? $values['posts_per_page'] : 20;
+		$options['rows_per_page']  = isset( $values['posts_per_page'] ) ? $values['posts_per_page'] : 20;
 		$options                   = Settings::sanitize_table_args( $options );
 
 		update_option( Settings::TABLE_ARGS_SETTING, $options );

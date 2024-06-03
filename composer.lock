@@ -140,11 +140,11 @@
         },
         {
             "name": "barn2/setup-wizard",
-            "version": "1.2.19",
+            "version": "1.2.20",
             "source": {
                 "type": "git",
                 "url": "git@bitbucket.org:barn2plugins/setup-wizard.git",
-                "reference": "b41973bd9bc05e8f204de533b89d838c9b96e8b5"
+                "reference": "2500121e5478870283d3fad3599f36eee791ee07"
             },
             "require-dev": {
                 "barn2/php-standards": "dev-master",
@@ -196,7 +196,7 @@
             "keywords": [
                 "wordpress"
             ],
-            "time": "2024-02-15T16:36:17+00:00"
+            "time": "2024-05-31T10:58:34+00:00"
         },
         {
             "name": "dealerdirect/phpcodesniffer-composer-installer",

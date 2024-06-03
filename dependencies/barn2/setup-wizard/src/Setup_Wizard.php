@@ -325,6 +325,7 @@ class Setup_Wizard implements Bootable, JsonSerializable
         \add_filter('admin_body_class', [$this, 'admin_page_body_class']);
         \add_action('admin_enqueue_scripts', [$this, 'enqueue_assets'], 20);
         \add_action('admin_head', [$this, 'admin_head']);
+        $this->register_activation_redirect();
         $rest_api->register_api_routes();
         // Attach the restart button if specified.
         if (!empty($this->get_restart_hook())) {
@@ -409,7 +410,7 @@ class Setup_Wizard implements Bootable, JsonSerializable
      */
     public function get_wizard_url()
     {
-        return \add_query_arg(['page' => $this->get_slug()], \admin_url('admin.php'));
+        return \add_query_arg(['page' => $this->get_slug() . '-setup-wizard'], \admin_url('admin.php'));
     }
     /**
      * Returns the html for the restart link.
@@ -563,6 +564,18 @@ class Setup_Wizard implements Bootable, JsonSerializable
             $parsed[] = \explode('/', $plugin)[0];
         }
         return $parsed;
+    }
+    /**
+     * Register the activation redirect.
+     *
+     * @return void
+     */
+    public function register_activation_redirect()
+    {
+        $url = $this->get_wizard_url();
+        \add_filter('plugin_configuration_data_' . $this->plugin->get_slug(), static function () use($url) {
+            return ['url' => \esc_url($url)];
+        });
     }
     /**
      * Json configuration for the react app.

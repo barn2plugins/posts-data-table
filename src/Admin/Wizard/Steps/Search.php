@@ -39,7 +39,7 @@ class Search extends Step {
 				'description' => __( 'The initial sort order applied to the table.', 'posts-data-table' ),
 				'type'        => 'select',
 				'options'     => $this->get_sort_by(),
-				'value'       => $values['sort_by'] ?? 'id',
+				'value'       => $values['sort_by'] ?? 'date',
 			],
 			'sort_order' => [
 				'label'   => __( 'Sort direction', 'posts-data-table' ),
@@ -63,6 +63,7 @@ class Search extends Step {
 			'search'     => [
 				'label'   => __( 'Search filters', 'posts-data-table' ),
 				'type'    => 'select',
+				'description'	=>	__( 'Add filter dropdowns above the table to quickly filter the posts by category, tag and more.', 'posts-data-table' ),
 				'options' => [
 					[
 						'value' => '',
