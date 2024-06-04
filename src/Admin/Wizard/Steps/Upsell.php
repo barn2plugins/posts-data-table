@@ -7,7 +7,7 @@ use Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Setup_Wizard\Steps\Cross_S
 /**
  * Upsell step.
  *
- * @package   Barn2/posts-data-table
+ * @package   Barn2\posts-data-table
  * @author    Barn2 Plugins <info@barn2.com>
  * @license   GPL-3.0
  * @copyright Barn2 Media Ltd
