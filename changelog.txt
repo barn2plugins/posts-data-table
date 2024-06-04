@@ -1,6 +1,7 @@
 = 1.4.6 =
-Release date 29 May 2024
+Release date 5 June 2024
 
+* Fix: The "Posts per page" were not saved in the wizard
 * Dev: Updated the internal libraries and barn2-lib
 * Dev: Tested up to WordPress 6.5.3
 * Dev: Deleted gulp
