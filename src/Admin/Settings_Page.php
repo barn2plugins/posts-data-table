@@ -74,53 +74,6 @@ class Settings_Page implements Registerable, Standard_Service {
 		);
 	}
 
-	/**
-	 * Return the description for the main title of a settings tab/section
-	 * including the links below the description
-	 * (as a filterable array of [ 'url', 'label', 'class' ])
-	 *
-	 * @param Plugin $plugin
-	 * @param string $description The text of the description
-	 *
-	 * @return string
-	 */
-	public function get_title_description( $plugin, $description ) {
-		$links = apply_filters(
-			'barn2_plugins_title_links',
-			[
-				'doc'     => [
-					'url'    => 'https://barn2.com/kb-categories/posts-table-search-sort-free-kb/',
-					'label'  => __( 'Documentation', 'posts-data-table' ),
-					'target' => '_blank',
-				],
-				'wizard' => [
-					'url'    => esc_url( admin_url( 'admin.php?page=posts-data-table-setup-wizard' ) ),
-					'label'  => __( 'Setup wizard', 'posts-data-table' ),
-					'target' => '_blank',
-				],
-				'support' => [
-					'url'    => 'https://wordpress.org/support/plugin/posts-data-table/',
-					'label'  => __( 'Support', 'posts-data-table' ),
-					'target' => '_blank',
-				],
-			],
-			$plugin
-		);
-
-		$printed_links = implode(
-			' | ',
-			array_map(
-				function ( $link ) {
-					$target = isset( $link['target'] ) ? sprintf( ' target="%s"', esc_attr( $link['target'] ) ) : '';
-
-					return sprintf( '<a href="%s"%s>%s</a>', esc_url( $link['url'] ), $target, esc_html( $link['label'] ) );
-				},
-				$links
-			)
-		);
-
-		return sprintf( '<p>%s</p><p>%s</p>', $printed_links, esc_html( $description ) );
-	}
 
 	public function render_settings_page() {
 		?>
