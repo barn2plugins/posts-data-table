@@ -1,9 +1,9 @@
 === Posts Table with Search & Sort ===
-Contributors: andykeith, barn2media
+Contributors: barn2media
 Donate link: https://barn2.com
 Tags: wordpress table plugin, data-table plugin, table plugin, table, wordpress table
 Requires at least: 6.1
-Tested up to: 6.5.3
+Tested up to: 6.6
 Requires PHP: 7.4
 Stable tag: 1.4.6
 License: GPL-3.0
