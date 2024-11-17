@@ -11,6 +11,7 @@ use Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Lib\Plugin\Plugin;
  * @license   GPL-3.0
  * @copyright Barn2 Media Ltd
  * @version   1.1
+ * @internal
  */
 class Settings_Util
 {
@@ -94,17 +95,17 @@ class Settings_Util
      *
      * @param string $page    The slug of the page for the plugin settings.
      * @param string $tab     The slug of the tab for the plugin settings. Default to an empty string.
-     * @param string $section The slug of the section for the plugin settings. Default to an empty string.
+     * @param string|bool $section The slug of the section for the plugin settings. Default to false.
      *
      * @return boolean
      */
-    public static function is_current_settings_page($page, $tab = '', $section = '')
+    public static function is_current_settings_page($page, $tab = '', $section = \false)
     {
         // phpcs:disable WordPress.Security.NonceVerification.Recommended
         $current_page = empty($_GET['page']) ? 'general' : \sanitize_title(\wp_unslash($_GET['page']));
         $current_tab = empty($_GET['tab']) ? '' : \sanitize_title(\wp_unslash($_GET['tab']));
         $current_section = empty($_REQUEST['section']) ? '' : \sanitize_title(\wp_unslash($_REQUEST['section']));
-        if (!$section) {
+        if (\false === $section) {
             $section = $current_section;
         }
         if (!$tab) {

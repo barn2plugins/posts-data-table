@@ -20,6 +20,7 @@ namespace Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\WPTRT\AdminNotices;
  * Each notice is a new instance of the object.
  *
  * @since 1.0.0
+ * @internal
  */
 class Notice
 {

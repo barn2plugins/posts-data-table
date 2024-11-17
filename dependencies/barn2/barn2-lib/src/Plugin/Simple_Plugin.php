@@ -18,6 +18,7 @@ use Exception;
  * @license   GPL-3.0
  * @copyright Barn2 Media Ltd
  * @version   2.0
+ * @internal
  */
 class Simple_Plugin implements Plugin, Registerable, Service_Provider
 {
@@ -83,6 +84,75 @@ class Simple_Plugin implements Plugin, Registerable, Service_Provider
         if ($this->requirements()->check()) {
             \add_action('after_setup_theme', [$this, 'start_standard_services']);
         }
+    }
+    /**
+     * Executed on plugin activation.
+     *
+     * @param boolean $network_wide Whether the plugin is being activated network-wide.
+     */
+    public final function before_activate($network_wide)
+    {
+        if (!$this->requirements()->check()) {
+            return;
+        }
+        if (!\get_option($this->get_basename() . '_plugin_activation')) {
+            try {
+                $this->on_first_activation($network_wide);
+                \update_option($this->get_basename() . '_plugin_activation', \time());
+            } catch (Exception $e) {
+                $this->notices()->add_error_notice($this->get_slug() . '_activation_error', $this->get_name(), \sprintf(__('%1$s could not complete its first activation because the following error occurred:<br>%2$s', 'barn2-lib'), $this->get_name(), $e->getMessage()), ['capability' => 'install_plugins', 'screens' => ['plugins']]);
+            }
+        }
+        foreach ($this->get_services() as $service) {
+            if ($service instanceof Plugin_Activation_Listener) {
+                $service->on_activate($network_wide);
+            }
+        }
+    }
+    /**
+     * Executed on plugin deactivation.
+     *
+     * @param boolean $network_wide Whether the plugin is being deactivated network-wide.
+     */
+    public final function before_deactivate($network_wide)
+    {
+        // No requirements check needed on deactivation.
+        foreach ($this->get_services() as $service) {
+            if ($service instanceof Plugin_Activation_Listener) {
+                $service->on_deactivate($network_wide);
+            }
+        }
+    }
+    /**
+     * Executed only on the very first activation of the plugin.
+     *
+     * @param boolean $network_wide Whether the plugin is being activated network-wide.
+     *
+     * @return void
+     */
+    public function on_first_activation($network_wide)
+    {
+        // Do nothing by default.
+    }
+    /**
+     * Register a script with WordPress and set the script translations
+     *
+     * @param string   $handle        The handle the script is registered with.
+     * @param string   $relative_path The path to the script file relative to the plugin's root folder.
+     * @param string[] $deps          The dependencies for this script.
+     * @param string   $version       The version of the script. It defaults to the plugin version.
+     * @param bool     $in_footer     Whether to enqueue the script before </body> instead of in the <head>.
+     *
+     * @return bool                    Whether the script has been registered. True on success, false on failure.
+     * @since 1.3
+     */
+    public function register_script($handle, $relative_path = '', $deps = [], $version = null, $in_footer = \true)
+    {
+        $registered = \wp_register_script($handle, $this->get_dir_url($relative_path), $deps, $version ?? $this->get_version(), $in_footer);
+        if ($registered && \in_array('wp-i18n', $deps, \true)) {
+            \wp_set_script_translations($handle, $this->plugin_data()->get_textdomain(), $this->get_dir_path('languages'));
+        }
+        return $registered;
     }
     /**
      * Get the plugin ID, usually the EDD Download ID.
@@ -205,7 +275,7 @@ class Simple_Plugin implements Plugin, Registerable, Service_Provider
      *
      * @return string (URL)
      */
-    public final function get_documentation_url()
+    public function get_documentation_url()
     {
         return \esc_url(Util::KNOWLEDGE_BASE_URL . '/' . $this->data['documentation_path']);
     }
@@ -214,7 +284,7 @@ class Simple_Plugin implements Plugin, Registerable, Service_Provider
      *
      * @return string (URL)
      */
-    public final function get_support_url()
+    public function get_support_url()
     {
         return Util::barn2_url('support-center/');
     }
@@ -223,7 +293,7 @@ class Simple_Plugin implements Plugin, Registerable, Service_Provider
      *
      * @return string (URL)
      */
-    public final function get_settings_page_url()
+    public function get_settings_page_url()
     {
         return !empty($this->data['settings_path']) ? \admin_url($this->data['settings_path']) : '';
     }
@@ -253,74 +323,5 @@ class Simple_Plugin implements Plugin, Registerable, Service_Provider
     public final function notices()
     {
         return $this->get_service('notices');
-    }
-    /**
-     * Executed on plugin activation.
-     *
-     * @param boolean $network_wide Whether the plugin is being activated network-wide.
-     */
-    public final function before_activate($network_wide)
-    {
-        if (!$this->requirements()->check()) {
-            return;
-        }
-        if (!\get_option($this->get_basename() . '_plugin_activation')) {
-            try {
-                $this->on_first_activation($network_wide);
-                \update_option($this->get_basename() . '_plugin_activation', \time());
-            } catch (Exception $e) {
-                $this->notices()->add_error_notice($this->get_slug() . '_activation_error', $this->get_name(), \sprintf(__('%1$s could not complete its first activation because the following error occurred:<br>%2$s', 'barn2-lib'), $this->get_name(), $e->getMessage()), ['capability' => 'install_plugins', 'screens' => ['plugins']]);
-            }
-        }
-        foreach ($this->get_services() as $service) {
-            if ($service instanceof Plugin_Activation_Listener) {
-                $service->on_activate($network_wide);
-            }
-        }
-    }
-    /**
-     * Executed on plugin deactivation.
-     *
-     * @param boolean $network_wide Whether the plugin is being deactivated network-wide.
-     */
-    public final function before_deactivate($network_wide)
-    {
-        // No requirements check needed on deactivation.
-        foreach ($this->get_services() as $service) {
-            if ($service instanceof Plugin_Activation_Listener) {
-                $service->on_deactivate($network_wide);
-            }
-        }
-    }
-    /**
-     * Executed only on the very first activation of the plugin.
-     *
-     * @param boolean $network_wide Whether the plugin is being activated network-wide.
-     *
-     * @return void
-     */
-    public function on_first_activation($network_wide)
-    {
-        // Do nothing by default.
-    }
-    /**
-     * Register a script with WordPress and set the script translations
-     *
-     * @param string   $handle        The handle the script is registered with.
-     * @param string   $relative_path The path to the script file relative to the plugin's root folder.
-     * @param string[] $deps          The dependencies for this script.
-     * @param string   $version       The version of the script. It defaults to the plugin version.
-     * @param bool     $in_footer     Whether to enqueue the script before </body> instead of in the <head>.
-     *
-     * @return bool                    Whether the script has been registered. True on success, false on failure.
-     * @since 1.3
-     */
-    public function register_script($handle, $relative_path = '', $deps = [], $version = null, $in_footer = \true)
-    {
-        $registered = \wp_register_script($handle, $this->get_dir_url($relative_path), $deps, $version ?? $this->get_version(), $in_footer);
-        if ($registered && \in_array('wp-i18n', $deps, \true)) {
-            \wp_set_script_translations($handle, $this->plugin_data()->get_textdomain(), $this->get_dir_path('languages'));
-        }
-        return $registered;
     }
 }

@@ -12,6 +12,7 @@ namespace Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Lib;
  * @license   GPL-3.0
  * @copyright Barn2 Media Ltd
  * @version   1.3
+ * @internal
  */
 class WP_Scoped_Hooks
 {

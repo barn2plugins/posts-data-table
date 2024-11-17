@@ -8,6 +8,7 @@ if (!\defined('ABSPATH')) {
     exit;
 }
 if (!\function_exists('edd_hidden_callback')) {
+    /** @internal */
     function edd_hidden_callback($args)
     {
         if (isset($args['id'], $args['default'])) {
@@ -16,6 +17,7 @@ if (!\function_exists('edd_hidden_callback')) {
     }
 }
 if (!\function_exists('edd_barn2_license_callback')) {
+    /** @internal */
     function edd_barn2_license_callback($args)
     {
         // Change setting back to a 'text' input. We set the type to 'barn2_license' initially so we can provide our own callback.

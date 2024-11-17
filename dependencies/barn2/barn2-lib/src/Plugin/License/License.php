@@ -10,6 +10,7 @@ namespace Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Lib\Plugin\License;
  * @license   GPL-3.0
  * @copyright Barn2 Media Ltd
  * @version   1.1
+ * @internal
  */
 interface License extends License_Summary
 {

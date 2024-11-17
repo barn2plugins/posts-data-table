@@ -14,10 +14,11 @@ use DateTime;
  * @license   GPL-3.0
  * @copyright Barn2 Media Ltd
  * @version   1.2.1
+ * @internal
  */
 class Plugin_License implements Registerable, License, Core_Service
 {
-    const RENEWAL_DISCOUNT_CODE = 'RENEWAL20';
+    const RENEWAL_STRING = 'UkVORVdBTDIw';
     private $item_id;
     private $license_api;
     private $legacy_db_prefix;
@@ -359,11 +360,11 @@ class Plugin_License implements Registerable, License, Core_Service
     }
     public function get_renewal_url($apply_discount = \true)
     {
-        $discount_code = $apply_discount ? self::RENEWAL_DISCOUNT_CODE : '';
+        $discount_string = $apply_discount ? \base64_decode(self::RENEWAL_STRING) : '';
         $license_info = $this->get_license_info();
         if (!empty($license_info['item_id'])) {
             $price_id = !empty($license_info['price_id']) ? $license_info['price_id'] : 0;
-            return Util::get_add_to_cart_url($license_info['item_id'], $price_id, $discount_code);
+            return Util::get_add_to_cart_url($license_info['item_id'], $price_id, $discount_string);
         } else {
             return Util::barn2_url('our-wordpress-plugins');
         }

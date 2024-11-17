@@ -17,6 +17,7 @@ use wpdb;
  * @author    Barn2 Plugins <support@barn2.com>
  * @license   GPL-3.0
  * @copyright Barn2 Media Ltd
+ * @internal
  */
 class Notice_Provider implements Registerable, Core_Service, Conditional
 {

@@ -10,6 +10,7 @@ namespace Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Setup_Wizard\Interfa
 
 use Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Setup_Wizard\Setup_Wizard;
 use Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Setup_Wizard\Step;
+/** @internal */
 interface Pluggable
 {
     /**

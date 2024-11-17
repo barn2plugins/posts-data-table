@@ -11,6 +11,7 @@ use Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Lib\Plugin\Plugin;
  * @license   GPL-3.0
  * @copyright Barn2 Media Ltd
  * @version   1.6
+ * @internal
  */
 class Util
 {
@@ -159,6 +160,7 @@ class Util
      */
     public static function is_protected_categories_active()
     {
+        \_deprecated_function(__FUNCTION__, '1.5.3', 'is_barn2_plugin_active');
         return self::is_barn2_plugin_active('\\Barn2\\Plugin\\WC_Protected_Categories\\wpc');
     }
     /**
@@ -169,6 +171,7 @@ class Util
      */
     public static function is_product_table_active()
     {
+        \_deprecated_function(__FUNCTION__, '1.5.3', 'is_barn2_plugin_active');
         return self::is_barn2_plugin_active('\\Barn2\\Plugin\\WC_Product_Table\\wpt');
     }
     /**
@@ -179,6 +182,7 @@ class Util
      */
     public static function is_quick_view_pro_active()
     {
+        \_deprecated_function(__FUNCTION__, '1.5.3', 'is_barn2_plugin_active');
         return self::is_barn2_plugin_active('\\Barn2\\Plugin\\WC_Quick_View_Pro\\wqv');
     }
     /**
@@ -189,6 +193,7 @@ class Util
      */
     public static function is_restaurant_ordering_active()
     {
+        \_deprecated_function(__FUNCTION__, '1.5.3', 'is_barn2_plugin_active');
         return self::is_barn2_plugin_active('\\Barn2\\Plugin\\WC_Restaurant_Ordering\\wro');
     }
     /**
@@ -199,6 +204,7 @@ class Util
      */
     public static function is_fast_cart_active()
     {
+        \_deprecated_function(__FUNCTION__, '1.5.3', 'is_barn2_plugin_active');
         return self::is_barn2_plugin_active('\\Barn2\\Plugin\\WC_Fast_Cart\\wfc');
     }
     /**
@@ -395,7 +401,15 @@ class Util
             require_once \ABSPATH . 'wp-admin/includes/plugin.php';
         }
         $plugins = \get_plugins();
-        return isset($plugins[$plugin_file]);
+        if (\strpos($plugin_file, '/') !== \false) {
+            return isset($plugins[$plugin_file]);
+        }
+        foreach ($plugins as $plugin_path => $plugin_data) {
+            if (\basename($plugin_path) === $plugin_file) {
+                return \true;
+            }
+        }
+        return \false;
     }
     /**
      * Sanitize anything.

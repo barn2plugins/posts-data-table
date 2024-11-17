@@ -11,6 +11,7 @@ namespace Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Setup_Wizard;
 use Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Setup_Wizard\Interfaces\Pluggable;
 /**
  * Handles configuration of a setup wizard step.
+ * @internal
  */
 abstract class Step implements Pluggable
 {

@@ -12,6 +12,7 @@ use Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Setup_Wizard\Interfaces\Bo
 use JsonSerializable;
 /**
  * Create a setup wizard for a given plugin.
+ * @internal
  */
 class Setup_Wizard implements Bootable, JsonSerializable
 {
@@ -410,7 +411,7 @@ class Setup_Wizard implements Bootable, JsonSerializable
      */
     public function get_wizard_url()
     {
-        return \add_query_arg(['page' => $this->get_slug() . '-setup-wizard'], \admin_url('admin.php'));
+        return \add_query_arg(['page' => $this->get_slug()], \admin_url('admin.php'));
     }
     /**
      * Returns the html for the restart link.

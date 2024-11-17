@@ -13,6 +13,7 @@ use Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Lib\Util;
  * @license   GPL-3.0
  * @copyright Barn2 Media Ltd
  * @version   1.0.1
+ * @internal
  */
 abstract class Abstract_Plugin_Promo implements Standard_Service
 {

@@ -16,6 +16,7 @@ use Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Lib\Plugin\License\Plugin_
  * @license   GPL-3.0
  * @copyright Barn2 Media Ltd
  * @version   2.0
+ * @internal
  */
 class Premium_Plugin extends Simple_Plugin implements Licensed_Plugin
 {

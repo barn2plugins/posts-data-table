@@ -10,6 +10,7 @@ use Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\WPTRT\AdminNotices\Notices
  * @author    Barn2 Plugins <support@barn2.com>
  * @license   GPL-3.0
  * @copyright Barn2 Media Ltd
+ * @internal
  */
 class Notices extends AdminNoticesNotices
 {

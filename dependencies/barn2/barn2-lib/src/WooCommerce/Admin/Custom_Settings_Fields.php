@@ -14,6 +14,7 @@ use WC_Admin_Settings;
  * @license   GPL-3.0
  * @copyright Barn2 Media Ltd
  * @version   1.5
+ * @internal
  */
 class Custom_Settings_Fields implements Registerable
 {

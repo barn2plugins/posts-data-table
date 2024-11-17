@@ -14,6 +14,7 @@ use Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Lib\Util;
  * @license   GPL-3.0
  * @copyright Barn2 Media Ltd
  * @version   1.2
+ * @internal
  */
 class License_Notices implements Registerable, Core_Service
 {

@@ -8,6 +8,7 @@
  */
 namespace Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Setup_Wizard\Interfaces;
 
+/** @internal */
 interface Restartable
 {
     /**

@@ -14,6 +14,7 @@ use Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Lib\Service\Standard_Servi
  * @license   GPL-3.0
  * @copyright Barn2 Media Ltd
  * @version   1.0
+ * @internal
  */
 class Navigation implements Registerable, Standard_Service
 {

@@ -11,6 +11,7 @@ namespace Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Lib\WooCommerce\Admi
  * @copyright  Barn2 Media Ltd
  * @version    1.1
  * @deprecated Replaced by Barn2\Lib\Admin\Settings_Util
+ * @internal
  */
 class Settings_Util
 {

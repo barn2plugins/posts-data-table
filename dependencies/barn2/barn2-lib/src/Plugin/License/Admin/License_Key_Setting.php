@@ -15,6 +15,7 @@ use WC_Admin_Settings;
  * @license   GPL-3.0
  * @copyright Barn2 Media Ltd
  * @version   1.2
+ * @internal
  */
 class License_Key_Setting implements Registerable, License_Setting, Core_Service
 {
@@ -22,9 +23,9 @@ class License_Key_Setting implements Registerable, License_Setting, Core_Service
     const ACTIVATE_KEY = 'activate_key';
     const DEACTIVATE_KEY = 'deactivate_key';
     const CHECK_KEY = 'check_key';
-    private $license;
-    private $is_woocommerce;
-    private $is_edd;
+    public $license;
+    public $is_woocommerce;
+    public $is_edd;
     private $saving_key = \false;
     private $deferred_message;
     public function __construct(License $license, $is_woocommerce = \false, $is_edd = \false)
@@ -41,9 +42,9 @@ class License_Key_Setting implements Registerable, License_Setting, Core_Service
             include_once __DIR__ . '/edd-settings-functions.php';
             // Handle the license settings message for EDD.
             \add_filter('sanitize_option_edd_settings', [$this, 'handle_edd_license_message'], 20);
-        } elseif ($this->is_woocommerce && !\has_action('woocommerce_admin_field_hiden')) {
-            // Add hidden field to WooCommerce settings.
-            \add_action('woocommerce_admin_field_hiden', [Settings_API_Helper::class, 'settings_field_hidden']);
+        } elseif ($this->is_woocommerce && !\has_action('woocommerce_admin_field_hidden')) {
+            // Add hidden field to WooCommerce for license key override setting.
+            \add_action('woocommerce_admin_field_hidden', [Settings_API_Helper::class, 'settings_field_hidden']);
         }
     }
     /**
@@ -105,7 +106,7 @@ class License_Key_Setting implements Registerable, License_Setting, Core_Service
     }
     public function get_license_key_setting()
     {
-        $setting = ['title' => __('License key', 'barn2'), 'type' => 'text', 'id' => $this->get_license_setting_name() . '[license]', 'desc' => $this->get_license_description(), 'class' => 'regular-text'];
+        $setting = ['title' => __('License key', 'barn2'), 'type' => 'text', 'id' => $this->get_license_setting_name() . '[license]', 'desc' => $this->get_license_description(), 'class' => 'regular-text barn2-license-key'];
         if ($this->is_woocommerce) {
             $setting['desc_tip'] = __('The licence key is contained in your order confirmation email.', 'barn2');
         } elseif ($this->is_edd) {
@@ -120,7 +121,7 @@ class License_Key_Setting implements Registerable, License_Setting, Core_Service
         if ($this->is_license_setting_readonly()) {
             $setting['custom_attributes'] = ['readonly' => 'readonly'];
         }
-        return $setting;
+        return \apply_filters('barn2_plugin_license_key_setting', $setting, $this);
     }
     /**
      * Retrieve the description for the license key input, to display on the settings page.
@@ -132,14 +133,14 @@ class License_Key_Setting implements Registerable, License_Setting, Core_Service
         $buttons = ['check' => $this->license_action_button(self::CHECK_KEY, __('Check', 'barn2')), 'activate' => $this->license_action_button(self::ACTIVATE_KEY, __('Activate', 'barn2')), 'deactivate' => $this->license_action_button(self::DEACTIVATE_KEY, __('Deactivate', 'barn2'))];
         $message = $this->license->get_status_help_text();
         if ($this->license->is_active()) {
-            $message = \sprintf('<span style="color:green;">✓&nbsp;%s</span>', $message);
+            $message = \sprintf('<span class="barn2-license-key-status license-active" style="color:green;">✓&nbsp;%s</span>', $message);
         } elseif ($this->license->get_license_key()) {
             // If we have a license key and it's not active, mark it red for user to take action.
             if ($this->license->is_inactive() && $this->is_license_action('deactivate_key')) {
                 // ...except if the user has just deactivated, in which case just show a plain confirmation message.
                 $message = __('License key deactivated.', 'barn2');
             } else {
-                $message = \sprintf('<span style="color:red;">%s</span>', $message);
+                $message = \sprintf('<span class="barn2-license-key-status license-inactive" style="color:red;">%s</span>', $message);
             }
         }
         if ($this->is_license_setting_readonly()) {
@@ -151,7 +152,7 @@ class License_Key_Setting implements Registerable, License_Setting, Core_Service
     }
     private function license_action_button($input_name, $button_text)
     {
-        return \sprintf('<button type="submit" class="button" name="%1$s" value="%2$s" style="margin-right:4px;">%3$s</button>', \esc_attr($input_name), \esc_attr($this->get_license_setting_name()), $button_text);
+        return \sprintf('<button type="submit" class="button barn2-license-action" name="%1$s" value="%2$s" style="margin-right:4px;">%3$s</button>', \esc_attr($input_name), \esc_attr($this->get_license_setting_name()), $button_text);
     }
     private function is_license_setting_readonly()
     {

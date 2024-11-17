@@ -10,6 +10,7 @@ namespace Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Setup_Wizard;
 
 /**
  * Determine if the setup wizard should be displayed after plugin's activation.
+ * @internal
  */
 class Starter
 {

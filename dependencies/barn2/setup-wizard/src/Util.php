@@ -10,6 +10,7 @@ namespace Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Setup_Wizard;
 
 /**
  * Utility methods.
+ * @internal
  */
 class Util
 {

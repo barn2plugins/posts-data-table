@@ -14,6 +14,7 @@ use JsonSerializable;
 /**
  * Class that handles registration of the rest api route
  * for the given plugin.
+ * @internal
  */
 class Api implements JsonSerializable
 {

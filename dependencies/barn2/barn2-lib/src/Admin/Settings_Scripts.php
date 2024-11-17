@@ -12,6 +12,7 @@ use Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Lib\Registerable;
  * @license   GPL-3.0
  * @copyright Barn2 Media Ltd
  * @version   1.0
+ * @internal
  */
 class Settings_Scripts implements Registerable
 {

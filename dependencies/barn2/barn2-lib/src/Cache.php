@@ -12,6 +12,7 @@ namespace Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Lib;
  * can be easily used with php-scoper.
  *
  * @package Barn2\barn2-lib
+ * @internal
  */
 class Cache
 {

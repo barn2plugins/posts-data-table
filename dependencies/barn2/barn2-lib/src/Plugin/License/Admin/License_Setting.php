@@ -9,6 +9,7 @@ namespace Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Lib\Plugin\License\A
  * @author    Barn2 Plugins <support@barn2.com>
  * @license   GPL-3.0
  * @copyright Barn2 Media Ltd
+ * @internal
  */
 interface License_Setting
 {

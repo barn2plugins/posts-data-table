@@ -11,6 +11,7 @@ namespace Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Setup_Wizard\Steps;
 use Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Setup_Wizard\Step;
 /**
  * Handles the cross selling step of the wizard.
+ * @internal
  */
 class Cross_Selling extends Step
 {
