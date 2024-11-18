@@ -1,3 +1,9 @@
+= 1.4.7 =
+Release date 18 November 2024
+
+* Dev: Tested up to WordPress 6.7.0
+* Dev: Updated internal libraries
+
 = 1.4.6 =
 Release date 5 June 2024
 

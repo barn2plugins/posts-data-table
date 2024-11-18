@@ -3,9 +3,9 @@ Contributors: barn2media
 Donate link: https://barn2.com
 Tags: wordpress table plugin, data-table plugin, table plugin, table, wordpress table
 Requires at least: 6.1
-Tested up to: 6.6
+Tested up to: 6.7
 Requires PHP: 7.4
-Stable tag: 1.4.6
+Stable tag: 1.4.7
 License: GPL-3.0
 License URI: https://www.gnu.org/licenses/gpl.html
 
@@ -168,12 +168,9 @@ Please report any security bugs through the [Patchstack Vulnerability Disclosure
 
 == Changelog ==
 
-= 1.4.6 =
-Release date 5 June 2024
+= 1.4.7 =
+Release date 18 November 2024
 
-* Fix: The "Posts per page" were not saved in the wizard
-* Dev: Updated the internal libraries and barn2-lib
-* Dev: Tested up to WordPress 6.5.3
-* Dev: Deleted gulp
-
+* Dev: Tested up to WordPress 6.7.0
+* Dev: Updated internal libraries
 See changelog.txt for more details.
