@@ -121,8 +121,19 @@ final class EDD_Licensing implements License_API
     }
     private function api_request($params)
     {
+        /**
+         * Filter the EDD Software Licensing API endpoint.
+         *
+         * This filter is useful for testing purposes
+         * (e.g. when new functionalities must be tested on a staging website).
+         *
+         * @param string        $endpoint The EDD Software Licensing API endpoint.
+         * @param EDD_Licensing $instance The EDD_Licensing instance.
+         * @param array         $params   The parameters to send to the API.
+         */
+        $endpoint = \apply_filters('barn2_edd_licensing_api_endpoint', self::EDD_LICENSING_ENDPOINT, $this, $params);
         // Call the Software Licensing API.
-        $response = \wp_remote_post(self::EDD_LICENSING_ENDPOINT, \apply_filters('barn2_edd_licensing_api_request_args', ['timeout' => self::API_TIMEOUT, 'body' => $params]));
+        $response = \wp_remote_post($endpoint, \apply_filters('barn2_edd_licensing_api_request_args', ['timeout' => self::API_TIMEOUT, 'body' => $params]));
         // Build the result.
         $result = new \stdClass();
         if (self::is_api_error($response)) {

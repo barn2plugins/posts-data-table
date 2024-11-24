@@ -18,19 +18,19 @@
     "repositories": [
         {
             "type": "vcs",
-            "url": "git@bitbucket.org:barn2plugins/php-standards.git"
+            "url": "git@github.com:barn2plugins/php-standards.git"
         },
         {
             "type": "vcs",
-            "url": "git@bitbucket.org:barn2plugins/barn2-lib.git"
+            "url": "git@github.com:barn2plugins/barn2-lib.git"
         },
         {
             "type": "vcs",
-            "url": "git@bitbucket.org:barn2plugins/setup-wizard.git"
+            "url": "git@github.com:barn2plugins/setup-wizard.git"
         },
         {
             "type": "vcs",
-            "url": "git@bitbucket.org:barn2plugins/php-scoper-excludes.git"
+            "url": "git@github.com:barn2plugins/php-scoper-excludes.git"
         }
     ],
     "autoload": {

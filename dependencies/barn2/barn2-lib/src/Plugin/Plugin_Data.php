@@ -51,7 +51,7 @@ class Plugin_Data implements Core_Service
             if (!\function_exists('get_plugin_data')) {
                 require_once \ABSPATH . 'wp-admin/includes/plugin.php';
             }
-            $this->plugin_data = \get_plugin_data($this->plugin->get_file());
+            $this->plugin_data = \get_plugin_data($this->plugin->get_file(), \false, \false);
         }
         if (!\is_null($property)) {
             return $this->plugin_data[$property] ?? '';

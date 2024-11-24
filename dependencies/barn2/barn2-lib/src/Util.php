@@ -3,6 +3,9 @@
 namespace Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Lib;
 
 use Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Lib\Plugin\Plugin;
+use WP_Error;
+use WP_Filesystem_Base;
+use function WP_Filesystem;
 /**
  * Utility functions for Barn2 plugins.
  *
@@ -356,14 +359,16 @@ class Util
         if (!\function_exists('get_plugin_data')) {
             require_once \ABSPATH . 'wp-admin/includes/plugin.php';
         }
-        return \get_plugin_data($plugin->get_file());
+        return \get_plugin_data($plugin->get_file(), \false, \false);
     }
     /**
      * Loops through all active plugins on the user's website and returns ones that are authored by Barn2
      *
+     * @param bool $include_inactive Whether to include inactive plugins in the search. Default is `false`.
+     *
      * @return array List of plugin meta data and the ITEM_ID found in each Barn2 plugin
      */
-    public static function get_installed_barn2_plugins()
+    public static function get_installed_barn2_plugins($include_inactive = \false)
     {
         if (!\function_exists('get_plugins')) {
             require_once \ABSPATH . 'wp-admin/includes/plugin.php';
@@ -373,6 +378,17 @@ class Util
         $barn2_installed = [];
         foreach ($current_plugins as $slug => $data) {
             if (\false !== \stripos($data['Author'], 'Barn2 Plugins')) {
+                if ($include_inactive) {
+                    $folder = \dirname($slug);
+                    if (\is_readable("{$plugin_dir}/{$folder}/src/Plugin.php")) {
+                        $plugin_contents = \file_get_contents("{$plugin_dir}/{$folder}/src/Plugin.php");
+                        if (\preg_match('/const\\s+ITEM_ID\\s*=\\s*(\\d+);/', $plugin_contents, $item_id)) {
+                            $data['ITEM_ID'] = \absint($item_id[1]);
+                        }
+                    }
+                    $barn2_installed[] = $data;
+                    continue;
+                }
                 if (\is_readable("{$plugin_dir}/{$slug}")) {
                     $plugin_contents = \file_get_contents("{$plugin_dir}/{$slug}");
                     if (\preg_match('/namespace ([0-9A-Za-z_\\\\]+);/', $plugin_contents, $namespace)) {
@@ -495,5 +511,78 @@ class Util
             $action === 'install' ? \self_admin_url($page) : \admin_url($page)
         ), $nonce_key);
         return \sprintf(' <a href="%1$s">%2$s</a>', $plugin_install_activate_link, "{$command} {$plugin_name}");
+    }
+    /**
+     * Install the bonus plugin.
+     *
+     * @param array $bonus_plugins A list of bonus plugins to install.
+     *                             Each plugin is an object with the following properties:
+     * 						       - id:   The ID of the EDD download post for the plugin.
+     * 						       - name: The name of the plugin.
+     * 						       - url:  The URL of the plugin ZIP file.
+     * 
+     * @return array The results of the installation (either true or a WP_Error).
+     */
+    public static function install_bonus_plugins($bonus_plugins)
+    {
+        include_once \ABSPATH . 'wp-admin/includes/file.php';
+        include_once \ABSPATH . 'wp-admin/includes/class-wp-upgrader.php';
+        include_once \ABSPATH . 'wp-admin/includes/plugin-install.php';
+        include_once \ABSPATH . 'wp-admin/includes/plugin.php';
+        $skin = new \WP_Ajax_Upgrader_Skin();
+        $upgrader = new \Plugin_Upgrader($skin);
+        $results = [];
+        foreach ($bonus_plugins as $plugin) {
+            $name = $plugin->name;
+            $result = $upgrader->run(['package' => $plugin->url, 'destination' => \WP_PLUGIN_DIR]);
+            if (\is_wp_error($result)) {
+                $results[$name] = new WP_Error('bonus_download_install_failed', $result->get_error_message(), $result->get_error_data());
+                continue;
+            } else {
+                if (\is_wp_error($skin->result)) {
+                    $results[$name] = new WP_Error('bonus_download_install_failed', $skin->result->get_error_message(), $skin->result->get_error_data());
+                    continue;
+                } else {
+                    if ($skin->get_errors()->get_error_code()) {
+                        $results[$name] = new WP_Error('bonus_download_install_failed', $skin->get_error_messages(), $skin->get_errors()->get_error_data());
+                        continue;
+                    } else {
+                        if (\is_null($result)) {
+                            WP_Filesystem();
+                            global $wp_filesystem;
+                            $error_message = __('Unable to connect to the filesystem. Please confirm your credentials.', 'barn2-lib');
+                            if ($wp_filesystem instanceof WP_Filesystem_Base && \is_wp_error($wp_filesystem->errors) && $wp_filesystem->errors->get_error_code()) {
+                                $error_message = \esc_html($wp_filesystem->errors->get_error_message());
+                            }
+                            $results[$name] = new WP_Error('bonus_download_install_failed', $error_message);
+                            continue;
+                        }
+                    }
+                }
+            }
+            if (isset($result['destination_name'])) {
+                $plugin = "{$result['destination_name']}/{$result['destination_name']}.php";
+            } else {
+                $plugin = '';
+            }
+            if ($plugin && \current_user_can('activate_plugin', $plugin)) {
+                $cache_plugins = \wp_cache_get('plugins', 'plugins');
+                if (!empty($cache_plugins)) {
+                    $new_plugin = \get_plugin_data(\WP_PLUGIN_DIR . '/' . $plugin, \false, \false);
+                    $cache_plugins[''][$plugin] = $new_plugin;
+                    \wp_cache_set('plugins', $cache_plugins, 'plugins');
+                }
+                $result = \activate_plugin($plugin);
+                if (\is_wp_error($result)) {
+                    $results[$name] = new WP_Error('bonus_download_activation_failed', $result->get_error_message(), $result->get_error_data());
+                    continue;
+                }
+            } else {
+                $results[$name] = new WP_Error('bonus_download_no_activation_permission', esc_html__('You don\'t have permission to activate the plugin.', 'barn2-lib'));
+                continue;
+            }
+            $results[$name] = \true;
+        }
+        return $results;
     }
 }

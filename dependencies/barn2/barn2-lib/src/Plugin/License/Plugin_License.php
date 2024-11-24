@@ -141,7 +141,10 @@ class Plugin_License implements Registerable, License, Core_Service
             if ('valid' === $response->license) {
                 $license_data['status'] = 'active';
                 $result = \true;
-                \do_action('barn2_license_activated_' . $this->item_id, $license_key, $url_to_activate);
+                if (isset($response->bonus_downloads)) {
+                    $license_data['bonus_downloads'] = $response->bonus_downloads;
+                }
+                \do_action("barn2_license_activated_{$this->item_id}", $license_key, $url_to_activate);
             } else {
                 // Invalid license.
                 $license_data['error_code'] = isset($response->error) ? $response->error : 'error';
@@ -156,6 +159,15 @@ class Plugin_License implements Registerable, License, Core_Service
             $license_data['error_message'] = $api_result->response;
         }
         $this->set_license_data($license_data);
+        /**
+         * Fires after the activation process has completed.
+         *
+         * @param string  $license_key      The license key that was activated.
+         * @param string  $url_to_activate  The URL that was used to activate the license.
+         * @param array   $license_data     The license data after activation.
+         * @param boolean $result           Whether the activation was successful.
+         */
+        \do_action("barn2_license_after_activate_{$this->item_id}", $license_key, $url_to_activate, $license_data, $result);
         return $result;
     }
     /**
@@ -180,8 +192,9 @@ class Plugin_License implements Registerable, License, Core_Service
         }
         $result = \false;
         $license_data = [];
+        $license_key = $this->get_license_key();
         $url_to_deactivate = $this->get_active_url();
-        $api_result = $this->license_api->deactivate_license($this->get_license_key(), $this->item_id, $url_to_deactivate);
+        $api_result = $this->license_api->deactivate_license($license_key, $this->item_id, $url_to_deactivate);
         if ($api_result->success) {
             // Successful response - now check whether license is valid.
             $response = $api_result->response;
@@ -198,13 +211,22 @@ class Plugin_License implements Registerable, License, Core_Service
                 // In this case we refresh license data to ensure we have correct state stored in database.
                 $this->refresh();
             }
-            \do_action('barn2_license_deactivated_' . $this->item_id, $this->get_license_key(), $url_to_deactivate);
+            \do_action("barn2_license_deactivated_{$this->item_id}", $license_key, $url_to_deactivate);
         } else {
             // API error
             $license_data['error_code'] = 'error';
             $license_data['error_message'] = $api_result->response;
             $this->update_license_data($license_data);
         }
+        /**
+         * Fires after the deactivation process has completed.
+         *
+         * @param string  $license_key         The license key that was deactivated.
+         * @param string  $url_to_deactivate   The URL that was used to deactivate the license.
+         * @param array   $license_data        The license data after deactivation.
+         * @param boolean $result              Whether the deactivation was successful.
+         */
+        \do_action("barn2_license_after_deactivate_{$this->item_id}", $license_key, $url_to_deactivate, $license_data, $result);
         return $result;
     }
     /**
@@ -215,23 +237,30 @@ class Plugin_License implements Registerable, License, Core_Service
      */
     public function refresh()
     {
+        $license_key = $this->get_license_key();
         // No point refreshing if license doesn't exist.
-        if (!$this->get_license_key()) {
+        if (!$license_key) {
             return;
         }
         // If license is overridden, we shouldn't refresh as it will lose override state.
         if ($this->is_license_overridden()) {
             return;
         }
-        $license_data = ['license' => $this->get_license_key()];
+        $result = \false;
+        $url_to_refresh = $this->get_home_url();
+        $license_data = ['license' => $license_key];
         // We use the home url when checking the license, as the license result should reflect the current site, not any previous site.
-        $api_result = $this->license_api->check_license($this->get_license_key(), $this->item_id, $this->get_home_url());
+        $api_result = $this->license_api->check_license($license_key, $this->item_id, $url_to_refresh);
         if ($api_result->success) {
+            $result = \true;
             // Successful response returned.
             $response = $api_result->response;
             if ('valid' === $response->license) {
                 // Valid (and active) license.
                 $license_data['status'] = 'active';
+                if (isset($response->bonus_downloads)) {
+                    $license_data['bonus_downloads'] = $response->bonus_downloads;
+                }
             } else {
                 // Invalid license - $response->license will contain the reason for the invalid license - e.g. expired, inactive, site_inactive, etc.
                 $license_data['error_code'] = $response->license;
@@ -239,21 +268,50 @@ class Plugin_License implements Registerable, License, Core_Service
             }
             // Store returned license info.
             $license_data['license_info'] = $this->format_license_info($response);
-            \do_action('barn2_license_refreshed_' . $this->item_id, $this->get_license_key(), $this->get_home_url());
+            \do_action("barn2_license_refreshed_{$this->item_id}", $license_key, $url_to_refresh);
         } else {
             // API error - store the error but don't change license status (e.g. temporary communication error).
             $license_data['error_code'] = 'error';
             $license_data['error_message'] = $api_result->response;
         }
         $this->update_license_data($license_data);
+        /**
+         * Fires after the refresh process has completed.
+         *
+         * When refreshing a license, the result only indicates
+         * whether the refresh was successful, not whether the license is valid.
+         * Use the license status in the `$license_data` parameter to determine the license validity.
+         * 
+         * @param string  $license_key         The license key that was refreshed.
+         * @param string  $url_to_refresh      The URL that was used to refresh the license.
+         * @param array   $license_data        The license data after refresh.
+         * @param boolean $result              Whether the refresh was successful.
+         */
+        \do_action("barn2_license_after_refresh_{$this->item_id}", $license_key, $url_to_refresh, $license_data, $result);
     }
     public function override($license_key, $status)
     {
         if (!$license_key || !$this->is_valid_status($status)) {
             return;
         }
-        $this->set_license_data(['license' => $license_key, 'url' => $this->get_home_url(), 'status' => $status, 'override' => \true]);
-        \do_action('barn2_license_activated_' . $this->item_id, $license_key, $this->get_home_url());
+        $url_to_activate = $this->get_home_url();
+        $license_data = ['license' => $license_key, 'url' => $url_to_activate, 'status' => $status, 'override' => \true];
+        $this->set_license_data($license_data);
+        \do_action("barn2_license_activated_{$this->item_id}", $license_key, $url_to_activate);
+        /**
+         * Fires after the license has been overridden.
+         *
+         * The fourth parameter is always true as the override is always successful.
+         * It is provided here for consistency with the other license actions.
+         * Also, although override is effectively activating a license, we use the 'after_override' action
+         * right after the 'activated' action to differentiate between the two actions.
+         *
+         * @param string $license_key         The license key that was overridden.
+         * @param string $url_to_activate     The URL that was used to activate the license.
+         * @param array  $license_data        The license data after override.
+         * @param bool   $result              Whether the override was successful. Always true
+         */
+        \do_action("barn2_license_after_override_{$this->item_id}", $license_key, $url_to_activate, $license_data, \true);
     }
     public function get_setting_name()
     {
@@ -536,5 +594,10 @@ class Plugin_License implements Registerable, License, Core_Service
             Util::format_link_open($this->get_renewal_url(\false), \true),
             '</a>'
         );
+    }
+    public function get_bonus_downloads()
+    {
+        $license_data = $this->get_license_data();
+        return $license_data['bonus_downloads'] ?? [];
     }
 }

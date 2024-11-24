@@ -222,6 +222,49 @@ class Settings_API_Helper implements Registerable, Conditional
         self::field_description($args);
     }
     /**
+     * Double input text field.
+     *
+     * @param array $args
+     */
+    public static function settings_field_double_text($args)
+    {
+        $class = !empty($args['input_class']) ? $args['input_class'] : 'regular-text';
+        foreach ($args['input_fields'] as $field) {
+            $type = !empty($field['type']) ? $field['type'] : 'text';
+            ?>
+			<label for="<?php 
+            echo \esc_attr($field['id']);
+            ?>"><?php 
+            echo \esc_html($field['title']);
+            ?></label>
+			<input
+				id="<?php 
+            echo \esc_attr($field['id']);
+            ?>"
+				name="<?php 
+            echo \esc_attr($field['id']);
+            ?>"
+				class="<?php 
+            echo \esc_attr($class);
+            ?>"
+				type="<?php 
+            echo \esc_attr($type);
+            ?>"
+				value="<?php 
+            echo \esc_attr(self::get_value($field['id'], $field['default']));
+            ?>"<?php 
+            self::custom_attributes($args);
+            ?>
+			/>
+			<?php 
+        }
+        if (!empty($args['suffix'])) {
+            echo ' ' . \esc_html($args['suffix']) . ' ';
+        }
+        self::field_tooltip($args);
+        self::field_description($args);
+    }
+    /**
      * Textarea field.
      *
      * @param array $args
@@ -392,6 +435,64 @@ class Settings_API_Helper implements Registerable, Conditional
         self::field_tooltip($args);
     }
     /**
+     * Radio field.
+     *
+     * @param array $args
+     */
+    public static function settings_field_radio_image($args)
+    {
+        $current_value = self::get_value($args['id'], $args['default']);
+        ?>
+		<fieldset>
+			<legend class="screen-reader-text"><span><?php 
+        echo \esc_html($args['title']);
+        ?></span></legend>
+			<?php 
+        self::field_description($args);
+        ?>
+			<div class="radio-image-boxes">
+			<?php 
+        foreach ($args['options'] as $value => $label) {
+            ?>
+						<label>
+							<div class="radio-image">
+								<img src="<?php 
+            echo isset($args['images'][$value]) ? \esc_url($args['images'][$value]) : '';
+            ?>" alt="">
+							<?php 
+            if (isset($args['lightbox_images'][$value])) {
+                \printf('<div class="image-hover" data-open-lightbox="1" data-lightbox-image="%s"><img src="%s"/></div>', \esc_url($args['lightbox_images'][$value]), \esc_url($args['magnify_image']));
+            }
+            ?>
+							</div>
+							<span>
+								<input type="radio" id="<?php 
+            echo \esc_attr($args['id']);
+            ?>" name="<?php 
+            echo \esc_attr($args['id']);
+            ?>" class="<?php 
+            echo \esc_attr($args['input_class']);
+            ?>" <?php 
+            \checked($value, $current_value);
+            ?> value="<?php 
+            echo \esc_attr($value);
+            ?>" <?php 
+            self::custom_attributes($args);
+            ?>/>
+								<?php 
+            echo \esc_html($label);
+            ?>
+							</span>
+						</label>
+					<?php 
+        }
+        ?>
+		</div>
+		</fieldset>
+		<?php 
+        self::field_tooltip($args);
+    }
+    /**
      * Multicheckbox field.
      *
      * @param array $args
@@ -476,7 +577,9 @@ class Settings_API_Helper implements Registerable, Conditional
         \wp_enqueue_style('wp-color-picker');
         $current_value = self::get_value($args['id'], $args['default']);
         ?>
-		<div class="color-field">
+		<div class="color-field <?php 
+        esc_attr_e($args['input_class']);
+        ?>">
 			<input
 				type="text"
 				name="<?php 
@@ -517,7 +620,9 @@ class Settings_API_Helper implements Registerable, Conditional
         $args['custom_attributes'] = \array_merge(['min' => 0, 'size' => 4], $args['custom_attributes']);
         $size_attributes = self::get_custom_attributes($args);
         ?>
-		<div class="color-size-field">
+		<div class="color-size-field <?php 
+        esc_attr_e($args['input_class']);
+        ?>">
 			<input
 				type="text"
 				name="<?php 
@@ -548,6 +653,7 @@ class Settings_API_Helper implements Registerable, Conditional
 				<?php 
         /* Note: This is escaped in get_custom_attributes */
         echo $size_attributes;
+        // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
         ?>
 			/>
 

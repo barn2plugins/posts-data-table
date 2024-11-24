@@ -37,7 +37,7 @@ class I18n implements Registerable, Translatable, Core_Service
      */
     public function register()
     {
-        \add_action('after_setup_scheme', array($this, 'load_textdomain'));
+        \add_action('after_setup_theme', array($this, 'load_textdomain'));
     }
     /**
      * Load the plugin's textdomain.
@@ -46,6 +46,6 @@ class I18n implements Registerable, Translatable, Core_Service
      */
     public function load_textdomain()
     {
-        \load_plugin_textdomain($this->plugin->plugin_data()->get_textdomain(), \false, $this->plugin->get_dir_path() . '/languages');
+        \load_plugin_textdomain($this->plugin->plugin_data()->get_textdomain(), \false, \dirname(\plugin_basename($this->plugin->get_file())) . '/languages');
     }
 }

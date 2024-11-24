@@ -298,6 +298,15 @@ class Simple_Plugin implements Plugin, Registerable, Service_Provider
         return !empty($this->data['settings_path']) ? \admin_url($this->data['settings_path']) : '';
     }
     /**
+     * Get the design page URL in the WordPress admin.
+     *
+     * @return string (URL)
+     */
+    public function get_design_page_url()
+    {
+        return !empty($this->data['design_path']) ? \admin_url($this->data['design_path']) : '';
+    }
+    /**
      * Get the plugin data service.
      *
      * @return Plugin_Data

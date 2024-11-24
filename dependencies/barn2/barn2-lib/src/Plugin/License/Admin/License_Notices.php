@@ -33,6 +33,7 @@ class License_Notices implements Registerable, Core_Service
     public function register()
     {
         \add_action('admin_init', [$this, 'add_notices'], 50);
+        \add_action('admin_enqueue_scripts', [$this, 'register_scripts']);
         \add_action('barn2_license_activated_' . $this->plugin->get_id(), [$this, 'cleanup_transients']);
         \add_action('wp_ajax_barn2_dismiss_notice', [$this, 'ajax_dismiss_notice']);
     }
@@ -177,11 +178,14 @@ class License_Notices implements Registerable, Core_Service
         \delete_transient($this->get_notice_dismissed_transient_name(self::DISABLED));
         \delete_transient($this->get_notice_dismissed_transient_name(self::SITE_MOVED));
     }
-    public function load_scripts()
+    public function register_scripts()
     {
         if (!\wp_script_is('barn2-notices', 'registered')) {
             \wp_register_script('barn2-notices', \plugins_url('dependencies/barn2/barn2-lib/build/js/admin/barn2-notices.js', $this->plugin->get_file()), ['jquery'], $this->plugin->get_version(), \true);
         }
+    }
+    public function load_scripts()
+    {
         \wp_enqueue_script('barn2-notices');
     }
     public function ajax_dismiss_notice()
