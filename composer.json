@@ -11,7 +11,7 @@
         "bamarni/composer-bin-plugin": "^1.8",
         "barn2/php-standards": "dev-master",
         "barn2/setup-wizard": "^1.2", 
-        "barn2/barn2-lib": "^2.0.2",
+        "barn2/barn2-lib": "^2.0",
         "barn2/php-scoper-excludes": "^0.2.0",
         "dealerdirect/phpcodesniffer-composer-installer": "^0.7.2"
     },

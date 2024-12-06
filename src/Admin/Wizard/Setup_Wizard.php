@@ -38,7 +38,14 @@ class Setup_Wizard implements Registerable, Standard_Service {
 	 */
 	public function __construct( Plugin $plugin ) {
 		$this->plugin = $plugin;
+	}
 
+	/**
+	 * Register the service.
+	 *
+	 * @return void
+	 */
+	public function register() {
 		$steps = [
 			new Steps\Welcome(),
 			new Steps\Layout(),
@@ -66,14 +73,7 @@ class Setup_Wizard implements Registerable, Standard_Service {
 		$wizard->add_restart_link( '', '' );
 
 		$this->wizard = $wizard;
-	}
 
-	/**
-	 * Register the service.
-	 *
-	 * @return void
-	 */
-	public function register() {
 		$this->wizard->boot();
 	}
 
