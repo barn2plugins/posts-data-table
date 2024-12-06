@@ -17,7 +17,7 @@ use	Barn2\Plugin\Posts_Table_Search_Sort\Dependencies\Lib\Service\Standard_Servi
  * @license   GPL-3.0
  * @copyright Barn2 Media Ltd
  */
-class Plugin_Setup implements Registerable, Standard_Service {
+class Plugin_Setup implements Registerable, Standard_Service, Plugin_Activation_Listener {
 	/**
 	 * Plugin's entry file
 	 *
@@ -90,6 +90,7 @@ class Plugin_Setup implements Registerable, Standard_Service {
 		}
 
 		$this->starter->delete_transient();
+		$this->starter->create_option();
 		$this->starter->redirect();
 	}
 }
