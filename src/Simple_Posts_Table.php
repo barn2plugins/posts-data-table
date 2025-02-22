@@ -268,7 +268,7 @@ class Simple_Posts_Table {
 
 		foreach ( $columns as $column ) {
 			// Double-check column name is valid
-			if ( ! in_array( $column, self::get_allowed_columns() ) ) {
+			if ( ! in_array( $column, array_keys( $column_defaults ) ) ) {
 				continue;
 			}
 
