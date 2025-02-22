@@ -132,7 +132,7 @@ The column widths are calculated automatically by the plugin, based on the conte
 `
 add_filter( 'posts_data_table_column_defaults', 'posts_table_set_title_column_width' );
 
-function posts_table_set_title_column_width( $column_defaults )
+function posts_table_set_title_column_width( $column_defaults ) {
 	$column_defaults['title']['width'] = '80px';
 	return $column_defaults;
 }
