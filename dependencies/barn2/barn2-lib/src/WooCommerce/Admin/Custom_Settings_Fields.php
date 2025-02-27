@@ -563,11 +563,33 @@ class Custom_Settings_Fields implements Registerable
     }
     public function register_scripts()
     {
+        /**
+         * Filter to determine if the custom fields scripts should be loaded.
+         *
+         * @param bool $load_scripts Whether to load the custom fields scripts.
+         * @param Plugin $plugin The plugin object.
+         * @return bool
+         */
+        $load_scripts = \apply_filters("barn2_wc_settings_custom_fields_load_scripts_{$this->plugin->get_slug()}", \true, $this->plugin);
+        if (!$load_scripts) {
+            return;
+        }
         \wp_register_style('barn2-wc-settings', $this->plugin->get_dir_url() . 'dependencies/barn2/barn2-lib/build/css/wc-settings-styles.css', [], $this->plugin->get_version());
-        \wp_register_script('barn2-wc-settings', $this->plugin->get_dir_url() . 'dependencies/barn2/barn2-lib/build/js/wc-settings.js', ['jquery'], $this->plugin->get_version());
+        \wp_register_script('barn2-wc-settings', $this->plugin->get_dir_url() . 'dependencies/barn2/barn2-lib/build/js/admin/wc-settings.js', ['jquery'], $this->plugin->get_version());
     }
     public function load_scripts($field)
     {
+        /**
+         * Filter to determine if the custom fields scripts should be loaded.
+         *
+         * @param bool $load_scripts Whether to load the custom fields scripts.
+         * @param Plugin $plugin The plugin object.
+         * @return bool
+         */
+        $load_scripts = \apply_filters("barn2_wc_settings_custom_fields_load_scripts_{$this->plugin->get_slug()}", \true, $this->plugin);
+        if (!$load_scripts) {
+            return;
+        }
         if (\in_array($field, ['image_size', 'color_size', 'color_picker'], \true)) {
             \wp_enqueue_style('barn2-wc-settings');
         }

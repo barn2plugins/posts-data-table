@@ -19,6 +19,10 @@ final class EDD_Licensing implements License_API
      */
     const EDD_LICENSING_ENDPOINT = 'https://barn2.com/edd-sl';
     /**
+     * @var string A relay server which sends the same request when the primary one returns 403
+     */
+    const EDD_LICENSING_SECONDARY_ENDPOINT = 'https://licensing.barn2.com/';
+    /**
      * @var int API timeout in seconds.
      */
     const API_TIMEOUT = 20;
@@ -119,8 +123,10 @@ final class EDD_Licensing implements License_API
         }
         return $result;
     }
-    private function api_request($params)
+    private function api_request($params, $retry = \false)
     {
+        // If we are already retrying, use the relay server
+        $endpoint = $retry ? self::EDD_LICENSING_SECONDARY_ENDPOINT : self::EDD_LICENSING_ENDPOINT;
         /**
          * Filter the EDD Software Licensing API endpoint.
          *
@@ -131,11 +137,15 @@ final class EDD_Licensing implements License_API
          * @param EDD_Licensing $instance The EDD_Licensing instance.
          * @param array         $params   The parameters to send to the API.
          */
-        $endpoint = \apply_filters('barn2_edd_licensing_api_endpoint', self::EDD_LICENSING_ENDPOINT, $this, $params);
+        $endpoint = \apply_filters('barn2_edd_licensing_api_endpoint', $endpoint, $this, $params);
         // Call the Software Licensing API.
         $response = \wp_remote_post($endpoint, \apply_filters('barn2_edd_licensing_api_request_args', ['timeout' => self::API_TIMEOUT, 'body' => $params]));
         // Build the result.
         $result = new \stdClass();
+        // Check if the response is a 403 error and if we should retry
+        if (\wp_remote_retrieve_response_code($response) === 403 && !$retry) {
+            return $this->api_request($params, \true);
+        }
         if (self::is_api_error($response)) {
             $result->success = \false;
             $result->response = self::get_api_error_message($response);

@@ -194,12 +194,11 @@ class License_Notices implements Registerable, Core_Service
         $notice_type = \filter_input(\INPUT_POST, 'type', \FILTER_SANITIZE_SPECIAL_CHARS);
         // Check data is valid.
         if (!$item_id || !\in_array($notice_type, [self::FIRST_ACTIVATION, self::EXPIRED, self::DISABLED, self::SITE_MOVED], \true)) {
-            \wp_die();
+            return;
         }
         if ($item_id === $this->plugin->get_id()) {
             $this->dismiss_notice($notice_type);
         }
-        \wp_die();
     }
     private function dismiss_notice($notice_type)
     {

@@ -66,16 +66,16 @@
         },
         {
             "name": "barn2/barn2-lib",
-            "version": "2.2.4",
+            "version": "2.3.1",
             "source": {
                 "type": "git",
                 "url": "git@github.com:barn2plugins/barn2-lib.git",
-                "reference": "cc582efc9e95f63b0291777808e183b958e05d6d"
+                "reference": "c4ab8d0f12aa4289dd240532931cf4732a44a464"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/barn2plugins/barn2-lib/zipball/cc582efc9e95f63b0291777808e183b958e05d6d",
-                "reference": "cc582efc9e95f63b0291777808e183b958e05d6d",
+                "url": "https://api.github.com/repos/barn2plugins/barn2-lib/zipball/c4ab8d0f12aa4289dd240532931cf4732a44a464",
+                "reference": "c4ab8d0f12aa4289dd240532931cf4732a44a464",
                 "shasum": ""
             },
             "require": {
@@ -101,10 +101,10 @@
             ],
             "description": "Barn2 Libary code",
             "support": {
-                "source": "https://github.com/barn2plugins/barn2-lib/tree/2.2.4",
+                "source": "https://github.com/barn2plugins/barn2-lib/tree/2.3.1",
                 "issues": "https://github.com/barn2plugins/barn2-lib/issues"
             },
-            "time": "2024-11-25T09:22:34+00:00"
+            "time": "2025-02-03T11:55:50+00:00"
         },
         {
             "name": "barn2/php-scoper-excludes",
@@ -449,16 +449,16 @@
         },
         {
             "name": "phpcompatibility/phpcompatibility-wp",
-            "version": "2.1.5",
+            "version": "2.1.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHPCompatibility/PHPCompatibilityWP.git",
-                "reference": "01c1ff2704a58e46f0cb1ca9d06aee07b3589082"
+                "reference": "80ccb1a7640995edf1b87a4409fa584cd5869469"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHPCompatibility/PHPCompatibilityWP/zipball/01c1ff2704a58e46f0cb1ca9d06aee07b3589082",
-                "reference": "01c1ff2704a58e46f0cb1ca9d06aee07b3589082",
+                "url": "https://api.github.com/repos/PHPCompatibility/PHPCompatibilityWP/zipball/80ccb1a7640995edf1b87a4409fa584cd5869469",
+                "reference": "80ccb1a7640995edf1b87a4409fa584cd5869469",
                 "shasum": ""
             },
             "require": {
@@ -515,7 +515,7 @@
                     "type": "open_collective"
                 }
             ],
-            "time": "2024-04-24T21:37:59+00:00"
+            "time": "2025-01-16T22:34:19+00:00"
         },
         {
             "name": "phpcsstandards/phpcsextra",
@@ -685,16 +685,16 @@
         },
         {
             "name": "squizlabs/php_codesniffer",
-            "version": "3.11.1",
+            "version": "3.11.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHPCSStandards/PHP_CodeSniffer.git",
-                "reference": "19473c30efe4f7b3cd42522d0b2e6e7f243c6f87"
+                "reference": "ba05f990e79cbe69b9f35c8c1ac8dca7eecc3a10"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHPCSStandards/PHP_CodeSniffer/zipball/19473c30efe4f7b3cd42522d0b2e6e7f243c6f87",
-                "reference": "19473c30efe4f7b3cd42522d0b2e6e7f243c6f87",
+                "url": "https://api.github.com/repos/PHPCSStandards/PHP_CodeSniffer/zipball/ba05f990e79cbe69b9f35c8c1ac8dca7eecc3a10",
+                "reference": "ba05f990e79cbe69b9f35c8c1ac8dca7eecc3a10",
                 "shasum": ""
             },
             "require": {
@@ -759,9 +759,13 @@
                 {
                     "url": "https://opencollective.com/php_codesniffer",
                     "type": "open_collective"
+                },
+                {
+                    "url": "https://thanks.dev/phpcsstandards",
+                    "type": "thanks_dev"
                 }
             ],
-            "time": "2024-11-16T12:02:36+00:00"
+            "time": "2025-01-23T17:04:15+00:00"
         },
         {
             "name": "wp-coding-standards/wpcs",

@@ -74,7 +74,7 @@ class Notice
             // Enqueue notices script to handle dismissables notices.
             \add_action('admin_enqueue_scripts', [$this, 'load_scripts']);
             // Handle AJAX requests to dismiss the notice.
-            \add_action('wp_ajax_barn2_dismiss_admin_notice', [$this, 'ajax_maybe_dismiss_notice']);
+            \add_action('wp_ajax_barn2_dismiss_notice', [$this, 'ajax_maybe_dismiss_notice'], 1);
         }
     }
     /**
@@ -273,7 +273,7 @@ class Notice
             \call_user_func($this->options['dissmiss_callback'], $this->id, $this->title, $this->message, $this->options, $this);
         }
         // Early exit if we're not on a barn2_dismiss_admin_notice action.
-        if (!isset($_POST['action']) || 'barn2_dismiss_admin_notice' !== $_POST['action']) {
+        if (!isset($_POST['action']) || 'barn2_dismiss_notice' !== $_POST['action']) {
             return;
         }
         // Early exit if the ID of the notice is not the one from this object.
