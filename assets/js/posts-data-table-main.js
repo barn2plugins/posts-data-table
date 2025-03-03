@@ -1,5 +1,4 @@
 /******/ (() => { // webpackBootstrap
-var __webpack_exports__ = {};
 /*!******************************************************!*\
   !*** ./assets/js/src/posts-data-table-main/index.js ***!
   \******************************************************/
@@ -12,7 +11,9 @@ var __webpack_exports__ = {};
       let $table = $(this),
         config = {
           responsive: true,
-          processing: true // display 'processing' indicator when loading
+          processing: true,
+          aLengthMenu: JSON.parse(configOptions.lengthMenu),
+          iDisplayLength: configOptions.displayLength
         };
 
       // Set language - defaults to English if not specified

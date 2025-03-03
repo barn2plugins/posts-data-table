@@ -126,12 +126,6 @@ class Simple_Posts_Table {
 	 * @return string The posts table HTML output
 	 */
 	public function get_table( $args ) {
-		// Load the scripts and styles.
-		if ( apply_filters( 'posts_data_table_load_scripts', true ) ) {
-			wp_enqueue_style( 'posts-data-table' );
-			wp_enqueue_script( 'posts-data-table' );
-		}
-
 		$args = wp_parse_args( $args, self::get_defaults() );
 		$args = $this->back_compat_args( $args );
 
@@ -150,7 +144,7 @@ class Simple_Posts_Table {
 		$args['rows_per_page'] = filter_var( $args['rows_per_page'], FILTER_VALIDATE_INT );
 
 		if ( $args['rows_per_page'] < 1 || ! $args['rows_per_page'] ) {
-			$args['rows_per_page'] = false;
+			$args['rows_per_page'] = -1;
 		}
 
 		if ( ! in_array( $args['sort_by'], self::get_allowed_columns() ) ) {
@@ -261,6 +255,22 @@ class Simple_Posts_Table {
 
 		// Allow theme/plugins to override defaults
 		$column_defaults = apply_filters( 'posts_data_table_column_defaults_' . self::$table_count, apply_filters( 'posts_data_table_column_defaults', self::get_column_defaults() ) );
+
+		// Load the scripts and styles.
+		if ( apply_filters( 'posts_data_table_load_scripts', true ) ) {
+			wp_enqueue_style( 'posts-data-table' );
+
+			wp_localize_script(
+				'posts-data-table',
+				'configOptions',
+				[
+					'lengthMenu' => json_encode( $this->get_page_lengths( $args['rows_per_page'] ) ),
+					'displayLength' => $args['rows_per_page']
+				]
+			);
+
+			wp_enqueue_script( 'posts-data-table' );
+		}
 
 		// Build table header
 		$heading_fmt = '<th data-name="%1$s" data-priority="%2$u" data-width="%3$s"%5$s>%4$s</th>';
@@ -411,6 +421,23 @@ class Simple_Posts_Table {
 		}
 
 		return $text;
+	}
+
+	public function get_page_lengths( $default_length ) {
+		$length_numbers = apply_filters( 'posts_data_table_default_page_lengths', [ 10, 25, 50, 100 ] );
+
+		if ( $default_length != -1 && !in_array( $default_length, $length_numbers ) ) {
+			$length_numbers[] = $default_length;
+		}
+
+		sort( $length_numbers );
+
+		$lengths = [
+			array_merge( $length_numbers, [ -1 ] ),
+			array_merge( $length_numbers, [ __( 'All', 'posts-data-table' ) ] )
+		];
+
+		return $lengths;
 	}
 
 }

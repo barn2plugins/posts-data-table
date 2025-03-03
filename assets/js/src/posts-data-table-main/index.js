@@ -1,10 +1,8 @@
-
 ( function( $ ) {
 
     $( document ).ready( function() {
 
         let tables = $( '.posts-data-table' );
-
         const adminBar = $( '#wpadminbar' ),
             clickFilterColumns = ['categories', 'tags', 'author'];
 
@@ -12,7 +10,9 @@
             let $table = $( this ),
                 config = {
                     responsive: true,
-                    processing: true // display 'processing' indicator when loading
+                    processing: true,
+                    aLengthMenu: JSON.parse( configOptions.lengthMenu ),
+                    iDisplayLength: configOptions.displayLength,
                 };
 
             // Set language - defaults to English if not specified
