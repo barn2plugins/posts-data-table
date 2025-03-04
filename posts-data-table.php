@@ -18,6 +18,7 @@
  * Domain Path:     /languages
  *
  * Requires at least:     6.1
+ * Tested up to:          6.7
  * Requires PHP:          7.4
  *
  * Copyright:       Barn2 Media Ltd

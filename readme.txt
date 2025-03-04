@@ -169,7 +169,7 @@ Please report any security bugs through the [Patchstack Vulnerability Disclosure
 == Changelog ==
 
 = 1.4.9 =
-Release date 3 March 2025
+Release date 5 March 2025
 
 * Dev: Updated internal libraries
 * Fix: Setup wizard was not running in the first install
