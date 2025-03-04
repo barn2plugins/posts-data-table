@@ -13,6 +13,15 @@
                     processing: true,
                     aLengthMenu: JSON.parse( configOptions.lengthMenu ),
                     iDisplayLength: configOptions.displayLength,
+                    fnDrawCallback: function (oSettings) {
+                        displayLength = oSettings._iDisplayLength === -1 ? oSettings.fnRecordsTotal() : oSettings._iDisplayLength;
+                        if (oSettings.fnRecordsDisplay() <= displayLength) {
+                            $('.dataTables_paginate').hide();
+                        } else {
+                            $('.dataTables_paginate').show();
+                            
+                        }
+                    }
                 };
 
             // Set language - defaults to English if not specified

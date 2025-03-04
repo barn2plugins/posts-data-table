@@ -346,11 +346,7 @@ class Simple_Posts_Table {
 
 		$table_body = sprintf( '<tbody>%s</tbody>', $table_body );
 
-		$paging_attr = 'false';
-
-		if ( $args['rows_per_page'] && $args['rows_per_page'] < count( $all_posts ) ) {
-			$paging_attr = 'true';
-		}
+		$paging_attr = 'true';
 
 		$order_attr = '';
 
