@@ -17,7 +17,7 @@ Automatically create searchable and sortable tables of your posts.
 
 Visitors can easily filter content by date, category, tag or author - making this WordPress table plugin highly adaptable to different use cases.
 
-https://youtu.be/xCV6WwZXd5M
+https://youtu.be/iNgC_HLKqis
 
 Install this plugin to organize your WordPress posts into simple, searchable, and visibly appealing tables. It includes pagination and responsive layouts for smaller screens as standard.
 
