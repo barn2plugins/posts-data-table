@@ -18,7 +18,7 @@ class Cross_Selling extends Step
     /**
      * Initialize the step.
      */
-    public function __construct()
+    public function init()
     {
         $this->set_id('more');
         $this->set_name(esc_html__('More', 'barn2-setup-wizard'));

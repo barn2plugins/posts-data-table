@@ -45,7 +45,7 @@ class Plugin_Data implements Core_Service
      * @param string|null $property Optional. The name of a specific property to return.
      * @return array|string The plugin header data or a specific property.
      */
-    public function get_plugin_data(string $property = null)
+    public function get_plugin_data(?string $property = null)
     {
         if (\is_null($this->plugin_data)) {
             if (!\function_exists('get_plugin_data')) {

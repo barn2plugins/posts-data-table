@@ -1,3 +1,8 @@
+= 1.4.10 =
+Release date 21 April 2025
+
+* Dev: Updated internal libraries and tested up to WordPress 6.8
+
 = 1.4.9 =
 Release date 5 March 2025
 

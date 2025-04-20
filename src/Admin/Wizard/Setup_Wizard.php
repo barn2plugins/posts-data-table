@@ -38,21 +38,13 @@ class Setup_Wizard implements Registerable, Standard_Service {
 	 */
 	public function __construct( Plugin $plugin ) {
 		$this->plugin = $plugin;
-	}
-
-	/**
-	 * Register the service.
-	 *
-	 * @return void
-	 */
-	public function register() {
-		$steps = [
+		$steps        = [
 			new Steps\Welcome(),
 			new Steps\Layout(),
 			new Steps\Loading(),
 			new Steps\Search(),
 			new Steps\Upsell(),
-			new Steps\Completed()
+			new Steps\Completed(),
 		];
 
 		$wizard = new Wizard( $this->plugin, $steps );
@@ -61,20 +53,18 @@ class Setup_Wizard implements Registerable, Standard_Service {
 			[
 				'skip_url'    => admin_url( 'options-general.php?page=posts_table_search_sort' ),
 				'plugin_slug' => 'posts-table-with-search-and-sort',
-				'signpost'        => [
-					[
-						'title' => __( 'Go to settings page', 'posts-data-table' ),
-						'href'  => admin_url( 'options-general.php?page=posts_table_search_sort' ),
-					],
-				]
 			]
 		);
 
 		$wizard->add_restart_link( '', '' );
 
 		$this->wizard = $wizard;
-
-		$this->wizard->boot();
 	}
 
+	/**
+	 * {@inheritdoc}
+	 */
+	public function register() {
+		$this->wizard->boot();
+	}
 }

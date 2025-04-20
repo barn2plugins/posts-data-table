@@ -17,8 +17,8 @@ class Completed extends Ready {
 	/**
 	 * {@inheritdoc}
 	 */
-	public function __construct() {
-		parent::__construct();
+	public function init() {
+		parent::init();
 		$this->set_name( esc_html__( 'Ready', 'posts-data-table' ) );
 		$this->set_title( esc_html__( 'Setup Complete', 'posts-data-table' ) );
 		$this->set_description(

@@ -17,7 +17,7 @@ class Welcome extends Welcome_Free {
 	/**
 	 * {@inheritdoc}
 	 */
-	public function __construct() {
+	public function init() {
 		$this->set_id( 'welcome_free' );
 		$this->set_title( 'Welcome to Posts Table with Search & Sort' );
 		$this->set_name( esc_html__( 'Welcome', 'posts-data-table' ) );
@@ -37,9 +37,9 @@ class Welcome extends Welcome_Free {
 				'raw'   => true,
 				'style' => [
 					'textAlign' => 'center',
-					'color'     => '#757575'
-				]
-			]
+					'color'     => '#757575',
+				],
+			],
 		];
 
 		return $fields;

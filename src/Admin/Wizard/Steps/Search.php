@@ -19,7 +19,7 @@ class Search extends Step {
 	/**
 	 * {@inheritdoc}
 	 */
-	public function __construct() {
+	public function init() {
 		$this->set_id( 'search' );
 		$this->set_name( esc_html__( 'Search and Sort', 'posts-data-table' ) );
 		$this->set_description( esc_html__( 'Next, make it quick and easy for people to find your posts.', 'posts-data-table' ) );
@@ -61,17 +61,17 @@ class Search extends Step {
 				'value'   => $values['sort_order'] ?? '',
 			],
 			'search'     => [
-				'label'   => __( 'Search filters', 'posts-data-table' ),
-				'type'    => 'select',
-				'description'	=>	__( 'Add filter dropdowns above the table to quickly filter the posts by category, tag and more.', 'posts-data-table' ),
-				'options' => [
+				'label'       => __( 'Search filters', 'posts-data-table' ),
+				'type'        => 'select',
+				'description' => __( 'Add filter dropdowns above the table to quickly filter the posts by category, tag and more.', 'posts-data-table' ),
+				'options'     => [
 					[
 						'value' => '',
 						'label' => __( 'Disabled', 'posts-data-table' ),
 					],
 				],
-				'value'   => '',
-				'premium' => true,
+				'value'       => '',
+				'premium'     => true,
 			],
 		];
 
@@ -116,5 +116,4 @@ class Search extends Step {
 
 		return Api::send_success_response();
 	}
-
 }

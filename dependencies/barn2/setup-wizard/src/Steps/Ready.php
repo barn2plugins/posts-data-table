@@ -18,7 +18,7 @@ class Ready extends Step
     /**
      * Initialize the step.
      */
-    public function __construct()
+    public function init()
     {
         $this->set_id('ready');
         $this->set_name(esc_html__('Ready', 'barn2-setup-wizard'));

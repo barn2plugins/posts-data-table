@@ -20,7 +20,7 @@ class Layout extends Step {
 	/**
 	 * {@inheritdoc}
 	 */
-	public function __construct() {
+	public function init() {
 		$this->set_id( 'layout' );
 		$this->set_name( esc_html__( 'Layout and Content', 'posts-data-table' ) );
 		$this->set_description( esc_html__( 'First, choose what to include in your post tables.', 'posts-data-table' ) );
@@ -79,5 +79,4 @@ class Layout extends Step {
 
 		return Api::send_success_response();
 	}
-
 }

@@ -19,7 +19,7 @@ class Welcome_Free extends Step
     /**
      * Initialize the step.
      */
-    public function __construct()
+    public function init()
     {
         $this->set_id('welcome_free');
         $this->set_name(esc_html__('Welcome', 'barn2-setup-wizard'));

@@ -66,16 +66,16 @@
         },
         {
             "name": "barn2/barn2-lib",
-            "version": "2.3.1",
+            "version": "2.3.2",
             "source": {
                 "type": "git",
                 "url": "git@github.com:barn2plugins/barn2-lib.git",
-                "reference": "c4ab8d0f12aa4289dd240532931cf4732a44a464"
+                "reference": "b728ed131de45b288a858e39f7975fa5f4fc6c9e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/barn2plugins/barn2-lib/zipball/c4ab8d0f12aa4289dd240532931cf4732a44a464",
-                "reference": "c4ab8d0f12aa4289dd240532931cf4732a44a464",
+                "url": "https://api.github.com/repos/barn2plugins/barn2-lib/zipball/b728ed131de45b288a858e39f7975fa5f4fc6c9e",
+                "reference": "b728ed131de45b288a858e39f7975fa5f4fc6c9e",
                 "shasum": ""
             },
             "require": {
@@ -101,10 +101,10 @@
             ],
             "description": "Barn2 Libary code",
             "support": {
-                "source": "https://github.com/barn2plugins/barn2-lib/tree/2.3.1",
+                "source": "https://github.com/barn2plugins/barn2-lib/tree/2.3.2",
                 "issues": "https://github.com/barn2plugins/barn2-lib/issues"
             },
-            "time": "2025-02-03T11:55:50+00:00"
+            "time": "2025-04-07T08:45:00+00:00"
         },
         {
             "name": "barn2/php-scoper-excludes",
@@ -170,16 +170,16 @@
         },
         {
             "name": "barn2/setup-wizard",
-            "version": "1.2.25",
+            "version": "1.4.1",
             "source": {
                 "type": "git",
                 "url": "git@github.com:barn2plugins/setup-wizard.git",
-                "reference": "7752195e10114156fd84bec1a6c34eccbeaee3a5"
+                "reference": "a2797c36d1241bbe7ca7f9af97403f85700ec9f2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/barn2plugins/setup-wizard/zipball/7752195e10114156fd84bec1a6c34eccbeaee3a5",
-                "reference": "7752195e10114156fd84bec1a6c34eccbeaee3a5",
+                "url": "https://api.github.com/repos/barn2plugins/setup-wizard/zipball/a2797c36d1241bbe7ca7f9af97403f85700ec9f2",
+                "reference": "a2797c36d1241bbe7ca7f9af97403f85700ec9f2",
                 "shasum": ""
             },
             "require-dev": {
@@ -233,10 +233,10 @@
                 "wordpress"
             ],
             "support": {
-                "source": "https://github.com/barn2plugins/setup-wizard/tree/1.2.25",
+                "source": "https://github.com/barn2plugins/setup-wizard/tree/1.4.1",
                 "issues": "https://github.com/barn2plugins/setup-wizard/issues"
             },
-            "time": "2024-07-02T07:40:24+00:00"
+            "time": "2025-04-16T09:31:02+00:00"
         },
         {
             "name": "dealerdirect/phpcodesniffer-composer-installer",
@@ -685,16 +685,16 @@
         },
         {
             "name": "squizlabs/php_codesniffer",
-            "version": "3.11.3",
+            "version": "3.12.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHPCSStandards/PHP_CodeSniffer.git",
-                "reference": "ba05f990e79cbe69b9f35c8c1ac8dca7eecc3a10"
+                "reference": "6d4cf6032d4b718f168c90a96e36c7d0eaacb2aa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHPCSStandards/PHP_CodeSniffer/zipball/ba05f990e79cbe69b9f35c8c1ac8dca7eecc3a10",
-                "reference": "ba05f990e79cbe69b9f35c8c1ac8dca7eecc3a10",
+                "url": "https://api.github.com/repos/PHPCSStandards/PHP_CodeSniffer/zipball/6d4cf6032d4b718f168c90a96e36c7d0eaacb2aa",
+                "reference": "6d4cf6032d4b718f168c90a96e36c7d0eaacb2aa",
                 "shasum": ""
             },
             "require": {
@@ -761,11 +761,11 @@
                     "type": "open_collective"
                 },
                 {
-                    "url": "https://thanks.dev/phpcsstandards",
+                    "url": "https://thanks.dev/u/gh/phpcsstandards",
                     "type": "thanks_dev"
                 }
             ],
-            "time": "2025-01-23T17:04:15+00:00"
+            "time": "2025-04-13T04:10:18+00:00"
         },
         {
             "name": "wp-coding-standards/wpcs",

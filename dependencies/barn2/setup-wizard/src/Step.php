@@ -71,6 +71,21 @@ abstract class Step implements Pluggable
      */
     private $request;
     /**
+     * Step constructor.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        \add_action('after_setup_theme', [$this, 'init']);
+    }
+    /**
+     * Initialize the step.
+     *
+     * @return void
+     */
+    public abstract function init();
+    /**
      * Set the request object.
      *
      * @param \WP_REST_Request $request The request object.
